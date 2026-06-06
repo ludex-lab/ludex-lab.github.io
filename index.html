@@ -414,8 +414,8 @@ const STR = {
   key_ph_cmd:{en:"<paste-your-key>", ko:"<여기에-키-붙여넣기>"},
   out_hint:  {en:"Optional. Leave blank → the creature lands at ludex/creatures/<name> (inside the ‘ludex’ folder created during setup). Type a path only for a custom location — browsers can't open a real folder picker for a terminal command.",
               ko:"선택 사항. 비워 두면 ludex/creatures/<이름>에 만들어집니다 (설치 단계에서 생긴 ‘ludex’ 폴더 안). 다른 위치를 원할 때만 경로를 입력하세요. (브라우저는 터미널 명령용 실제 폴더 선택창을 못 엽니다.)"},
-  setup_note:{en:"Open a terminal and paste this once. A terminal starts in your home folder, so this downloads Ludex into a new ‘ludex’ folder there (macOS: ~/ludex, Windows: C:\\Users\\you\\ludex) and moves you inside it. Already have Ludex? Skip this.",
-              ko:"터미널을 열고 한 번만 붙여넣으세요. 터미널은 홈 폴더에서 시작하므로, 거기에 ‘ludex’ 폴더를 내려받고(macOS: ~/ludex, Windows: C:\\Users\\사용자\\ludex) 그 안으로 들어갑니다. 이미 Ludex가 있다면 건너뛰세요."},
+  setup_note:{en:"Open a terminal and paste this once. A terminal starts in your home folder, so this downloads Ludex into a new ‘ludex’ folder there (macOS: ~/ludex, Windows: C:\\Users\\you\\ludex), moves you inside, and makes a private .venv so installs don't touch your system. If you see ‘command not found: python3’ (or python), use the other one. Already have Ludex? Skip this.",
+              ko:"터미널을 열고 한 번만 붙여넣으세요. 터미널은 홈 폴더에서 시작하므로 거기에 ‘ludex’ 폴더를 내려받고(macOS: ~/ludex, Windows: C:\\Users\\사용자\\ludex) 그 안으로 들어간 뒤, 시스템을 건드리지 않도록 전용 .venv 가상환경을 만듭니다. ‘command not found: python3’(또는 python)이 뜨면 다른 쪽을 쓰세요. 이미 Ludex가 있다면 건너뛰세요."},
   create_note:{en:"Run this in any terminal — it switches into your Ludex folder first, so it works from anywhere. Make another creature anytime by running it again with a new name.",
               ko:"아무 터미널에서나 실행하세요 — 먼저 Ludex 폴더로 이동하므로 어디서든 됩니다. 새 크리처는 이름만 바꿔 다시 실행하면 돼요."},
   dir_hint:  {en:"Your Ludex folder (from setup) — remembered in this browser; edit it if you cloned somewhere else.",
@@ -441,6 +441,11 @@ const GREETING = {  // generated birth welcome, in the creature's language (not 
   ko: n => `안녕. 나는 ${n}. 방금 깨어났어 — 아직 아무것도 모르지만, 여기서부터 살아갈게.`,
   en: n => `Hello. I'm ${n}. I just woke up — I don't know much yet, but I'll live here.`,
 };
+// OS-aware venv commands: sidesteps python-vs-python3 AND PEP-668 global-pip blocks.
+const IS_WIN = /win/i.test((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "");
+const PY   = IS_WIN ? "python" : "python3";          // creates the venv
+const VPY  = IS_WIN ? ".venv/Scripts/python" : ".venv/bin/python";
+const VPIP = IS_WIN ? ".venv/Scripts/pip" : ".venv/bin/pip";
 let incCat = "cli";
 let incLatest = null, incFetched = false, incShowSetup = false;
 function _lang(){ return document.documentElement.lang === "ko" ? "ko" : "en"; }
@@ -583,8 +588,8 @@ function incRender(){
 
   const out=$("incOut").value.trim();
   const nm = (name && ok) ? name : _s("placeholder_name");
-  // setup (once): clone + install + (byok: key into local .env)
-  let setup = "git clone https://github.com/ludex-lab/ludex\ncd ludex\npip install -r requirements.txt";
+  // setup (once): clone + venv + install + (byok: key into local .env)
+  let setup = `git clone https://github.com/ludex-lab/ludex\ncd ludex\n${PY} -m venv .venv\n${VPIP} install -r requirements.txt`;
   if(incCat==="byok"){
     const k=INC.envKey[prov]||"API_KEY";
     const val=$("incApiKey").value.trim() || _s("key_ph_cmd");
@@ -600,7 +605,7 @@ function incRender(){
   $("incLangHint").textContent=_s("lang_hint");
   $("incBornBtn").textContent=_s("born_btn");
   $("incFirstWords").placeholder=_s("fw_ph");
-  let create = `cd ${dir} && python -m ludex create --name ${nm} --provider ${prov} --model ${model||"<model>"} --preset ${preset}`;
+  let create = `cd ${dir} && ${VPY} -m ludex create --name ${nm} --provider ${prov} --model ${model||"<model>"} --preset ${preset}`;
   const langSys = LANG_SYS[$("incLang").value] || "";
   if(langSys) create += ` --system "${langSys}"`;
   if(out) create += ` --out ${out}`;
@@ -623,7 +628,7 @@ function incRender(){
   $("incUpdate").style.display = showUpd ? "" : "none";
   if(showUpd){
     $("incUpdateMsg").textContent = _s("update_msg") + (incLatest.date?(" ("+incLatest.date+")"):"") + ".";
-    const upcmd = `cd ${dir} && git pull && pip install -r requirements.txt`;
+    const upcmd = `cd ${dir} && git pull && ${VPIP} install -r requirements.txt`;
     $("incUpdateCmd").textContent = upcmd; window._incUpdate = upcmd;
   }
 }
