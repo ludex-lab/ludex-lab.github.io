@@ -296,6 +296,10 @@ python web/server.py        # then open http://localhost:7860</pre>
       <a class="incubate" id="launchOpenLink" href="http://localhost:7860/#creatures" target="_blank" rel="noopener"
          style="text-decoration:none;display:inline-block" data-i18n="launch_open_btn">Open localhost:7860 →</a>
     </div>
+    <div class="istep">
+      <label data-i18n="launch_stop">To stop it</label>
+      <p class="ihint" data-i18n="launch_stop_hint">Press Ctrl+C in its terminal, or just close that window. It's only running while that terminal is open — reopen anytime with this button.</p>
+    </div>
   </div>
 </div>
 
@@ -313,12 +317,14 @@ const I18N = {
     install_sub: "One line installs Ludex and opens the local app. Requires git + Python 3.10+.",
     install_step: "Paste this into a terminal",
     cta_meet: "💬 Meet your creatures (chat & observe)",
-    local_note: '💬 Your creatures live in the local app on your machine — this button shows you how to open them.',
-    launch_title: "Open your creatures",
-    launch_sub: "The viewer & chat run in the local app on your machine.",
+    local_note: '💬 Your creatures live in a local app on your machine — use “💬 Meet your creatures” to open or restart it anytime (after you close its terminal, reboot, etc.).',
+    launch_title: "Open / restart Ludex",
+    launch_sub: "The viewer & chat run in a local app on your machine. Use this whenever it isn't open — e.g. after you closed its terminal or restarted your computer.",
     launch_start: "1 · Start the local app (if it isn't running)",
     launch_open: "2 · Then open it",
     launch_open_btn: "Open localhost:7860 →",
+    launch_stop: "To stop it",
+    launch_stop_hint: "Press Ctrl+C in its terminal, or just close that window. It's only running while that terminal is open — reopen anytime with this button.",
     cta_design: "Design notes",
     cta_arch: "Architecture",
     idea_h: "The idea",
@@ -361,12 +367,14 @@ const I18N = {
     install_sub: "한 줄이면 Ludex를 설치하고 로컬 앱을 엽니다. git + Python 3.10+ 필요.",
     install_step: "터미널에 붙여넣으세요",
     cta_meet: "💬 내 크리처 만나기 (대화·관찰)",
-    local_note: '💬 내 크리처는 내 컴퓨터의 로컬 앱에 살아요 — 이 버튼이 여는 방법을 안내합니다.',
-    launch_title: "내 크리처 열기",
-    launch_sub: "뷰어와 채팅은 내 컴퓨터의 로컬 앱에서 돌아갑니다.",
+    local_note: '💬 내 크리처는 내 컴퓨터의 로컬 앱에 살아요 — “💬 내 크리처 만나기”로 언제든 열거나 다시 켤 수 있어요 (터미널을 닫았거나 컴퓨터를 다시 켠 뒤 등).',
+    launch_title: "Ludex 열기 / 다시 켜기",
+    launch_sub: "뷰어와 채팅은 내 컴퓨터의 로컬 앱에서 돌아갑니다. 앱이 꺼져 있을 때(터미널을 닫았거나 컴퓨터를 다시 켠 뒤 등) 언제든 여기로 다시 여세요.",
     launch_start: "1 · 로컬 앱 실행 (아직 안 켰다면)",
     launch_open: "2 · 그다음 열기",
     launch_open_btn: "localhost:7860 열기 →",
+    launch_stop: "끄려면",
+    launch_stop_hint: "터미널에서 Ctrl+C를 누르거나 그 창을 닫으면 됩니다. 그 터미널이 열려 있는 동안에만 켜져 있어요 — 다시 켤 땐 이 버튼을 누르세요.",
     cta_design: "설계 노트",
     cta_arch: "아키텍처",
     idea_h: "핵심 아이디어",
