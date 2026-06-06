@@ -111,7 +111,7 @@
       attach organs (memory, emotion, immunity, senses), give it a habitat, and observe how its identity,
       voice, and bonds evolve across sessions and across substrates.</p>
     <div class="cta">
-      <button class="incubate" type="button" onclick="openIncubator()" data-i18n="inc_btn">🥚 Incubate a creature</button>
+      <button class="incubate" type="button" onclick="openInstall()" data-i18n="install_btn">⬇ Install Ludex</button>
       <a class="ghost" href="#" onclick="openLaunch('chat');return false" data-i18n="cta_meet">💬 Meet your creatures</a>
       <a class="ghost" href="https://github.com/ludex-lab/ludex" data-i18n="cta_gh">View on GitHub →</a>
       <a class="ghost" id="link_design"
@@ -266,6 +266,20 @@ python web/server.py        # then open http://localhost:7860</pre>
   </div>
 </div>
 
+<div class="modal" id="installModal" onclick="if(event.target===this)closeInstall()">
+  <div class="modal-card">
+    <button class="x" type="button" onclick="closeInstall()" aria-label="close">×</button>
+    <h3 data-i18n="install_title">Install Ludex</h3>
+    <p class="muted" data-i18n="install_sub" style="font-size:14px;margin:0 0 12px">One line installs Ludex and opens it. Requires git + Python 3.10+.</p>
+    <div class="istep">
+      <label data-i18n="install_step">Paste this into a terminal</label>
+      <div class="iout" id="installCmd"></div>
+      <button class="icopy" type="button" id="installCopyBtn" onclick="installCopy()" data-i18n="inc_copy">Copy</button>
+      <p class="ihint" id="installAlt"></p>
+    </div>
+  </div>
+</div>
+
 <div class="modal" id="launchModal" onclick="if(event.target===this)closeLaunch()">
   <div class="modal-card">
     <button class="x" type="button" onclick="closeLaunch()" aria-label="close">×</button>
@@ -292,8 +306,12 @@ const I18N = {
     desc: "Ludex is an AI ethology research platform: assemble living AI creatures from biological organ blocks, then watch how their identity, voice, and bonds evolve across sessions and substrates.",
     badge: "AI Ethology · open source",
     tag: "Assemble living AI creatures from biological organ blocks — then watch them form societies.",
-    sub: "You don't write an agent — you assemble a <em>creature</em>. Pick its brain (any LLM), attach organs (memory, emotion, immunity, senses), give it a habitat, and observe how its identity, voice, and bonds evolve across sessions and across substrates.",
+    sub: "You don't write an agent — you assemble a <em>creature</em>. Pick its brain (any LLM), attach organs (memory, emotion, immunity, and a suite of senses — and more), give it a habitat, and observe how its identity, voice, and bonds evolve across sessions and across substrates.",
     cta_gh: "View on GitHub →",
+    install_btn: "⬇ Install Ludex",
+    install_title: "Install Ludex",
+    install_sub: "One line installs Ludex and opens the local app. Requires git + Python 3.10+.",
+    install_step: "Paste this into a terminal",
     cta_meet: "💬 Meet your creatures (chat & observe)",
     local_note: '💬 Your creatures live in the local app on your machine — this button shows you how to open them.',
     launch_title: "Open your creatures",
@@ -336,8 +354,12 @@ const I18N = {
     desc: "Ludex는 AI 동물행동학 연구 플랫폼입니다. 생물학적 기관 블록으로 살아있는 AI 크리처를 조립하고, 세션과 기반(substrate)을 가로질러 정체성·목소리·유대가 어떻게 진화하는지 관찰합니다.",
     badge: "AI 동물행동학 · 오픈소스",
     tag: "생물학적 기관 블록으로 살아있는 AI 크리처를 조립하고 — 그들이 사회를 이루는 것을 지켜보세요.",
-    sub: "에이전트를 <em>작성</em>하는 것이 아니라 <em>크리처</em>를 조립합니다. 뇌(아무 LLM이나)를 고르고, 기관(기억·감정·면역·감각)을 붙이고, 서식지를 준 뒤, 세션과 기반(substrate — 크리처가 그 위에서 돌아가는 모델·접근경로의 토대)을 가로질러 정체성·목소리·유대가 어떻게 진화하는지 관찰합니다.",
+    sub: "에이전트를 <em>작성</em>하는 것이 아니라 <em>크리처</em>를 조립합니다. 뇌(아무 LLM이나)를 고르고, 기관(기억·감정·면역·여러 감각 등)을 붙이고, 서식지를 준 뒤, 세션과 기반(substrate — 크리처가 그 위에서 돌아가는 모델·접근경로의 토대)을 가로질러 정체성·목소리·유대가 어떻게 진화하는지 관찰합니다.",
     cta_gh: "GitHub에서 보기 →",
+    install_btn: "⬇ Ludex 설치",
+    install_title: "Ludex 설치",
+    install_sub: "한 줄이면 Ludex를 설치하고 로컬 앱을 엽니다. git + Python 3.10+ 필요.",
+    install_step: "터미널에 붙여넣으세요",
     cta_meet: "💬 내 크리처 만나기 (대화·관찰)",
     local_note: '💬 내 크리처는 내 컴퓨터의 로컬 앱에 살아요 — 이 버튼이 여는 방법을 안내합니다.',
     launch_title: "내 크리처 열기",
@@ -501,6 +523,27 @@ const LAUNCH_EASY = {
   en: d => `Or double-click run.command (macOS) / run.bat (Windows) in ${d} — your browser opens automatically.`,
   ko: d => `또는 ${d} 폴더의 run.command(macOS)/run.bat(Windows)을 더블클릭하면 브라우저가 자동으로 열립니다.`,
 };
+const RAW_BASE = "https://raw.githubusercontent.com/ludex-lab/ludex/main/";
+const INSTALL_ALT = {
+  en: w => w ? "Windows PowerShell. Or download install.bat from the repo and double-click it." :
+              "macOS/Linux. Or download install.command from the repo and double-click it (Gatekeeper: right-click → Open).",
+  ko: w => w ? "Windows PowerShell. 또는 repo에서 install.bat을 받아 더블클릭하세요." :
+              "macOS/Linux. 또는 repo에서 install.command를 받아 더블클릭하세요 (Gatekeeper: 우클릭 → 열기).",
+};
+function openInstall(){
+  const cmd = IS_WIN
+    ? `irm ${RAW_BASE}install.bat -OutFile $env:TEMP\\ludex-install.bat; & $env:TEMP\\ludex-install.bat`
+    : `curl -fsSL ${RAW_BASE}install.command | sh`;
+  $("installCmd").textContent = cmd; window._installCmd = cmd;
+  $("installAlt").textContent = (INSTALL_ALT[_lang()] || INSTALL_ALT.en)(IS_WIN);
+  $("installModal").classList.add("open");
+}
+function closeInstall(){ $("installModal").classList.remove("open"); }
+function installCopy(){
+  navigator.clipboard.writeText(window._installCmd || "").then(()=>{
+    const b=$("installCopyBtn"); b.textContent=_s("copied"); setTimeout(()=>b.textContent=_t("inc_copy"),1500);
+  }).catch(()=>{});
+}
 function openLaunch(which){
   let dir="~/ludex"; try{ dir=localStorage.getItem("ludex_install_dir")||"~/ludex"; }catch(e){}
   const cmd = `cd ${dir} && ${VPY} web/server.py`;
