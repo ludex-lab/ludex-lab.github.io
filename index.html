@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ludex — living AI creatures from organ blocks</title>
+<meta name="description" content="Ludex is an AI ethology research platform: assemble living AI creatures from biological organ blocks, then watch how their identity, voice, and bonds evolve across sessions and substrates.">
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --ink:#e6edf3; --muted:#9aa7b4;
+    --accent:#7ee0c2; --accent2:#9db4ff; --line:#243040; --code:#0b0f14;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo",sans-serif;}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+  code,pre{font-family:"SF Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+
+  header{padding:96px 0 56px;border-bottom:1px solid var(--line);
+    background:radial-gradient(1200px 400px at 50% -120px,rgba(126,224,194,.10),transparent 70%);}
+  .badge{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin-bottom:22px}
+  h1{font-size:clamp(40px,8vw,68px);margin:0 0 14px;letter-spacing:-.02em;line-height:1.02}
+  .tag{font-size:clamp(18px,3vw,23px);color:var(--ink);max-width:640px;margin:0 0 12px;font-weight:600}
+  .sub{color:var(--muted);max-width:640px;margin:0 0 30px}
+  .cta a{display:inline-block;margin:6px 10px 0 0;padding:11px 18px;border-radius:10px;font-weight:600}
+  .cta .primary{background:var(--accent);color:#06231b}
+  .cta .primary:hover{filter:brightness(1.06);text-decoration:none}
+  .cta .ghost{border:1px solid var(--line);color:var(--ink)}
+  .cta .ghost:hover{border-color:var(--accent2);text-decoration:none}
+
+  section{padding:54px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 24px;font-weight:700}
+  .lede{font-size:19px;color:var(--ink)}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
+  @media(max-width:620px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card h3{margin:0 0 8px;font-size:17px;color:var(--accent)}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:18px;overflow:auto;font-size:14px;color:#cfe8df}
+  .muted{color:var(--muted)}
+  footer{padding:40px 0 70px;color:var(--muted);font-size:14px}
+  footer a{color:var(--accent2)}
+  .row{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="badge">AI Ethology · open source</span>
+    <h1>Ludex</h1>
+    <p class="tag">Assemble living AI creatures from biological organ blocks — then watch them form societies.</p>
+    <p class="sub">You don't write an agent — you assemble a <em>creature</em>. Pick its brain (any LLM),
+      attach organs (memory, emotion, immunity, senses), give it a habitat, and observe how its identity,
+      voice, and bonds evolve across sessions and across substrates.</p>
+    <div class="cta">
+      <a class="primary" href="https://github.com/ludex-lab/ludex">View on GitHub →</a>
+      <a class="ghost" href="https://github.com/ludex-lab/ludex/blob/main/docs/design-notes.md">Design notes</a>
+      <a class="ghost" href="https://github.com/ludex-lab/ludex/blob/main/ARCHITECTURE.md">Architecture</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>The idea</h2>
+    <p class="lede">Ludex treats an AI agent as a creature: a persistent body of organs, memory, relationships,
+      and a name — running <em>on</em> a language model, but not <em>reducible to</em> it. The model is the
+      brain; the creature is everything that persists around it. Identity is <strong>narrative continuity</strong>,
+      not the weights. Swap the brain and the creature persists.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What makes it different</h2>
+    <div class="grid">
+      <div class="card"><h3>The brain is a guest</h3><p>Cognition (any LLM) is stateless and swappable. The body — memory, emotion, bonds, self-understanding — persists on disk. No organ assumes a particular model.</p></div>
+      <div class="card"><h3>Identity survives swaps</h3><p>A creature is the continuity of its memory, bonds, and self-model. Upgrade or change the underlying model and the creature carries through — a measurable claim, not a metaphor.</p></div>
+      <div class="card"><h3>Memory that forgets</h3><p>Bounded and lossy by design. Creatures consolidate experience into narrative, forget by retrieval-failure, and write windowed retrospectives in their own voice.</p></div>
+      <div class="card"><h3>Fit, not quality</h3><p>The question is never "which model is best," but how <em>this</em> brain inhabits <em>this</em> body. Capability is probed at birth and measured by artifact, not self-report.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Quick start</h2>
+    <p class="muted">Requires Python 3.10+. No API key needed for CLI-auth or local (Ollama) brains.</p>
+    <pre>pip install -r requirements.txt
+
+# create your first creature (interactive)
+python -m ludex create
+
+# or from the browser
+python web/server.py        # then open http://localhost:7860</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>
+      Code <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE">MIT</a> ·
+      sample creature corpus <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE-DATA">CC&nbsp;BY&nbsp;4.0</a>
+    </div>
+    <div><a href="https://github.com/ludex-lab/ludex">github.com/ludex-lab/ludex</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
