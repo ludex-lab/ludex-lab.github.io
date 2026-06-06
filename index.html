@@ -201,6 +201,11 @@ python web/server.py        # then open http://localhost:7860</pre>
       <label data-i18n="inc_name">3 · Name &amp; location</label>
       <input class="ifield" id="incName" placeholder="e.g. Nimbus">
       <p class="ihint" id="incNameHint"></p>
+      <select class="ifield" id="incLang">
+        <option value="ko">한국어 (Korean)</option>
+        <option value="en">English</option>
+      </select>
+      <p class="ihint" id="incLangHint"></p>
       <input class="ifield" id="incOut" placeholder="default: creatures/<name>">
       <p class="ihint" id="incOutHint"></p>
     </div>
@@ -267,7 +272,7 @@ const I18N = {
     inc_sub: "Pick a few options — we'll build the exact command. Your creature is born locally, on your own machine, in one line.",
     inc_brain: "1 · Brain",
     inc_organs: "2 · Organs",
-    inc_name: "3 · Name & location",
+    inc_name: "3 · Name, language & location",
     tab_cli: "CLI login (keyless)",
     tab_local: "Local (Ollama)",
     tab_byok: "Your API key",
@@ -304,7 +309,7 @@ const I18N = {
     inc_sub: "몇 가지만 고르면 실행할 명령을 만들어 드려요. 크리처는 내 컴퓨터에서 한 줄로 태어납니다.",
     inc_brain: "1 · 뇌",
     inc_organs: "2 · 기관",
-    inc_name: "3 · 이름·위치",
+    inc_name: "3 · 이름·언어·위치",
     tab_cli: "CLI 로그인 (키 불필요)",
     tab_local: "로컬 (Ollama)",
     tab_byok: "내 API 키",
@@ -395,6 +400,8 @@ const STR = {
               ko:"아무 터미널에서나 실행하세요 — 먼저 Ludex 폴더로 이동하므로 어디서든 됩니다. 새 크리처는 이름만 바꿔 다시 실행하면 돼요."},
   dir_hint:  {en:"Your Ludex folder (from setup) — remembered in this browser; edit it if you cloned somewhere else.",
               ko:"Ludex 폴더(설치에서 생긴 곳) — 이 브라우저에 기억됩니다. 다른 곳에 클론했다면 수정하세요."},
+  lang_hint: {en:"The language your creature speaks (defaults to this page's language).",
+              ko:"크리처가 대화할 언어 (이 페이지 언어를 기본값으로)."},
   mark_btn:  {en:"✓ I've installed it", ko:"✓ 설치했어요"},
   installed_ok:{en:"Installed ✓", ko:"설치됨 ✓"},
   uptodate:  {en:"up to date", ko:"최신 상태"},
@@ -403,6 +410,7 @@ const STR = {
   forget:    {en:"forget", ko:"잊기"},
   update_msg:{en:"Update available — a newer version was published", ko:"업데이트 있음 — 더 새 버전이 배포됐어요"},
 };
+const LANG_SYS = { ko: "기본적으로 한국어로 대화하세요.", en: "" };  // en = model default
 let incCat = "cli";
 let incLatest = null, incFetched = false, incShowSetup = false;
 function _lang(){ return document.documentElement.lang === "ko" ? "ko" : "en"; }
@@ -463,7 +471,7 @@ function incRememberCreature(){
   const dir=$("incDir").value.trim()||"~/ludex";
   const out=$("incOut").value.trim();
   const path = out || (dir.replace(/\/+$/,"")+"/creatures/"+name);
-  const entry={name, path, provider:$("incProvider").value, model:incModel()||"", preset:$("incPreset").value};
+  const entry={name, path, provider:$("incProvider").value, model:incModel()||"", preset:$("incPreset").value, lang:$("incLang").value};
   const a=incCreatures().filter(c=>!(c.name===name && c.path===path));
   a.push(entry); incSaveCreatures(a); renderRoster();
 }
@@ -530,7 +538,10 @@ function incRender(){
   const dir=$("incDir").value.trim() || "~/ludex";
   $("incDir").placeholder="~/ludex";
   $("incDirHint").textContent=_s("dir_hint");
+  $("incLangHint").textContent=_s("lang_hint");
   let create = `cd ${dir} && python -m ludex create --name ${nm} --provider ${prov} --model ${model||"<model>"} --preset ${preset}`;
+  const langSys = LANG_SYS[$("incLang").value] || "";
+  if(langSys) create += ` --system "${langSys}"`;
   if(out) create += ` --out ${out}`;
   $("incCreate").textContent=create;
   $("incCreateNote").textContent=_s("create_note");
@@ -571,7 +582,9 @@ $("incProvider").addEventListener("change",incOnProvider);
 });
 $("incApiKey").addEventListener("input",()=>{ incSaveKey(); incRender(); });
 $("incDir").addEventListener("input",()=>{ incSaveDir(); incRender(); });
+$("incLang").addEventListener("change", incRender);
 incLoadDir();
+$("incLang").value = _lang();   // default the creature's language to the page language
 renderRoster();
 incSetCat("cli");
 </script>
