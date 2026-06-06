@@ -171,6 +171,12 @@ python web/server.py        # then open http://localhost:7860</pre>
         <select class="ifield" id="incModelSel"></select>
         <input class="ifield" id="incModelCustom" placeholder="or type a model id">
       </div>
+      <div id="incKeyWrap" style="display:none">
+        <input class="ifield" id="incApiKey" type="password" autocomplete="off" spellcheck="false" placeholder="API key">
+        <p class="ihint"><span id="incKeyNote"></span>
+          &nbsp; <a href="#" id="incKeyShow" onclick="incToggleKey(event)"></a>
+          &nbsp;·&nbsp; <a href="#" id="incKeyClear" onclick="incClearKey(event)"></a></p>
+      </div>
       <div class="iprereq" id="incPrereq"></div>
     </div>
 
@@ -316,13 +322,13 @@ const INC = {
     byok: [["anthropic","Anthropic"],["openai","OpenAI"],["gemini_api","Gemini API"]],
   },
   models: {
-    claude_cli:["claude-haiku-4-5","claude-sonnet-4-6","claude-opus-4-7"],
+    claude_cli:["claude-opus-4-8","claude-opus-4-7","claude-opus-4-6","claude-sonnet-4-6","claude-haiku-4-5"],
     codex_cli:["gpt-5.5"],
-    gemini_cli:["gemini-3.1-pro-preview"],
+    gemini_cli:["gemini-3.1-pro-preview","gemini-3-pro-preview"],
     agy_cli:["gemini-3.5-flash"],
-    ollama:["qwen3.5:4b","exaone3.5:7.8b","llama3.1:8b"],
-    anthropic:["claude-haiku-4-5","claude-sonnet-4-6","claude-opus-4-7"],
-    openai:["gpt-5.4-nano","gpt-5.4-mini","gpt-5.5"],
+    ollama:["qwen3.5:4b","exaone3.5:7.8b","llama3.1:8b","gemma4:e4b"],
+    anthropic:["claude-opus-4-8","claude-opus-4-7","claude-opus-4-6","claude-sonnet-4-6","claude-haiku-4-5"],
+    openai:["gpt-5.5","gpt-5.4-mini","gpt-5.4-nano"],
     gemini_api:["gemini-3.5-flash","gemini-3.1-flash-lite"],
   },
   envKey:   {anthropic:"ANTHROPIC_API_KEY", openai:"OPENAI_API_KEY", gemini_api:"GEMINI_API_KEY"},
@@ -339,6 +345,13 @@ const STR = {
   namebad:   {en:"Name must start with a letter; only letters, digits, _ or -.", ko:"이름은 영문으로 시작하고 영문/숫자/_/- 만 쓸 수 있어요."},
   copied:    {en:"Copied ✓", ko:"복사됨 ✓"},
   placeholder_name: {en:"<name>", ko:"<이름>"},
+  apikey_ph: {en:"Paste your API key", ko:"API 키를 붙여넣으세요"},
+  key_saved: {en:"Saved only in this browser (localStorage) — never uploaded; written to a local .env on create.", ko:"이 브라우저(localStorage)에만 저장돼요 — 어디에도 업로드되지 않고, 생성 시 로컬 .env에 기록됩니다."},
+  key_empty: {en:"Paste your key above — stored only in this browser.", ko:"위에 키를 붙여넣으세요 — 이 브라우저에만 저장됩니다."},
+  key_show:  {en:"show", ko:"보기"},
+  key_hide:  {en:"hide", ko:"숨기기"},
+  key_clear: {en:"clear", ko:"지우기"},
+  key_ph_cmd:{en:"<paste-your-key>", ko:"<여기에-키-붙여넣기>"},
 };
 let incCat = "cli";
 function _lang(){ return document.documentElement.lang === "ko" ? "ko" : "en"; }
@@ -352,15 +365,26 @@ function closeIncubator(){ $("incModal").classList.remove("open"); }
 function incSetCat(cat){
   incCat = cat;
   document.querySelectorAll("#incTabs button").forEach(b=>b.classList.toggle("active", b.dataset.cat===cat));
+  $("incKeyWrap").style.display = (cat==="byok") ? "" : "none";
   $("incProvider").innerHTML = INC.groups[cat].map(([id,label])=>`<option value="${id}">${label} (${id})</option>`).join("");
   incOnProvider();
 }
 function incOnProvider(){
   const prov = $("incProvider").value;
   $("incModelSel").innerHTML = (INC.models[prov]||[]).map(m=>`<option value="${m}">${m}</option>`).join("");
+  if(incCat==="byok") incLoadKey();
   incRender();
 }
 function incModel(){ return $("incModelCustom").value.trim() || $("incModelSel").value || ""; }
+
+// BYOK key — stored ONLY in this browser (localStorage), per provider. Never uploaded.
+function incKeyName(){ return "ludex_key_" + $("incProvider").value; }
+function incLoadKey(){ try{ $("incApiKey").value = localStorage.getItem(incKeyName()) || ""; }catch(e){} }
+function incSaveKey(){ try{ const v=$("incApiKey").value.trim();
+  if(v) localStorage.setItem(incKeyName(), v); else localStorage.removeItem(incKeyName()); }catch(e){} }
+function incToggleKey(e){ e.preventDefault(); const f=$("incApiKey"); f.type = f.type==="password"?"text":"password"; incRender(); }
+function incClearKey(e){ e.preventDefault(); try{ localStorage.removeItem(incKeyName()); }catch(_){}
+  $("incApiKey").value=""; incRender(); }
 
 function incRender(){
   if(!$("incProvider")) return;
@@ -368,6 +392,10 @@ function incRender(){
   $("incModelCustom").placeholder=_s("model_ph");
   $("incName").placeholder=_s("name_ph");
   $("incOut").placeholder=_s("out_ph");
+  $("incApiKey").placeholder=_s("apikey_ph");
+  $("incKeyShow").textContent = $("incApiKey").type==="password" ? _s("key_show") : _s("key_hide");
+  $("incKeyClear").textContent = _s("key_clear");
+  $("incKeyNote").textContent = $("incApiKey").value.trim() ? _s("key_saved") : _s("key_empty");
 
   const preset=$("incPreset").value;
   $("incPresetDesc").textContent=(PRESET_DESC[lang]||PRESET_DESC.en)[preset]||"";
@@ -382,9 +410,7 @@ function incRender(){
     pre = lang==="ko" ? `Ollama가 실행 중이고(localhost:11434) 모델을 받아두세요 — ollama pull ${model||"<model>"}`
                       : `Make sure Ollama is running (localhost:11434) and pull the model — ollama pull ${model||"<model>"}`;
   } else {
-    const k=INC.envKey[prov]||"API_KEY";
-    pre = lang==="ko" ? `${k}를 환경변수나 .env 파일에 설정하세요.`
-                      : `Set ${k} in your environment or a .env file.`;
+    pre = "";  // BYOK: key captured above, written into the command's local .env
   }
   $("incPrereq").textContent=pre;
 
@@ -394,8 +420,13 @@ function incRender(){
 
   const out=$("incOut").value.trim();
   const nm = (name && ok) ? name : _s("placeholder_name");
-  let cmd = "git clone https://github.com/ludex-lab/ludex\ncd ludex\npip install -r requirements.txt\n\n";
-  cmd += `python -m ludex create --name ${nm} --provider ${prov} --model ${model||"<model>"} --preset ${preset}`;
+  let cmd = "git clone https://github.com/ludex-lab/ludex\ncd ludex\npip install -r requirements.txt\n";
+  if(incCat==="byok"){
+    const k=INC.envKey[prov]||"API_KEY";
+    const val=$("incApiKey").value.trim() || _s("key_ph_cmd");
+    cmd += `echo '${k}=${val}' >> .env\n`;
+  }
+  cmd += `\npython -m ludex create --name ${nm} --provider ${prov} --model ${model||"<model>"} --preset ${preset}`;
   if(out) cmd += ` --out ${out}`;
   $("incCmd").textContent=cmd;
   window._incCmd=cmd;
@@ -410,6 +441,7 @@ $("incProvider").addEventListener("change",incOnProvider);
 ["incModelSel","incModelCustom","incPreset","incName","incOut"].forEach(id=>{
   $(id).addEventListener("input",incRender); $(id).addEventListener("change",incRender);
 });
+$("incApiKey").addEventListener("input",()=>{ incSaveKey(); incRender(); });
 incSetCat("cli");
 </script>
 
