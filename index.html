@@ -51,6 +51,33 @@
   footer{padding:40px 0 70px;color:var(--muted);font-size:14px}
   footer a{color:var(--accent2)}
   .row{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+
+  /* incubator launch button */
+  .cta .incubate{display:inline-block;margin:6px 10px 0 0;padding:11px 20px;border-radius:10px;
+    font-weight:700;border:0;cursor:pointer;font-size:16px;
+    background:linear-gradient(90deg,var(--accent),#9fe9d4);color:#06231b}
+  .cta .incubate:hover{filter:brightness(1.06)}
+
+  /* incubator modal */
+  .modal{position:fixed;inset:0;z-index:50;display:none;background:rgba(4,7,11,.74)}
+  .modal.open{display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:40px 16px}
+  .modal-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;max-width:640px;width:100%;padding:26px}
+  .modal-card h3{margin:0 0 4px;font-size:22px}
+  .modal-card .x{float:right;background:none;border:0;color:var(--muted);font-size:24px;cursor:pointer;line-height:1}
+  .istep{margin:18px 0 0}
+  .istep>label{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:700}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap}
+  .tabs button{flex:1;min-width:96px;padding:9px 10px;border-radius:9px;border:1px solid var(--line);background:var(--code);color:var(--ink);cursor:pointer;font-size:13px;font-weight:600}
+  .tabs button.active{border-color:var(--accent);color:var(--accent)}
+  .ifield{width:100%;padding:10px 12px;border-radius:9px;border:1px solid var(--line);background:var(--code);color:var(--ink);font-size:14px;margin-top:8px}
+  .ihint{color:var(--muted);font-size:12.5px;margin:6px 0 0}
+  .igrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:520px){.igrid{grid-template-columns:1fr}}
+  .iout{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:10px;
+    white-space:pre-wrap;word-break:break-all;font-family:"SF Mono",ui-monospace,monospace;font-size:13px;color:#cfe8df}
+  .iprereq{border-left:3px solid var(--accent2);padding:8px 12px;margin-top:12px;color:var(--muted);font-size:13.5px;background:rgba(157,180,255,.06)}
+  .icopy{margin-top:10px;padding:9px 16px;border-radius:9px;border:0;background:var(--accent);color:#06231b;font-weight:700;cursor:pointer}
+  .icopy:hover{filter:brightness(1.06)}
 </style>
 </head>
 <body>
@@ -66,7 +93,8 @@
       attach organs (memory, emotion, immunity, senses), give it a habitat, and observe how its identity,
       voice, and bonds evolve across sessions and across substrates.</p>
     <div class="cta">
-      <a class="primary" href="https://github.com/ludex-lab/ludex" data-i18n="cta_gh">View on GitHub →</a>
+      <button class="incubate" type="button" onclick="openIncubator()" data-i18n="inc_btn">🥚 Incubate a creature</button>
+      <a class="ghost" href="https://github.com/ludex-lab/ludex" data-i18n="cta_gh">View on GitHub →</a>
       <a class="ghost" id="link_design"
          data-href-en="https://github.com/ludex-lab/ludex/blob/main/docs/design-notes.md"
          data-href-ko="https://github.com/ludex-lab/ludex/blob/main/docs/design-notes.ko.md"
@@ -125,6 +153,53 @@ python web/server.py        # then open http://localhost:7860</pre>
   </div>
 </footer>
 
+<div class="modal" id="incModal" onclick="if(event.target===this)closeIncubator()">
+  <div class="modal-card">
+    <button class="x" type="button" onclick="closeIncubator()" aria-label="close">×</button>
+    <h3 data-i18n="inc_title">Creature Incubator</h3>
+    <p class="muted" data-i18n="inc_sub" style="font-size:14px;margin:0">Pick a few options — we'll build the exact command.</p>
+
+    <div class="istep">
+      <label data-i18n="inc_brain">1 · Brain</label>
+      <div class="tabs" id="incTabs">
+        <button type="button" data-cat="cli" class="active" data-i18n="tab_cli">CLI login (keyless)</button>
+        <button type="button" data-cat="local" data-i18n="tab_local">Local (Ollama)</button>
+        <button type="button" data-cat="byok" data-i18n="tab_byok">Your API key</button>
+      </div>
+      <select class="ifield" id="incProvider"></select>
+      <div class="igrid">
+        <select class="ifield" id="incModelSel"></select>
+        <input class="ifield" id="incModelCustom" placeholder="or type a model id">
+      </div>
+      <div class="iprereq" id="incPrereq"></div>
+    </div>
+
+    <div class="istep">
+      <label data-i18n="inc_organs">2 · Organs</label>
+      <select class="ifield" id="incPreset">
+        <option value="full">full</option>
+        <option value="minimal">minimal</option>
+        <option value="secure">secure</option>
+        <option value="social">social</option>
+      </select>
+      <p class="ihint" id="incPresetDesc"></p>
+    </div>
+
+    <div class="istep">
+      <label data-i18n="inc_name">3 · Name &amp; location</label>
+      <input class="ifield" id="incName" placeholder="e.g. Nimbus">
+      <p class="ihint" id="incNameHint"></p>
+      <input class="ifield" id="incOut" placeholder="default: creatures/<name>">
+    </div>
+
+    <div class="istep">
+      <label data-i18n="inc_run">Then run this</label>
+      <div class="iout" id="incCmd"></div>
+      <button class="icopy" type="button" id="incCopyBtn" onclick="incCopy()" data-i18n="inc_copy">Copy</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const I18N = {
   en: {
@@ -150,6 +225,17 @@ const I18N = {
     qs_h: "Quick start",
     qs_note: "Requires Python 3.10+. No API key needed for CLI-auth or local (Ollama) brains.",
     foot_lic: 'Code <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE">MIT</a> · sample creature corpus <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE-DATA">CC&nbsp;BY&nbsp;4.0</a>',
+    inc_btn: "🥚 Incubate a creature",
+    inc_title: "Creature Incubator",
+    inc_sub: "Pick a few options — we'll build the exact command. Your creature is born locally, on your own machine, in one line.",
+    inc_brain: "1 · Brain",
+    inc_organs: "2 · Organs",
+    inc_name: "3 · Name & location",
+    tab_cli: "CLI login (keyless)",
+    tab_local: "Local (Ollama)",
+    tab_byok: "Your API key",
+    inc_run: "Then run this",
+    inc_copy: "Copy",
   },
   ko: {
     title: "Ludex — 기관 블록으로 만드는 살아있는 AI 크리처",
@@ -174,6 +260,17 @@ const I18N = {
     qs_h: "빠른 시작",
     qs_note: "Python 3.10+ 필요. CLI 인증·로컬 Ollama는 API 키가 필요 없고, 그 밖의 뇌는 직접 API 키로 연결합니다.",
     foot_lic: '코드 <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE">MIT</a> · 샘플 크리처 코퍼스 <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE-DATA">CC&nbsp;BY&nbsp;4.0</a>',
+    inc_btn: "🥚 크리처 부화시키기",
+    inc_title: "크리처 부화기",
+    inc_sub: "몇 가지만 고르면 실행할 명령을 만들어 드려요. 크리처는 내 컴퓨터에서 한 줄로 태어납니다.",
+    inc_brain: "1 · 뇌",
+    inc_organs: "2 · 기관",
+    inc_name: "3 · 이름·위치",
+    tab_cli: "CLI 로그인 (키 불필요)",
+    tab_local: "로컬 (Ollama)",
+    tab_byok: "내 API 키",
+    inc_run: "그다음 실행",
+    inc_copy: "복사",
   }
 };
 
@@ -194,6 +291,7 @@ function applyLang(lang){
   // toggle button shows the OTHER language
   document.getElementById("langToggle").textContent = lang === "ko" ? "English" : "한국어";
   try{ localStorage.setItem("ludex_lang", lang); }catch(e){}
+  if (typeof incRender === "function") incRender();
 }
 
 function toggleLang(){
@@ -207,6 +305,112 @@ function toggleLang(){
   if(!lang) lang = (navigator.language||"").toLowerCase().startsWith("ko") ? "ko" : "en";
   applyLang(lang);
 })();
+</script>
+
+<script>
+// --- Creature Incubator: guided generator (static; builds the local command) ---
+const INC = {
+  groups: {
+    cli:  [["claude_cli","Claude Code"],["codex_cli","Codex CLI"],["gemini_cli","Gemini CLI"],["agy_cli","agy CLI"]],
+    local:[["ollama","Ollama"]],
+    byok: [["anthropic","Anthropic"],["openai","OpenAI"],["gemini_api","Gemini API"]],
+  },
+  models: {
+    claude_cli:["claude-haiku-4-5","claude-sonnet-4-6","claude-opus-4-7"],
+    codex_cli:["gpt-5.5"],
+    gemini_cli:["gemini-3.1-pro-preview"],
+    agy_cli:["gemini-3.5-flash"],
+    ollama:["qwen3.5:4b","exaone3.5:7.8b","llama3.1:8b"],
+    anthropic:["claude-haiku-4-5","claude-sonnet-4-6","claude-opus-4-7"],
+    openai:["gpt-5.4-nano","gpt-5.4-mini","gpt-5.5"],
+    gemini_api:["gemini-3.5-flash","gemini-3.1-flash-lite"],
+  },
+  envKey:   {anthropic:"ANTHROPIC_API_KEY", openai:"OPENAI_API_KEY", gemini_api:"GEMINI_API_KEY"},
+  toolName: {claude_cli:"Claude Code CLI", codex_cli:"Codex CLI", gemini_cli:"Gemini CLI", agy_cli:"agy CLI"},
+};
+const PRESET_DESC = {
+  en:{full:"every organ", minimal:"required organs only", secure:"required + immune defenses", social:"required + emotion & memory"},
+  ko:{full:"모든 기관", minimal:"필수 기관만", secure:"필수 + 면역 방어", social:"필수 + 감정·기억"},
+};
+const STR = {
+  model_ph:  {en:"or type a model id", ko:"또는 모델 id 직접 입력"},
+  name_ph:   {en:"e.g. Nimbus (letters/digits/_/-, start with a letter)", ko:"예: Nimbus (영문/숫자/_/-, 첫 글자는 영문)"},
+  out_ph:    {en:"default: creatures/<name>", ko:"기본값: creatures/<이름>"},
+  namebad:   {en:"Name must start with a letter; only letters, digits, _ or -.", ko:"이름은 영문으로 시작하고 영문/숫자/_/- 만 쓸 수 있어요."},
+  copied:    {en:"Copied ✓", ko:"복사됨 ✓"},
+  placeholder_name: {en:"<name>", ko:"<이름>"},
+};
+let incCat = "cli";
+function _lang(){ return document.documentElement.lang === "ko" ? "ko" : "en"; }
+function _t(k){ try{ return (I18N[_lang()]||I18N.en)[k] || k; }catch(e){ return k; } }
+function _s(k){ const o=STR[k]||{}; return o[_lang()] || o.en || ""; }
+const $ = id => document.getElementById(id);
+
+function openIncubator(){ $("incModal").classList.add("open"); incRender(); }
+function closeIncubator(){ $("incModal").classList.remove("open"); }
+
+function incSetCat(cat){
+  incCat = cat;
+  document.querySelectorAll("#incTabs button").forEach(b=>b.classList.toggle("active", b.dataset.cat===cat));
+  $("incProvider").innerHTML = INC.groups[cat].map(([id,label])=>`<option value="${id}">${label} (${id})</option>`).join("");
+  incOnProvider();
+}
+function incOnProvider(){
+  const prov = $("incProvider").value;
+  $("incModelSel").innerHTML = (INC.models[prov]||[]).map(m=>`<option value="${m}">${m}</option>`).join("");
+  incRender();
+}
+function incModel(){ return $("incModelCustom").value.trim() || $("incModelSel").value || ""; }
+
+function incRender(){
+  if(!$("incProvider")) return;
+  const lang=_lang();
+  $("incModelCustom").placeholder=_s("model_ph");
+  $("incName").placeholder=_s("name_ph");
+  $("incOut").placeholder=_s("out_ph");
+
+  const preset=$("incPreset").value;
+  $("incPresetDesc").textContent=(PRESET_DESC[lang]||PRESET_DESC.en)[preset]||"";
+
+  const prov=$("incProvider").value, model=incModel();
+  let pre;
+  if(incCat==="cli"){
+    const tool=INC.toolName[prov]||prov;
+    pre = lang==="ko" ? `${tool}가 설치·로그인돼 있어야 합니다 (API 키 불필요).`
+                      : `Make sure the ${tool} is installed and logged in (no API key needed).`;
+  } else if(incCat==="local"){
+    pre = lang==="ko" ? `Ollama가 실행 중이고(localhost:11434) 모델을 받아두세요 — ollama pull ${model||"<model>"}`
+                      : `Make sure Ollama is running (localhost:11434) and pull the model — ollama pull ${model||"<model>"}`;
+  } else {
+    const k=INC.envKey[prov]||"API_KEY";
+    pre = lang==="ko" ? `${k}를 환경변수나 .env 파일에 설정하세요.`
+                      : `Set ${k} in your environment or a .env file.`;
+  }
+  $("incPrereq").textContent=pre;
+
+  const name=$("incName").value.trim();
+  const ok = name==="" || /^[A-Za-z][A-Za-z0-9_-]*$/.test(name);
+  $("incNameHint").textContent = (name!=="" && !ok) ? _s("namebad") : "";
+
+  const out=$("incOut").value.trim();
+  const nm = (name && ok) ? name : _s("placeholder_name");
+  let cmd = "git clone https://github.com/ludex-lab/ludex\ncd ludex\npip install -r requirements.txt\n\n";
+  cmd += `python -m ludex create --name ${nm} --provider ${prov} --model ${model||"<model>"} --preset ${preset}`;
+  if(out) cmd += ` --out ${out}`;
+  $("incCmd").textContent=cmd;
+  window._incCmd=cmd;
+}
+function incCopy(){
+  navigator.clipboard.writeText(window._incCmd||"").then(()=>{
+    const b=$("incCopyBtn"); b.textContent=_s("copied"); setTimeout(()=>b.textContent=_t("inc_copy"),1500);
+  }).catch(()=>{});
+}
+$("incTabs").addEventListener("click",e=>{ if(e.target.dataset.cat) incSetCat(e.target.dataset.cat); });
+$("incProvider").addEventListener("change",incOnProvider);
+["incModelSel","incModelCustom","incPreset","incName","incOut"].forEach(id=>{
+  $(id).addEventListener("input",incRender); $(id).addEventListener("change",incRender);
+});
+incSetCat("cli");
 </script>
 
 </body>
