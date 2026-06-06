@@ -112,8 +112,8 @@
       voice, and bonds evolve across sessions and across substrates.</p>
     <div class="cta">
       <button class="incubate" type="button" onclick="openIncubator()" data-i18n="inc_btn">🥚 Incubate a creature</button>
-      <a class="ghost" href="http://localhost:7860/#creatures" target="_blank" rel="noopener" data-i18n="cta_chat">💬 Chat with your creatures</a>
-      <a class="ghost" href="http://localhost:7860/#observe" target="_blank" rel="noopener" data-i18n="cta_observe">🌿 Observe the ecosystem</a>
+      <a class="ghost" href="#" onclick="openLaunch('chat');return false" data-i18n="cta_chat">💬 Chat with your creatures</a>
+      <a class="ghost" href="#" onclick="openLaunch('observe');return false" data-i18n="cta_observe">🌿 Observe the ecosystem</a>
       <a class="ghost" href="https://github.com/ludex-lab/ludex" data-i18n="cta_gh">View on GitHub →</a>
       <a class="ghost" id="link_design"
          data-href-en="https://github.com/ludex-lab/ludex/blob/main/docs/design-notes.md"
@@ -267,6 +267,25 @@ python web/server.py        # then open http://localhost:7860</pre>
   </div>
 </div>
 
+<div class="modal" id="launchModal" onclick="if(event.target===this)closeLaunch()">
+  <div class="modal-card">
+    <button class="x" type="button" onclick="closeLaunch()" aria-label="close">×</button>
+    <h3 data-i18n="launch_title">Open your creatures</h3>
+    <p class="muted" data-i18n="launch_sub" style="font-size:14px;margin:0 0 12px">The viewer & chat run in the local app on your machine.</p>
+    <div class="istep">
+      <label data-i18n="launch_start">1 · Start the local app (if it isn't running)</label>
+      <p class="ihint" id="launchEasy"></p>
+      <div class="iout" id="launchCmd"></div>
+      <button class="icopy" type="button" id="launchCopyBtn" onclick="launchCopy()" data-i18n="inc_copy">Copy</button>
+    </div>
+    <div class="istep">
+      <label data-i18n="launch_open">2 · Then open it</label>
+      <a class="incubate" id="launchOpenLink" href="http://localhost:7860/#creatures" target="_blank" rel="noopener"
+         style="text-decoration:none;display:inline-block" data-i18n="launch_open_btn">Open localhost:7860 →</a>
+    </div>
+  </div>
+</div>
+
 <script>
 const I18N = {
   en: {
@@ -278,7 +297,12 @@ const I18N = {
     cta_gh: "View on GitHub →",
     cta_chat: "💬 Chat with your creatures",
     cta_observe: "🌿 Observe the ecosystem",
-    local_note: '💬 Chat & 🌿 Observe open the local app — first start it: double-click <code>run.command</code> (macOS) / <code>run.bat</code> (Windows) in your ludex folder and your browser opens to localhost:7860. (Or run <code>python web/server.py</code>.)',
+    local_note: '💬 Chat & 🌿 Observe run in the local app on your machine — the buttons show you how to start it.',
+    launch_title: "Open your creatures",
+    launch_sub: "The viewer & chat run in the local app on your machine.",
+    launch_start: "1 · Start the local app (if it isn't running)",
+    launch_open: "2 · Then open it",
+    launch_open_btn: "Open localhost:7860 →",
     cta_design: "Design notes",
     cta_arch: "Architecture",
     idea_h: "The idea",
@@ -318,7 +342,12 @@ const I18N = {
     cta_gh: "GitHub에서 보기 →",
     cta_chat: "💬 크리처와 대화하기",
     cta_observe: "🌿 생태계 관찰하기",
-    local_note: '💬 대화 · 🌿 관찰은 로컬 앱을 엽니다 — 먼저 ludex 폴더의 <code>run.command</code>(macOS) / <code>run.bat</code>(Windows)을 더블클릭하면 브라우저가 localhost:7860으로 열립니다. (또는 <code>python web/server.py</code> 실행.)',
+    local_note: '💬 대화 · 🌿 관찰은 내 컴퓨터의 로컬 앱에서 돌아갑니다 — 버튼을 누르면 실행 방법을 안내해요.',
+    launch_title: "내 크리처 열기",
+    launch_sub: "뷰어와 채팅은 내 컴퓨터의 로컬 앱에서 돌아갑니다.",
+    launch_start: "1 · 로컬 앱 실행 (아직 안 켰다면)",
+    launch_open: "2 · 그다음 열기",
+    launch_open_btn: "localhost:7860 열기 →",
     cta_design: "설계 노트",
     cta_arch: "아키텍처",
     idea_h: "핵심 아이디어",
@@ -471,6 +500,24 @@ function _t(k){ try{ return (I18N[_lang()]||I18N.en)[k] || k; }catch(e){ return 
 function _s(k){ const o=STR[k]||{}; return o[_lang()] || o.en || ""; }
 const $ = id => document.getElementById(id);
 
+const LAUNCH_EASY = {
+  en: d => `Or double-click run.command (macOS) / run.bat (Windows) in ${d} — your browser opens automatically.`,
+  ko: d => `또는 ${d} 폴더의 run.command(macOS)/run.bat(Windows)을 더블클릭하면 브라우저가 자동으로 열립니다.`,
+};
+function openLaunch(which){
+  let dir="~/ludex"; try{ dir=localStorage.getItem("ludex_install_dir")||"~/ludex"; }catch(e){}
+  const cmd = `cd ${dir} && ${VPY} web/server.py`;
+  $("launchCmd").textContent=cmd; window._launchCmd=cmd;
+  $("launchEasy").textContent=(LAUNCH_EASY[_lang()]||LAUNCH_EASY.en)(dir);
+  $("launchOpenLink").href="http://localhost:7860/#"+(which==="observe"?"observe":"creatures");
+  $("launchModal").classList.add("open");
+}
+function closeLaunch(){ $("launchModal").classList.remove("open"); }
+function launchCopy(){
+  navigator.clipboard.writeText(window._launchCmd||"").then(()=>{
+    const b=$("launchCopyBtn"); b.textContent=_s("copied"); setTimeout(()=>b.textContent=_t("inc_copy"),1500);
+  }).catch(()=>{});
+}
 function openIncubator(){ $("incModal").classList.add("open"); incRender(); if(!incFetched){ incFetched=true; incFetchLatest(); } }
 function closeIncubator(){ $("incModal").classList.remove("open"); }
 
