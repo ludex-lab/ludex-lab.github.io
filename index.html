@@ -200,9 +200,16 @@ python web/server.py        # then open http://localhost:7860</pre>
     </div>
 
     <div class="istep">
-      <label data-i18n="inc_run">Then run this</label>
-      <div class="iout" id="incCmd"></div>
-      <button class="icopy" type="button" id="incCopyBtn" onclick="incCopy()" data-i18n="inc_copy">Copy</button>
+      <label data-i18n="inc_setup">First-time setup (once)</label>
+      <div class="iout" id="incSetup"></div>
+      <button class="icopy" type="button" id="incCopySetup" onclick="incCopy('setup')" data-i18n="inc_copy">Copy</button>
+      <p class="ihint" id="incSetupNote"></p>
+    </div>
+
+    <div class="istep">
+      <label data-i18n="inc_create">Create (run once per creature)</label>
+      <div class="iout" id="incCreate"></div>
+      <button class="icopy" type="button" id="incCopyCreate" onclick="incCopy('create')" data-i18n="inc_copy">Copy</button>
     </div>
   </div>
 </div>
@@ -241,7 +248,8 @@ const I18N = {
     tab_cli: "CLI login (keyless)",
     tab_local: "Local (Ollama)",
     tab_byok: "Your API key",
-    inc_run: "Then run this",
+    inc_setup: "First-time setup (once)",
+    inc_create: "Create (run once per creature)",
     inc_copy: "Copy",
   },
   ko: {
@@ -276,7 +284,8 @@ const I18N = {
     tab_cli: "CLI 로그인 (키 불필요)",
     tab_local: "로컬 (Ollama)",
     tab_byok: "내 API 키",
-    inc_run: "그다음 실행",
+    inc_setup: "최초 1회 설치",
+    inc_create: "생성 (크리처마다 한 번)",
     inc_copy: "복사",
   }
 };
@@ -355,6 +364,8 @@ const STR = {
   key_ph_cmd:{en:"<paste-your-key>", ko:"<여기에-키-붙여넣기>"},
   out_hint:  {en:"Optional. Leave blank to create it in the project at creatures/<name>. (Browsers can't open a real folder picker for a terminal command — type a path only for a custom location.)",
               ko:"선택 사항. 비워 두면 프로젝트 안 creatures/<이름>에 만들어집니다. (브라우저는 터미널 명령용 실제 폴더 선택창을 열 수 없어요 — 다른 위치를 원할 때만 경로를 입력하세요.)"},
+  setup_note:{en:"Run this once. Already have Ludex? Skip it and just run the create command below from inside the ludex folder — repeat it for each new creature.",
+              ko:"이건 한 번만 실행하면 돼요. 이미 Ludex가 있다면 건너뛰고, ludex 폴더 안에서 아래 생성 명령만 실행하세요 — 새 크리처마다 그 명령만 반복하면 됩니다."},
 };
 let incCat = "cli";
 function _lang(){ return document.documentElement.lang === "ko" ? "ko" : "en"; }
@@ -424,20 +435,28 @@ function incRender(){
 
   const out=$("incOut").value.trim();
   const nm = (name && ok) ? name : _s("placeholder_name");
-  let cmd = "git clone https://github.com/ludex-lab/ludex\ncd ludex\npip install -r requirements.txt\n";
+  // setup (once): clone + install + (byok: key into local .env)
+  let setup = "git clone https://github.com/ludex-lab/ludex\ncd ludex\npip install -r requirements.txt";
   if(incCat==="byok"){
     const k=INC.envKey[prov]||"API_KEY";
     const val=$("incApiKey").value.trim() || _s("key_ph_cmd");
-    cmd += `echo '${k}=${val}' >> .env\n`;
+    setup += `\necho '${k}=${val}' >> .env`;
   }
-  cmd += `\npython -m ludex create --name ${nm} --provider ${prov} --model ${model||"<model>"} --preset ${preset}`;
-  if(out) cmd += ` --out ${out}`;
-  $("incCmd").textContent=cmd;
-  window._incCmd=cmd;
+  $("incSetup").textContent=setup;
+  $("incSetupNote").textContent=_s("setup_note");
+
+  // create (once per creature) — run from inside the ludex folder
+  let create = `python -m ludex create --name ${nm} --provider ${prov} --model ${model||"<model>"} --preset ${preset}`;
+  if(out) create += ` --out ${out}`;
+  $("incCreate").textContent=create;
+
+  window._incSetup=setup; window._incCreate=create;
 }
-function incCopy(){
-  navigator.clipboard.writeText(window._incCmd||"").then(()=>{
-    const b=$("incCopyBtn"); b.textContent=_s("copied"); setTimeout(()=>b.textContent=_t("inc_copy"),1500);
+function incCopy(which){
+  const txt = which==="setup" ? (window._incSetup||"") : (window._incCreate||"");
+  const btn = which==="setup" ? $("incCopySetup") : $("incCopyCreate");
+  navigator.clipboard.writeText(txt).then(()=>{
+    btn.textContent=_s("copied"); setTimeout(()=>btn.textContent=_t("inc_copy"),1500);
   }).catch(()=>{});
 }
 $("incTabs").addEventListener("click",e=>{ if(e.target.dataset.cat) incSetCat(e.target.dataset.cat); });
