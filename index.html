@@ -196,6 +196,7 @@ python web/server.py        # then open http://localhost:7860</pre>
       <input class="ifield" id="incName" placeholder="e.g. Nimbus">
       <p class="ihint" id="incNameHint"></p>
       <input class="ifield" id="incOut" placeholder="default: creatures/<name>">
+      <p class="ihint" id="incOutHint"></p>
     </div>
 
     <div class="istep">
@@ -352,6 +353,8 @@ const STR = {
   key_hide:  {en:"hide", ko:"숨기기"},
   key_clear: {en:"clear", ko:"지우기"},
   key_ph_cmd:{en:"<paste-your-key>", ko:"<여기에-키-붙여넣기>"},
+  out_hint:  {en:"Optional. Leave blank to create it in the project at creatures/<name>. (Browsers can't open a real folder picker for a terminal command — type a path only for a custom location.)",
+              ko:"선택 사항. 비워 두면 프로젝트 안 creatures/<이름>에 만들어집니다. (브라우저는 터미널 명령용 실제 폴더 선택창을 열 수 없어요 — 다른 위치를 원할 때만 경로를 입력하세요.)"},
 };
 let incCat = "cli";
 function _lang(){ return document.documentElement.lang === "ko" ? "ko" : "en"; }
@@ -392,6 +395,7 @@ function incRender(){
   $("incModelCustom").placeholder=_s("model_ph");
   $("incName").placeholder=_s("name_ph");
   $("incOut").placeholder=_s("out_ph");
+  $("incOutHint").textContent=_s("out_hint");
   $("incApiKey").placeholder=_s("apikey_ph");
   $("incKeyShow").textContent = $("incApiKey").type==="password" ? _s("key_show") : _s("key_hide");
   $("incKeyClear").textContent = _s("key_clear");
