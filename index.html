@@ -228,6 +228,7 @@ python web/server.py        # then open http://localhost:7860</pre>
         <div class="iout" id="incSetup"></div>
         <button class="icopy" type="button" id="incCopySetup" onclick="incCopy('setup')" data-i18n="inc_copy">Copy</button>
         <button class="ibtn2" type="button" id="incMarkBtn" onclick="incMarkInstalled()"></button>
+        <p class="ihint" id="incMarkHint"></p>
         <p class="ihint" id="incSetupNote"></p>
       </div>
       <p class="ihint" id="incInstalledLine"></p>
@@ -428,7 +429,9 @@ const STR = {
   words_gen: {en:"a welcome — paste the real first reply above to keep its actual words",
               ko:"환영 인사예요 — 위에 실제 첫 응답을 붙여넣으면 진짜 말로 박제됩니다"},
   words_real:{en:"its actual first words", ko:"크리처의 실제 첫 마디"},
-  mark_btn:  {en:"✓ I've installed it", ko:"✓ 설치했어요"},
+  mark_btn:  {en:"✓ I ran the setup", ko:"✓ 위 설치 명령을 실행했어요"},
+  mark_hint: {en:"Run the setup block above first — then click this. We'll remember it and collapse this step next time.",
+              ko:"먼저 위 설치 블록을 실행하세요 — 그런 다음 이 버튼을 누르면 됩니다. 기억해두고 다음부터는 이 단계를 접어둡니다."},
   installed_ok:{en:"Installed ✓", ko:"설치됨 ✓"},
   uptodate:  {en:"up to date", ko:"최신 상태"},
   show_setup:{en:"show setup", ko:"설치 단계 보기"},
@@ -615,6 +618,7 @@ function incRender(){
 
   // install state (user-confirmed) + update banner
   $("incMarkBtn").textContent=_s("mark_btn");
+  $("incMarkHint").textContent=_s("mark_hint");
   const sha=incInstalledSha(), installed=!!sha;
   $("incSetupBody").style.display=(!installed||incShowSetup)?"":"none";
   if(installed){
