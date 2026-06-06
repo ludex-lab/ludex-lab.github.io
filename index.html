@@ -84,6 +84,18 @@
   .rosterRow span{word-break:break-all}
   .rosterX{background:none;border:0;color:var(--muted);font-size:16px;cursor:pointer;flex:none}
   .rosterX:hover{color:#ff8a8a}
+  textarea.ifield{resize:vertical;min-height:46px}
+  .hatch{text-align:center;background:radial-gradient(420px 200px at 50% 0,rgba(126,224,194,.12),transparent 70%);
+    border:1px solid var(--line);border-radius:14px;padding:26px 18px;margin-top:14px}
+  .egg{font-size:56px;line-height:1;display:inline-block}
+  .egg.shaking{animation:eggshake .22s ease-in-out infinite}
+  .egg.hatched{animation:eggpop .45s ease-out}
+  @keyframes eggshake{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(9deg)}}
+  @keyframes eggpop{0%{transform:scale(.5)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+  .hatchMsg{font-size:18px;color:var(--ink);max-width:460px;margin:14px auto 0;line-height:1.55;
+    opacity:0;transition:opacity .5s ease}
+  .hatchMsg.show{opacity:1}
+  .hatchCap{font-size:12px;color:var(--muted);margin-top:8px}
 </style>
 </head>
 <body>
@@ -233,6 +245,14 @@ python web/server.py        # then open http://localhost:7860</pre>
       <div class="iout" id="incCreate"></div>
       <button class="icopy" type="button" id="incCopyCreate" onclick="incCopy('create')" data-i18n="inc_copy">Copy</button>
       <p class="ihint" id="incCreateNote"></p>
+      <textarea class="ifield" id="incFirstWords" rows="2"></textarea>
+      <button class="ibtn2" type="button" id="incBornBtn" onclick="incBorn()"></button>
+    </div>
+
+    <div class="hatch" id="incHatch" style="display:none">
+      <div class="egg" id="incEgg">🥚</div>
+      <p class="hatchMsg" id="incHatchMsg"></p>
+      <p class="hatchCap" id="incHatchCap"></p>
     </div>
 
     <div class="istep" id="incRosterStep" style="display:none">
@@ -402,6 +422,12 @@ const STR = {
               ko:"Ludex 폴더(설치에서 생긴 곳) — 이 브라우저에 기억됩니다. 다른 곳에 클론했다면 수정하세요."},
   lang_hint: {en:"The language your creature speaks (defaults to this page's language).",
               ko:"크리처가 대화할 언어 (이 페이지 언어를 기본값으로)."},
+  born_btn:  {en:"✓ I created it — hatch! 🥚", ko:"✓ 생성 완료 — 부화시키기! 🥚"},
+  fw_ph:     {en:"(optional) paste your creature's first reply to keep its real first words",
+              ko:"(선택) 크리처의 첫 응답을 붙여넣으면 진짜 첫 마디로 박제돼요"},
+  words_gen: {en:"a welcome — paste the real first reply above to keep its actual words",
+              ko:"환영 인사예요 — 위에 실제 첫 응답을 붙여넣으면 진짜 말로 박제됩니다"},
+  words_real:{en:"its actual first words", ko:"크리처의 실제 첫 마디"},
   mark_btn:  {en:"✓ I've installed it", ko:"✓ 설치했어요"},
   installed_ok:{en:"Installed ✓", ko:"설치됨 ✓"},
   uptodate:  {en:"up to date", ko:"최신 상태"},
@@ -411,6 +437,10 @@ const STR = {
   update_msg:{en:"Update available — a newer version was published", ko:"업데이트 있음 — 더 새 버전이 배포됐어요"},
 };
 const LANG_SYS = { ko: "기본적으로 한국어로 대화하세요.", en: "" };  // en = model default
+const GREETING = {  // generated birth welcome, in the creature's language (not real LLM output)
+  ko: n => `안녕. 나는 ${n}. 방금 깨어났어 — 아직 아무것도 모르지만, 여기서부터 살아갈게.`,
+  en: n => `Hello. I'm ${n}. I just woke up — I don't know much yet, but I'll live here.`,
+};
 let incCat = "cli";
 let incLatest = null, incFetched = false, incShowSetup = false;
 function _lang(){ return document.documentElement.lang === "ko" ? "ko" : "en"; }
@@ -465,15 +495,40 @@ function incToggleSetup(e){ if(e)e.preventDefault(); incShowSetup=!incShowSetup;
 function incCreatures(){ try{ return JSON.parse(localStorage.getItem("ludex_creatures")||"[]"); }catch(e){ return []; } }
 function incSaveCreatures(a){ try{ localStorage.setItem("ludex_creatures",JSON.stringify(a)); }catch(e){} }
 function incRemoveCreature(i){ const a=incCreatures(); a.splice(i,1); incSaveCreatures(a); renderRoster(); }
-function incRememberCreature(){
+function incRememberCreature(firstWords){
   const name=$("incName").value.trim();
-  if(!name || !/^[A-Za-z][A-Za-z0-9_-]*$/.test(name)) return;
+  if(!name || !/^[A-Za-z][A-Za-z0-9_-]*$/.test(name)) return false;
   const dir=$("incDir").value.trim()||"~/ludex";
   const out=$("incOut").value.trim();
   const path = out || (dir.replace(/\/+$/,"")+"/creatures/"+name);
+  const prev = incCreatures().find(c=>c.name===name && c.path===path);
   const entry={name, path, provider:$("incProvider").value, model:incModel()||"", preset:$("incPreset").value, lang:$("incLang").value};
+  const fw = (firstWords||"").trim() || (prev && prev.firstWords) || "";
+  if(fw) entry.firstWords = fw;
   const a=incCreatures().filter(c=>!(c.name===name && c.path===path));
   a.push(entry); incSaveCreatures(a); renderRoster();
+  return true;
+}
+
+// "✓ created it — hatch!" — remember the creature and play the birth reveal.
+function incBorn(){
+  const name=$("incName").value.trim();
+  if(!name || !/^[A-Za-z][A-Za-z0-9_-]*$/.test(name)){ $("incName").focus(); incRender(); return; }
+  const fw = $("incFirstWords").value.trim();
+  incRememberCreature(fw);
+  const clang = $("incLang").value;                       // creature's language
+  const greeting = fw || (GREETING[clang]||GREETING.en)(name);
+  const cap = fw ? _s("words_real") : _s("words_gen");
+  const hatch=$("incHatch"), egg=$("incEgg"), msg=$("incHatchMsg");
+  hatch.style.display="";
+  egg.textContent="🥚"; egg.className="egg shaking";
+  msg.classList.remove("show"); msg.textContent=""; $("incHatchCap").textContent="";
+  setTimeout(()=>{
+    egg.textContent="🐣"; egg.className="egg hatched";
+    msg.textContent=greeting; msg.classList.add("show");
+    $("incHatchCap").textContent="— "+cap;
+  }, 1100);
+  hatch.scrollIntoView({behavior:"smooth", block:"nearest"});
 }
 function renderRoster(){
   const a=incCreatures(), step=$("incRosterStep"), list=$("incRosterList");
@@ -483,6 +538,10 @@ function renderRoster(){
     const row=document.createElement("div"); row.className="rosterRow";
     const meta=document.createElement("span");
     meta.textContent=`${c.name} · ${c.provider}/${c.model||"?"} · ${c.path}`;
+    if(c.firstWords){
+      const fw=document.createElement("em"); fw.style.display="block"; fw.style.color="var(--accent)"; fw.style.marginTop="3px";
+      fw.textContent=`"${c.firstWords}"`; meta.appendChild(fw);
+    }
     const x=document.createElement("button"); x.type="button"; x.className="rosterX"; x.textContent="✕";
     x.title="remove"; x.onclick=()=>incRemoveCreature(i);
     row.appendChild(meta); row.appendChild(x); list.appendChild(row);
@@ -539,6 +598,8 @@ function incRender(){
   $("incDir").placeholder="~/ludex";
   $("incDirHint").textContent=_s("dir_hint");
   $("incLangHint").textContent=_s("lang_hint");
+  $("incBornBtn").textContent=_s("born_btn");
+  $("incFirstWords").placeholder=_s("fw_ph");
   let create = `cd ${dir} && python -m ludex create --name ${nm} --provider ${prov} --model ${model||"<model>"} --preset ${preset}`;
   const langSys = LANG_SYS[$("incLang").value] || "";
   if(langSys) create += ` --system "${langSys}"`;
