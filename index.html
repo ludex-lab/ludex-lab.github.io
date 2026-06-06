@@ -210,6 +210,7 @@ python web/server.py        # then open http://localhost:7860</pre>
       <label data-i18n="inc_create">Create (run once per creature)</label>
       <div class="iout" id="incCreate"></div>
       <button class="icopy" type="button" id="incCopyCreate" onclick="incCopy('create')" data-i18n="inc_copy">Copy</button>
+      <p class="ihint" id="incCreateNote"></p>
     </div>
   </div>
 </div>
@@ -362,10 +363,12 @@ const STR = {
   key_hide:  {en:"hide", ko:"숨기기"},
   key_clear: {en:"clear", ko:"지우기"},
   key_ph_cmd:{en:"<paste-your-key>", ko:"<여기에-키-붙여넣기>"},
-  out_hint:  {en:"Optional. Leave blank → created at ludex/creatures/<name>, i.e. creatures/<name> inside the folder you cloned (it's relative to where you run the command, so it's the same on macOS and Windows). Type a path only for a custom location — browsers can't open a real folder picker for a terminal command.",
-              ko:"선택 사항. 비워 두면 ludex/creatures/<이름>에 만들어집니다 — 방금 클론한 ludex 폴더 안 creatures/<이름>요. (명령을 실행한 위치 기준이라 macOS·Windows 동일.) 다른 위치를 원할 때만 경로를 입력하세요. (브라우저는 터미널 명령용 실제 폴더 선택창을 못 엽니다.)"},
-  setup_note:{en:"Run this once. Already have Ludex? Skip it and just run the create command below from inside the ludex folder — repeat it for each new creature.",
-              ko:"이건 한 번만 실행하면 돼요. 이미 Ludex가 있다면 건너뛰고, ludex 폴더 안에서 아래 생성 명령만 실행하세요 — 새 크리처마다 그 명령만 반복하면 됩니다."},
+  out_hint:  {en:"Optional. Leave blank → the creature lands at ludex/creatures/<name> (inside the ‘ludex’ folder created during setup). Type a path only for a custom location — browsers can't open a real folder picker for a terminal command.",
+              ko:"선택 사항. 비워 두면 ludex/creatures/<이름>에 만들어집니다 (설치 단계에서 생긴 ‘ludex’ 폴더 안). 다른 위치를 원할 때만 경로를 입력하세요. (브라우저는 터미널 명령용 실제 폴더 선택창을 못 엽니다.)"},
+  setup_note:{en:"Open a terminal and paste this once. A terminal starts in your home folder, so this downloads Ludex into a new ‘ludex’ folder there (macOS: ~/ludex, Windows: C:\\Users\\you\\ludex) and moves you inside it. Already have Ludex? Skip this.",
+              ko:"터미널을 열고 한 번만 붙여넣으세요. 터미널은 홈 폴더에서 시작하므로, 거기에 ‘ludex’ 폴더를 내려받고(macOS: ~/ludex, Windows: C:\\Users\\사용자\\ludex) 그 안으로 들어갑니다. 이미 Ludex가 있다면 건너뛰세요."},
+  create_note:{en:"Run this in the same terminal — you're inside the ‘ludex’ folder now. For another creature later, open a terminal, run ‘cd ludex’, then run this again.",
+              ko:"같은 터미널에서 실행하세요 — 지금 ‘ludex’ 폴더 안에 있습니다. 나중에 또 만들려면 터미널을 열고 ‘cd ludex’ 한 뒤 이 명령을 다시 실행하면 됩니다."},
 };
 let incCat = "cli";
 function _lang(){ return document.documentElement.lang === "ko" ? "ko" : "en"; }
@@ -449,6 +452,7 @@ function incRender(){
   let create = `python -m ludex create --name ${nm} --provider ${prov} --model ${model||"<model>"} --preset ${preset}`;
   if(out) create += ` --out ${out}`;
   $("incCreate").textContent=create;
+  $("incCreateNote").textContent=_s("create_note");
 
   window._incSetup=setup; window._incCreate=create;
 }
