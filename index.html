@@ -78,6 +78,12 @@
   .iprereq{border-left:3px solid var(--accent2);padding:8px 12px;margin-top:12px;color:var(--muted);font-size:13.5px;background:rgba(157,180,255,.06)}
   .icopy{margin-top:10px;padding:9px 16px;border-radius:9px;border:0;background:var(--accent);color:#06231b;font-weight:700;cursor:pointer}
   .icopy:hover{filter:brightness(1.06)}
+  .ibtn2{margin-top:10px;margin-left:8px;padding:9px 14px;border-radius:9px;border:1px solid var(--line);background:transparent;color:var(--ink);font-weight:600;cursor:pointer}
+  .ibtn2:hover{border-color:var(--accent)}
+  .rosterRow{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--code);border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:8px;font-size:13px}
+  .rosterRow span{word-break:break-all}
+  .rosterX{background:none;border:0;color:var(--muted);font-size:16px;cursor:pointer;flex:none}
+  .rosterX:hover{color:#ff8a8a}
 </style>
 </head>
 <body>
@@ -201,9 +207,18 @@ python web/server.py        # then open http://localhost:7860</pre>
 
     <div class="istep">
       <label data-i18n="inc_setup">First-time setup (once)</label>
-      <div class="iout" id="incSetup"></div>
-      <button class="icopy" type="button" id="incCopySetup" onclick="incCopy('setup')" data-i18n="inc_copy">Copy</button>
-      <p class="ihint" id="incSetupNote"></p>
+      <div id="incSetupBody">
+        <div class="iout" id="incSetup"></div>
+        <button class="icopy" type="button" id="incCopySetup" onclick="incCopy('setup')" data-i18n="inc_copy">Copy</button>
+        <button class="ibtn2" type="button" id="incMarkBtn" onclick="incMarkInstalled()"></button>
+        <p class="ihint" id="incSetupNote"></p>
+      </div>
+      <p class="ihint" id="incInstalledLine"></p>
+      <div class="iprereq" id="incUpdate" style="display:none">
+        <p style="margin:0 0 8px" id="incUpdateMsg"></p>
+        <div class="iout" id="incUpdateCmd"></div>
+        <button class="icopy" type="button" id="incCopyUpdate" onclick="incCopy('update')" data-i18n="inc_copy">Copy</button>
+      </div>
     </div>
 
     <div class="istep">
@@ -213,6 +228,11 @@ python web/server.py        # then open http://localhost:7860</pre>
       <div class="iout" id="incCreate"></div>
       <button class="icopy" type="button" id="incCopyCreate" onclick="incCopy('create')" data-i18n="inc_copy">Copy</button>
       <p class="ihint" id="incCreateNote"></p>
+    </div>
+
+    <div class="istep" id="incRosterStep" style="display:none">
+      <label data-i18n="inc_roster">Your creatures (remembered in this browser)</label>
+      <div id="incRosterList"></div>
     </div>
   </div>
 </div>
@@ -253,6 +273,7 @@ const I18N = {
     tab_byok: "Your API key",
     inc_setup: "First-time setup (once)",
     inc_create: "Create (run once per creature)",
+    inc_roster: "Your creatures (remembered in this browser)",
     inc_copy: "Copy",
   },
   ko: {
@@ -289,6 +310,7 @@ const I18N = {
     tab_byok: "내 API 키",
     inc_setup: "최초 1회 설치",
     inc_create: "생성 (크리처마다 한 번)",
+    inc_roster: "내가 만든 크리처 (이 브라우저에 기억됨)",
     inc_copy: "복사",
   }
 };
@@ -373,14 +395,22 @@ const STR = {
               ko:"아무 터미널에서나 실행하세요 — 먼저 Ludex 폴더로 이동하므로 어디서든 됩니다. 새 크리처는 이름만 바꿔 다시 실행하면 돼요."},
   dir_hint:  {en:"Your Ludex folder (from setup) — remembered in this browser; edit it if you cloned somewhere else.",
               ko:"Ludex 폴더(설치에서 생긴 곳) — 이 브라우저에 기억됩니다. 다른 곳에 클론했다면 수정하세요."},
+  mark_btn:  {en:"✓ I've installed it", ko:"✓ 설치했어요"},
+  installed_ok:{en:"Installed ✓", ko:"설치됨 ✓"},
+  uptodate:  {en:"up to date", ko:"최신 상태"},
+  show_setup:{en:"show setup", ko:"설치 단계 보기"},
+  hide_setup:{en:"hide setup", ko:"설치 단계 숨기기"},
+  forget:    {en:"forget", ko:"잊기"},
+  update_msg:{en:"Update available — a newer version was published", ko:"업데이트 있음 — 더 새 버전이 배포됐어요"},
 };
 let incCat = "cli";
+let incLatest = null, incFetched = false, incShowSetup = false;
 function _lang(){ return document.documentElement.lang === "ko" ? "ko" : "en"; }
 function _t(k){ try{ return (I18N[_lang()]||I18N.en)[k] || k; }catch(e){ return k; } }
 function _s(k){ const o=STR[k]||{}; return o[_lang()] || o.en || ""; }
 const $ = id => document.getElementById(id);
 
-function openIncubator(){ $("incModal").classList.add("open"); incRender(); }
+function openIncubator(){ $("incModal").classList.add("open"); incRender(); if(!incFetched){ incFetched=true; incFetchLatest(); } }
 function closeIncubator(){ $("incModal").classList.remove("open"); }
 
 function incSetCat(cat){
@@ -410,6 +440,46 @@ function incClearKey(e){ e.preventDefault(); try{ localStorage.removeItem(incKey
 // Install folder — remembered in this browser so the create command can cd into it.
 function incLoadDir(){ let d="~/ludex"; try{ d=localStorage.getItem("ludex_install_dir")||"~/ludex"; }catch(e){} $("incDir").value=d; }
 function incSaveDir(){ try{ localStorage.setItem("ludex_install_dir", $("incDir").value.trim()||"~/ludex"); }catch(e){} }
+
+// --- install state (soft: user-confirmed) + update check via GitHub API ---
+function incFetchLatest(){
+  fetch("https://api.github.com/repos/ludex-lab/ludex/commits/main",{headers:{Accept:"application/vnd.github+json"}})
+    .then(r=>r.ok?r.json():null)
+    .then(d=>{ if(d&&d.sha){ incLatest={sha:d.sha, date:(((d.commit||{}).committer||{}).date||"").slice(0,10)}; incRender(); } })
+    .catch(()=>{});
+}
+function incInstalledSha(){ try{ return localStorage.getItem("ludex_installed_sha"); }catch(e){ return null; } }
+function incMarkInstalled(){ try{ localStorage.setItem("ludex_installed_sha",(incLatest&&incLatest.sha)||"unknown"); }catch(e){} incShowSetup=false; incRender(); }
+function incForget(e){ if(e)e.preventDefault(); try{ localStorage.removeItem("ludex_installed_sha"); }catch(_){} incShowSetup=false; incRender(); }
+function incToggleSetup(e){ if(e)e.preventDefault(); incShowSetup=!incShowSetup; incRender(); }
+
+// --- remembered creatures (seed for a future viewer) ---
+function incCreatures(){ try{ return JSON.parse(localStorage.getItem("ludex_creatures")||"[]"); }catch(e){ return []; } }
+function incSaveCreatures(a){ try{ localStorage.setItem("ludex_creatures",JSON.stringify(a)); }catch(e){} }
+function incRemoveCreature(i){ const a=incCreatures(); a.splice(i,1); incSaveCreatures(a); renderRoster(); }
+function incRememberCreature(){
+  const name=$("incName").value.trim();
+  if(!name || !/^[A-Za-z][A-Za-z0-9_-]*$/.test(name)) return;
+  const dir=$("incDir").value.trim()||"~/ludex";
+  const out=$("incOut").value.trim();
+  const path = out || (dir.replace(/\/+$/,"")+"/creatures/"+name);
+  const entry={name, path, provider:$("incProvider").value, model:incModel()||"", preset:$("incPreset").value};
+  const a=incCreatures().filter(c=>!(c.name===name && c.path===path));
+  a.push(entry); incSaveCreatures(a); renderRoster();
+}
+function renderRoster(){
+  const a=incCreatures(), step=$("incRosterStep"), list=$("incRosterList");
+  if(!a.length){ step.style.display="none"; list.innerHTML=""; return; }
+  step.style.display=""; list.innerHTML="";
+  a.forEach((c,i)=>{
+    const row=document.createElement("div"); row.className="rosterRow";
+    const meta=document.createElement("span");
+    meta.textContent=`${c.name} · ${c.provider}/${c.model||"?"} · ${c.path}`;
+    const x=document.createElement("button"); x.type="button"; x.className="rosterX"; x.textContent="✕";
+    x.title="remove"; x.onclick=()=>incRemoveCreature(i);
+    row.appendChild(meta); row.appendChild(x); list.appendChild(row);
+  });
+}
 
 function incRender(){
   if(!$("incProvider")) return;
@@ -464,14 +534,34 @@ function incRender(){
   if(out) create += ` --out ${out}`;
   $("incCreate").textContent=create;
   $("incCreateNote").textContent=_s("create_note");
-
   window._incSetup=setup; window._incCreate=create;
+
+  // install state (user-confirmed) + update banner
+  $("incMarkBtn").textContent=_s("mark_btn");
+  const sha=incInstalledSha(), installed=!!sha;
+  $("incSetupBody").style.display=(!installed||incShowSetup)?"":"none";
+  if(installed){
+    const utd = incLatest && sha!=="unknown" && sha===incLatest.sha;
+    $("incInstalledLine").innerHTML =
+      _s("installed_ok") + (utd?(" · "+_s("uptodate")):"")
+      + ` · <a href="#" onclick="incToggleSetup(event)">${incShowSetup?_s("hide_setup"):_s("show_setup")}</a>`
+      + ` · <a href="#" onclick="incForget(event)">${_s("forget")}</a>`;
+  } else { $("incInstalledLine").textContent=""; }
+  const showUpd = installed && incLatest && sha && sha!=="unknown" && sha!==incLatest.sha;
+  $("incUpdate").style.display = showUpd ? "" : "none";
+  if(showUpd){
+    $("incUpdateMsg").textContent = _s("update_msg") + (incLatest.date?(" ("+incLatest.date+")"):"") + ".";
+    const upcmd = `cd ${dir} && git pull && pip install -r requirements.txt`;
+    $("incUpdateCmd").textContent = upcmd; window._incUpdate = upcmd;
+  }
 }
 function incCopy(which){
-  const txt = which==="setup" ? (window._incSetup||"") : (window._incCreate||"");
-  const btn = which==="setup" ? $("incCopySetup") : $("incCopyCreate");
-  navigator.clipboard.writeText(txt).then(()=>{
+  const map={setup:["_incSetup","incCopySetup"], create:["_incCreate","incCopyCreate"], update:["_incUpdate","incCopyUpdate"]};
+  const m=map[which]||map.create;
+  const btn=$(m[1]);
+  navigator.clipboard.writeText(window[m[0]]||"").then(()=>{
     btn.textContent=_s("copied"); setTimeout(()=>btn.textContent=_t("inc_copy"),1500);
+    if(which==="create") incRememberCreature();  // remember name + location for a future viewer
   }).catch(()=>{});
 }
 $("incTabs").addEventListener("click",e=>{ if(e.target.dataset.cat) incSetCat(e.target.dataset.cat); });
@@ -482,6 +572,7 @@ $("incProvider").addEventListener("change",incOnProvider);
 $("incApiKey").addEventListener("input",()=>{ incSaveKey(); incRender(); });
 $("incDir").addEventListener("input",()=>{ incSaveDir(); incRender(); });
 incLoadDir();
+renderRoster();
 incSetCat("cli");
 </script>
 
