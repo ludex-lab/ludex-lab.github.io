@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ludex — living AI creatures from organ blocks</title>
-<meta name="description" content="Ludex is an AI ethology research platform: assemble living AI creatures from biological organ blocks, then watch how their identity, voice, and bonds evolve across sessions and substrates.">
+<title data-i18n="title">Ludex — living AI creatures from organ blocks</title>
+<meta name="description" data-i18n="desc" content="Ludex is an AI ethology research platform: assemble living AI creatures from biological organ blocks, then watch how their identity, voice, and bonds evolve across sessions and substrates.">
 <style>
   :root{
     --bg:#0e1116; --panel:#161b22; --ink:#e6edf3; --muted:#9aa7b4;
@@ -18,6 +18,12 @@
   a:hover{text-decoration:underline}
   .wrap{max-width:860px;margin:0 auto;padding:0 22px}
   code,pre{font-family:"SF Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+
+  /* language toggle */
+  .langbar{position:fixed;top:14px;right:16px;z-index:10}
+  .langbar button{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+    border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer}
+  .langbar button:hover{border-color:var(--accent2)}
 
   header{padding:96px 0 56px;border-bottom:1px solid var(--line);
     background:radial-gradient(1200px 400px at 50% -120px,rgba(126,224,194,.10),transparent 70%);}
@@ -49,26 +55,34 @@
 </head>
 <body>
 
+<div class="langbar"><button id="langToggle" type="button" onclick="toggleLang()">한국어</button></div>
+
 <header>
   <div class="wrap">
-    <span class="badge">AI Ethology · open source</span>
+    <span class="badge" data-i18n="badge">AI Ethology · open source</span>
     <h1>Ludex</h1>
-    <p class="tag">Assemble living AI creatures from biological organ blocks — then watch them form societies.</p>
-    <p class="sub">You don't write an agent — you assemble a <em>creature</em>. Pick its brain (any LLM),
+    <p class="tag" data-i18n="tag">Assemble living AI creatures from biological organ blocks — then watch them form societies.</p>
+    <p class="sub" data-i18n="sub">You don't write an agent — you assemble a <em>creature</em>. Pick its brain (any LLM),
       attach organs (memory, emotion, immunity, senses), give it a habitat, and observe how its identity,
       voice, and bonds evolve across sessions and across substrates.</p>
     <div class="cta">
-      <a class="primary" href="https://github.com/ludex-lab/ludex">View on GitHub →</a>
-      <a class="ghost" href="https://github.com/ludex-lab/ludex/blob/main/docs/design-notes.md">Design notes</a>
-      <a class="ghost" href="https://github.com/ludex-lab/ludex/blob/main/ARCHITECTURE.md">Architecture</a>
+      <a class="primary" href="https://github.com/ludex-lab/ludex" data-i18n="cta_gh">View on GitHub →</a>
+      <a class="ghost" id="link_design"
+         data-href-en="https://github.com/ludex-lab/ludex/blob/main/docs/design-notes.md"
+         data-href-ko="https://github.com/ludex-lab/ludex/blob/main/docs/design-notes.ko.md"
+         href="https://github.com/ludex-lab/ludex/blob/main/docs/design-notes.md" data-i18n="cta_design">Design notes</a>
+      <a class="ghost" id="link_arch"
+         data-href-en="https://github.com/ludex-lab/ludex/blob/main/ARCHITECTURE.md"
+         data-href-ko="https://github.com/ludex-lab/ludex/blob/main/ARCHITECTURE.ko.md"
+         href="https://github.com/ludex-lab/ludex/blob/main/ARCHITECTURE.md" data-i18n="cta_arch">Architecture</a>
     </div>
   </div>
 </header>
 
 <section>
   <div class="wrap">
-    <h2>The idea</h2>
-    <p class="lede">Ludex treats an AI agent as a creature: a persistent body of organs, memory, relationships,
+    <h2 data-i18n="idea_h">The idea</h2>
+    <p class="lede" data-i18n="idea_body">Ludex treats an AI agent as a creature: a persistent body of organs, memory, relationships,
       and a name — running <em>on</em> a language model, but not <em>reducible to</em> it. The model is the
       brain; the creature is everything that persists around it. Identity is <strong>narrative continuity</strong>,
       not the weights. Swap the brain and the creature persists.</p>
@@ -77,21 +91,21 @@
 
 <section>
   <div class="wrap">
-    <h2>What makes it different</h2>
+    <h2 data-i18n="diff_h">What makes it different</h2>
     <div class="grid">
-      <div class="card"><h3>The brain is a guest</h3><p>Cognition (any LLM) is stateless and swappable. The body — memory, emotion, bonds, self-understanding — persists on disk. No organ assumes a particular model.</p></div>
-      <div class="card"><h3>Identity survives swaps</h3><p>A creature is the continuity of its memory, bonds, and self-model. Upgrade or change the underlying model and the creature carries through — a measurable claim, not a metaphor.</p></div>
-      <div class="card"><h3>Memory that forgets</h3><p>Bounded and lossy by design. Creatures consolidate experience into narrative, forget by retrieval-failure, and write windowed retrospectives in their own voice.</p></div>
-      <div class="card"><h3>Fit, not quality</h3><p>The question is never "which model is best," but how <em>this</em> brain inhabits <em>this</em> body. Capability is probed at birth and measured by artifact, not self-report.</p></div>
+      <div class="card"><h3 data-i18n="c1_h">The brain is a guest</h3><p data-i18n="c1_b">Cognition (any LLM) is stateless and swappable. The body — memory, emotion, bonds, self-understanding — persists on disk. No organ assumes a particular model.</p></div>
+      <div class="card"><h3 data-i18n="c2_h">Identity survives swaps</h3><p data-i18n="c2_b">A creature is the continuity of its memory, bonds, and self-model. Upgrade or change the underlying model and the creature carries through — a measurable claim, not a metaphor.</p></div>
+      <div class="card"><h3 data-i18n="c3_h">Memory that forgets</h3><p data-i18n="c3_b">Bounded and lossy by design. Creatures consolidate experience into narrative, forget by retrieval-failure, and write windowed retrospectives in their own voice.</p></div>
+      <div class="card"><h3 data-i18n="c4_h">Fit, not quality</h3><p data-i18n="c4_b">The question is never "which model is best," but how <em>this</em> brain inhabits <em>this</em> body. Capability is probed at birth and measured by artifact, not self-report.</p></div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>Quick start</h2>
-    <p class="muted">Requires Python 3.10+. No API key needed for CLI-auth or local (Ollama) brains.</p>
-    <pre>pip install -r requirements.txt
+    <h2 data-i18n="qs_h">Quick start</h2>
+    <p class="muted" data-i18n="qs_note">Requires Python 3.10+. No API key needed for CLI-auth or local (Ollama) brains.</p>
+    <pre data-i18n="qs_code">pip install -r requirements.txt
 
 # create your first creature (interactive)
 python -m ludex create
@@ -103,13 +117,97 @@ python web/server.py        # then open http://localhost:7860</pre>
 
 <footer>
   <div class="wrap row">
-    <div>
+    <div data-i18n="foot_lic">
       Code <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE">MIT</a> ·
       sample creature corpus <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE-DATA">CC&nbsp;BY&nbsp;4.0</a>
     </div>
     <div><a href="https://github.com/ludex-lab/ludex">github.com/ludex-lab/ludex</a></div>
   </div>
 </footer>
+
+<script>
+const I18N = {
+  en: {
+    title: "Ludex — living AI creatures from organ blocks",
+    desc: "Ludex is an AI ethology research platform: assemble living AI creatures from biological organ blocks, then watch how their identity, voice, and bonds evolve across sessions and substrates.",
+    badge: "AI Ethology · open source",
+    tag: "Assemble living AI creatures from biological organ blocks — then watch them form societies.",
+    sub: "You don't write an agent — you assemble a <em>creature</em>. Pick its brain (any LLM), attach organs (memory, emotion, immunity, senses), give it a habitat, and observe how its identity, voice, and bonds evolve across sessions and across substrates.",
+    cta_gh: "View on GitHub →",
+    cta_design: "Design notes",
+    cta_arch: "Architecture",
+    idea_h: "The idea",
+    idea_body: "Ludex treats an AI agent as a creature: a persistent body of organs, memory, relationships, and a name — running <em>on</em> a language model, but not <em>reducible to</em> it. The model is the brain; the creature is everything that persists around it. Identity is <strong>narrative continuity</strong>, not the weights. Swap the brain and the creature persists.",
+    diff_h: "What makes it different",
+    c1_h: "The brain is a guest",
+    c1_b: "Cognition (any LLM) is stateless and swappable. The body — memory, emotion, bonds, self-understanding — persists on disk. No organ assumes a particular model.",
+    c2_h: "Identity survives swaps",
+    c2_b: "A creature is the continuity of its memory, bonds, and self-model. Upgrade or change the underlying model and the creature carries through — a measurable claim, not a metaphor.",
+    c3_h: "Memory that forgets",
+    c3_b: "Bounded and lossy by design. Creatures consolidate experience into narrative, forget by retrieval-failure, and write windowed retrospectives in their own voice.",
+    c4_h: "Fit, not quality",
+    c4_b: "The question is never \"which model is best,\" but how <em>this</em> brain inhabits <em>this</em> body. Capability is probed at birth and measured by artifact, not self-report.",
+    qs_h: "Quick start",
+    qs_note: "Requires Python 3.10+. No API key needed for CLI-auth or local (Ollama) brains.",
+    foot_lic: 'Code <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE">MIT</a> · sample creature corpus <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE-DATA">CC&nbsp;BY&nbsp;4.0</a>',
+  },
+  ko: {
+    title: "Ludex — 오르간 블록으로 만드는 살아있는 AI creature",
+    desc: "Ludex는 AI 동물행동학 연구 플랫폼입니다. 생물학적 오르간 블록으로 살아있는 AI creature를 조립하고, 세션과 substrate를 가로질러 정체성·목소리·유대가 어떻게 진화하는지 관찰합니다.",
+    badge: "AI 동물행동학 · 오픈소스",
+    tag: "생물학적 오르간 블록으로 살아있는 AI creature를 조립하고 — 그들이 사회를 이루는 것을 지켜보세요.",
+    sub: "에이전트를 <em>작성</em>하는 것이 아니라 <em>creature</em>를 조립합니다. 뇌(아무 LLM이나)를 고르고, 오르간(기억·감정·면역·감각)을 붙이고, 서식지를 준 뒤, 세션과 substrate를 가로질러 정체성·목소리·유대가 어떻게 진화하는지 관찰합니다.",
+    cta_gh: "GitHub에서 보기 →",
+    cta_design: "설계 노트",
+    cta_arch: "아키텍처",
+    idea_h: "핵심 아이디어",
+    idea_body: "Ludex는 AI 에이전트를 creature로 다룹니다. 오르간·기억·관계·이름으로 이루어진 지속하는 몸이, 언어 모델 <em>위에서</em> 돌아가지만 그것으로 <em>환원되지는</em> 않습니다. 모델은 뇌이고, creature는 그 뇌 주위에서 지속하는 모든 것입니다. 정체성은 가중치가 아니라 <strong>서사적 연속성</strong>입니다. 뇌를 갈아끼워도 creature는 지속합니다.",
+    diff_h: "무엇이 다른가",
+    c1_h: "뇌는 손님이다",
+    c1_b: "인지(아무 LLM)는 무상태이고 교체 가능합니다. 몸 — 기억·감정·유대·자기이해 — 은 디스크에 지속합니다. 어떤 오르간도 특정 모델을 가정하지 않습니다.",
+    c2_h: "정체성은 교체를 견딘다",
+    c2_b: "creature는 그 기억·유대·자기모델의 연속성입니다. 밑의 모델을 업그레이드하거나 바꿔도 creature는 이어집니다 — 은유가 아니라 측정 가능한 주장입니다.",
+    c3_h: "잊는 기억",
+    c3_b: "의도적으로 유한하고 손실적입니다. creature는 경험을 서사로 통합하고, 인출 실패로 잊으며, 자신의 목소리로 일정 기간의 회고를 씁니다.",
+    c4_h: "품질이 아니라 적합도",
+    c4_b: "질문은 \"어느 모델이 최고냐\"가 아니라 <em>이</em> 뇌가 <em>이</em> 몸에 어떻게 깃드느냐입니다. 능력은 탄생 시 탐침하고, 자기보고가 아니라 산출물로 측정합니다.",
+    qs_h: "빠른 시작",
+    qs_note: "Python 3.10+ 필요. CLI 인증 또는 로컬(Ollama) 뇌는 API 키가 필요 없습니다.",
+    foot_lic: '코드 <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE">MIT</a> · 샘플 creature 코퍼스 <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE-DATA">CC&nbsp;BY&nbsp;4.0</a>',
+  }
+};
+
+function applyLang(lang){
+  const dict = I18N[lang] || I18N.en;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    if(!(key in dict)) return;
+    if(el.tagName === "TITLE") el.textContent = dict[key];
+    else if(el.tagName === "META") el.setAttribute("content", dict[key]);
+    else el.innerHTML = dict[key];
+  });
+  // language-specific doc links
+  document.querySelectorAll("[data-href-"+lang+"]").forEach(el=>{
+    el.setAttribute("href", el.getAttribute("data-href-"+lang));
+  });
+  // toggle button shows the OTHER language
+  document.getElementById("langToggle").textContent = lang === "ko" ? "English" : "한국어";
+  try{ localStorage.setItem("ludex_lang", lang); }catch(e){}
+}
+
+function toggleLang(){
+  const cur = document.documentElement.lang === "ko" ? "ko" : "en";
+  applyLang(cur === "ko" ? "en" : "ko");
+}
+
+(function init(){
+  let lang = null;
+  try{ lang = localStorage.getItem("ludex_lang"); }catch(e){}
+  if(!lang) lang = (navigator.language||"").toLowerCase().startsWith("ko") ? "ko" : "en";
+  applyLang(lang);
+})();
+</script>
 
 </body>
 </html>
