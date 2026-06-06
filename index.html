@@ -246,6 +246,7 @@ python web/server.py        # then open http://localhost:7860</pre>
       <div class="iout" id="incCreate"></div>
       <button class="icopy" type="button" id="incCopyCreate" onclick="incCopy('create')" data-i18n="inc_copy">Copy</button>
       <p class="ihint" id="incCreateNote"></p>
+      <p class="ihint" id="incCreateFail"></p>
       <textarea class="ifield" id="incFirstWords" rows="2"></textarea>
       <button class="ibtn2" type="button" id="incBornBtn" onclick="incBorn()"></button>
     </div>
@@ -432,6 +433,10 @@ const STR = {
   mark_btn:  {en:"✓ I ran the setup", ko:"✓ 위 설치 명령을 실행했어요"},
   mark_hint: {en:"Run the setup block above first — then click this. We'll remember it and collapse this step next time.",
               ko:"먼저 위 설치 블록을 실행하세요 — 그런 다음 이 버튼을 누르면 됩니다. 기억해두고 다음부터는 이 단계를 접어둡니다."},
+  setup_stale:{en:"⚠ Setup changed since you marked it installed (it now creates a .venv). Run the setup block below again — it's safe, it only adds what's missing.",
+              ko:"⚠ 설치 완료 표시 이후 설치 절차가 바뀌었어요 (이제 .venv를 만듭니다). 아래 설치 블록을 다시 실행하세요 — 안전합니다, 빠진 것만 채웁니다."},
+  create_fail:{en:"Not working (e.g. '.venv/bin/python: no such file')? You're missing the .venv — run the setup block above.",
+              ko:"안 되나요(예: '.venv/bin/python 없음')? .venv가 없는 거예요 — 위 설치 블록을 실행하세요."},
   installed_ok:{en:"Installed ✓", ko:"설치됨 ✓"},
   uptodate:  {en:"up to date", ko:"최신 상태"},
   show_setup:{en:"show setup", ko:"설치 단계 보기"},
@@ -446,6 +451,7 @@ const GREETING = {  // generated birth welcome, in the creature's language (not 
 };
 // OS-aware venv commands: sidesteps python-vs-python3 AND PEP-668 global-pip blocks.
 const IS_WIN = /win/i.test((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "");
+const SETUP_VERSION = 2;  // bump when the setup block changes (v2 = added .venv) → re-prompts stale installs
 const PY   = IS_WIN ? "python" : "python3";          // creates the venv
 const VPY  = IS_WIN ? ".venv/Scripts/python" : ".venv/bin/python";
 const VPIP = IS_WIN ? ".venv/Scripts/pip" : ".venv/bin/pip";
@@ -495,7 +501,8 @@ function incFetchLatest(){
     .catch(()=>{});
 }
 function incInstalledSha(){ try{ return localStorage.getItem("ludex_installed_sha"); }catch(e){ return null; } }
-function incMarkInstalled(){ try{ localStorage.setItem("ludex_installed_sha",(incLatest&&incLatest.sha)||"unknown"); }catch(e){} incShowSetup=false; incRender(); }
+function incMarkInstalled(){ try{ localStorage.setItem("ludex_installed_sha",(incLatest&&incLatest.sha)||"unknown"); localStorage.setItem("ludex_installed_setup",String(SETUP_VERSION)); }catch(e){} incShowSetup=false; incRender(); }
+function incInstalledSetupVer(){ try{ return parseInt(localStorage.getItem("ludex_installed_setup")||"0",10); }catch(e){ return 0; } }
 function incForget(e){ if(e)e.preventDefault(); try{ localStorage.removeItem("ludex_installed_sha"); }catch(_){} incShowSetup=false; incRender(); }
 function incToggleSetup(e){ if(e)e.preventDefault(); incShowSetup=!incShowSetup; incRender(); }
 
@@ -614,14 +621,19 @@ function incRender(){
   if(out) create += ` --out ${out}`;
   $("incCreate").textContent=create;
   $("incCreateNote").textContent=_s("create_note");
+  $("incCreateFail").textContent=_s("create_fail");
   window._incSetup=setup; window._incCreate=create;
 
   // install state (user-confirmed) + update banner
   $("incMarkBtn").textContent=_s("mark_btn");
   $("incMarkHint").textContent=_s("mark_hint");
   const sha=incInstalledSha(), installed=!!sha;
-  $("incSetupBody").style.display=(!installed||incShowSetup)?"":"none";
-  if(installed){
+  const stale = installed && incInstalledSetupVer() < SETUP_VERSION;  // setup procedure changed since they installed
+  $("incSetupBody").style.display=(!installed||incShowSetup||stale)?"":"none";
+  if(installed && stale){
+    $("incInstalledLine").innerHTML =
+      _s("setup_stale") + ` · <a href="#" onclick="incForget(event)">${_s("forget")}</a>`;
+  } else if(installed){
     const utd = incLatest && sha!=="unknown" && sha===incLatest.sha;
     $("incInstalledLine").innerHTML =
       _s("installed_ok") + (utd?(" · "+_s("uptodate")):"")
