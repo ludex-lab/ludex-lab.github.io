@@ -62,6 +62,12 @@
   .onav{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:14px}
   .onav button{background:var(--panel);border:1px solid var(--line);color:var(--ink);width:34px;height:34px;border-radius:999px;cursor:pointer;font-size:17px;line-height:1}
   .onav button:hover{border-color:var(--accent);color:var(--accent)}
+  /* Related link cards */
+  a.linkcard{display:block;text-decoration:none;transition:border-color .15s}
+  a.linkcard:hover{border-color:var(--accent)}
+  a.linkcard h3{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  a.linkcard h3 .lc-arrow{color:var(--muted);font-weight:400}
+  a.linkcard .lc-host{color:var(--accent2);font-size:13px;margin-top:10px}
   pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:18px;overflow:auto;font-size:14px;color:#cfe8df}
   .muted{color:var(--muted)}
   footer{padding:40px 0 70px;color:var(--muted);font-size:14px}
@@ -190,6 +196,24 @@ python -m ludex create
 
 # or from the browser
 python web/server.py        # then open http://localhost:7860</pre>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 data-i18n="rel_h">Related</h2>
+    <div class="grid">
+      <a class="card linkcard" href="https://jihoonjeong.github.io/comparative-anatomy/" target="_blank" rel="noopener">
+        <h3><span data-i18n="rel_ca_h">Comparative Anatomy of AI Agents</span><span class="lc-arrow">↗</span></h3>
+        <p data-i18n="rel_ca_b">The research that inspired Ludex's organ framing — a comparative anatomy and taxonomy of AI agent systems.</p>
+        <div class="lc-host">jihoonjeong.github.io/comparative-anatomy</div>
+      </a>
+      <a class="card linkcard" href="https://github.com/ludex-lab/ludex" target="_blank" rel="noopener">
+        <h3><span data-i18n="rel_gh_h">Source &amp; docs</span><span class="lc-arrow">↗</span></h3>
+        <p data-i18n="rel_gh_b">Code (MIT), the sample creature, architecture and design notes — everything on GitHub.</p>
+        <div class="lc-host">github.com/ludex-lab/ludex</div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -366,6 +390,11 @@ const I18N = {
     diff_h: "What makes it different",
     org_h: "13 organs",
     org_sub: "Eight organ systems borrowed from biology — plus five senses biology never had. Every organ is optional; mix them when you Forge a creature.",
+    rel_h: "Related",
+    rel_ca_h: "Comparative Anatomy of AI Agents",
+    rel_ca_b: "The research that inspired Ludex's organ framing — a comparative anatomy and taxonomy of AI agent systems.",
+    rel_gh_h: "Source & docs",
+    rel_gh_b: "Code (MIT), the sample creature, architecture and design notes — everything on GitHub.",
     c1_h: "The brain is a guest",
     c1_b: "Cognition (any LLM) is stateless and swappable. The body — memory, emotion, bonds, self-understanding — persists on disk. No organ assumes a particular model.",
     c2_h: "Identity survives swaps",
@@ -419,6 +448,11 @@ const I18N = {
     diff_h: "무엇이 다른가",
     org_h: "13개 기관",
     org_sub: "생물학에서 빌려온 여덟 가지 기관계 — 그리고 생물에겐 없던 다섯 가지 감각. 모든 기관은 선택 사항이며, 크리처를 만들 때(Forge) 조합합니다.",
+    rel_h: "관련",
+    rel_ca_h: "AI 에이전트의 비교해부학",
+    rel_ca_b: "Ludex의 기관 프레이밍에 영감을 준 연구 — AI 에이전트 시스템의 비교해부학과 분류.",
+    rel_gh_h: "소스 & 문서",
+    rel_gh_b: "코드(MIT), 샘플 크리처, 아키텍처·설계 노트 — 전부 GitHub에.",
     c1_h: "뇌는 손님이다",
     c1_b: "인지(아무 LLM)는 무상태이고 교체 가능합니다. 몸 — 기억·감정·유대·자기이해 — 은 디스크에 지속합니다. 어떤 기관도 특정 모델을 가정하지 않습니다.",
     c2_h: "정체성은 교체를 견딘다",
