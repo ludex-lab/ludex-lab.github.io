@@ -46,6 +46,22 @@
   .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
   .card h3{margin:0 0 8px;font-size:17px;color:var(--accent)}
   .card p{margin:0;color:var(--muted);font-size:15px}
+  /* Organ carousel */
+  .ocarousel{position:relative;margin-top:10px}
+  .oviewport{overflow:hidden}
+  .otrack{display:flex;gap:16px;transition:transform .5s ease}
+  .ocard{flex:0 0 calc(50% - 8px);box-sizing:border-box;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  @media(max-width:620px){.ocard{flex:0 0 100%}}
+  .ocard .otop{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .ocard .oicon{font-size:22px;line-height:1}
+  .ocard .osys{font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:2px 9px;white-space:nowrap}
+  .ocard h3{margin:0 0 6px;font-size:17px;color:var(--accent)}
+  .ocard p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.55}
+  .ocard.ainative{border-color:var(--accent)}
+  .ocard.ainative .osys{border-color:var(--accent);color:var(--accent)}
+  .onav{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:14px}
+  .onav button{background:var(--panel);border:1px solid var(--line);color:var(--ink);width:34px;height:34px;border-radius:999px;cursor:pointer;font-size:17px;line-height:1}
+  .onav button:hover{border-color:var(--accent);color:var(--accent)}
   pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:18px;overflow:auto;font-size:14px;color:#cfe8df}
   .muted{color:var(--muted)}
   footer{padding:40px 0 70px;color:var(--muted);font-size:14px}
@@ -145,6 +161,20 @@
       <div class="card"><h3 data-i18n="c2_h">Identity survives swaps</h3><p data-i18n="c2_b">A creature is the continuity of its memory, bonds, and self-model. Upgrade or change the underlying model and the creature carries through — a measurable claim, not a metaphor.</p></div>
       <div class="card"><h3 data-i18n="c3_h">Memory that forgets</h3><p data-i18n="c3_b">Bounded and lossy by design. Creatures consolidate experience into narrative, forget by retrieval-failure, and write windowed retrospectives in their own voice.</p></div>
       <div class="card"><h3 data-i18n="c4_h">Fit, not quality</h3><p data-i18n="c4_b">The question is never "which model is best," but how <em>this</em> brain inhabits <em>this</em> body. Capability is probed at birth and measured by artifact, not self-report.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 data-i18n="org_h">13 organs</h2>
+    <p class="muted" data-i18n="org_sub">Eight organ systems borrowed from biology — plus five senses biology never had. Every organ is optional; mix them when you Forge a creature.</p>
+    <div class="ocarousel">
+      <div class="oviewport"><div class="otrack" id="otrack"></div></div>
+      <div class="onav">
+        <button type="button" onclick="organStep(-1)" aria-label="previous">‹</button>
+        <button type="button" onclick="organStep(1)" aria-label="next">›</button>
+      </div>
     </div>
   </div>
 </section>
@@ -334,6 +364,8 @@ const I18N = {
     idea_h: "The idea",
     idea_body: "Ludex treats an AI agent as a creature: a persistent body of organs, memory, relationships, and a name — running <em>on</em> a language model, but not <em>reducible to</em> it. The model is the brain; the creature is everything that persists around it. Identity is <strong>narrative continuity</strong>, not the weights. Swap the brain and the creature persists.",
     diff_h: "What makes it different",
+    org_h: "13 organs",
+    org_sub: "Eight organ systems borrowed from biology — plus five senses biology never had. Every organ is optional; mix them when you Forge a creature.",
     c1_h: "The brain is a guest",
     c1_b: "Cognition (any LLM) is stateless and swappable. The body — memory, emotion, bonds, self-understanding — persists on disk. No organ assumes a particular model.",
     c2_h: "Identity survives swaps",
@@ -385,6 +417,8 @@ const I18N = {
     idea_h: "핵심 아이디어",
     idea_body: "Ludex는 AI 에이전트를 크리처로 다룹니다. 기관·기억·관계·이름으로 이루어진 지속하는 몸이, 언어 모델 <em>위에서</em> 돌아가지만 그것으로 <em>환원되지는</em> 않습니다. 모델은 뇌이고, 크리처는 그 뇌 주위에서 지속하는 모든 것입니다. 정체성은 가중치가 아니라 <strong>서사적 연속성</strong>입니다. 뇌를 갈아끼워도 크리처는 지속합니다.",
     diff_h: "무엇이 다른가",
+    org_h: "13개 기관",
+    org_sub: "생물학에서 빌려온 여덟 가지 기관계 — 그리고 생물에겐 없던 다섯 가지 감각. 모든 기관은 선택 사항이며, 크리처를 만들 때(Forge) 조합합니다.",
     c1_h: "뇌는 손님이다",
     c1_b: "인지(아무 LLM)는 무상태이고 교체 가능합니다. 몸 — 기억·감정·유대·자기이해 — 은 디스크에 지속합니다. 어떤 기관도 특정 모델을 가정하지 않습니다.",
     c2_h: "정체성은 교체를 견딘다",
@@ -430,6 +464,7 @@ function applyLang(lang){
   document.getElementById("langToggle").textContent = lang === "ko" ? "English" : "한국어";
   try{ localStorage.setItem("ludex_lang", lang); }catch(e){}
   if (typeof incRender === "function") incRender();
+  if (typeof renderOrgans === "function") renderOrgans();
 }
 
 function toggleLang(){
@@ -781,6 +816,55 @@ incLoadDir();
 $("incLang").value = _lang();   // default the creature's language to the page language
 renderRoster();
 incSetCat("cli");
+
+// ---- 13 organs carousel ----
+const ORGANS = [
+  {icon:"🧠", ai:false, en:{name:"Engine", sys:"Nervous", desc:"Runs every turn — session and context. The brain stem each thought passes through."}, ko:{name:"엔진", sys:"신경계", desc:"매 턴을 돌리는 곳 — 세션·맥락. 모든 생각이 지나는 뇌간."}},
+  {icon:"🦴", ai:false, en:{name:"Resilience", sys:"Skeletal", desc:"Holds the creature up under failure — retries and circuit breakers."}, ko:{name:"회복력", sys:"골격계", desc:"실패 속에서도 버티게 하는 뼈대 — 재시도·서킷브레이커."}},
+  {icon:"🐘", ai:false, en:{name:"Memory", sys:"Mnemonic", desc:"Episodic + semantic memory that consolidates and forgets — bounded by design."}, ko:{name:"기억", sys:"기억계", desc:"압축하고 잊는 일화·의미 기억 — 설계상 유한함."}},
+  {icon:"🦔", ai:false, en:{name:"Immune · cellular", sys:"Immune", desc:"System-level threat detection and self-regulating sensitivity."}, ko:{name:"면역 · 세포", sys:"면역계", desc:"시스템 수준 위협 탐지와 자가조절 민감도."}},
+  {icon:"🛡️", ai:false, en:{name:"Immune · humoral", sys:"Immune", desc:"Learns hostile behavior patterns across repeated interactions."}, ko:{name:"면역 · 체액", sys:"면역계", desc:"반복된 상호작용에서 적대 행동 패턴을 학습."}},
+  {icon:"💚", ai:false, en:{name:"Emotion", sys:"Endocrine", desc:"21-emotion affect — valence, arousal, calm, desperation."}, ko:{name:"감정", sys:"내분비계", desc:"21가지 감정 — 정서가·각성·평온·절박."}},
+  {icon:"📊", ai:false, en:{name:"Tracking", sys:"Circulatory", desc:"Telemetry coursing through the body — tokens, latency, errors."}, ko:{name:"추적", sys:"순환계", desc:"몸을 도는 텔레메트리 — 토큰·지연·오류."}},
+  {icon:"🔌", ai:false, en:{name:"Hooks", sys:"Gene transfer", desc:"Plugin and extension points — horizontal transfer of capability."}, ko:{name:"후크", sys:"유전자 전달", desc:"플러그인·확장 지점 — 수평적 능력 전달."}},
+  {icon:"🫀", ai:true, en:{name:"Interoception", sys:"AI-native · Auto", desc:"Senses its own internal state by reading its sibling organs."}, ko:{name:"내부감각", sys:"AI 고유 · Auto", desc:"형제 기관들을 읽어 자기 내부 상태를 느낌."}},
+  {icon:"⏳", ai:true, en:{name:"Time sense", sys:"AI-native · Chronos", desc:"Feels time — its age, and how long since it last woke."}, ko:{name:"시간감각", sys:"AI 고유 · Chronos", desc:"시간을 느낌 — 자기 나이, 마지막 깨어남 이후 흐른 시간."}},
+  {icon:"🧭", ai:true, en:{name:"Place sense", sys:"AI-native · Topos", desc:"Knows where it is — activity, locality, substrate, home."}, ko:{name:"공간감각", sys:"AI 고유 · Topos", desc:"자기 위치를 앎 — 활동·장소·기반·집."}},
+  {icon:"👥", ai:true, en:{name:"Social sense", sys:"AI-native · Allos", desc:"Senses others — who it has formed bonds with."}, ko:{name:"사회감각", sys:"AI 고유 · Allos", desc:"타자를 느낌 — 누구와 유대를 맺었는지."}},
+  {icon:"🌐", ai:true, en:{name:"World model", sys:"AI-native · Physis", desc:"A model of the world it acts in — the dynamics of its fields."}, ko:{name:"세계모델", sys:"AI 고유 · Physis", desc:"행동하는 세계의 모델 — 자기 필드의 동역학."}},
+];
+let _organIdx = 0, _organTimer = null;
+function _organPer(){ return window.matchMedia("(max-width:620px)").matches ? 1 : 2; }
+function _organMax(){ return Math.max(0, ORGANS.length - _organPer()); }
+function _organApply(){
+  const t = $("otrack"); if(!t || !t.firstElementChild) return;
+  if(_organIdx > _organMax()) _organIdx = 0;
+  const step = t.firstElementChild.getBoundingClientRect().width + 16;
+  t.style.transform = "translateX(" + (-_organIdx * step) + "px)";
+}
+function organStep(d){
+  const max = _organMax();
+  _organIdx += d;
+  if(_organIdx < 0) _organIdx = max; else if(_organIdx > max) _organIdx = 0;
+  _organApply(); _organKick();
+}
+function _organKick(){ if(_organTimer) clearInterval(_organTimer); _organTimer = setInterval(()=>organStep(1), 4000); }
+function renderOrgans(){
+  const t = $("otrack"); if(!t) return;
+  const L = _lang();
+  t.innerHTML = ORGANS.map(o=>{
+    const d = o[L] || o.en;
+    return '<div class="ocard'+(o.ai?' ainative':'')+'"><div class="otop"><span class="oicon">'+o.icon+'</span><span class="osys">'+d.sys+'</span></div><h3>'+d.name+'</h3><p>'+d.desc+'</p></div>';
+  }).join("");
+  _organApply();
+}
+renderOrgans();
+_organKick();
+(function(){
+  const car = document.querySelector(".ocarousel");
+  if(car){ car.addEventListener("mouseenter", ()=>{ if(_organTimer) clearInterval(_organTimer); }); car.addEventListener("mouseleave", _organKick); }
+  window.addEventListener("resize", _organApply);
+})();
 </script>
 
 </body>
