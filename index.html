@@ -286,13 +286,16 @@ python web/server.py        # then open http://localhost:7860</pre>
     <h3 data-i18n="launch_title">Open your creatures</h3>
     <p class="muted" data-i18n="launch_sub" style="font-size:14px;margin:0 0 12px">The viewer & chat run in the local app on your machine.</p>
     <div class="istep">
-      <label data-i18n="launch_start">1 · Start the local app (if it isn't running)</label>
+      <label data-i18n="launch_easy_label">Easiest — double-click</label>
       <p class="ihint" id="launchEasy"></p>
+    </div>
+    <div class="istep">
+      <label data-i18n="launch_term">Or, from a terminal</label>
       <div class="iout" id="launchCmd"></div>
       <button class="icopy" type="button" id="launchCopyBtn" onclick="launchCopy()" data-i18n="inc_copy">Copy</button>
     </div>
     <div class="istep">
-      <label data-i18n="launch_open">2 · Then open it</label>
+      <label data-i18n="launch_open">Then open it</label>
       <a class="incubate" id="launchOpenLink" href="http://localhost:7860/#creatures" target="_blank" rel="noopener"
          style="text-decoration:none;display:inline-block" data-i18n="launch_open_btn">Open localhost:7860 →</a>
     </div>
@@ -320,8 +323,9 @@ const I18N = {
     local_note: '💬 Your creatures live in a local app on your machine — use “💬 Meet your creatures” to open or restart it anytime (after you close its terminal, reboot, etc.).',
     launch_title: "Open / restart Ludex",
     launch_sub: "The viewer & chat run in a local app on your machine. Use this whenever it isn't open — e.g. after you closed its terminal or restarted your computer.",
-    launch_start: "1 · Start the local app (if it isn't running)",
-    launch_open: "2 · Then open it",
+    launch_easy_label: "Easiest — double-click",
+    launch_term: "Or, from a terminal",
+    launch_open: "Then open it",
     launch_open_btn: "Open localhost:7860 →",
     launch_stop: "To stop it",
     launch_stop_hint: "Press Ctrl+C in its terminal, or just close that window. It's only running while that terminal is open — reopen anytime with this button.",
@@ -370,8 +374,9 @@ const I18N = {
     local_note: '💬 내 크리처는 내 컴퓨터의 로컬 앱에 살아요 — “💬 내 크리처 만나기”로 언제든 열거나 다시 켤 수 있어요 (터미널을 닫았거나 컴퓨터를 다시 켠 뒤 등).',
     launch_title: "Ludex 열기 / 다시 켜기",
     launch_sub: "뷰어와 채팅은 내 컴퓨터의 로컬 앱에서 돌아갑니다. 앱이 꺼져 있을 때(터미널을 닫았거나 컴퓨터를 다시 켠 뒤 등) 언제든 여기로 다시 여세요.",
-    launch_start: "1 · 로컬 앱 실행 (아직 안 켰다면)",
-    launch_open: "2 · 그다음 열기",
+    launch_easy_label: "가장 쉬운 방법 — 더블클릭",
+    launch_term: "또는, 터미널에서",
+    launch_open: "그다음 열기",
     launch_open_btn: "localhost:7860 열기 →",
     launch_stop: "끄려면",
     launch_stop_hint: "터미널에서 Ctrl+C를 누르거나 그 창을 닫으면 됩니다. 그 터미널이 열려 있는 동안에만 켜져 있어요 — 다시 켤 땐 이 버튼을 누르세요.",
@@ -528,8 +533,8 @@ function _s(k){ const o=STR[k]||{}; return o[_lang()] || o.en || ""; }
 const $ = id => document.getElementById(id);
 
 const LAUNCH_EASY = {
-  en: d => `Or double-click run.command (macOS) / run.bat (Windows) in ${d} — your browser opens automatically.`,
-  ko: d => `또는 ${d} 폴더의 run.command(macOS)/run.bat(Windows)을 더블클릭하면 브라우저가 자동으로 열립니다.`,
+  en: (d, f) => `Double-click ${f} in your ${d} folder — your browser opens automatically.`,
+  ko: (d, f) => `${d} 폴더에서 ${f}을 더블클릭하면 브라우저가 자동으로 열립니다.`,
 };
 const RAW_BASE = "https://raw.githubusercontent.com/ludex-lab/ludex/main/";
 const INSTALL_ALT = {
@@ -553,10 +558,13 @@ function installCopy(){
   }).catch(()=>{});
 }
 function openLaunch(which){
-  let dir="~/ludex"; try{ dir=localStorage.getItem("ludex_install_dir")||"~/ludex"; }catch(e){}
-  const cmd = `cd ${dir} && ${VPY} web/server.py`;
+  let dir; try{ dir=localStorage.getItem("ludex_install_dir"); }catch(e){}
+  if(!dir) dir = IS_WIN ? "%USERPROFILE%\\ludex" : "~/ludex";
+  const file = IS_WIN ? "run.bat" : "run.command";
+  const cmd = IS_WIN ? `cd ${dir} && .venv\\Scripts\\python web\\server.py`
+                     : `cd ${dir} && .venv/bin/python web/server.py`;
   $("launchCmd").textContent=cmd; window._launchCmd=cmd;
-  $("launchEasy").textContent=(LAUNCH_EASY[_lang()]||LAUNCH_EASY.en)(dir);
+  $("launchEasy").textContent=(LAUNCH_EASY[_lang()]||LAUNCH_EASY.en)(dir, file);
   $("launchOpenLink").href="http://localhost:7860/#"+(which==="observe"?"observe":"creatures");
   $("launchModal").classList.add("open");
 }
