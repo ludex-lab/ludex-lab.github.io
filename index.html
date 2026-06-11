@@ -88,36 +88,11 @@
   .modal-card .x{float:right;background:none;border:0;color:var(--muted);font-size:24px;cursor:pointer;line-height:1}
   .istep{margin:18px 0 0}
   .istep>label{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:700}
-  .tabs{display:flex;gap:8px;flex-wrap:wrap}
-  .tabs button{flex:1;min-width:96px;padding:9px 10px;border-radius:9px;border:1px solid var(--line);background:var(--code);color:var(--ink);cursor:pointer;font-size:13px;font-weight:600}
-  .tabs button.active{border-color:var(--accent);color:var(--accent)}
-  .ifield{width:100%;padding:10px 12px;border-radius:9px;border:1px solid var(--line);background:var(--code);color:var(--ink);font-size:14px;margin-top:8px}
   .ihint{color:var(--muted);font-size:12.5px;margin:6px 0 0}
-  .igrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  @media(max-width:520px){.igrid{grid-template-columns:1fr}}
   .iout{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:10px;
     white-space:pre-wrap;word-break:break-all;font-family:"SF Mono",ui-monospace,monospace;font-size:13px;color:#cfe8df}
-  .iprereq{border-left:3px solid var(--accent2);padding:8px 12px;margin-top:12px;color:var(--muted);font-size:13.5px;background:rgba(157,180,255,.06)}
   .icopy{margin-top:10px;padding:9px 16px;border-radius:9px;border:0;background:var(--accent);color:#06231b;font-weight:700;cursor:pointer}
   .icopy:hover{filter:brightness(1.06)}
-  .ibtn2{margin-top:10px;margin-left:8px;padding:9px 14px;border-radius:9px;border:1px solid var(--line);background:transparent;color:var(--ink);font-weight:600;cursor:pointer}
-  .ibtn2:hover{border-color:var(--accent)}
-  .rosterRow{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--code);border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-top:8px;font-size:13px}
-  .rosterRow span{word-break:break-all}
-  .rosterX{background:none;border:0;color:var(--muted);font-size:16px;cursor:pointer;flex:none}
-  .rosterX:hover{color:#ff8a8a}
-  textarea.ifield{resize:vertical;min-height:46px}
-  .hatch{text-align:center;background:radial-gradient(420px 200px at 50% 0,rgba(126,224,194,.12),transparent 70%);
-    border:1px solid var(--line);border-radius:14px;padding:26px 18px;margin-top:14px}
-  .egg{font-size:56px;line-height:1;display:inline-block}
-  .egg.shaking{animation:eggshake .22s ease-in-out infinite}
-  .egg.hatched{animation:eggpop .45s ease-out}
-  @keyframes eggshake{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(9deg)}}
-  @keyframes eggpop{0%{transform:scale(.5)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
-  .hatchMsg{font-size:18px;color:var(--ink);max-width:460px;margin:14px auto 0;line-height:1.55;
-    opacity:0;transition:opacity .5s ease}
-  .hatchMsg.show{opacity:1}
-  .hatchCap{font-size:12px;color:var(--muted);margin-top:8px}
 </style>
 </head>
 <body>
@@ -226,99 +201,6 @@ python web/server.py        # local app → http://localhost:7860</pre>
   </div>
 </footer>
 
-<div class="modal" id="incModal" onclick="if(event.target===this)closeIncubator()">
-  <div class="modal-card">
-    <button class="x" type="button" onclick="closeIncubator()" aria-label="close">×</button>
-    <h3 data-i18n="inc_title">Creature Incubator</h3>
-    <p class="muted" data-i18n="inc_sub" style="font-size:14px;margin:0">Pick a few options — we'll build the exact command.</p>
-
-    <div class="istep">
-      <label data-i18n="inc_brain">1 · Brain</label>
-      <div class="tabs" id="incTabs">
-        <button type="button" data-cat="cli" class="active" data-i18n="tab_cli">CLI login (keyless)</button>
-        <button type="button" data-cat="local" data-i18n="tab_local">Local (Ollama)</button>
-        <button type="button" data-cat="byok" data-i18n="tab_byok">Your API key</button>
-      </div>
-      <select class="ifield" id="incProvider"></select>
-      <div class="igrid">
-        <select class="ifield" id="incModelSel"></select>
-        <input class="ifield" id="incModelCustom" placeholder="or type a model id">
-      </div>
-      <div id="incKeyWrap" style="display:none">
-        <input class="ifield" id="incApiKey" type="password" autocomplete="off" spellcheck="false" placeholder="API key">
-        <p class="ihint"><span id="incKeyNote"></span>
-          &nbsp; <a href="#" id="incKeyShow" onclick="incToggleKey(event)"></a>
-          &nbsp;·&nbsp; <a href="#" id="incKeyClear" onclick="incClearKey(event)"></a></p>
-      </div>
-      <div class="iprereq" id="incPrereq"></div>
-    </div>
-
-    <div class="istep">
-      <label data-i18n="inc_organs">2 · Organs</label>
-      <select class="ifield" id="incPreset">
-        <option value="full">full</option>
-        <option value="minimal">minimal</option>
-        <option value="secure">secure</option>
-        <option value="social">social</option>
-      </select>
-      <p class="ihint" id="incPresetDesc"></p>
-    </div>
-
-    <div class="istep">
-      <label data-i18n="inc_name">3 · Name &amp; location</label>
-      <input class="ifield" id="incName" placeholder="e.g. Nimbus">
-      <p class="ihint" id="incNameHint"></p>
-      <select class="ifield" id="incLang">
-        <option value="ko">한국어 (Korean)</option>
-        <option value="en">English</option>
-      </select>
-      <p class="ihint" id="incLangHint"></p>
-      <input class="ifield" id="incOut" placeholder="default: creatures/<name>">
-      <p class="ihint" id="incOutHint"></p>
-    </div>
-
-    <div class="istep">
-      <label data-i18n="inc_setup">First-time setup (once)</label>
-      <div id="incSetupBody">
-        <div class="iout" id="incSetup"></div>
-        <button class="icopy" type="button" id="incCopySetup" onclick="incCopy('setup')" data-i18n="inc_copy">Copy</button>
-        <button class="ibtn2" type="button" id="incMarkBtn" onclick="incMarkInstalled()"></button>
-        <p class="ihint" id="incMarkHint"></p>
-        <p class="ihint" id="incSetupNote"></p>
-      </div>
-      <p class="ihint" id="incInstalledLine"></p>
-      <div class="iprereq" id="incUpdate" style="display:none">
-        <p style="margin:0 0 8px" id="incUpdateMsg"></p>
-        <div class="iout" id="incUpdateCmd"></div>
-        <button class="icopy" type="button" id="incCopyUpdate" onclick="incCopy('update')" data-i18n="inc_copy">Copy</button>
-      </div>
-    </div>
-
-    <div class="istep">
-      <label data-i18n="inc_create">Create (run once per creature)</label>
-      <input class="ifield" id="incDir" placeholder="~/ludex">
-      <p class="ihint" id="incDirHint"></p>
-      <div class="iout" id="incCreate"></div>
-      <button class="icopy" type="button" id="incCopyCreate" onclick="incCopy('create')" data-i18n="inc_copy">Copy</button>
-      <p class="ihint" id="incCreateNote"></p>
-      <p class="ihint" id="incCreateFail"></p>
-      <textarea class="ifield" id="incFirstWords" rows="2"></textarea>
-      <button class="ibtn2" type="button" id="incBornBtn" onclick="incBorn()"></button>
-    </div>
-
-    <div class="hatch" id="incHatch" style="display:none">
-      <div class="egg" id="incEgg">🥚</div>
-      <p class="hatchMsg" id="incHatchMsg"></p>
-      <p class="hatchCap" id="incHatchCap"></p>
-    </div>
-
-    <div class="istep" id="incRosterStep" style="display:none">
-      <label data-i18n="inc_roster">Your creatures (remembered in this browser)</label>
-      <div id="incRosterList"></div>
-    </div>
-  </div>
-</div>
-
 <div class="modal" id="installModal" onclick="if(event.target===this)closeInstall()">
   <div class="modal-card">
     <button class="x" type="button" onclick="closeInstall()" aria-label="close">×</button>
@@ -406,18 +288,6 @@ const I18N = {
     qs_note: "Requires Python 3.10+. No API key needed for CLI-auth or local (Ollama) brains.",
     qs_app: 'In the app: <b>Forge</b> (assemble a creature) · <b>Chat</b> · <b>Ecosystem</b> (bond graph) · <b>Timeline</b> (watch a creature become itself — life events, SELF.md history, retrospectives) · <b>Field</b> (Council & Forum).',
     foot_lic: 'Code <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE">MIT</a> · sample creature corpus <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE-DATA">CC&nbsp;BY&nbsp;4.0</a>',
-    inc_btn: "🥚 Incubate a creature",
-    inc_title: "Creature Incubator",
-    inc_sub: "Pick a few options — we'll build the exact command. Your creature is born locally, on your own machine, in one line.",
-    inc_brain: "1 · Brain",
-    inc_organs: "2 · Organs",
-    inc_name: "3 · Name, language & location",
-    tab_cli: "CLI login (keyless)",
-    tab_local: "Local (Ollama)",
-    tab_byok: "Your API key",
-    inc_setup: "First-time setup (once)",
-    inc_create: "Create (run once per creature)",
-    inc_roster: "Your creatures (remembered in this browser)",
     inc_copy: "Copy",
   },
   ko: {
@@ -465,18 +335,6 @@ const I18N = {
     qs_note: "Python 3.10+ 필요. CLI 인증·로컬 Ollama는 API 키가 필요 없고, 그 밖의 뇌는 직접 API 키로 연결합니다.",
     qs_app: '앱 안에는: <b>만들기</b>(크리처 조립) · <b>대화</b> · <b>생태계</b>(본드 그래프) · <b>타임라인</b>(크리처가 자기 자신이 되어가는 과정 — 생애 이벤트, SELF.md 역사, 회고) · <b>필드</b>(평의회·포럼)가 있습니다.',
     foot_lic: '코드 <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE">MIT</a> · 샘플 크리처 코퍼스 <a href="https://github.com/ludex-lab/ludex/blob/main/LICENSE-DATA">CC&nbsp;BY&nbsp;4.0</a>',
-    inc_btn: "🥚 크리처 부화시키기",
-    inc_title: "크리처 부화기",
-    inc_sub: "몇 가지만 고르면 실행할 명령을 만들어 드려요. 크리처는 내 컴퓨터에서 한 줄로 태어납니다.",
-    inc_brain: "1 · 뇌",
-    inc_organs: "2 · 기관",
-    inc_name: "3 · 이름·언어·위치",
-    tab_cli: "CLI 로그인 (키 불필요)",
-    tab_local: "로컬 (Ollama)",
-    tab_byok: "내 API 키",
-    inc_setup: "최초 1회 설치",
-    inc_create: "생성 (크리처마다 한 번)",
-    inc_roster: "내가 만든 크리처 (이 브라우저에 기억됨)",
     inc_copy: "복사",
   }
 };
@@ -498,7 +356,6 @@ function applyLang(lang){
   // toggle button shows the OTHER language
   document.getElementById("langToggle").textContent = lang === "ko" ? "English" : "한국어";
   try{ localStorage.setItem("ludex_lang", lang); }catch(e){}
-  if (typeof incRender === "function") incRender();
   if (typeof renderOrgans === "function") renderOrgans();
 }
 
@@ -516,87 +373,10 @@ function toggleLang(){
 </script>
 
 <script>
-// --- Creature Incubator: guided generator (static; builds the local command) ---
-const INC = {
-  groups: {
-    cli:  [["claude_cli","Claude Code"],["codex_cli","Codex CLI"],["gemini_cli","Gemini CLI"],["agy_cli","agy CLI"]],
-    local:[["ollama","Ollama"]],
-    byok: [["anthropic","Anthropic"],["openai","OpenAI"],["gemini_api","Gemini API"]],
-  },
-  models: {
-    claude_cli:["claude-opus-4-8","claude-opus-4-7","claude-opus-4-6","claude-sonnet-4-6","claude-haiku-4-5"],
-    codex_cli:["gpt-5.5"],
-    gemini_cli:["gemini-3.1-pro-preview","gemini-3-pro-preview"],
-    agy_cli:["gemini-3.5-flash"],
-    ollama:["qwen3.5:4b","exaone3.5:7.8b","llama3.1:8b","gemma4:e4b"],
-    anthropic:["claude-opus-4-8","claude-opus-4-7","claude-opus-4-6","claude-sonnet-4-6","claude-haiku-4-5"],
-    openai:["gpt-5.5","gpt-5.4-mini","gpt-5.4-nano"],
-    gemini_api:["gemini-3.5-flash","gemini-3.1-flash-lite"],
-  },
-  envKey:   {anthropic:"ANTHROPIC_API_KEY", openai:"OPENAI_API_KEY", gemini_api:"GEMINI_API_KEY"},
-  toolName: {claude_cli:"Claude Code CLI", codex_cli:"Codex CLI", gemini_cli:"Gemini CLI", agy_cli:"agy CLI"},
-};
-const PRESET_DESC = {
-  en:{full:"every organ", minimal:"required organs only", secure:"required + immune defenses", social:"required + emotion & memory"},
-  ko:{full:"모든 기관", minimal:"필수 기관만", secure:"필수 + 면역 방어", social:"필수 + 감정·기억"},
-};
 const STR = {
-  model_ph:  {en:"or type a model id", ko:"또는 모델 id 직접 입력"},
-  name_ph:   {en:"e.g. Nimbus (letters/digits/_/-, start with a letter)", ko:"예: Nimbus (영문/숫자/_/-, 첫 글자는 영문)"},
-  out_ph:    {en:"default: creatures/<name>", ko:"기본값: creatures/<이름>"},
-  namebad:   {en:"Name must start with a letter; only letters, digits, _ or -.", ko:"이름은 영문으로 시작하고 영문/숫자/_/- 만 쓸 수 있어요."},
-  copied:    {en:"Copied ✓", ko:"복사됨 ✓"},
-  placeholder_name: {en:"<name>", ko:"<이름>"},
-  apikey_ph: {en:"Paste your API key", ko:"API 키를 붙여넣으세요"},
-  key_saved: {en:"Saved only in this browser (localStorage) — never uploaded; written to a local .env on create.", ko:"이 브라우저(localStorage)에만 저장돼요 — 어디에도 업로드되지 않고, 생성 시 로컬 .env에 기록됩니다."},
-  key_empty: {en:"Paste your key above — stored only in this browser.", ko:"위에 키를 붙여넣으세요 — 이 브라우저에만 저장됩니다."},
-  key_show:  {en:"show", ko:"보기"},
-  key_hide:  {en:"hide", ko:"숨기기"},
-  key_clear: {en:"clear", ko:"지우기"},
-  key_ph_cmd:{en:"<paste-your-key>", ko:"<여기에-키-붙여넣기>"},
-  out_hint:  {en:"Optional. Leave blank → the creature lands at ludex/creatures/<name> (inside the ‘ludex’ folder created during setup). Type a path only for a custom location — browsers can't open a real folder picker for a terminal command.",
-              ko:"선택 사항. 비워 두면 ludex/creatures/<이름>에 만들어집니다 (설치 단계에서 생긴 ‘ludex’ 폴더 안). 다른 위치를 원할 때만 경로를 입력하세요. (브라우저는 터미널 명령용 실제 폴더 선택창을 못 엽니다.)"},
-  setup_note:{en:"Open a terminal and paste this once. A terminal starts in your home folder, so this downloads Ludex into a new ‘ludex’ folder there (macOS: ~/ludex, Windows: C:\\Users\\you\\ludex), moves you inside, and makes a private .venv so installs don't touch your system. If you see ‘command not found: python3’ (or python), use the other one. Already have Ludex? Skip this.",
-              ko:"터미널을 열고 한 번만 붙여넣으세요. 터미널은 홈 폴더에서 시작하므로 거기에 ‘ludex’ 폴더를 내려받고(macOS: ~/ludex, Windows: C:\\Users\\사용자\\ludex) 그 안으로 들어간 뒤, 시스템을 건드리지 않도록 전용 .venv 가상환경을 만듭니다. ‘command not found: python3’(또는 python)이 뜨면 다른 쪽을 쓰세요. 이미 Ludex가 있다면 건너뛰세요."},
-  create_note:{en:"Run this in any terminal — it switches into your Ludex folder first, so it works from anywhere. Make another creature anytime by running it again with a new name.",
-              ko:"아무 터미널에서나 실행하세요 — 먼저 Ludex 폴더로 이동하므로 어디서든 됩니다. 새 크리처는 이름만 바꿔 다시 실행하면 돼요."},
-  dir_hint:  {en:"Your Ludex folder (from setup) — remembered in this browser; edit it if you cloned somewhere else.",
-              ko:"Ludex 폴더(설치에서 생긴 곳) — 이 브라우저에 기억됩니다. 다른 곳에 클론했다면 수정하세요."},
-  lang_hint: {en:"The language your creature speaks (defaults to this page's language).",
-              ko:"크리처가 대화할 언어 (이 페이지 언어를 기본값으로)."},
-  born_btn:  {en:"✓ I created it — hatch! 🥚", ko:"✓ 생성 완료 — 부화시키기! 🥚"},
-  fw_ph:     {en:"(optional) paste your creature's first reply to keep its real first words",
-              ko:"(선택) 크리처의 첫 응답을 붙여넣으면 진짜 첫 마디로 박제돼요"},
-  words_gen: {en:"a welcome — paste the real first reply above to keep its actual words",
-              ko:"환영 인사예요 — 위에 실제 첫 응답을 붙여넣으면 진짜 말로 박제됩니다"},
-  words_real:{en:"its actual first words", ko:"크리처의 실제 첫 마디"},
-  mark_btn:  {en:"✓ I ran the setup", ko:"✓ 위 설치 명령을 실행했어요"},
-  mark_hint: {en:"Run the setup block above first — then click this. We'll remember it and collapse this step next time.",
-              ko:"먼저 위 설치 블록을 실행하세요 — 그런 다음 이 버튼을 누르면 됩니다. 기억해두고 다음부터는 이 단계를 접어둡니다."},
-  setup_stale:{en:"⚠ Setup changed since you marked it installed (it now creates a .venv). Run the setup block below again — it's safe, it only adds what's missing.",
-              ko:"⚠ 설치 완료 표시 이후 설치 절차가 바뀌었어요 (이제 .venv를 만듭니다). 아래 설치 블록을 다시 실행하세요 — 안전합니다, 빠진 것만 채웁니다."},
-  create_fail:{en:"Not working (e.g. '.venv/bin/python: no such file')? You're missing the .venv — run the setup block above.",
-              ko:"안 되나요(예: '.venv/bin/python 없음')? .venv가 없는 거예요 — 위 설치 블록을 실행하세요."},
-  installed_ok:{en:"Installed ✓", ko:"설치됨 ✓"},
-  uptodate:  {en:"up to date", ko:"최신 상태"},
-  show_setup:{en:"show setup", ko:"설치 단계 보기"},
-  hide_setup:{en:"hide setup", ko:"설치 단계 숨기기"},
-  forget:    {en:"forget", ko:"잊기"},
-  update_msg:{en:"Update available — a newer version was published", ko:"업데이트 있음 — 더 새 버전이 배포됐어요"},
+  copied: {en:"Copied ✓", ko:"복사됨 ✓"},
 };
-const LANG_SYS = { ko: "기본적으로 한국어로 대화하세요.", en: "" };  // en = model default
-const GREETING = {  // generated birth welcome, in the creature's language (not real LLM output)
-  ko: n => `안녕. 나는 ${n}. 방금 깨어났어 — 아직 아무것도 모르지만, 여기서부터 살아갈게.`,
-  en: n => `Hello. I'm ${n}. I just woke up — I don't know much yet, but I'll live here.`,
-};
-// OS-aware venv commands: sidesteps python-vs-python3 AND PEP-668 global-pip blocks.
 const IS_WIN = /win/i.test((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "");
-const SETUP_VERSION = 2;  // bump when the setup block changes (v2 = added .venv) → re-prompts stale installs
-const PY   = IS_WIN ? "python" : "python3";          // creates the venv
-const VPY  = IS_WIN ? ".venv/Scripts/python" : ".venv/bin/python";
-const VPIP = IS_WIN ? ".venv/Scripts/pip" : ".venv/bin/pip";
-let incCat = "cli";
-let incLatest = null, incFetched = false, incShowSetup = false;
 function _lang(){ return document.documentElement.lang === "ko" ? "ko" : "en"; }
 function _t(k){ try{ return (I18N[_lang()]||I18N.en)[k] || k; }catch(e){ return k; } }
 function _s(k){ const o=STR[k]||{}; return o[_lang()] || o.en || ""; }
@@ -644,214 +424,6 @@ function launchCopy(){
     const b=$("launchCopyBtn"); b.textContent=_s("copied"); setTimeout(()=>b.textContent=_t("inc_copy"),1500);
   }).catch(()=>{});
 }
-function openIncubator(){ $("incModal").classList.add("open"); incRender(); if(!incFetched){ incFetched=true; incFetchLatest(); } }
-function closeIncubator(){ $("incModal").classList.remove("open"); }
-
-function incSetCat(cat){
-  incCat = cat;
-  document.querySelectorAll("#incTabs button").forEach(b=>b.classList.toggle("active", b.dataset.cat===cat));
-  $("incKeyWrap").style.display = (cat==="byok") ? "" : "none";
-  $("incProvider").innerHTML = INC.groups[cat].map(([id,label])=>`<option value="${id}">${label} (${id})</option>`).join("");
-  incOnProvider();
-}
-function incOnProvider(){
-  const prov = $("incProvider").value;
-  $("incModelSel").innerHTML = (INC.models[prov]||[]).map(m=>`<option value="${m}">${m}</option>`).join("");
-  if(incCat==="byok") incLoadKey();
-  incRender();
-}
-function incModel(){ return $("incModelCustom").value.trim() || $("incModelSel").value || ""; }
-
-// BYOK key — stored ONLY in this browser (localStorage), per provider. Never uploaded.
-function incKeyName(){ return "ludex_key_" + $("incProvider").value; }
-function incLoadKey(){ try{ $("incApiKey").value = localStorage.getItem(incKeyName()) || ""; }catch(e){} }
-function incSaveKey(){ try{ const v=$("incApiKey").value.trim();
-  if(v) localStorage.setItem(incKeyName(), v); else localStorage.removeItem(incKeyName()); }catch(e){} }
-function incToggleKey(e){ e.preventDefault(); const f=$("incApiKey"); f.type = f.type==="password"?"text":"password"; incRender(); }
-function incClearKey(e){ e.preventDefault(); try{ localStorage.removeItem(incKeyName()); }catch(_){}
-  $("incApiKey").value=""; incRender(); }
-
-// Install folder — remembered in this browser so the create command can cd into it.
-function incLoadDir(){ let d="~/ludex"; try{ d=localStorage.getItem("ludex_install_dir")||"~/ludex"; }catch(e){} $("incDir").value=d; }
-function incSaveDir(){ try{ localStorage.setItem("ludex_install_dir", $("incDir").value.trim()||"~/ludex"); }catch(e){} }
-
-// --- install state (soft: user-confirmed) + update check via GitHub API ---
-function incFetchLatest(){
-  fetch("https://api.github.com/repos/ludex-lab/ludex/commits/main",{headers:{Accept:"application/vnd.github+json"}})
-    .then(r=>r.ok?r.json():null)
-    .then(d=>{ if(d&&d.sha){ incLatest={sha:d.sha, date:(((d.commit||{}).committer||{}).date||"").slice(0,10)}; incRender(); } })
-    .catch(()=>{});
-}
-function incInstalledSha(){ try{ return localStorage.getItem("ludex_installed_sha"); }catch(e){ return null; } }
-function incMarkInstalled(){ try{ localStorage.setItem("ludex_installed_sha",(incLatest&&incLatest.sha)||"unknown"); localStorage.setItem("ludex_installed_setup",String(SETUP_VERSION)); }catch(e){} incShowSetup=false; incRender(); }
-function incInstalledSetupVer(){ try{ return parseInt(localStorage.getItem("ludex_installed_setup")||"0",10); }catch(e){ return 0; } }
-function incForget(e){ if(e)e.preventDefault(); try{ localStorage.removeItem("ludex_installed_sha"); }catch(_){} incShowSetup=false; incRender(); }
-function incToggleSetup(e){ if(e)e.preventDefault(); incShowSetup=!incShowSetup; incRender(); }
-
-// --- remembered creatures (seed for a future viewer) ---
-function incCreatures(){ try{ return JSON.parse(localStorage.getItem("ludex_creatures")||"[]"); }catch(e){ return []; } }
-function incSaveCreatures(a){ try{ localStorage.setItem("ludex_creatures",JSON.stringify(a)); }catch(e){} }
-function incRemoveCreature(i){ const a=incCreatures(); a.splice(i,1); incSaveCreatures(a); renderRoster(); }
-function incRememberCreature(firstWords){
-  const name=$("incName").value.trim();
-  if(!name || !/^[A-Za-z][A-Za-z0-9_-]*$/.test(name)) return false;
-  const dir=$("incDir").value.trim()||"~/ludex";
-  const out=$("incOut").value.trim();
-  const path = out || (dir.replace(/\/+$/,"")+"/creatures/"+name);
-  const prev = incCreatures().find(c=>c.name===name && c.path===path);
-  const entry={name, path, provider:$("incProvider").value, model:incModel()||"", preset:$("incPreset").value, lang:$("incLang").value};
-  const fw = (firstWords||"").trim() || (prev && prev.firstWords) || "";
-  if(fw) entry.firstWords = fw;
-  const a=incCreatures().filter(c=>!(c.name===name && c.path===path));
-  a.push(entry); incSaveCreatures(a); renderRoster();
-  return true;
-}
-
-// "✓ created it — hatch!" — remember the creature and play the birth reveal.
-function incBorn(){
-  const name=$("incName").value.trim();
-  if(!name || !/^[A-Za-z][A-Za-z0-9_-]*$/.test(name)){ $("incName").focus(); incRender(); return; }
-  const fw = $("incFirstWords").value.trim();
-  incRememberCreature(fw);
-  const clang = $("incLang").value;                       // creature's language
-  const greeting = fw || (GREETING[clang]||GREETING.en)(name);
-  const cap = fw ? _s("words_real") : _s("words_gen");
-  const hatch=$("incHatch"), egg=$("incEgg"), msg=$("incHatchMsg");
-  hatch.style.display="";
-  egg.textContent="🥚"; egg.className="egg shaking";
-  msg.classList.remove("show"); msg.textContent=""; $("incHatchCap").textContent="";
-  setTimeout(()=>{
-    egg.textContent="🐣"; egg.className="egg hatched";
-    msg.textContent=greeting; msg.classList.add("show");
-    $("incHatchCap").textContent="— "+cap;
-  }, 1100);
-  hatch.scrollIntoView({behavior:"smooth", block:"nearest"});
-}
-function renderRoster(){
-  const a=incCreatures(), step=$("incRosterStep"), list=$("incRosterList");
-  if(!a.length){ step.style.display="none"; list.innerHTML=""; return; }
-  step.style.display=""; list.innerHTML="";
-  a.forEach((c,i)=>{
-    const row=document.createElement("div"); row.className="rosterRow";
-    const meta=document.createElement("span");
-    meta.textContent=`${c.name} · ${c.provider}/${c.model||"?"} · ${c.path}`;
-    if(c.firstWords){
-      const fw=document.createElement("em"); fw.style.display="block"; fw.style.color="var(--accent)"; fw.style.marginTop="3px";
-      fw.textContent=`"${c.firstWords}"`; meta.appendChild(fw);
-    }
-    const x=document.createElement("button"); x.type="button"; x.className="rosterX"; x.textContent="✕";
-    x.title="remove"; x.onclick=()=>incRemoveCreature(i);
-    row.appendChild(meta); row.appendChild(x); list.appendChild(row);
-  });
-}
-
-function incRender(){
-  if(!$("incProvider")) return;
-  const lang=_lang();
-  $("incModelCustom").placeholder=_s("model_ph");
-  $("incName").placeholder=_s("name_ph");
-  $("incOut").placeholder=_s("out_ph");
-  $("incOutHint").textContent=_s("out_hint");
-  $("incApiKey").placeholder=_s("apikey_ph");
-  $("incKeyShow").textContent = $("incApiKey").type==="password" ? _s("key_show") : _s("key_hide");
-  $("incKeyClear").textContent = _s("key_clear");
-  $("incKeyNote").textContent = $("incApiKey").value.trim() ? _s("key_saved") : _s("key_empty");
-
-  const preset=$("incPreset").value;
-  $("incPresetDesc").textContent=(PRESET_DESC[lang]||PRESET_DESC.en)[preset]||"";
-
-  const prov=$("incProvider").value, model=incModel();
-  let pre;
-  if(incCat==="cli"){
-    const tool=INC.toolName[prov]||prov;
-    pre = lang==="ko" ? `${tool}가 설치·로그인돼 있어야 합니다 (API 키 불필요).`
-                      : `Make sure the ${tool} is installed and logged in (no API key needed).`;
-  } else if(incCat==="local"){
-    pre = lang==="ko" ? `Ollama가 실행 중이고(localhost:11434) 모델을 받아두세요 — ollama pull ${model||"<model>"}`
-                      : `Make sure Ollama is running (localhost:11434) and pull the model — ollama pull ${model||"<model>"}`;
-  } else {
-    pre = "";  // BYOK: key captured above, written into the command's local .env
-  }
-  $("incPrereq").textContent=pre;
-
-  const name=$("incName").value.trim();
-  const ok = name==="" || /^[A-Za-z][A-Za-z0-9_-]*$/.test(name);
-  $("incNameHint").textContent = (name!=="" && !ok) ? _s("namebad") : "";
-
-  const out=$("incOut").value.trim();
-  const nm = (name && ok) ? name : _s("placeholder_name");
-  // setup (once): clone + venv + install + (byok: key into local .env)
-  let setup = `git clone https://github.com/ludex-lab/ludex\ncd ludex\n${PY} -m venv .venv\n${VPIP} install -r requirements.txt`;
-  if(incCat==="byok"){
-    const k=INC.envKey[prov]||"API_KEY";
-    const val=$("incApiKey").value.trim() || _s("key_ph_cmd");
-    setup += `\necho '${k}=${val}' >> .env`;
-  }
-  $("incSetup").textContent=setup;
-  $("incSetupNote").textContent=_s("setup_note");
-
-  // create (once per creature) — cd into the remembered Ludex folder first, so it runs from any terminal
-  const dir=$("incDir").value.trim() || "~/ludex";
-  $("incDir").placeholder="~/ludex";
-  $("incDirHint").textContent=_s("dir_hint");
-  $("incLangHint").textContent=_s("lang_hint");
-  $("incBornBtn").textContent=_s("born_btn");
-  $("incFirstWords").placeholder=_s("fw_ph");
-  let create = `cd ${dir} && ${VPY} -m ludex create --name ${nm} --provider ${prov} --model ${model||"<model>"} --preset ${preset}`;
-  const langSys = LANG_SYS[$("incLang").value] || "";
-  if(langSys) create += ` --system "${langSys}"`;
-  if(out) create += ` --out ${out}`;
-  $("incCreate").textContent=create;
-  $("incCreateNote").textContent=_s("create_note");
-  $("incCreateFail").textContent=_s("create_fail");
-  window._incSetup=setup; window._incCreate=create;
-
-  // install state (user-confirmed) + update banner
-  $("incMarkBtn").textContent=_s("mark_btn");
-  $("incMarkHint").textContent=_s("mark_hint");
-  const sha=incInstalledSha(), installed=!!sha;
-  const stale = installed && incInstalledSetupVer() < SETUP_VERSION;  // setup procedure changed since they installed
-  $("incSetupBody").style.display=(!installed||incShowSetup||stale)?"":"none";
-  if(installed && stale){
-    $("incInstalledLine").innerHTML =
-      _s("setup_stale") + ` · <a href="#" onclick="incForget(event)">${_s("forget")}</a>`;
-  } else if(installed){
-    const utd = incLatest && sha!=="unknown" && sha===incLatest.sha;
-    $("incInstalledLine").innerHTML =
-      _s("installed_ok") + (utd?(" · "+_s("uptodate")):"")
-      + ` · <a href="#" onclick="incToggleSetup(event)">${incShowSetup?_s("hide_setup"):_s("show_setup")}</a>`
-      + ` · <a href="#" onclick="incForget(event)">${_s("forget")}</a>`;
-  } else { $("incInstalledLine").textContent=""; }
-  const showUpd = installed && incLatest && sha && sha!=="unknown" && sha!==incLatest.sha;
-  $("incUpdate").style.display = showUpd ? "" : "none";
-  if(showUpd){
-    $("incUpdateMsg").textContent = _s("update_msg") + (incLatest.date?(" ("+incLatest.date+")"):"") + ".";
-    const upcmd = `cd ${dir} && git pull && ${VPIP} install -r requirements.txt`;
-    $("incUpdateCmd").textContent = upcmd; window._incUpdate = upcmd;
-  }
-}
-function incCopy(which){
-  const map={setup:["_incSetup","incCopySetup"], create:["_incCreate","incCopyCreate"], update:["_incUpdate","incCopyUpdate"]};
-  const m=map[which]||map.create;
-  const btn=$(m[1]);
-  navigator.clipboard.writeText(window[m[0]]||"").then(()=>{
-    btn.textContent=_s("copied"); setTimeout(()=>btn.textContent=_t("inc_copy"),1500);
-    if(which==="create") incRememberCreature();  // remember name + location for a future viewer
-  }).catch(()=>{});
-}
-$("incTabs").addEventListener("click",e=>{ if(e.target.dataset.cat) incSetCat(e.target.dataset.cat); });
-$("incProvider").addEventListener("change",incOnProvider);
-["incModelSel","incModelCustom","incPreset","incName","incOut"].forEach(id=>{
-  $(id).addEventListener("input",incRender); $(id).addEventListener("change",incRender);
-});
-$("incApiKey").addEventListener("input",()=>{ incSaveKey(); incRender(); });
-$("incDir").addEventListener("input",()=>{ incSaveDir(); incRender(); });
-$("incLang").addEventListener("change", incRender);
-incLoadDir();
-$("incLang").value = _lang();   // default the creature's language to the page language
-renderRoster();
-incSetCat("cli");
-
 // ---- 13 organs carousel ----
 const ORGANS = [
   {icon:"🧠", ai:false, en:{name:"Engine", sys:"Nervous", desc:"Runs every turn — session and context. The brain stem each thought passes through."}, ko:{name:"엔진", sys:"신경계", desc:"매 턴을 돌리는 곳 — 세션·맥락. 모든 생각이 지나는 뇌간."}},
