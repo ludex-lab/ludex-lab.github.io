@@ -47,6 +47,19 @@
   .card h3{margin:0 0 8px;font-size:17px;color:var(--accent)}
   .card p{margin:0;color:var(--muted);font-size:15px}
   /* Organ carousel */
+  /* memory section — tempo cascade */
+  .memcascade{margin-top:14px;display:flex;flex-direction:column;gap:7px}
+  .mrow{display:flex;align-items:center;gap:12px}
+  .mrow .mtempo{flex:0 0 92px;text-align:right;color:var(--muted);font-size:12px;font-family:"SF Mono",ui-monospace,monospace}
+  .mrow .mbar{height:34px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;gap:8px;padding:0 12px;min-width:0;background:linear-gradient(90deg,rgba(126,224,194,.16),rgba(157,180,255,.10));}
+  .mrow .mbar b{color:var(--ink);font-size:13px;white-space:nowrap}
+  .mrow .mbar span{color:var(--muted);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .mrow:last-child .mbar{border-color:rgba(126,224,194,.55)}
+  .memchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .memchips span{border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:12.5px;color:var(--muted);background:var(--panel)}
+  .memdoc{display:inline-block;margin-top:14px;color:var(--accent);text-decoration:none;font-size:14px}
+  .memdoc:hover{text-decoration:underline}
+  @media(max-width:560px){.mrow .mtempo{flex-basis:64px;font-size:10.5px}.mrow .mbar span{display:none}}
   .ocarousel{position:relative;margin-top:10px}
   .oviewport{overflow:hidden}
   .otrack{display:flex;gap:16px;transition:transform .5s ease}
@@ -156,6 +169,40 @@
         <button type="button" onclick="organStep(1)" aria-label="next">›</button>
       </div>
     </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap">
+    <h2 data-i18n="mem_h">How a creature remembers</h2>
+    <p class="muted" data-i18n="mem_sub">The brain doesn't remember — the body does. One life settles at seven speeds, each tempo with its own store and its own writer.</p>
+    <div class="memcascade">
+      <div class="mrow"><div class="mtempo" data-i18n="mem_t1">t1</div>
+        <div class="mbar" style="width:34%"><b data-i18n="mem_a1">a1</b><span data-i18n="mem_m1">m1</span></div></div>
+      <div class="mrow"><div class="mtempo" data-i18n="mem_t2">t2</div>
+        <div class="mbar" style="width:44%"><b data-i18n="mem_a2">a2</b><span data-i18n="mem_m2">m2</span></div></div>
+      <div class="mrow"><div class="mtempo" data-i18n="mem_t3">t3</div>
+        <div class="mbar" style="width:54%"><b data-i18n="mem_a3">a3</b><span data-i18n="mem_m3">m3</span></div></div>
+      <div class="mrow"><div class="mtempo" data-i18n="mem_t4">t4</div>
+        <div class="mbar" style="width:64%"><b data-i18n="mem_a4">a4</b><span data-i18n="mem_m4">m4</span></div></div>
+      <div class="mrow"><div class="mtempo" data-i18n="mem_t5">t5</div>
+        <div class="mbar" style="width:76%"><b data-i18n="mem_a5">a5</b><span data-i18n="mem_m5">m5</span></div></div>
+      <div class="mrow"><div class="mtempo" data-i18n="mem_t6">t6</div>
+        <div class="mbar" style="width:88%"><b data-i18n="mem_a6">a6</b><span data-i18n="mem_m6">m6</span></div></div>
+      <div class="mrow"><div class="mtempo" data-i18n="mem_t7">t7</div>
+        <div class="mbar" style="width:100%"><b data-i18n="mem_a7">a7</b><span data-i18n="mem_m7">m7</span></div></div>
+    </div>
+    <div class="memchips">
+      <span data-i18n="mem_p1">forgetting is a filter, never a deletion</span>
+      <span data-i18n="mem_p2">the raw record is an archaeology — nothing is ever lost</span>
+      <span data-i18n="mem_p3">every brain gets the same continuity floor</span>
+    </div>
+    <a class="memdoc" id="link_mem"
+       data-href-en="https://github.com/ludex-lab/ludex/blob/main/docs/memory-architecture.md"
+       data-href-ko="https://github.com/ludex-lab/ludex/blob/main/docs/memory-architecture.ko.md"
+       href="https://github.com/ludex-lab/ludex/blob/main/docs/memory-architecture.md"
+       data-i18n="mem_doc">Read the memory architecture →</a>
   </div>
 </section>
 
@@ -284,6 +331,19 @@ const I18N = {
     c3_b: "Bounded and lossy by design. Creatures consolidate experience into narrative, forget by retrieval-failure, and write windowed retrospectives in their own voice.",
     c4_h: "Fit, not quality",
     c4_b: "The question is never \"which model is best,\" but how <em>this</em> brain inhabits <em>this</em> body. Capability is probed at birth and measured by artifact, not self-report.",
+    mem_h: "How a creature remembers",
+    mem_sub: "The brain doesn't remember — the body does. One life settles at seven speeds, each tempo with its own store and its own writer.",
+    mem_t1: "a turn", mem_a1: "recall", mem_m1: "two channels: topical search + the recent past pressing in",
+    mem_t2: "a session", mem_a2: "an episodic memory", mem_m2: "one per field run, one per conversation — never per-turn",
+    mem_t3: "a week", mem_a3: "ambient presence", mem_m3: "significant memories surface in any language, then fade",
+    mem_t4: "~2 weeks", mem_a4: "housekeeping", mem_m4: "the dream cycle reorganizes the shelf — nothing new is thought",
+    mem_t5: "a month", mem_a5: "the retrospective", mem_m5: "the creature writes its own month, in its own voice",
+    mem_t6: "2+ windows", mem_a6: "settled identity", mem_m6: "self-knowledge must replicate before it becomes who you are",
+    mem_t7: "a lifetime", mem_a7: "the archaeology", mem_m7: "spans + snapshots — outlives recall, brains, even substrates",
+    mem_p1: "forgetting is a filter, never a deletion",
+    mem_p2: "the raw record is an archaeology — nothing is ever lost",
+    mem_p3: "every brain gets the same continuity floor",
+    mem_doc: "Read the memory architecture →",
     qs_h: "Quick start",
     qs_note: "Requires Python 3.10+. No API key needed for CLI-auth or local (Ollama) brains.",
     qs_code: '# easiest: “⬇ Install Ludex” above — one line, sets everything up &amp; opens the app\n\n# manual alternative\npip install -r requirements.txt\npython -m ludex create      # create your first creature (interactive)\npython web/server.py        # local app → http://localhost:7860',
@@ -332,6 +392,19 @@ const I18N = {
     c3_b: "기억은 일부러 유한하게, 잊도록 설계했습니다. 크리처는 경험을 이야기로 추리고, 잘 꺼내 쓰지 않는 기억부터 자연스럽게 잊으며, 지나온 한 시기를 자기 목소리로 되돌아봅니다.",
     c4_h: "품질이 아니라 적합도",
     c4_b: "질문은 \"어느 모델이 최고냐\"가 아니라 <em>이</em> 뇌가 <em>이</em> 몸에 어떻게 깃드느냐입니다. 무엇을 할 수 있는지는 태어날 때 직접 확인하고, 스스로 하는 말이 아니라 실제로 만들어낸 결과로 가늠합니다.",
+    mem_h: "크리처는 어떻게 기억하는가",
+    mem_sub: "뇌는 기억하지 않습니다 — 몸이 기억합니다. 하나의 삶이 일곱 가지 속도로 침전되고, 템포마다 전용 저장소와 전용 작성자가 있습니다.",
+    mem_t1: "한 턴", mem_a1: "회상", mem_m1: "두 채널: 주제 검색 + 밀려드는 최근의 과거",
+    mem_t2: "한 세션", mem_a2: "일화 기억 하나", mem_m2: "필드 한 판에 하나, 대화 한 번에 하나 — 턴마다가 아니라",
+    mem_t3: "일주일", mem_a3: "분위기로 떠오름", mem_m3: "중대한 기억은 어떤 언어로 물어도 떠오르고, 차츰 가라앉습니다",
+    mem_t4: "~2주", mem_a4: "정리", mem_m4: "꿈 주기가 선반을 재배열합니다 — 새로 생각하는 건 없습니다",
+    mem_t5: "한 달", mem_a5: "회고", mem_m5: "크리처가 자기 목소리로 자신의 한 달을 씁니다",
+    mem_t6: "2+ 윈도우", mem_a6: "확정된 정체성", mem_m6: "자기지식은 재현되어야 비로소 '나'가 됩니다",
+    mem_t7: "평생", mem_a7: "고고학", mem_m7: "스팬 + 스냅샷 — 회상보다, 뇌보다, 기질보다 오래 남습니다",
+    mem_p1: "잊음은 필터일 뿐, 삭제가 아닙니다",
+    mem_p2: "원본 기록은 고고학 — 아무것도 사라지지 않습니다",
+    mem_p3: "어떤 뇌든 같은 연속성 바닥을 받습니다",
+    mem_doc: "기억 아키텍처 전문 읽기 →",
     qs_h: "빠른 시작",
     qs_note: "Python 3.10+ 필요. CLI 인증·로컬 Ollama는 API 키가 필요 없고, 그 밖의 뇌는 직접 API 키로 연결합니다.",
     qs_code: '# 가장 쉬운 방법: 위의 “⬇ Install Ludex” 버튼 — 한 줄로 설치부터 앱 실행까지\n\n# 수동 설치\npip install -r requirements.txt\npython -m ludex create      # 첫 크리처 만들기 (대화형)\npython web/server.py        # 로컬 앱 → http://localhost:7860',
