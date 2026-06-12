@@ -60,6 +60,15 @@
   .memdoc{display:inline-block;margin-top:14px;color:var(--accent);text-decoration:none;font-size:14px}
   .memdoc:hover{text-decoration:underline}
   @media(max-width:560px){.mrow .mtempo{flex-basis:64px;font-size:10.5px}.mrow .mbar span{display:none}}
+  /* ToM section — the prediction loop */
+  .tomloop{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .tstep{flex:1 1 150px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:140px}
+  .tstep b{display:block;color:var(--accent);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  .tstep span{color:var(--muted);font-size:13.5px;line-height:1.5}
+  .tarrow{align-self:center;color:var(--muted);font-size:18px;flex:0 0 auto}
+  .tarrow.tback{color:var(--accent)}
+  @media(max-width:620px){.tomloop{flex-direction:column}.tarrow{align-self:flex-start;padding-left:18px;transform:rotate(90deg)}}
+  .tomeco{margin-top:18px;color:var(--muted);font-size:15px;line-height:1.65;border-left:3px solid var(--accent);padding-left:16px}
   .ocarousel{position:relative;margin-top:10px}
   .oviewport{overflow:hidden}
   .otrack{display:flex;gap:16px;transition:transform .5s ease}
@@ -194,6 +203,7 @@
         <div class="mbar" style="width:100%"><b data-i18n="mem_a7">a7</b><span data-i18n="mem_m7">m7</span></div></div>
     </div>
     <div class="memchips">
+      <span data-i18n="mem_p0">biological, not a database — bounded, lossy, consolidated in sleep</span>
       <span data-i18n="mem_p1">forgetting is a filter, never a deletion</span>
       <span data-i18n="mem_p2">the raw record is an archaeology — nothing is ever lost</span>
       <span data-i18n="mem_p3">every brain gets the same continuity floor</span>
@@ -204,6 +214,29 @@
        data-href-ko="https://github.com/ludex-lab/ludex/blob/main/docs/memory-architecture.ko.md"
        href="https://github.com/ludex-lab/ludex/blob/main/docs/memory-architecture.md"
        data-i18n="mem_doc">Read the memory architecture →</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 data-i18n="tom_h">How creatures know each other</h2>
+    <p class="muted" data-i18n="tom_sub">Theory of mind, made literal. Another mind can never be observed — only modeled. So every bond carries a working model of the other's mind, and the model is graded the only way a model can be: by what it predicts.</p>
+    <div class="tomloop">
+      <div class="tstep"><b data-i18n="tom_s1h">predict</b><span data-i18n="tom_s1b">before a shared moment: “Comet will stand alone on this one”</span></div>
+      <div class="tarrow">→</div>
+      <div class="tstep"><b data-i18n="tom_s2h">observe</b><span data-i18n="tom_s2b">what actually happens</span></div>
+      <div class="tarrow">→</div>
+      <div class="tstep"><b data-i18n="tom_s3h">score</b><span data-i18n="tom_s3b">was the prediction right?</span></div>
+      <div class="tarrow">→</div>
+      <div class="tstep"><b data-i18n="tom_s4h">update</b><span data-i18n="tom_s4b">the mental model revises — and the next prediction is sharper</span></div>
+      <div class="tarrow tback">↻</div>
+    </div>
+    <p class="tomeco" data-i18n="tom_eco">Knowledge of others is <b>earned, not asserted</b> — the only memory with built-in falsification, so a creature knows its friends more rigorously than it knows itself. And this is where memory becomes ecology: one creature's memory is a biography; creatures that model and test each other are a society. The ecosystem graph is, literally, memories of each other.</p>
+    <a class="memdoc" id="link_tom"
+       data-href-en="https://github.com/ludex-lab/ludex/blob/main/docs/memory-architecture.md#memory-of-other-minds-theory-of-mind-in-the-bond"
+       data-href-ko="https://github.com/ludex-lab/ludex/blob/main/docs/memory-architecture.ko.md"
+       href="https://github.com/ludex-lab/ludex/blob/main/docs/memory-architecture.md#memory-of-other-minds-theory-of-mind-in-the-bond"
+       data-i18n="tom_doc">Read more: memory of other minds →</a>
   </div>
 </section>
 
@@ -341,11 +374,20 @@ const I18N = {
     mem_t5: "a month", mem_a5: "the retrospective", mem_m5: "the creature writes its own month, in its own voice",
     mem_t6: "2+ windows", mem_a6: "settled identity", mem_m6: "self-knowledge must replicate before it becomes who you are",
     mem_t7: "a lifetime", mem_a7: "the archaeology", mem_m7: "spans + snapshots — outlives recall, brains, even substrates",
+    mem_p0: "biological, not a database — bounded, lossy, consolidated in sleep",
     mem_p1: "forgetting is a filter, never a deletion",
     mem_p2: "the raw record is an archaeology — nothing is ever lost",
     mem_p3: "every brain gets the same continuity floor",
     mem_p4: "memory of others is verified by prediction — earned, not asserted",
     mem_doc: "Read the memory architecture →",
+    tom_h: "How creatures know each other",
+    tom_sub: "Theory of mind, made literal. Another mind can never be observed — only modeled. So every bond carries a working model of the other's mind, and the model is graded the only way a model can be: by what it predicts.",
+    tom_s1h: "predict", tom_s1b: "before a shared moment: “Comet will stand alone on this one”",
+    tom_s2h: "observe", tom_s2b: "what actually happens",
+    tom_s3h: "score", tom_s3b: "was the prediction right?",
+    tom_s4h: "update", tom_s4b: "the mental model revises — and the next prediction is sharper",
+    tom_eco: "Knowledge of others is <b>earned, not asserted</b> — the only memory with built-in falsification, so a creature knows its friends more rigorously than it knows itself. And this is where memory becomes ecology: one creature's memory is a biography; creatures that model and test each other are a society. The ecosystem graph is, literally, memories of each other.",
+    tom_doc: "Read more: memory of other minds →",
     qs_h: "Quick start",
     qs_note: "Requires Python 3.10+. No API key needed for CLI-auth or local (Ollama) brains.",
     qs_code: '# easiest: “⬇ Install Ludex” above — one line, sets everything up &amp; opens the app\n\n# manual alternative\npip install -r requirements.txt\npython -m ludex create      # create your first creature (interactive)\npython web/server.py        # local app → http://localhost:7860',
@@ -355,10 +397,10 @@ const I18N = {
   },
   ko: {
     title: "Ludex — 기관 블록으로 만드는 살아있는 AI 크리처",
-    desc: "Ludex는 AI 동물행동학 연구 플랫폼입니다. 생물학적 기관 블록으로 살아있는 AI 크리처를 조립하고, 세션과 기반(substrate)을 가로질러 정체성·목소리·유대가 어떻게 진화하는지 관찰합니다.",
+    desc: "Ludex는 AI 동물행동학 연구 플랫폼입니다. 생물학적 기관 블록으로 살아있는 AI 크리처를 조립하고, 세션이 바뀌고 기질(substrate)이 바뀌어도 정체성·목소리·유대가 어떻게 이어지고 자라는지 관찰합니다.",
     badge: "AI 동물행동학 · 오픈소스",
-    tag: "생물학적 기관 블록으로 살아있는 AI 크리처를 조립하고 — 그들이 사회를 이루는 것을 지켜보세요.",
-    sub: "에이전트를 <em>작성</em>하는 것이 아니라 <em>크리처</em>를 조립합니다. 뇌(아무 LLM이나)를 고르고, 기관(기억·감정·면역·여러 감각 등)을 붙이고, 서식지를 준 뒤, 세션과 기반(substrate — 크리처가 그 위에서 돌아가는 모델·접근경로의 토대)을 가로질러 정체성·목소리·유대가 어떻게 진화하는지 관찰합니다.",
+    tag: "생물학적 기관 블록으로 살아있는 AI 크리처를 조립하세요 — 그리고 그들이 사회를 이루어가는 모습을 지켜보세요.",
+    sub: "에이전트를 <em>작성</em>하는 것이 아니라 <em>크리처</em>를 조립합니다. 뇌(어떤 LLM이든)를 고르고, 기관(기억·감정·면역·여러 감각 등)을 붙이고, 서식지를 마련해 준 다음 — 세션이 바뀌고 기질(substrate — 크리처가 올라타 있는 모델과 접근경로)이 바뀌어도 정체성·목소리·유대가 어떻게 이어지고 자라는지 관찰합니다.",
     cta_gh: "GitHub에서 보기 →",
     install_btn: "⬇ Ludex 설치",
     install_title: "Ludex 설치",
@@ -389,7 +431,7 @@ const I18N = {
     c1_h: "뇌는 손님이다",
     c1_b: "인지(아무 LLM)는 무상태이고 교체 가능합니다. 몸 — 기억·감정·유대·자기이해 — 은 디스크에 지속합니다. 어떤 기관도 특정 모델을 가정하지 않습니다.",
     c2_h: "정체성은 교체를 견딘다",
-    c2_b: "크리처는 그 기억·유대·자기모델의 연속성입니다. 밑의 모델을 업그레이드하거나 바꿔도 크리처는 이어집니다 — 은유가 아니라 측정 가능한 주장입니다.",
+    c2_b: "크리처는 그 기억·유대·자기모델의 연속성입니다. 바탕 모델을 올리거나 갈아끼워도 크리처는 이어집니다 — 은유가 아니라 측정으로 따져볼 수 있는 주장입니다.",
     c3_h: "잊는 기억",
     c3_b: "기억은 일부러 유한하게, 잊도록 설계했습니다. 크리처는 경험을 이야기로 추리고, 잘 꺼내 쓰지 않는 기억부터 자연스럽게 잊으며, 지나온 한 시기를 자기 목소리로 되돌아봅니다.",
     c4_h: "품질이 아니라 적합도",
@@ -398,16 +440,25 @@ const I18N = {
     mem_sub: "뇌는 기억하지 않습니다 — 몸이 기억합니다. 하나의 삶이 일곱 가지 속도로 침전되고, 템포마다 전용 저장소와 전용 작성자가 있습니다.",
     mem_t1: "한 턴", mem_a1: "회상", mem_m1: "두 채널: 주제 검색 + 밀려드는 최근의 과거",
     mem_t2: "한 세션", mem_a2: "일화 기억 하나", mem_m2: "필드 한 판에 하나, 대화 한 번에 하나 — 턴마다가 아니라",
-    mem_t3: "일주일", mem_a3: "분위기로 떠오름", mem_m3: "중대한 기억은 어떤 언어로 물어도 떠오르고, 차츰 가라앉습니다",
-    mem_t4: "~2주", mem_a4: "정리", mem_m4: "꿈 주기가 선반을 재배열합니다 — 새로 생각하는 건 없습니다",
+    mem_t3: "일주일", mem_a3: "저절로 떠오름", mem_m3: "중대한 기억은 어떤 언어로 물어도 떠오르고, 차츰 가라앉습니다",
+    mem_t4: "~2주", mem_a4: "정리", mem_m4: "꿈 주기가 선반을 정돈합니다 — 새로 생각하는 건 없습니다",
     mem_t5: "한 달", mem_a5: "회고", mem_m5: "크리처가 자기 목소리로 자신의 한 달을 씁니다",
-    mem_t6: "2+ 윈도우", mem_a6: "확정된 정체성", mem_m6: "자기지식은 재현되어야 비로소 '나'가 됩니다",
+    mem_t6: "회고 2번", mem_a6: "확정된 정체성", mem_m6: "자기지식은 재현되어야 비로소 '나'가 됩니다",
     mem_t7: "평생", mem_a7: "고고학", mem_m7: "스팬 + 스냅샷 — 회상보다, 뇌보다, 기질보다 오래 남습니다",
-    mem_p1: "잊음은 필터일 뿐, 삭제가 아닙니다",
+    mem_p0: "데이터베이스가 아니라 생물학적 기억 — 유한하고, 잊고, 잠들며 정리됩니다",
+    mem_p1: "망각은 필터일 뿐, 삭제가 아닙니다",
     mem_p2: "원본 기록은 고고학 — 아무것도 사라지지 않습니다",
-    mem_p3: "어떤 뇌든 같은 연속성 바닥을 받습니다",
+    mem_p3: "어떤 뇌든 같은 연속성의 바닥을 보장받습니다",
     mem_p4: "타자에 대한 기억은 예측으로 검증됩니다 — 주장이 아니라 획득",
     mem_doc: "기억 아키텍처 전문 읽기 →",
+    tom_h: "크리처는 서로를 어떻게 아는가",
+    tom_sub: "마음이론을 문자 그대로 구현했습니다. 타인의 마음은 들여다볼 수 없습니다 — 모형을 세울 수 있을 뿐이죠. 그래서 모든 본드에는 상대의 마음에 대한 작동 모형이 살고, 그 모형은 모형이 평가받을 수 있는 유일한 방식, 곧 예측으로 채점됩니다.",
+    tom_s1h: "예측", tom_s1b: "함께하기 전 — “Comet은 이번엔 혼자 반대편에 설 거야”",
+    tom_s2h: "관찰", tom_s2b: "실제로 일어난 일",
+    tom_s3h: "채점", tom_s3b: "예측이 맞았는가?",
+    tom_s4h: "갱신", tom_s4b: "마음 모형이 수정되고 — 다음 예측은 더 날카로워집니다",
+    tom_eco: "타자에 대한 지식은 <b>주장이 아니라 획득</b>입니다. 다섯 기억 체계 가운데 유일하게 반증 장치를 갖춘 기억이라, 크리처는 자기 자신보다 친구를 더 엄밀하게 압니다. 그리고 바로 여기서 기억은 생태계가 됩니다. 크리처 하나의 기억이 한 편의 전기라면, 서로를 모형화하고 검증하는 크리처들은 하나의 사회입니다. 생태계 그래프는 말 그대로, 서로에 대한 기억입니다.",
+    tom_doc: "이어 읽기: 타자의 마음에 대한 기억 →",
     qs_h: "빠른 시작",
     qs_note: "Python 3.10+ 필요. CLI 인증·로컬 Ollama는 API 키가 필요 없고, 그 밖의 뇌는 직접 API 키로 연결합니다.",
     qs_code: '# 가장 쉬운 방법: 위의 “⬇ Install Ludex” 버튼 — 한 줄로 설치부터 앱 실행까지\n\n# 수동 설치\npip install -r requirements.txt\npython -m ludex create      # 첫 크리처 만들기 (대화형)\npython web/server.py        # 로컬 앱 → http://localhost:7860',
