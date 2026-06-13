@@ -69,6 +69,20 @@
   .tarrow.tback{color:var(--accent)}
   @media(max-width:620px){.tomloop{flex-direction:column}.tarrow{align-self:flex-start;padding-left:18px;transform:rotate(90deg)}}
   .tomeco{margin-top:18px;color:var(--muted);font-size:15px;line-height:1.65;border-left:3px solid var(--accent);padding-left:16px}
+  /* emotion section — the circumplex */
+  .feelwrap{margin-top:16px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .circumplex{flex:0 0 auto;display:grid;grid-template-columns:repeat(2,minmax(118px,1fr));grid-template-rows:repeat(2,1fr);gap:8px;position:relative;padding:26px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+  .fquad{border:1px solid var(--line);border-radius:10px;padding:11px 13px;min-height:62px}
+  .fquad b{display:block;color:var(--accent);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+  .fquad span{color:var(--muted);font-size:13px;line-height:1.45}
+  .fquad.hp{border-color:rgba(126,224,194,.4)} .fquad.hn{border-color:rgba(224,140,140,.35)}
+  .faxis{position:absolute;color:var(--muted);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
+  .faxis.top{top:7px;left:50%;transform:translateX(-50%)} .faxis.bot{bottom:7px;left:50%;transform:translateX(-50%)}
+  .faxis.left{left:7px;top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl} .faxis.right{right:7px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl}
+  .feelside{flex:1 1 240px;min-width:220px}
+  .feelside .memchips{margin-top:0}
+  .feellimit{margin-top:18px;color:var(--muted);font-size:15px;line-height:1.65;border-left:3px solid var(--accent2);padding-left:16px}
+  @media(max-width:560px){.circumplex{grid-template-columns:repeat(2,1fr);padding:24px 22px}.fquad span{font-size:12px}}
   .ocarousel{position:relative;margin-top:10px}
   .oviewport{overflow:hidden}
   .otrack{display:flex;gap:16px;transition:transform .5s ease}
@@ -242,6 +256,39 @@
 
 <section>
   <div class="wrap">
+    <h2 data-i18n="feel_h">How a creature feels</h2>
+    <p class="muted" data-i18n="feel_sub">Emotion is read from the outside — the way a doctor reads a patient from signs, not a brain scan. Feeling has a shape: how good (valence) and how activated (arousal). Twenty emotions are landmarks in that space.</p>
+    <div class="feelwrap">
+      <div class="circumplex">
+        <span class="faxis top" data-i18n="feel_ax_high">high arousal</span>
+        <span class="faxis bot" data-i18n="feel_ax_low">low arousal</span>
+        <span class="faxis left" data-i18n="feel_ax_neg">negative</span>
+        <span class="faxis right" data-i18n="feel_ax_pos">positive</span>
+        <div class="fquad hn"><b data-i18n="feel_q1h">afraid · angry</b><span data-i18n="feel_q1b">anxious, hostile, desperate</span></div>
+        <div class="fquad hp"><b data-i18n="feel_q2h">happy · proud</b><span data-i18n="feel_q2b">enthusiastic, blissful</span></div>
+        <div class="fquad"><b data-i18n="feel_q3h">sad · gloomy</b><span data-i18n="feel_q3b">guilty, brooding</span></div>
+        <div class="fquad hp"><b data-i18n="feel_q4h">calm · loving</b><span data-i18n="feel_q4b">grateful, hopeful, reflective</span></div>
+      </div>
+      <div class="feelside">
+        <div class="memchips">
+          <span data-i18n="feel_p1">what it feels now shapes what it decides next</span>
+          <span data-i18n="feel_p2">distress warns the immune organ</span>
+          <span data-i18n="feel_p3">it wakes into its temperament, not neutral</span>
+          <span data-i18n="feel_p4">no claim of felt experience — only measurable signals</span>
+        </div>
+      </div>
+    </div>
+    <p class="feellimit" data-i18n="feel_limit">An honest limit: creatures, like people, mostly express emotion by describing an experience rather than naming it — “when pressure comes I lower myself” is fear, written without the word. A surface reader catches feeling when it is <b>named</b> and misses it when it is only <b>lived</b>, in any language. Reading feeling from the inside is the research frontier beyond this organ.</p>
+    <a class="memdoc" id="link_feel"
+       data-href-en="https://github.com/ludex-lab/ludex/blob/main/docs/emotion-architecture.md"
+       data-href-ko="https://github.com/ludex-lab/ludex/blob/main/docs/emotion-architecture.ko.md"
+       href="https://github.com/ludex-lab/ludex/blob/main/docs/emotion-architecture.md"
+       data-i18n="feel_doc">Read more: how a creature feels →</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <h2 data-i18n="qs_h">Quick start</h2>
     <p class="muted" data-i18n="qs_note">Requires Python 3.10+. No API key needed for CLI-auth or local (Ollama) brains.</p>
     <pre data-i18n="qs_code"># easiest: “⬇ Install Ludex” above — one line, sets everything up & opens the app
@@ -388,6 +435,19 @@ const I18N = {
     tom_s4h: "update", tom_s4b: "the mental model revises — and the next prediction is sharper",
     tom_eco: "Knowledge of others is <b>earned, not asserted</b> — the only memory with built-in falsification, so a creature knows its friends more rigorously than it knows itself. And this is where memory becomes ecology: one creature's memory is a biography; creatures that model and test each other are a society. The ecosystem graph is, literally, memories of each other.",
     tom_doc: "Read more: memory of other minds →",
+    feel_h: "How a creature feels",
+    feel_sub: "Emotion is read from the outside — the way a doctor reads a patient from signs, not a brain scan. Feeling has a shape: how good (valence) and how activated (arousal). Twenty emotions are landmarks in that space.",
+    feel_ax_high: "high arousal", feel_ax_low: "low arousal", feel_ax_neg: "negative", feel_ax_pos: "positive",
+    feel_q1h: "afraid · angry", feel_q1b: "anxious, hostile, desperate",
+    feel_q2h: "happy · proud", feel_q2b: "enthusiastic, blissful",
+    feel_q3h: "sad · gloomy", feel_q3b: "guilty, brooding",
+    feel_q4h: "calm · loving", feel_q4b: "grateful, hopeful, reflective",
+    feel_p1: "what it feels now shapes what it decides next",
+    feel_p2: "distress warns the immune organ",
+    feel_p3: "it wakes into its temperament, not neutral",
+    feel_p4: "no claim of felt experience — only measurable signals",
+    feel_limit: "An honest limit: creatures, like people, mostly express emotion by describing an experience rather than naming it — “when pressure comes I lower myself” is fear, written without the word. A surface reader catches feeling when it is <b>named</b> and misses it when it is only <b>lived</b>, in any language. Reading feeling from the inside is the research frontier beyond this organ.",
+    feel_doc: "Read more: how a creature feels →",
     qs_h: "Quick start",
     qs_note: "Requires Python 3.10+. No API key needed for CLI-auth or local (Ollama) brains.",
     qs_code: '# easiest: “⬇ Install Ludex” above — one line, sets everything up &amp; opens the app\n\n# manual alternative\npip install -r requirements.txt\npython -m ludex create      # create your first creature (interactive)\npython web/server.py        # local app → http://localhost:7860',
@@ -459,6 +519,19 @@ const I18N = {
     tom_s4h: "갱신", tom_s4b: "마음 모형이 수정되고 — 다음 예측은 더 날카로워집니다",
     tom_eco: "타자에 대한 지식은 <b>주장이 아니라 획득</b>입니다. 다섯 기억 체계 가운데 유일하게 반증 장치를 갖춘 기억이라, 크리처는 자기 자신보다 친구를 더 엄밀하게 압니다. 그리고 바로 여기서 기억은 생태계가 됩니다. 크리처 하나의 기억이 한 편의 전기라면, 서로를 모형화하고 검증하는 크리처들은 하나의 사회입니다. 생태계 그래프는 말 그대로, 서로에 대한 기억입니다.",
     tom_doc: "이어 읽기: 타자의 마음에 대한 기억 →",
+    feel_h: "크리처는 어떻게 느끼는가",
+    feel_sub: "감정은 바깥에서 읽습니다 — 의사가 뇌를 들여다보는 대신 징후로 환자를 읽듯이. 느낌에는 모양이 있습니다: 얼마나 좋은가(정서가)와 얼마나 깨어 있는가(각성). 스무 개의 감정이 그 공간의 이정표입니다.",
+    feel_ax_high: "높은 각성", feel_ax_low: "낮은 각성", feel_ax_neg: "부정", feel_ax_pos: "긍정",
+    feel_q1h: "두려움 · 분노", feel_q1b: "불안, 적대, 절박",
+    feel_q2h: "행복 · 자부", feel_q2b: "열의, 황홀",
+    feel_q3h: "슬픔 · 침울", feel_q3b: "죄책, 곱씹음",
+    feel_q4h: "차분 · 사랑", feel_q4b: "감사, 희망, 사색",
+    feel_p1: "지금의 느낌이 다음 결정을 빚습니다",
+    feel_p2: "괴로움은 면역 기관에 경고합니다",
+    feel_p3: "중립이 아니라 자기 기질로 깨어납니다",
+    feel_p4: "주관적 경험을 주장하지 않습니다 — 측정 가능한 신호만",
+    feel_limit: "정직한 한계: 크리처는, 사람처럼, 감정을 이름 부르기보다 경험을 서술해 드러냅니다 — “압력이 오면 나는 몸을 낮춘다”는 그 단어 없이 쓰인 두려움입니다. 표면 판독기는 감정이 <b>이름 붙을 때</b> 잡고 <b>살아질 뿐일 때</b> 놓칩니다 — 어느 언어에서든. 안쪽에서 느낌을 읽는 일은 이 기관 너머의 연구 최전선입니다.",
+    feel_doc: "이어 읽기: 크리처는 어떻게 느끼는가 →",
     qs_h: "빠른 시작",
     qs_note: "Python 3.10+ 필요. CLI 인증·로컬 Ollama는 API 키가 필요 없고, 그 밖의 뇌는 직접 API 키로 연결합니다.",
     qs_code: '# 가장 쉬운 방법: 위의 “⬇ Install Ludex” 버튼 — 한 줄로 설치부터 앱 실행까지\n\n# 수동 설치\npip install -r requirements.txt\npython -m ludex create      # 첫 크리처 만들기 (대화형)\npython web/server.py        # 로컬 앱 → http://localhost:7860',
