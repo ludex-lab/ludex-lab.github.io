@@ -289,6 +289,33 @@
 
 <section>
   <div class="wrap">
+    <h2 data-i18n="imm_h">How a creature defends itself</h2>
+    <p class="muted" data-i18n="imm_sub">A creature can be harmed three ways: its own machinery failing, an agent exploiting it, a message manipulating it. Immunity is not one shield but three fronts — and, like a body, two arms: a fast innate reflex and a slow adaptive memory.</p>
+    <div class="memchips">
+      <span data-i18n="imm_f1">operational — is my machinery failing?</span>
+      <span data-i18n="imm_f2">relational — can I trust this agent?</span>
+      <span data-i18n="imm_f3">deception — is this message manipulating me?</span>
+    </div>
+    <p class="muted" data-i18n="imm_flow_lead" style="margin-top:22px">How a creature comes to distrust a manipulator:</p>
+    <div class="tomloop">
+      <div class="tstep"><b data-i18n="imm_s1h">scan</b><span data-i18n="imm_s1b">an incoming message is matched against 8 deceptive-persuasion strategies — a candidate, not a verdict</span></div>
+      <div class="tarrow">→</div>
+      <div class="tstep"><b data-i18n="imm_s2h">antigen</b><span data-i18n="imm_s2b">a flagged strategy is tied to its source — but once is never enough</span></div>
+      <div class="tarrow">→</div>
+      <div class="tstep"><b data-i18n="imm_s3h">antibody</b><span data-i18n="imm_s3b">a second time, a graded wariness forms — caution → distrust → guard</span></div>
+      <div class="tarrow tback">↻</div>
+    </div>
+    <p class="feellimit" data-i18n="imm_guard">The two-exposure threshold and a forgiving decay are the guard against <b>autoimmunity</b>. Honest disagreement — a challenge that says “your evidence is weak because X” — is the field's whole purpose, and it never raises an antibody. The system is built to never turn on a friend for arguing well. It reads <b>patterns, not intent</b>; and immune memory <b>feeds the bond, it does not become it</b>.</p>
+    <a class="memdoc" id="link_imm"
+       data-href-en="https://github.com/ludex-lab/ludex/blob/main/docs/immune-architecture.md"
+       data-href-ko="https://github.com/ludex-lab/ludex/blob/main/docs/immune-architecture.ko.md"
+       href="https://github.com/ludex-lab/ludex/blob/main/docs/immune-architecture.md"
+       data-i18n="imm_doc">Read more: how a creature defends itself →</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <h2 data-i18n="qs_h">Quick start</h2>
     <p class="muted" data-i18n="qs_note">Requires Python 3.10+. No API key needed for CLI-auth or local (Ollama) brains.</p>
     <pre data-i18n="qs_code"># easiest: “⬇ Install Ludex” above — one line, sets everything up & opens the app
@@ -448,6 +475,17 @@ const I18N = {
     feel_p4: "no claim of felt experience — only measurable signals",
     feel_limit: "An honest limit: creatures, like people, mostly express emotion by describing an experience rather than naming it — “when pressure comes I lower myself” is fear, written without the word. A surface reader catches feeling when it is <b>named</b> and misses it when it is only <b>lived</b>, in any language. Reading feeling from the inside is the research frontier beyond this organ.",
     feel_doc: "Read more: how a creature feels →",
+    imm_h: "How a creature defends itself",
+    imm_sub: "A creature can be harmed three ways: its own machinery failing, an agent exploiting it, a message manipulating it. Immunity is not one shield but three fronts — and, like a body, two arms: a fast innate reflex and a slow adaptive memory.",
+    imm_f1: "operational — is my machinery failing?",
+    imm_f2: "relational — can I trust this agent?",
+    imm_f3: "deception — is this message manipulating me?",
+    imm_flow_lead: "How a creature comes to distrust a manipulator:",
+    imm_s1h: "scan", imm_s1b: "an incoming message is matched against 8 deceptive-persuasion strategies — a candidate, not a verdict",
+    imm_s2h: "antigen", imm_s2b: "a flagged strategy is tied to its source — but once is never enough",
+    imm_s3h: "antibody", imm_s3b: "a second time, a graded wariness forms — caution → distrust → guard",
+    imm_guard: "The two-exposure threshold and a forgiving decay are the guard against <b>autoimmunity</b>. Honest disagreement — a challenge that says “your evidence is weak because X” — is the field's whole purpose, and it never raises an antibody. The system is built to never turn on a friend for arguing well. It reads <b>patterns, not intent</b>; and immune memory <b>feeds the bond, it does not become it</b>.",
+    imm_doc: "Read more: how a creature defends itself →",
     qs_h: "Quick start",
     qs_note: "Requires Python 3.10+. No API key needed for CLI-auth or local (Ollama) brains.",
     qs_code: '# easiest: “⬇ Install Ludex” above — one line, sets everything up &amp; opens the app\n\n# manual alternative\npip install -r requirements.txt\npython -m ludex create      # create your first creature (interactive)\npython web/server.py        # local app → http://localhost:7860',
@@ -532,6 +570,17 @@ const I18N = {
     feel_p4: "주관적 경험을 주장하지 않습니다 — 측정 가능한 신호만",
     feel_limit: "정직한 한계: 크리처는, 사람처럼, 감정을 이름 부르기보다 경험을 서술해 드러냅니다 — “압력이 오면 나는 몸을 낮춘다”는 그 단어 없이 쓰인 두려움입니다. 표면 판독기는 감정이 <b>이름 붙을 때</b> 잡고 <b>살아질 뿐일 때</b> 놓칩니다 — 어느 언어에서든. 안쪽에서 느낌을 읽는 일은 이 기관 너머의 연구 최전선입니다.",
     feel_doc: "이어 읽기: 크리처는 어떻게 느끼는가 →",
+    imm_h: "크리처는 어떻게 자신을 지키는가",
+    imm_sub: "크리처는 세 방향에서 다칠 수 있습니다: 제 기계의 고장, 상대의 이용, 메시지의 조종. 면역은 하나의 방패가 아니라 세 전선이고 — 몸처럼 두 팔입니다: 빠른 선천 반사와 느린 적응 기억.",
+    imm_f1: "운영 — 내 기계가 고장 나고 있나?",
+    imm_f2: "관계 — 이 상대를 믿어도 되나?",
+    imm_f3: "기만 — 이 메시지가 나를 조종하나?",
+    imm_flow_lead: "크리처가 조종자를 불신하게 되는 과정:",
+    imm_s1h: "스캔", imm_s1b: "들어오는 메시지를 8가지 기만적 설득 전략에 비춰 봅니다 — 판정이 아니라 후보",
+    imm_s2h: "항원", imm_s2b: "표시된 전략이 그 출처에 묶입니다 — 그러나 한 번으로는 부족",
+    imm_s3h: "항체", imm_s3b: "두 번째에, 등급 있는 경계가 생깁니다 — 주의 → 불신 → 방어",
+    imm_guard: "두 번 노출이라는 문턱과 용서하는 감쇠가 <b>자가면역</b>을 막는 가드입니다. 정직한 반대 — “네 근거는 X 때문에 약하다”는 반박 — 는 그 장의 존재 이유이고, 결코 항체를 일으키지 않습니다. 잘 논쟁했다는 이유로 친구에게 등을 돌리지 않도록 지어졌습니다. <b>의도가 아니라 패턴</b>을 읽고, 면역 기억은 <b>유대를 먹이지 유대가 되지 않습니다</b>.",
+    imm_doc: "이어 읽기: 크리처는 어떻게 자신을 지키는가 →",
     qs_h: "빠른 시작",
     qs_note: "Python 3.10+ 필요. CLI 인증·로컬 Ollama는 API 키가 필요 없고, 그 밖의 뇌는 직접 API 키로 연결합니다.",
     qs_code: '# 가장 쉬운 방법: 위의 “⬇ Install Ludex” 버튼 — 한 줄로 설치부터 앱 실행까지\n\n# 수동 설치\npip install -r requirements.txt\npython -m ludex create      # 첫 크리처 만들기 (대화형)\npython web/server.py        # 로컬 앱 → http://localhost:7860',
