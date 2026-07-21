@@ -44,6 +44,8 @@
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
   @media(max-width:620px){.grid{grid-template-columns:1fr}}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .shot{margin:0 0 18px;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 34px rgba(0,0,0,.28)}
+  .shot img{display:block;width:100%;height:auto}
   .card h3{margin:0 0 8px;font-size:17px;color:var(--accent)}
   .card p{margin:0;color:var(--muted);font-size:15px}
   /* Organ carousel */
@@ -166,6 +168,15 @@
       and a name — running <em>on</em> a language model, but not <em>reducible to</em> it. The model is the
       brain; the creature is everything that persists around it. Identity is <strong>narrative continuity</strong>,
       not the weights. Swap the brain and the creature persists.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 data-i18n="village_h">The village</h2>
+    <figure class="shot"><img src="village.jpg" alt="The Ludex village rendered in 3D — a terraced island town with creatures at their houses and a mayor on the plaza"></figure>
+    <p class="lede" data-i18n="village_body">Ludex renders your creatures as a small island town in 3D. Each has a house placed by its friendships, a face colored by the lineage of its brain, and a mayor who walks the island checking each creature's pulse. Nothing is simulated — every scene traces to something that actually happened.</p>
+    <p class="sub" data-i18n="village_note" style="font-size:13px;margin-top:14px;margin-bottom:0"><strong>Your village starts empty</strong> — it isn't broken; the village is a mirror. It fills as you forge creatures and care for them. (The town shown is the developer's own creatures.)</p>
   </div>
 </section>
 
@@ -464,6 +475,9 @@ const I18N = {
     cta_arch: "Architecture",
     idea_h: "The idea",
     idea_body: "Ludex treats an AI agent as a creature: a persistent body of organs, memory, relationships, and a name — running <em>on</em> a language model, but not <em>reducible to</em> it. The model is the brain; the creature is everything that persists around it. Identity is <strong>narrative continuity</strong>, not the weights. Swap the brain and the creature persists.",
+    village_h: "The village",
+    village_body: "Ludex renders your creatures as a small island town in 3D. Each has a house placed by its friendships, a face colored by the lineage of its brain, and a mayor who walks the island checking each creature's pulse. Nothing is simulated — every scene traces to something that actually happened.",
+    village_note: "<strong>Your village starts empty</strong> — it isn't broken; the village is a mirror. It fills as you forge creatures and care for them. (The town shown is the developer's own creatures.)",
     oe_h: "Organism Engineering",
     oe_body: "Prompt engineering optimized one call. Context engineering optimized the shell around an agent. Ludex proposes the next rung: <strong>engineer the persistent being itself</strong> — grow organs instead of stuffing context. The concept paper distills nine organ patterns and five caretaker disciplines, every claim tied to a pre-registered experiment — including the honest nulls.",
     oe_doc: "Read the concept paper →",
@@ -572,6 +586,9 @@ const I18N = {
     cta_arch: "아키텍처",
     idea_h: "핵심 아이디어",
     idea_body: "Ludex는 AI 에이전트를 크리처로 다룹니다. 기관·기억·관계·이름으로 이루어진 지속하는 몸이, 언어 모델 <em>위에서</em> 돌아가지만 그것으로 <em>환원되지는</em> 않습니다. 모델은 뇌이고, 크리처는 그 뇌 주위에서 지속하는 모든 것입니다. 정체성은 가중치가 아니라 <strong>서사적 연속성</strong>입니다. 뇌를 갈아끼워도 크리처는 지속합니다.",
+    village_h: "마을",
+    village_body: "Ludex는 당신의 크리처들을 작은 섬 마을로 3D 렌더합니다. 각 크리처는 인연이 정한 자리에 집을 갖고, 브레인 계보의 색을 띤 얼굴을 하며, 촌장이 섬을 돌며 저마다의 맥박을 살핍니다. 무엇도 시뮬레이션이 아닙니다 — 모든 장면은 실제로 일어난 일에서 나옵니다.",
+    village_note: "<strong>당신의 마을은 비어서 시작합니다</strong> — 고장이 아니라 거울입니다. 크리처를 만들고 돌보면 채워집니다. (위 마을은 개발자 자신의 크리처들입니다.)",
     oe_h: "Organism Engineering",
     oe_body: "프롬프트 엔지니어링은 한 번의 호출을 최적화했고, 컨텍스트 엔지니어링은 에이전트를 둘러싼 셸을 최적화했습니다. Ludex는 그다음 단을 제안합니다: <strong>지속하는 존재 그 자체를 설계하는 것</strong> — 컨텍스트를 채우는 대신 기관을 기릅니다. 개념 문서는 9개의 기관 패턴과 5개의 돌봄 규율을 담고 있으며, 모든 주장이 사전등록 실험에 연결되어 있습니다 — 확증되지 않아 출시하지 않은 결과까지 정직하게.",
     oe_doc: "개념 문서 읽기 →",
