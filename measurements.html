@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="title">Measurement records — Ludex</title>
+<meta name="description" data-i18n="desc" content="Pre-registered measurements of Ludex creature organs: the specification, its amendments, the corrections, the data as run, and the verdict.">
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --ink:#e6edf3; --muted:#9aa7b4;
+    --accent:#7ee0c2; --accent2:#9db4ff; --line:#243040;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo",sans-serif;}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+  code{font-family:"SF Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em}
+  .langbar{position:fixed;top:14px;right:16px;z-index:10}
+  .langbar button{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+    border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer}
+  .langbar button:hover{border-color:var(--accent2)}
+  header{padding:80px 0 44px;border-bottom:1px solid var(--line);
+    background:radial-gradient(1200px 400px at 50% -120px,rgba(126,224,194,.10),transparent 70%);}
+  .badge{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin-bottom:20px}
+  h1{font-size:clamp(32px,6vw,52px);margin:0 0 14px;letter-spacing:-.02em;line-height:1.06}
+  .tag{font-size:clamp(17px,2.6vw,21px);max-width:640px;margin:0 0 10px;font-weight:600}
+  .sub{color:var(--muted);max-width:660px;margin:0 0 8px}
+  section{padding:44px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:24px;margin:0 0 14px;letter-spacing:-.01em}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:14px 0}
+  .card h3{margin:0 0 6px;font-size:18px}
+  .meta{color:var(--muted);font-size:13.5px;margin:0 0 12px}
+  ul{margin:10px 0 0;padding-left:20px} li{margin:5px 0}
+  .caveat{border-left:3px solid var(--accent);padding-left:16px;color:var(--muted)}
+  footer{padding:34px 0 60px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+
+<div class="langbar"><button type="button" onclick="toggleLang()" id="langbtn">한국어</button></div>
+
+<header>
+  <div class="wrap">
+    <span class="badge" data-i18n="badge">Measurement records</span>
+    <h1 data-i18n="h1">What we measured, and what we got wrong first</h1>
+    <p class="tag" data-i18n="tag">Every organ we ship by default has to earn it — in public, against a specification frozen before the run.</p>
+    <p class="sub" data-i18n="sub">Each record below contains the pre-registration and its amendments, the corrections we had to make, the data exactly as it came out, the instrument that produced it, and the verdict. The mistakes are in there on purpose. A record that hides them is not a record.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2 data-i18n="h_walks">Records</h2>
+
+    <div class="card">
+      <h3 data-i18n="w1_t">Physics E1 — does recall earn its keep?</h3>
+      <p class="meta" data-i18n="w1_m">Pre-registered 2026-08-01 · battery run 2026-08-02 · verdict 2026-08-03</p>
+      <p data-i18n="w1_b">A creature is given a handful of experiments in a physics environment and must state the law. Four conditions differ only in how the observations reach it: not at all, carried in the prompt, carried and also recalled, or recalled alone across a session boundary. The question is whether the memory organ adds anything.</p>
+      <ul>
+        <li data-i18n="w1_l1">Specification, amendments, and three corrections — unedited</li>
+        <li data-i18n="w1_l2">Screening census over the whole identifiable environment population</li>
+        <li data-i18n="w1_l3">Battery data, instrument telemetry, gate and drift stamps</li>
+        <li data-i18n="w1_l4">Driver and analysis code, so the numbers can be recomputed rather than trusted</li>
+      </ul>
+      <p style="margin-top:14px"><a href="https://github.com/ludex-lab/ludex/tree/main/research/physics-e1" data-i18n="w1_link">Open the record →</a></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 data-i18n="h_read">How to read these</h2>
+    <p class="caveat" data-i18n="read1">Where a record names a specific model or command-line tool, it is reporting one surface, one injection shape, and a small number of runs. It is not a ranking of models, and it will not support being read as one.</p>
+    <p class="caveat" style="margin-top:16px" data-i18n="read2">Pre-registration means the specification was frozen before the measurement ran, and every later change was argued in writing against people obliged to push back. For this first record the ordering rests on our working repository's history, so it is pre-registered but not independently verifiable. From the next record onward the specification is published before the run, which fixes that at no cost.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><a href="./">← Ludex</a> · <a href="https://github.com/ludex-lab/ludex">GitHub</a></p>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  en: {
+    title: "Measurement records — Ludex",
+    desc: "Pre-registered measurements of Ludex creature organs: the specification, its amendments, the corrections, the data as run, and the verdict.",
+    badge: "Measurement records",
+    h1: "What we measured, and what we got wrong first",
+    tag: "Every organ we ship by default has to earn it — in public, against a specification frozen before the run.",
+    sub: "Each record below contains the pre-registration and its amendments, the corrections we had to make, the data exactly as it came out, the instrument that produced it, and the verdict. The mistakes are in there on purpose. A record that hides them is not a record.",
+    h_walks: "Records",
+    w1_t: "Physics E1 — does recall earn its keep?",
+    w1_m: "Pre-registered 2026-08-01 · battery run 2026-08-02 · verdict 2026-08-03",
+    w1_b: "A creature is given a handful of experiments in a physics environment and must state the law. Four conditions differ only in how the observations reach it: not at all, carried in the prompt, carried and also recalled, or recalled alone across a session boundary. The question is whether the memory organ adds anything.",
+    w1_l1: "Specification, amendments, and three corrections — unedited",
+    w1_l2: "Screening census over the whole identifiable environment population",
+    w1_l3: "Battery data, instrument telemetry, gate and drift stamps",
+    w1_l4: "Driver and analysis code, so the numbers can be recomputed rather than trusted",
+    w1_link: "Open the record →",
+    h_read: "How to read these",
+    read1: "Where a record names a specific model or command-line tool, it is reporting one surface, one injection shape, and a small number of runs. It is not a ranking of models, and it will not support being read as one.",
+    read2: "Pre-registration means the specification was frozen before the measurement ran, and every later change was argued in writing against people obliged to push back. For this first record the ordering rests on our working repository's history, so it is pre-registered but not independently verifiable. From the next record onward the specification is published before the run, which fixes that at no cost."
+  },
+  ko: {
+    title: "측정 기록 — Ludex",
+    desc: "Ludex 크리처 기관에 대한 사전등록 측정 기록: 명세와 개정, 정정, 실행된 그대로의 데이터, 그리고 판정.",
+    badge: "측정 기록",
+    h1: "무엇을 쟀고, 그 전에 무엇을 틀렸는가",
+    tag: "기본으로 켜지는 기관은 제 값을 증명해야 합니다 — 실행 전에 동결된 명세에 대고, 공개적으로.",
+    sub: "아래 각 기록에는 사전등록 명세와 개정, 우리가 내야 했던 정정, 나온 그대로의 데이터, 그 데이터를 만든 계측기, 그리고 판정이 들어 있습니다. 실수도 일부러 함께 넣었습니다. 실수를 감추는 기록은 기록이 아닙니다.",
+    h_walks: "기록",
+    w1_t: "Physics E1 — 인출은 제 값을 하는가",
+    w1_m: "사전등록 2026-08-01 · 배터리 실행 2026-08-02 · 판정 2026-08-03",
+    w1_b: "크리처가 물리 환경에서 관측 몇 개를 받고 법칙을 진술합니다. 네 조건은 관측이 도달하는 경로만 다릅니다 — 아예 없거나, 프롬프트에 실리거나, 실리면서 인출도 되거나, 세션 경계 너머 인출로만 오거나. 질문은 기억 기관이 무언가를 더하는가입니다.",
+    w1_l1: "명세·개정·정정 3건 — 편집 없이",
+    w1_l2: "식별 가능한 환경 모집단 전수 스크리닝",
+    w1_l3: "배터리 데이터, 계측기 텔레메트리, 게이트·드리프트 스탬프",
+    w1_l4: "드라이버와 분석 코드 — 숫자를 믿는 대신 다시 계산할 수 있도록",
+    w1_link: "기록 열기 →",
+    h_read: "읽는 법",
+    read1: "기록에 특정 모델이나 명령줄 도구의 이름이 나올 때, 그것은 하나의 표면·하나의 주입 형태·적은 실행 횟수에 대한 보고입니다. 모델 순위표가 아니며, 그렇게 읽히는 것을 지지하지 않습니다.",
+    read2: "사전등록이란 측정 실행 전에 명세를 동결했고, 이후의 모든 변경을 반론 의무를 진 사람들에게 문서로 논증했다는 뜻입니다. 이 첫 기록은 순서 증명이 작업 저장소의 내부 이력에 의존하므로, 사전등록되었으나 외부에서 독립 검증되지는 않습니다. 다음 기록부터는 실행 전에 명세를 공개하며, 이는 비용 없이 그 문제를 해소합니다."
+  }
+};
+let LANG = (navigator.language || "en").toLowerCase().startsWith("ko") ? "ko" : "en";
+function apply(){
+  const d = I18N[LANG];
+  document.documentElement.lang = LANG;
+  document.title = d.title;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(!(k in d)) return;
+    if(el.tagName === "META") el.setAttribute("content", d[k]);
+    else if(el.tagName === "TITLE") el.textContent = d[k];
+    else el.innerHTML = d[k];
+  });
+  document.getElementById("langbtn").textContent = LANG === "ko" ? "English" : "한국어";
+}
+function toggleLang(){ LANG = LANG === "ko" ? "en" : "ko"; apply(); }
+apply();
+</script>
+</body>
+</html>
