@@ -36,6 +36,11 @@
   .meta{color:var(--muted);font-size:13.5px;margin:0 0 12px}
   ul{margin:10px 0 0;padding-left:20px} li{margin:5px 0}
   .caveat{border-left:3px solid var(--accent);padding-left:16px;color:var(--muted)}
+  a.card{display:block;text-decoration:none;color:var(--ink);transition:border-color .15s}
+  a.card:hover{border-color:var(--accent);text-decoration:none}
+  a.card h3{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  a.card h3 .lc-arrow{color:var(--muted);font-weight:400}
+  .lc-host{color:var(--accent2);font-size:13px;margin-top:10px}
   footer{padding:34px 0 60px;color:var(--muted);font-size:14px}
 </style>
 </head>
@@ -68,6 +73,13 @@
       </ul>
       <p style="margin-top:14px"><a href="https://github.com/ludex-lab/ludex/tree/main/research/physics-e1" data-i18n="w1_link">Open the record →</a></p>
     </div>
+
+      <a class="card linkcard" href="https://github.com/ludex-lab/ludex/tree/main/research/uptake-e2">
+        <h3><span data-i18n="w2_t">Uptake E2 — is it the surface?</span><span class="lc-arrow">→</span></h3>
+        <p class="meta" data-i18n="w2_m">Specification published before firing 2026-08-03 · battery 2026-08-03 · verdict 2026-08-04</p>
+        <p data-i18n="w2_b">E1 found a memory organ delivering its payload in full while the creature recovered nothing from it. E2 holds the content fixed to the byte and moves only where it sits: the same text is unusable in the system prompt and fully usable in the user message.</p>
+        <div class="lc-host" data-i18n="w2_host">First record specified in public before the run</div>
+      </a>
   </div>
 </section>
 
@@ -103,9 +115,14 @@ const I18N = {
     w1_l3: "Battery data, instrument telemetry, gate and drift stamps",
     w1_l4: "Driver and analysis code, so the numbers can be recomputed rather than trusted",
     w1_link: "Open the record →",
+    w2_t: "Uptake E2 — is it the surface?",
+    w2_m: "Specification published before firing 2026-08-03 · battery 2026-08-03 · verdict 2026-08-04",
+    w2_b: "E1 found a memory organ delivering its payload in full while the creature recovered nothing from it. E2 holds the content fixed to the byte and moves only where it sits: the same text is unusable in the system prompt and fully usable in the user message.",
+    w2_host: "First record specified in public before the run",
+
     h_read: "How to read these",
     read1: "Where a record names a specific model or command-line tool, it is reporting one surface, one injection shape, and a small number of runs. It is not a ranking of models, and it will not support being read as one.",
-    read2: "Pre-registration means the specification was frozen before the measurement ran, and every later change was argued in writing against people obliged to push back. For this first record the ordering rests on our working repository's history, so it is pre-registered but not independently verifiable. From the next record onward the specification is published before the run, which fixes that at no cost."
+    read2: "Pre-registration means the specification was frozen before the measurement ran, and every later change was argued in writing against people obliged to push back. The two records differ in what evidences that. E1's ordering rests on our working repository's history, which a reader here cannot check, so its cover says pre-registered but not independently verifiable. E2's specification was committed to the public repository before its battery ran, and the evidence is the server-side push timestamp rather than the commit's own dates — those are set locally and prove nothing. That receipt is archived, and its own expiry is stated on the record."
   },
   ko: {
     title: "측정 기록 — Ludex",
@@ -123,9 +140,14 @@ const I18N = {
     w1_l3: "배터리 데이터, 계측기 텔레메트리, 게이트·드리프트 스탬프",
     w1_l4: "드라이버와 분석 코드 — 숫자를 믿는 대신 다시 계산할 수 있도록",
     w1_link: "기록 열기 →",
+    w2_t: "Uptake E2 — 원인은 표면인가",
+    w2_m: "명세 선-공개 2026-08-03 · 배터리 2026-08-03 · 판정 2026-08-04",
+    w2_b: "E1에서 기억 기관은 화물을 온전히 배달했는데 크리처는 그것으로부터 아무것도 회수하지 못했습니다. E2는 내용을 바이트 단위로 고정하고 위치만 옮깁니다 — 같은 텍스트가 시스템 프롬프트에서는 쓰이지 않고 유저 메시지에서는 온전히 쓰입니다.",
+    w2_host: "실행 전에 공개된 첫 기록",
+
     h_read: "읽는 법",
     read1: "기록에 특정 모델이나 명령줄 도구의 이름이 나올 때, 그것은 하나의 표면·하나의 주입 형태·적은 실행 횟수에 대한 보고입니다. 모델 순위표가 아니며, 그렇게 읽히는 것을 지지하지 않습니다.",
-    read2: "사전등록이란 측정 실행 전에 명세를 동결했고, 이후의 모든 변경을 반론 의무를 진 사람들에게 문서로 논증했다는 뜻입니다. 이 첫 기록은 순서 증명이 작업 저장소의 내부 이력에 의존하므로, 사전등록되었으나 외부에서 독립 검증되지는 않습니다. 다음 기록부터는 실행 전에 명세를 공개하며, 이는 비용 없이 그 문제를 해소합니다."
+    read2: "사전등록이란 측정 실행 전에 명세를 동결했고, 이후의 모든 변경을 반론 의무를 진 사람들에게 문서로 논증했다는 뜻입니다. 두 기록은 그것을 무엇이 증거하느냐가 다릅니다. E1은 순서 증명이 작업 저장소의 내부 이력에 의존하므로 독자가 여기서 확인할 수 없고, 표지가 그렇게 적고 있습니다. E2는 배터리 실행 전에 명세를 공개 저장소에 커밋했고, 증거는 커밋 자체의 날짜가 아니라 서버측 push 시각입니다 — 커밋 날짜는 로컬에서 설정되므로 증거가 되지 못합니다. 그 영수증은 보관돼 있고, 만료 시점까지 기록에 적혀 있습니다."
   }
 };
 let LANG = (navigator.language || "en").toLowerCase().startsWith("ko") ? "ko" : "en";
