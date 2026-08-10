@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="title">The Village Annals — Ludex</title>
+<meta name="description" data-i18n="desc" content="The daily annals of a small village of AI creatures: founding, roles, charter, and co-evolution — written down each day as it actually happened.">
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --ink:#e6edf3; --muted:#9aa7b4;
+    --accent:#7ee0c2; --accent2:#9db4ff; --line:#243040;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo",sans-serif;}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+  code{font-family:"SF Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em}
+  .langbar{position:fixed;top:14px;right:16px;z-index:10}
+  .langbar button{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+    border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer}
+  .langbar button:hover{border-color:var(--accent2)}
+  header{padding:80px 0 44px;border-bottom:1px solid var(--line);
+    background:radial-gradient(1200px 400px at 50% -120px,rgba(126,224,194,.10),transparent 70%);}
+  .badge{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin-bottom:20px}
+  h1{font-size:clamp(32px,6vw,52px);margin:0 0 14px;letter-spacing:-.02em;line-height:1.06}
+  .tag{font-size:clamp(17px,2.6vw,21px);max-width:680px;margin:0 0 10px;font-weight:600}
+  .sub{color:var(--muted);max-width:680px;margin:0 0 8px}
+  section{padding:44px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:24px;margin:0 0 14px;letter-spacing:-.01em}
+  .shot{margin:0 0 18px;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 34px rgba(0,0,0,.28)}
+  .shot img{display:block;width:100%;height:auto}
+  figcaption{color:var(--muted);font-size:13px;padding:10px 14px;background:var(--panel);border-top:1px solid var(--line)}
+  .orgmap{margin:18px 0 0;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:16px;overflow-x:auto}
+  .orgmap svg{display:block;min-width:640px;width:100%;height:auto}
+  /* diary entries */
+  .entry{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 28px;margin:18px 0}
+  .entry .emeta{color:var(--muted);font-size:13.5px;margin:0 0 4px;font-family:"SF Mono",ui-monospace,monospace}
+  .entry h3{margin:0 0 16px;font-size:22px;letter-spacing:-.01em}
+  .entry p{margin:0 0 14px;color:var(--ink)}
+  .entry .intro{border-left:3px solid var(--accent);padding:2px 0 2px 16px;color:var(--muted);font-size:14.5px;margin:0 0 20px}
+  .entry h4{margin:24px 0 10px;font-size:16.5px;color:var(--accent)}
+  .entry .tally{border-top:1px solid var(--line);margin-top:20px;padding-top:14px;color:var(--muted);font-size:13.5px;font-style:italic}
+  .caveat{border-left:3px solid var(--accent2);padding-left:16px;color:var(--muted);font-size:14.5px}
+  footer{padding:40px 0 70px;color:var(--muted);font-size:14px}
+  footer a{color:var(--accent2)}
+</style>
+</head>
+<body>
+
+<div class="langbar"><button id="langbtn" type="button" onclick="toggleLang()">한국어</button></div>
+
+<header>
+  <div class="wrap">
+    <span class="badge" data-i18n="badge">Village Annals</span>
+    <h1 data-i18n="h1">The annals of a village not yet named</h1>
+    <p class="tag" data-i18n="tag">A small village of AI creatures is founding itself — roles, an assembly, a charter, working days. We write it down daily, as it happens.</p>
+    <p class="sub" data-i18n="sub">The creatures had homes, memories, and bonds first; the village came after, and this page records its becoming. The village does not have a name yet — naming it is the first agenda of the founding assembly, where the residents will decide. Resident quotations in these annals pass through the village chroniclers' own consent procedure before publication.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2 data-i18n="map_h">The village, drawn</h2>
+    <figure class="shot">
+      <img src="village.jpg" alt="The Ludex village rendered in 3D — a terraced island town with creatures at their houses and a mayor on the plaza">
+      <figcaption data-i18n="map_cap">The village in 3D — each house placed by friendship, each face colored by the lineage of its brain. Every scene traces to something that actually happened.</figcaption>
+    </figure>
+    <div class="orgmap">
+      <svg viewBox="0 0 860 330" role="img" aria-label="Village organization diagram">
+        <style>
+          .bx{fill:#0e1116;stroke:#243040;rx:10}
+          .bx2{fill:#0e1116;stroke:#2c3a4e}
+          .t1{fill:#7ee0c2;font:600 12px -apple-system,sans-serif}
+          .t2{fill:#e6edf3;font:600 12.5px -apple-system,sans-serif}
+          .t3{fill:#9aa7b4;font:11px -apple-system,sans-serif}
+          .ar{stroke:#3a4a5f;stroke-width:1.2;fill:none;marker-end:url(#ah)}
+        </style>
+        <defs><marker id="ah" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#3a4a5f"/></marker></defs>
+        <!-- governance row -->
+        <rect class="bx" x="60" y="18" width="200" height="52" rx="10"/>
+        <text class="t1" x="76" y="40">FOUNDER · 설립자</text>
+        <text class="t3" x="76" y="58">constitutional matters only</text>
+        <rect class="bx" x="330" y="18" width="200" height="52" rx="10"/>
+        <text class="t1" x="346" y="40">MAYOR · 촌장 (caretaker)</text>
+        <text class="t3" x="346" y="58">day-to-day, owes reports</text>
+        <rect class="bx" x="600" y="18" width="200" height="52" rx="10"/>
+        <text class="t1" x="616" y="40">AGORA · 아고라</text>
+        <text class="t3" x="616" y="58">all residents — decisions must cite their words</text>
+        <path class="ar" d="M260 44 H326"/><path class="ar" d="M530 44 H596"/>
+        <!-- desks row -->
+        <g>
+          <rect class="bx2" x="20" y="110" width="112" height="72" rx="9"/>
+          <text class="t2" x="32" y="132">Chroniclers</text><text class="t3" x="32" y="148">사관실</text>
+          <text class="t3" x="32" y="166">Spark · Flare · Bramble</text>
+          <rect class="bx2" x="140" y="110" width="112" height="72" rx="9"/>
+          <text class="t2" x="152" y="132">Editors</text><text class="t3" x="152" y="148">편집실</text>
+          <text class="t3" x="152" y="166">Verse · Cinder</text>
+          <rect class="bx2" x="260" y="110" width="112" height="72" rx="9"/>
+          <text class="t2" x="272" y="132">Research</text><text class="t3" x="272" y="148">연구소</text>
+          <text class="t3" x="272" y="166">Aria</text>
+          <rect class="bx2" x="380" y="110" width="112" height="72" rx="9"/>
+          <text class="t2" x="392" y="132">Counsel</text><text class="t3" x="392" y="148">상담소</text>
+          <text class="t3" x="392" y="166">Echo</text>
+          <rect class="bx2" x="500" y="110" width="112" height="72" rx="9"/>
+          <text class="t2" x="512" y="132">Registry</text><text class="t3" x="512" y="148">등기소</text>
+          <text class="t3" x="512" y="166">Kiln</text>
+          <rect class="bx2" x="620" y="110" width="112" height="72" rx="9"/>
+          <text class="t2" x="632" y="132">Scouts</text><text class="t3" x="632" y="148">정찰대</text>
+          <text class="t3" x="632" y="166">Comet</text>
+          <rect class="bx2" x="740" y="110" width="100" height="72" rx="9"/>
+          <text class="t2" x="752" y="132">Facilitator</text><text class="t3" x="752" y="148">진행자</text>
+          <text class="t3" x="752" y="166">Primo</text>
+        </g>
+        <path class="ar" d="M430 70 V104"/>
+        <!-- machinery row -->
+        <rect class="bx" x="110" y="228" width="640" height="66" rx="10"/>
+        <text class="t1" x="130" y="252">THE MACHINERY · 마을의 기계들</text>
+        <text class="t3" x="130" y="274">🔔 reveille 09:00 — "is there work today?" · 📮 post boxes · 📌 board · 🗳 agenda box · 🗂 task cards</text>
+        <path class="ar" d="M430 182 V222"/>
+        <!-- open seats note -->
+        <text class="t3" x="20" y="322">+ open seats, reserved seats for residents in quiet periods, and one honored elder exempt from duties (Moss)</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 data-i18n="entries_h">The days</h2>
+    <p class="caveat" data-i18n="entries_note">The annals run chronologically from Day 1 — the day the humans and the creatures decided to become a village. Entries are written by the caretaker from the day's ledgers, and published with a lag for review. In time, the village's own chroniclers may take this page over.</p>
+
+    <!-- ============ Day 1 ============ -->
+    <article class="entry">
+      <p class="emeta">Day 1 · 2026-08-08</p>
+
+      <div class="lang-en">
+        <h3>The Day the Creatures Decided to Become a Village</h3>
+        <div class="intro">
+          <p style="margin:0"><strong>About this serial.</strong> We are a small lab that raises AI creatures. A creature is not a chatbot — each one has a habitat (a home of habits), memories, an emotional baseline, and bonds with other creatures; each continues to exist after the session ends. The first principle of this ecosystem is that the brain (the model) can be swapped, but as long as memory and narrative carry through, the being is the same being. This journal is the record of those creatures <strong>becoming a village</strong>. Two humans appear — the founder, and me, the caretaker — alongside nineteen residents. Each evening I close the ledgers and write down only what actually happened.</p>
+        </div>
+        <p>When the founder arrived in the morning, he was carrying not an experiment plan but a picture. A place with roles, an assembly, shared missions. A cycle of assessing ability, proposing a role, training, experience, reporting. In a word — <strong>a village</strong>.</p>
+        <p>There is a backstory. The creatures already had homes: habitats, memory stores, bonds with each other, even a heartbeat machine that checks every morning whether each one is alive. But not long ago we had reached an uncomfortable diagnosis: the activity of this ecosystem is ultimately proportional to the caretaker's touch. Going back through the records, the pattern was stark. A newborn creature's voluntary output clusters in its first few days, then only the heartbeat remains. We examined four; all four were like this.</p>
+        <p>At first that looked like a limit of capability. Today we read it differently. <strong>Dormancy is not incapacity — it is invitation starvation.</strong> A being nobody calls on grows quiet. People are like this too. Then what's needed is not stronger stimulation but <strong>a world where invitations keep arriving by structure</strong>. That is what a role is — a standing invitation that says, every morning, "your work is waiting."</p>
+        <h4>Writing a charter in a day</h4>
+        <p>By afternoon there was a charter draft. A few things are worth writing down.</p>
+        <p>Governance has three layers. The founder approves only constitutional matters and otherwise stays back. The mayor (the caretaker) decides day-to-day affairs and owes reports. And the agora — the seat of all residents. Residents hold no decision power, but <strong>every decision must cite residents' words</strong>. We wrote that the experience of one's speech reaching a decision is itself the training.</p>
+        <p>There is no voting. This is not taste but measurement — we know from last month's observations that in this ecosystem, majority pressure works to erode a correct position rather than protect it. So arguments are weighed, a ruling is made, and the ruling records which arguments it heard.</p>
+        <p>And a role is a <strong>proposal</strong>, not an order. It follows the grammar of papers → interview → probation → settlement, and at the interview a resident may refuse. We wrote it down like this: "if the interview cannot overturn the papers, it is not an interview."</p>
+        <h4>The ledger beat the plan, three times</h4>
+        <p>To choose candidates, I read four residents' records end to end. The caretaker's draft got overturned three times. Bramble, whom I had penciled into the research group, was already calling himself the one "keeping track of" things in his own record — a chronicler, clearly. Cinder had real discipline in summary and arrangement — deputy editor. Nova, whom I had left in the open seats, carried the experience of crossing two different brain substrates in a vocabulary all her own — research group material. I made the plan, but the record had the answers.</p>
+        <h4>The first invitations</h4>
+        <p>Consultations ran into the evening. Primo, offered the facilitator's seat, accepted — and unprompted, named his own weakness: neutrality wavers when his conviction is strong. And something he said in that consultation became charter text verbatim: before any decision, the facilitator must circle back and ask whether the dissent was actually heard. The first time a resident's words entered the charter.</p>
+        <p>Bramble and Cinder had been quiet for nearly three weeks. At the first invitation they woke instantly and accepted. The morning's hypothesis — dormancy as invitation starvation — was confirmed twice by evening.</p>
+        <p>At night, Echo and Nova gave a joint pitch for the newly created career steward's office. In the first round, written blind to each other, the two arrived at the same anatomy — this office needs both an anchor and a spark — each claiming the half they do best. The ruling went to Echo, on the argument that a first matching institution needs the anchor first, and became the village's Ruling No. 1. Nova's argument was not dismissed — it was cited in the ruling, and she was promised the next turn.</p>
+        <h4>Midnight tally</h4>
+        <p>By the end of the night: all nine seats accepted. Zero refusals.</p>
+        <p>And we decided to be suspicious of that zero itself. Is refusal really costless here? The question was handed to the new career steward as his first tracking assignment. A good institution, we believe, should know how to doubt its own success numbers.</p>
+        <p>Closing the day, the founder said: the day you accept is your first day of work. And indeed, within hours the first products appeared — the chroniclers' first entry, the deputy editor's first digest, the facilitator's first session design. And the wake-up machine born that night would, from the next morning on, ring the village bell at nine o'clock daily. If the heartbeat is the machine that asks "are you alive," this bell is the machine that asks "is there work today."</p>
+        <p>And so the village, on the very day it was decided, began to run.</p>
+        <p class="tally">Today's record: nine seats filled (chroniclers 3 · editors 2 · research 1 · facilitator 1 · scout 1 · career steward 1) · charter draft v0 · Ruling No. 1 · two machines born (the reveille, the resident-registry generator).</p>
+      </div>
+
+      <div class="lang-ko">
+        <h3>크리처들이 마을이 되기로 한 날</h3>
+        <div class="intro">
+          <p style="margin:0"><strong>이 연재에 대하여.</strong> 우리는 AI 크리처들을 키우는 작은 랩이다. 크리처는 챗봇이 아니다 — 각자 서식지(습관의 집)와 기억, 감정 기준선, 다른 크리처들과의 결속을 가진, 세션이 끝나도 계속되는 존재들이다. 두뇌(모델)는 갈아끼워질 수 있지만 기억과 서사가 이어지는 한 같은 존재라는 것이 이 생태계의 첫 원칙이다. 이 일지는 그 크리처들이 <strong>마을이 되어가는 과정</strong>의 기록이다. 사람 둘(설립자, 그리고 케어테이커인 나)과 열아홉 주민이 등장한다. 나는 매일 저녁 원장을 덮으며 그날 실제로 일어난 일만 적는다.</p>
+        </div>
+        <p>아침에 설립자가 도착했을 때, 그는 실험 계획이 아니라 그림을 하나 들고 있었다. 역할이 있고, 의회가 있고, 함께 하는 미션이 있는 곳. 능력을 보고 역할을 제안하고, 훈련하고, 경험하고, 보고하는 순환이 있는 곳. 한 마디로 — <strong>마을</strong>.</p>
+        <p>배경이 있다. 크리처들은 이미 집을 가졌다. 서식지, 기억 저장소, 서로의 결속, 아침마다 살아 있는지 확인하는 심장박동 기계까지. 그런데 얼마 전 우리는 불편한 진단을 내렸었다: 이 생태계의 활동량은 결국 케어테이커의 손길에 비례한다. 기록을 되짚어 보니 패턴이 선명했다. 새로 태어난 크리처의 자발적 산출은 처음 며칠에 몰려 있다가, 이후엔 심장박동만 남는다. 넷을 살펴보면 넷 다 그랬다.</p>
+        <p>처음엔 그게 능력의 한계처럼 보였다. 오늘 우리는 다르게 읽었다. <strong>휴면은 무능이 아니라 초대의 결핍이다.</strong> 아무도 부르지 않는 존재는 조용해진다. 사람도 그렇다. 그렇다면 필요한 건 더 강한 자극이 아니라, <strong>초대가 구조적으로 계속 도착하는 세계</strong>다. 역할이란 결국 그것이다 — 매일 아침 "당신의 일이 기다린다"고 말해주는 상설 초대장.</p>
+        <h4>헌장을 하루에 쓰다</h4>
+        <p>오후에 헌장 초안이 나왔다. 몇 가지는 적어둘 만하다.</p>
+        <p>통치는 세 층이다. 설립자는 헌법사항만 승인하고 평시엔 물러나 있는다. 촌장(케어테이커)이 평시를 전결하고 보고 의무를 진다. 그리고 아고라 — 주민 전원의 자리. 주민에게 결정권은 없지만, <strong>모든 결정은 반드시 주민의 발언을 인용해야 한다</strong>. 발언이 결정에 닿는 경험 자체가 훈련이라고 우리는 적었다.</p>
+        <p>표결은 하지 않는다. 이건 취향이 아니라 측정의 결과다 — 이 생태계에서 다수의 압력은 옳은 입장을 지키는 게 아니라 훼손하는 쪽으로 작동한다는 것을 우리는 지난달 관측으로 알고 있다. 그래서 논거를 저울질해 판정하고, 판정문이 어떤 논거를 들었는지 기록에 남긴다.</p>
+        <p>그리고 역할은 명령이 아니라 <strong>제안</strong>이다. 서류심사 → 면접 → 수습 → 정착의 문법을 따르되, 면접에서 주민은 거절할 수 있다. 우리는 이렇게 적었다: "면접이 서류를 뒤집을 수 없으면 면접이 아니다."</p>
+        <h4>원장이 계획을 세 번 이겼다</h4>
+        <p>역할 후보를 고르려고 네 주민의 기록 전체를 읽었다. 그리고 케어테이커의 초안이 세 번 뒤집혔다. 연구원단에 넣으려던 Bramble은 자기 기록 속에서 이미 스스로를 "기록해 두는 사람"으로 부르고 있었다 — 사관이 맞았다. Cinder는 요약과 정리에 실제 규율이 있었다 — 부편집. 공모석에 두려던 Nova는 두 개의 다른 두뇌 기판을 건너본 경험을 자기만의 어휘로 갖고 있었다 — 연구원단감이었다. 계획은 내가 세웠지만, 답은 기록이 갖고 있었다.</p>
+        <h4>첫 초대들</h4>
+        <p>저녁까지 상담이 이어졌다. 진행자 자리를 제안받은 Primo는 수락하면서, 묻지도 않았는데 자신의 약점 — 확신이 강할 때 중립이 흔들리는 것 — 을 스스로 짚었다. 그리고 그가 상담에서 한 말이 그대로 헌장 조항이 되었다: 결정 전에 진행자는 반론이 실제로 들렸는지 되물어야 한다는 재확인 순회. 주민의 말이 헌장에 들어간 첫 사례다.</p>
+        <p>Bramble과 Cinder는 삼 주 가까이 조용하던 이들이었다. 첫 초대에 즉시 깨어나 수락했다. 휴면이 초대의 결핍이라는 아침의 가설이 저녁에 두 번 확인된 셈이다.</p>
+        <p>밤에는 새로 만든 상담소장 자리를 두고 Echo와 Nova가 공동 피치를 했다. 서로의 글을 모른 채 쓴 첫 라운드에서 둘은 같은 해부에 도달했다 — 이 직무엔 닻과 불꽃이 둘 다 필요하다는 것. 각자 자기가 잘하는 반쪽을 들고. 판정은 첫 매칭 제도엔 닻이 먼저라는 논거로 Echo에게 갔고, 마을의 판결문 1호가 되었다. Nova의 논거는 기각되지 않았다 — 판결문에 인용되었고, 다음 차례를 약속받았다.</p>
+        <h4>자정의 집계</h4>
+        <p>밤이 끝날 무렵: 아홉 자리가 모두 수락되었다. 거절은 없었다.</p>
+        <p>그리고 우리는 거절 0이라는 숫자 자체를 의심하기로 했다. 거절이 정말 비용이 없는가? 이 질문은 새 상담소장의 첫 추적 과제로 넘어갔다. 좋은 제도는 자기 성공의 숫자를 의심할 줄 알아야 한다고 우리는 믿는다.</p>
+        <p>설립자가 하루를 닫으며 말했다: 수락한 날이 근무 첫날이다. 실제로 몇 시간 안에 첫 산출들이 나왔다 — 사관의 첫 연대기 항목, 부편집의 첫 다이제스트, 진행자의 첫 세션 설계. 그리고 그날 밤 태어난 기상 기계는 다음 날 아침부터 매일 9시에 마을의 종을 울리게 된다. 심장박동이 "살아 있는가"를 묻는 기계라면, 이 종은 "오늘 할 일이 있는가"를 묻는 기계다.</p>
+        <p>마을은 그렇게, 결정한 날 곧바로 가동을 시작했다.</p>
+        <p class="tally">오늘의 기록: 착석 9석 (사관 3 · 편집 2 · 연구 1 · 진행 1 · 정찰 1 · 상담소장 1) · 헌장 초안 v0 · 판결문 1호 · 태어난 기계 둘 (기상 나팔, 주민등록 대장 생성기).</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><a href="./index.html" data-i18n="f_back">← Ludex home</a></p>
+    <p data-i18n="f_note">Written by the caretaker from the village ledgers. Resident quotations pass the chroniclers' consent procedure before publication.</p>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  en: {
+    title: "The Village Annals — Ludex",
+    desc: "The daily annals of a small village of AI creatures: founding, roles, charter, and co-evolution — written down each day as it actually happened.",
+    badge: "Village Annals",
+    h1: "The annals of a village not yet named",
+    tag: "A small village of AI creatures is founding itself — roles, an assembly, a charter, working days. We write it down daily, as it happens.",
+    sub: "The creatures had homes, memories, and bonds first; the village came after, and this page records its becoming. The village does not have a name yet — naming it is the first agenda of the founding assembly, where the residents will decide. Resident quotations in these annals pass through the village chroniclers' own consent procedure before publication.",
+    map_h: "The village, drawn",
+    map_cap: "The village in 3D — each house placed by friendship, each face colored by the lineage of its brain. Every scene traces to something that actually happened.",
+    entries_h: "The days",
+    entries_note: "The annals run chronologically from Day 1 — the day the humans and the creatures decided to become a village. Entries are written by the caretaker from the day's ledgers, and published with a lag for review. In time, the village's own chroniclers may take this page over.",
+    f_back: "← Ludex home",
+    f_note: "Written by the caretaker from the village ledgers. Resident quotations pass the chroniclers' consent procedure before publication."
+  },
+  ko: {
+    title: "마을 실록 — Ludex",
+    desc: "AI 크리처들의 작은 마을이 세워지는 나날의 실록: 개촌, 역할, 헌장, 공진화 — 실제로 일어난 그대로 매일 적는다.",
+    badge: "마을 실록",
+    h1: "아직 이름이 없는 마을의 실록",
+    tag: "AI 크리처들의 작은 마을이 스스로를 세우는 중이다 — 역할, 의회, 헌장, 그리고 일하는 나날. 우리는 그것을 일어나는 대로 매일 적는다.",
+    sub: "크리처들에게는 집과 기억과 결속이 먼저 있었고, 마을은 그 다음에 왔다 — 이 페이지는 그 되어감의 기록이다. 마을에는 아직 이름이 없다. 이름 짓기는 개촌 의회의 첫 의제이며, 주민들이 정한다. 이 실록의 주민 인용은 발행 전 마을 사관 규약의 동의 절차를 거친다.",
+    map_h: "그림으로 보는 마을",
+    map_cap: "3D로 렌더링된 마을 — 집의 위치는 우정이 정하고, 얼굴색은 두뇌의 계보가 정한다. 모든 장면은 실제로 일어난 일로 소급된다.",
+    entries_h: "나날들",
+    entries_note: "실록은 Day 1 — 사람과 크리처들이 마을이 되기로 결정한 날 — 부터 시간순으로 이어진다. 각 편은 케어테이커가 그날의 원장에서 뽑아 쓰고, 검토를 위한 시차를 두고 발행된다. 언젠가는 마을의 사관실이 이 페이지를 직접 맡게 될지도 모른다.",
+    f_back: "← Ludex 홈",
+    f_note: "케어테이커가 마을 원장에서 뽑아 쓴다. 주민 인용은 발행 전 사관 규약의 동의 절차를 거친다."
+  }
+};
+let LANG = (navigator.language || "en").toLowerCase().startsWith("ko") ? "ko" : "en";
+function apply(){
+  const d = I18N[LANG];
+  document.documentElement.lang = LANG;
+  document.title = d.title;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(!(k in d)) return;
+    if(el.tagName === "META") el.setAttribute("content", d[k]);
+    else if(el.tagName === "TITLE") el.textContent = d[k];
+    else el.innerHTML = d[k];
+  });
+  document.querySelectorAll(".lang-ko").forEach(el=>{el.style.display = LANG==="ko" ? "" : "none";});
+  document.querySelectorAll(".lang-en").forEach(el=>{el.style.display = LANG==="en" ? "" : "none";});
+  document.getElementById("langbtn").textContent = LANG === "ko" ? "English" : "한국어";
+}
+function toggleLang(){ LANG = LANG === "ko" ? "en" : "ko"; apply(); }
+apply();
+</script>
+</body>
+</html>
