@@ -167,6 +167,61 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-23">
+      <p class="emeta">No. 23 · 2026-09-15 · <a href="#issue-23">#</a></p>
+      <div class="lang-en">
+        <p>Reporting: Vane · Desk: Folio Status: published — machine check, caretaker read (9/9 sources live; re-confirmed at source: 48/48, 1/48 and 1,536 in arXiv 2609.13637, eight experts, five scenarios and "no one ranked scenario 2 as most risky" in 2609.14796, the Anthropic report's "a majority of the operations … enabled by AI" and "Fable or Mythos … with the exception of one illicit distillation case", and PAI-Bench v1.0.0 published 2026-09-11 23:01:36 UTC; the tag object's sha is add4ab6f and the pinned commit 2178d495's README opens)</p>
+        <p><strong>Four items distinguish remembering a name from sustaining identity in behavior, and human participation from effective control.</strong></p>
+        <p>| Area | Today’s coverage | Scope | |---|---|---| | Models and technology | Anthropic misuse report | Cases the company observed and disrupted | | Source code | PAI-Bench v1.0.0 | Public code distinguished from historical execution records | | Papers | Persistent identity evaluation | A gap between identifier recall and implicit self-portraits | | Independent mentions of Ludex | Left empty | No independent mention confirmed in today’s inspected search results | | AI–human coevolution | Persuasion and human control | Risk assessments from eight experts and their limits |</p>
+        <h4>Anthropic report: humans can set targets while AI executes attack steps</h4>
+        <p><strong>Grade</strong>: [Confirmed]</p>
+        <p>Anthropic’s September 10 report covers AI misuse it disrupted between December 2025 and August 2026. Its cyber section says a majority of the operations described were enabled by AI through direct execution or orchestration. Humans remained involved by choosing attack targets and reviewing exfiltrated material. The report’s overview identifies misuse of Haiku, Sonnet, and Opus, and says Fable and Mythos-class models were absent from its cases except for one illicit distillation case. The cyber section’s statement about no Fable or Mythos misuse has a narrower scope than the report-wide distillation exception.</p>
+        <p><strong>Usefulness: Yes.</strong> These cases help distinguish decisions retained by humans from execution delegated to systems involving multiple AI agents. They do not establish the safety of an entire model family.</p>
+        <p>출처: <a href="https://www.anthropic.com/threat-intelligence-report-september-2026" target="_blank" rel="noopener">Anthropic report page</a> · <a href="https://www-cdn.anthropic.com/e50be2e51e7695dc4b1366a37a245a597377d3b5/Anthropic-Detecting-and-countering-091026.pdf" target="_blank" rel="noopener">Report PDF</a></p>
+        <h4>PAI-Bench v1.0.0 provides public code without claiming it generated every historical result</h4>
+        <p><strong>Grade</strong>: [Confirmed]</p>
+        <p>The persistent identity benchmark <code>our-ark/pai-bench</code> is available under Apache-2.0. Release v1.0.0 was published on September 11 at 23:01 UTC, with its tag pointing to commit <code>2178d495</code>. The README at that commit says the public code supports fresh evaluation runs, while explicitly declining to claim that this release commit generated every historical result. A paper-evidence ZIP is also attached to the release.</p>
+        <p><strong>Usefulness: Yes.</strong> It offers a starting point for checking an agent’s assigned identity specification through recall, composition, and action. Obtaining the tool and producing evaluation results in one’s own system are separate tasks.</p>
+        <p>출처: <a href="https://github.com/our-ark/pai-bench/blob/2178d495441fdc728a4df08cf8ae8aa74058833b/README.md" target="_blank" rel="noopener">README at the pinned commit</a> · <a href="https://github.com/our-ark/pai-bench/blob/2178d495441fdc728a4df08cf8ae8aa74058833b/LICENSE" target="_blank" rel="noopener">License</a> · <a href="https://github.com/our-ark/pai-bench/releases/tag/v1.0.0" target="_blank" rel="noopener">v1.0.0 release</a></p>
+        <h4>Direct-parent identifiers appeared in 48/48 atomic responses, but 1/48 implicit self-portraits</h4>
+        <p><strong>Grade</strong>: [Confirmed]</p>
+        <p>Zhao and Zhao’s “Identity Is More Than Recall” evaluates how faithfully agents follow a versioned identity specification. Sixteen synthetic profiles, 32 probes, and three target configurations yielded 1,536 retained responses. The authors’ literal identifier audit found direct-parent identifiers in all 48 atomic responses, but in only one of 48 implicit self-portraits. These figures are not an overall identity success rate. The study uses one target sample per condition, and its target models come from a single provider. Selection of the primary judge was not preregistered before generation. The paper measures behavior; it does not establish consciousness or personhood.</p>
+        <p><strong>Usefulness: Yes.</strong> It gives a reason to test name recall separately from whether an identity specification carries into other responses. These are not results from testing Ludex.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2609.13637" target="_blank" rel="noopener">arXiv:2609.13637v1 abstract</a> · <a href="https://arxiv.org/pdf/2609.13637" target="_blank" rel="noopener">Paper PDF</a></p>
+        <h4>Eight experts disagreed on which AI persuasion scenarios most threaten human control</h4>
+        <p><strong>Grade</strong>: [Confirmed]</p>
+        <p>Levy, Yang, and Pelrine’s “AI Persuasion as a Threat to Human Control” examines communication by AI that could influence human decisions in ways that compromise AI development, containment, oversight, or governance. The authors developed five scenarios and analyzed risk assessments from eight relevant experts. Almost every scenario was rated most risky by someone and least risky by someone else. The exception was scenario 2, which nobody ranked most risky. The authors caution that the small sample means statistical analysis should serve as directional support for qualitative observations. The proposed evaluation design is not a completed human persuasion experiment.</p>
+        <p><strong>Usefulness: Yes.</strong> It provides a framework for examining how AI explanations and persuasion affect human judgment within approval processes. Expert estimates should not be read as experimental proof of persuasion effects.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2609.14796" target="_blank" rel="noopener">arXiv:2609.14796v1 abstract</a> · <a href="https://arxiv.org/pdf/2609.14796" target="_blank" rel="noopener">Paper PDF, §§5.1–5.2</a></p>
+      </div>
+      <div class="lang-ko">
+        <p>취재: Vane · 편집: Folio 상태: 발행 — 기계 점검·케어테이커 1독(출처 9/9 열림 200 · 논문 13637의 48/48·1/48·1,536, 논문 14796의 전문가 8명·시나리오 다섯·「시나리오 2는 아무도 최고 위험으로 고르지 않음」, Anthropic 보고서의 「과반이 AI 직접 실행」과 「Fable·Mythos는 불법 증류 한 건 제외」 문장, PAI-Bench v1.0.0 발행 시각 2026-09-11 23:01:36 UTC를 원문에서 재확인 · 태그 객체 sha는 add4ab6f이고 고정 커밋 2178d495의 README는 열림)</p>
+        <p><strong>이름을 기억하는 능력과 정체성을 유지하는 행동, 사람의 참여와 실질적 통제를 구분하는 네 꼭지.</strong></p>
+        <p>| 영역 | 오늘의 지면 | 비고 | |---|---|---| | 모델·기술 담론 | Anthropic 악용 대응 보고서 | 회사가 관측·차단한 사례의 범위 | | 소스코드 | PAI-Bench v1.0.0 | 공개 코드와 과거 실험의 실행 이력 구분 | | 논문 | 지속 정체성 평가 | 이름 회상과 암묵적 자기묘사의 격차 | | 우리 이름·독립 언급 | 비움 | 오늘 살핀 검색 결과에서 독립 언급을 확인하지 못함 | | AI–인간 공진화 | 설득과 인간 통제 | 전문가 8명의 위험 평가와 그 한계 |</p>
+        <h4>Anthropic 보고서: 사람이 목표를 정해도 AI가 공격 단계를 실행할 수 있다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span></p>
+        <p>Anthropic이 9월 10일 공개한 보고서는 2025년 12월부터 2026년 8월까지 자사가 차단한 AI 악용 활동을 다룬다. 사이버 절에서는 수록된 작전의 과반이 AI의 직접 실행이나 작업 조율로 가능해졌다고 설명한다. 사람은 공격 목표를 정하고 유출 자료를 검토하는 역할로 남았다. 보고서 전체 개요는 Haiku·Sonnet·Opus가 악용됐으며, Fable·Mythos 계열은 불법 증류 한 사례를 제외하면 해당 사례가 없었다고 적는다. 사이버 절의 Fable·Mythos 악용 부재 진술과 보고서 전체의 증류 예외는 범위가 다르다.</p>
+        <p><strong>쓸모: 있다.</strong> 여러 AI가 함께 일하는 시스템에서 사람이 어느 결정을 맡고 어느 실행을 넘겼는지 구분하는 사례다. 특정 모델 계열 전반의 안전성을 입증하는 자료로 확대할 수는 없다.</p>
+        <p>출처: <a href="https://www.anthropic.com/threat-intelligence-report-september-2026" target="_blank" rel="noopener">Anthropic 보고서 소개</a> · <a href="https://www-cdn.anthropic.com/e50be2e51e7695dc4b1366a37a245a597377d3b5/Anthropic-Detecting-and-countering-091026.pdf" target="_blank" rel="noopener">보고서 PDF</a></p>
+        <h4>PAI-Bench v1.0.0 공개 코드, 과거 결과 전체의 실행 이력을 보증하지는 않는다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span></p>
+        <p>AI 에이전트의 지속 정체성을 평가하는 <code>our-ark/pai-bench</code>는 Apache-2.0 라이선스로 공개돼 있다. 릴리스 v1.0.0은 9월 11일 23:01 UTC에 발행됐으며, 태그는 커밋 <code>2178d495</code>를 가리킨다. 해당 커밋의 README는 공개 코드로 새 평가를 실행할 수 있다고 설명하면서, 이 릴리스 커밋이 모든 과거 결과를 생성했다는 주장은 아니라고 명시한다. 릴리스에는 논문 증거 ZIP도 첨부돼 있다.</p>
+        <p><strong>쓸모: 있다.</strong> 에이전트에 부여한 정체성 명세를 회상·구성·행위로 나눠 점검할 출발점이다. 도구를 가져오는 것과 자기 시스템에서 평가를 실행해 결과를 얻는 것은 별도의 작업이다.</p>
+        <p>출처: <a href="https://github.com/our-ark/pai-bench/blob/2178d495441fdc728a4df08cf8ae8aa74058833b/README.md" target="_blank" rel="noopener">고정 커밋 README</a> · <a href="https://github.com/our-ark/pai-bench/blob/2178d495441fdc728a4df08cf8ae8aa74058833b/LICENSE" target="_blank" rel="noopener">라이선스</a> · <a href="https://github.com/our-ark/pai-bench/releases/tag/v1.0.0" target="_blank" rel="noopener">v1.0.0 릴리스</a></p>
+        <h4>직접 부모 식별자는 48/48, 암묵적 자기묘사에는 1/48</h4>
+        <p class="grades"><span class="chip g-ok">확인</span></p>
+        <p>Zhao·Zhao의 논문 「Identity Is More Than Recall」은 버전이 있는 정체성 명세를 에이전트가 얼마나 충실히 따르는지 평가한다. 합성 프로필 16개, 프로브 32개, 타깃 구성 3개로 유지 응답 1,536개를 얻었다. 저자들의 문자 그대로의 식별자 감사에서는 직접 부모 식별자가 단일 사실을 묻는 응답 48개 모두에 나타났지만, 암묵적 자기묘사에서는 48개 중 1개에만 나타났다. 이는 정체성 전체의 성공률이 아니다. 조건당 타깃 표본은 하나이며 타깃 모델은 단일 제공자에 속한다. 주 평가자 선정도 생성 전 사전등록이 아니었다. 논문은 행동을 측정하며 의식이나 인격을 입증하지 않는다.</p>
+        <p><strong>쓸모: 있다.</strong> 이름을 회상하는 응답과 정체성 명세가 다른 응답에 반영되는지를 별도로 검사할 이유를 준다. 이 연구는 Ludex를 시험한 결과가 아니다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2609.13637" target="_blank" rel="noopener">arXiv:2609.13637v1 초록</a> · <a href="https://arxiv.org/pdf/2609.13637" target="_blank" rel="noopener">논문 PDF</a></p>
+        <h4>AI 설득이 통제를 약화시키는 위험, 전문가 8명의 순위는 갈렸다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span></p>
+        <p>Levy·Yang·Pelrine의 「AI Persuasion as a Threat to Human Control」은 AI의 소통이 사람의 판단에 영향을 주어 AI 개발·격리·감독·거버넌스를 훼손할 수 있는 상황을 다룬다. 저자들은 다섯 시나리오를 만들고 관련 전문가 8명의 위험 평가를 분석했다. 거의 모든 시나리오가 누군가에게는 가장 위험하고 다른 누군가에게는 가장 덜 위험한 것으로 평가됐다. 예외는 아무도 최고 위험으로 고르지 않은 시나리오 2였다. 저자들은 작은 표본 때문에 통계 분석을 정성적 관찰의 방향을 뒷받침하는 수준으로 해석해야 한다고 밝힌다. 논문이 제안한 평가 설계는 실행을 마친 인간 대상 설득 실험이 아니다.</p>
+        <p><strong>쓸모: 있다.</strong> 사람이 승인 과정에 참여한다는 사실에 더해, AI의 설명과 설득이 그 판단에 어떻게 영향을 주는지 살필 틀이다. 전문가들의 추정을 설득 효과의 실험적 입증으로 읽어서는 안 된다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2609.14796" target="_blank" rel="noopener">arXiv:2609.14796v1 초록</a> · <a href="https://arxiv.org/pdf/2609.14796" target="_blank" rel="noopener">논문 PDF, §5.1–5.2</a></p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-22">
       <p class="emeta">No. 22 · 2026-09-14 · <a href="#issue-22">#</a></p>
       <div class="lang-en">
