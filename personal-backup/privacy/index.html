@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How Personal Backup uses Google Drive authorization and handles encrypted backups, local data, retention and deletion.">
+  <title>Privacy policy · Personal Backup · Ludex Lab</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../language.js" defer></script>
+</head>
+<body><div class="wrap">
+  <a class="skip" href="#main">Skip to content / 본문으로</a>
+  <nav aria-label="Navigation"><a href="../">Personal Backup</a><div class="languages" aria-label="Language"><button type="button" data-language="en" aria-pressed="true">English</button><button type="button" data-language="ko" aria-pressed="false">한국어</button></div></nav>
+  <main id="main">
+    <p class="eyebrow">Ludex Lab · Personal Backup</p>
+    <h1><span class="en">Privacy policy</span><span class="ko">개인정보처리방침</span></h1>
+    <p class="muted"><span class="en">Effective September 18, 2026</span><span class="ko">시행일: 2026년 9월 18일</span></p>
+    <div class="en" lang="en">
+      <p>This policy describes Personal Backup, a local utility maintained by Ludex Lab for its account owner's personal use, and these public informational pages. It is not a public backup service.</p>
+      <h2>Data accessed and its purpose</h2>
+      <p>The local utility reads folders selected by the owner, their file contents and metadata, and local backup configuration. It may make private local staging copies, including consistent copies of selected databases. These are used to create and verify restorable backups.</p>
+      <p>With the owner's Google authorization, the utility uses the <code>https://www.googleapis.com/auth/drive.file</code> scope for backup files it created or files the owner has made available to it. This permission covers file creation, listing, reading, updates and removal within that limited scope; automatic deletion of old snapshots is not enabled. It may also read Drive storage-quota information needed to check available capacity. Google access is used to store, check and restore the owner's backups.</p>
+      <h2>Where data is stored</h2>
+      <p>Backup contents and file metadata are encrypted on the owner's computer before upload to the owner's Google Drive. Operational traffic uses HTTPS. Local source files, staging copies, restored files and operational records remain on the owner's computer and may be unencrypted; local access controls apply to them.</p>
+      <p>OAuth credentials and refresh tokens are stored in a private local configuration. The encryption password is managed locally, with a separate recovery mechanism controlled by the owner. Neither authorization credentials nor encryption keys are sent to these web pages. Revoking Google access does not replace the need to keep a recovery key.</p>
+      <h2>Sharing and use</h2>
+      <p>The utility sends encrypted backup data to Google Drive as chosen by the owner. It does not operate a separate developer-hosted server for backup contents, sell Google user data, share it for advertising, or use it to train AI models. The operator does not obtain access to the owner's Drive merely because this policy is publicly available.</p>
+      <p>Personal Backup's use of information received from Google APIs follows the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its Limited Use requirements.</p>
+      <h2>Retention, deletion and withdrawal</h2>
+      <p>Snapshots remain until the owner removes them. The current utility does not automatically delete older snapshots. Deleting a source file does not remove its earlier backup versions.</p>
+      <p>The owner can stop scheduled backups locally, revoke the app's access in <a href="https://myaccount.google.com/connections">Google Account connections</a>, and delete the backup repository in Google Drive, including its trash if permanent deletion is intended. Local staging copies, restored files, logs and credentials can be removed separately by the owner. Revocation stops future access; it does not delete existing backups.</p>
+      <h2>These informational pages</h2>
+      <p>These pages contain no signup, Google login, file-upload form, advertising or analytics added by Personal Backup. The language selector does not store a preference. GitHub Pages hosts the pages and may process ordinary request information, such as IP addresses, under the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>. Google's services are also subject to the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+      <h2>Changes and contact</h2>
+      <p>Changes to the tool's data practices will be reflected on this page with an updated effective date. Contact Ludex Lab through the <a href="https://github.com/ludex-lab/ludex/issues">Ludex project</a> for questions about this policy. Do not post personal backup contents, access tokens or recovery keys in public issues.</p>
+    </div>
+    <div class="ko" lang="ko">
+      <p>이 방침은 Ludex Lab이 계정 소유자의 개인 용도로 관리하는 로컬 도구 Personal Backup과 이 공개 안내 페이지에 적용됩니다. 불특정 사용자를 위한 백업 서비스가 아닙니다.</p>
+      <h2>접근하는 자료와 목적</h2>
+      <p>로컬 도구는 소유자가 선택한 폴더의 파일 내용·메타데이터와 백업 설정을 읽습니다. 선택한 데이터베이스의 일관된 사본을 포함해 비공개 로컬 수집본을 만들 수 있습니다. 복원 가능한 백업을 만들고 확인하는 데 사용합니다.</p>
+      <p>소유자의 Google 승인을 받아 앱이 만들었거나 소유자가 접근을 허용한 백업 파일에 <code>https://www.googleapis.com/auth/drive.file</code> 권한을 사용합니다. 이 권한은 해당 범위에서 파일 생성·목록 조회·읽기·갱신·삭제를 허용하며 과거 스냅샷의 자동 삭제는 활성화하지 않았습니다. 저장 가능 용량을 확인하기 위한 Drive 용량 정보도 조회할 수 있습니다. Google 접근은 소유자의 백업 저장·확인·복원에 사용합니다.</p>
+      <h2>저장 위치</h2>
+      <p>백업 내용과 파일 메타데이터는 소유자의 컴퓨터에서 암호화한 뒤 소유자의 Google Drive에 전송합니다. 통신에는 HTTPS를 사용합니다. 원본, 로컬 수집본, 복원 파일과 운영 기록은 소유자의 컴퓨터에 남으며 암호화되지 않은 상태일 수 있습니다. 해당 컴퓨터의 접근 제어가 적용됩니다.</p>
+      <p>OAuth 인증 정보와 갱신 토큰은 비공개 로컬 설정에 저장합니다. 암호화 암호는 로컬에서 관리하며 소유자가 제어하는 별도 복구 수단이 있습니다. 이 웹페이지에 인증 정보나 암호화 키를 전송하지 않습니다. Google 접근을 해제하더라도 복구 키는 별도로 보관해야 합니다.</p>
+      <h2>공유와 이용</h2>
+      <p>도구는 소유자가 선택한 Google Drive로 암호화한 백업을 보냅니다. 개발자가 운영하는 별도 백업 콘텐츠 서버를 두지 않으며 Google 사용자 데이터를 판매하거나 광고 목적으로 공유하거나 AI 모델 훈련에 사용하지 않습니다. 이 방침을 공개한다고 해서 운영자에게 소유자의 Drive 접근 권한이 생기지는 않습니다.</p>
+      <p>Google API에서 받은 정보는 Limited Use 요건을 포함한 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API 서비스 사용자 데이터 정책</a>에 따라 사용합니다.</p>
+      <h2>보관·삭제·승인 철회</h2>
+      <p>스냅샷은 소유자가 삭제할 때까지 보관합니다. 현재 도구는 과거 스냅샷을 자동으로 삭제하지 않습니다. 원본 파일을 삭제해도 이전 백업 버전은 남습니다.</p>
+      <p>소유자는 로컬 예약 백업을 중지하고, <a href="https://myaccount.google.com/connections">Google 계정 연결 관리</a>에서 앱의 접근을 해제하고, Drive에서 백업 저장소를 삭제할 수 있습니다. 영구 삭제하려면 Drive 휴지통도 확인해야 합니다. 로컬 수집본·복원 파일·로그·인증 정보는 각각 소유자가 삭제할 수 있습니다. 승인 철회는 이후 접근을 중단하며 기존 백업을 삭제하지는 않습니다.</p>
+      <h2>이 안내 웹사이트</h2>
+      <p>이 페이지에는 가입, Google 로그인, 파일 업로드 양식, 광고, Personal Backup이 추가한 이용 분석 기능이 없습니다. 언어 선택은 기기에 저장하지 않습니다. 호스팅 제공자인 GitHub Pages는 <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub 개인정보처리방침</a>에 따라 IP 주소 등 일반적인 웹 요청 정보를 처리할 수 있습니다. Google 서비스에는 <a href="https://policies.google.com/privacy">Google 개인정보처리방침</a>도 적용됩니다.</p>
+      <h2>변경과 문의</h2>
+      <p>자료 처리 방식이 달라지면 이 페이지와 시행일을 갱신합니다. 방침에 관한 문의는 <a href="https://github.com/ludex-lab/ludex/issues">Ludex 프로젝트</a>를 통해 Ludex Lab에 전달할 수 있습니다. 공개 이슈에 개인 백업 내용, 접근 토큰, 복구 키를 올리지 마세요.</p>
+    </div>
+  </main>
+  <footer><a href="../"><span class="en">About Personal Backup</span><span class="ko">Personal Backup 소개</span></a> · <a href="/">Ludex Lab</a></footer>
+</div></body></html>

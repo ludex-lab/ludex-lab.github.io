@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Personal Backup is a local, personal-use utility that saves encrypted backups to its owner's Google Drive.">
+  <title>Personal Backup · Ludex Lab</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="language.js" defer></script>
+</head>
+<body><div class="wrap">
+  <a class="skip" href="#main">Skip to content / 본문으로</a>
+  <nav aria-label="Navigation"><a href="/">Ludex Lab</a><div class="languages" aria-label="Language"><button type="button" data-language="en" aria-pressed="true">English</button><button type="button" data-language="ko" aria-pressed="false">한국어</button></div></nav>
+  <main id="main">
+    <p class="eyebrow"><span class="en">Personal-use utility</span><span class="ko">개인용 도구</span></p>
+    <h1>Personal Backup</h1>
+    <div class="en" lang="en">
+      <p class="intro">A local utility for backing up selected folders on the owner's Mac to the owner's Google Drive, with encryption, version history and restoration.</p>
+      <div class="note"><p>This page explains a privately operated tool. There is no public signup, hosted backup service or access to the owner's files here.</p></div>
+      <h2>What it does</h2>
+      <ul><li>Backs up folders selected by the owner, including changes since earlier backups.</li><li>Encrypts backup contents and file metadata locally before uploading them.</li><li>Keeps snapshots so the owner can restore a previous version into a separate local folder.</li><li>Runs on the owner's computer, with local scheduling and status records.</li></ul>
+      <h2>Why it uses Google Drive</h2>
+      <p>Google Drive stores the encrypted backup repository in the owner's account. The tool requests <code>drive.file</code> to create and manage its own backup files and access files explicitly made available to it. It does not request unrestricted access to every file in Drive.</p>
+      <p>Google authorization connects the local tool to the owner's account. This informational website does not sign users in or receive backup contents, encryption keys or authorization tokens.</p>
+      <h2>Privacy and control</h2>
+      <p>The owner chooses the source folders and controls the backup schedule, retained snapshots, recovery key and Google authorization. Read the <a href="privacy/">Personal Backup privacy policy</a> for storage, retention and deletion details.</p>
+      <h2>Operator and contact</h2>
+      <p>Maintained by Ludex Lab for the account owner's personal use. For questions, contact the maintainers through the <a href="https://github.com/ludex-lab/ludex/issues">Ludex project</a>. Do not post private files, credentials or recovery keys in public issues.</p>
+    </div>
+    <div class="ko" lang="ko">
+      <p class="intro">소유자의 Mac에서 선택한 폴더를 자신의 Google Drive에 암호화해 백업하고, 이전 버전을 복원하는 로컬 도구입니다.</p>
+      <div class="note"><p>개인적으로 운영하는 도구의 안내 페이지입니다. 공개 가입이나 온라인 백업 서비스, 소유자 파일에 접근하는 기능은 없습니다.</p></div>
+      <h2>하는 일</h2>
+      <ul><li>소유자가 선택한 폴더와 이후 변경 내용을 백업합니다.</li><li>백업 내용과 파일 메타데이터를 로컬에서 암호화한 뒤 전송합니다.</li><li>스냅샷을 보관해 이전 버전을 별도의 로컬 폴더로 복원할 수 있습니다.</li><li>소유자의 컴퓨터에서 일정에 따라 실행하고 상태를 기록합니다.</li></ul>
+      <h2>Google Drive를 사용하는 이유</h2>
+      <p>소유자 계정의 Google Drive에 암호화한 백업 저장소를 보관합니다. 요청 권한인 <code>drive.file</code>은 앱이 만든 백업 파일과 사용자가 명시적으로 허용한 파일을 관리하는 데 사용합니다. Drive의 모든 파일에 대한 무제한 접근 권한을 요청하지 않습니다.</p>
+      <p>Google 인증은 로컬 도구와 소유자의 계정을 연결합니다. 이 안내 웹사이트에는 로그인 기능이 없으며 백업 내용, 암호화 키, 인증 토큰을 받지 않습니다.</p>
+      <h2>개인정보와 제어</h2>
+      <p>소유자가 대상 폴더, 백업 일정, 스냅샷 보관, 복구 키와 Google 접근 승인을 관리합니다. 저장·보관·삭제 방법은 <a href="privacy/">Personal Backup 개인정보처리방침</a>에서 확인할 수 있습니다.</p>
+      <h2>운영 및 문의</h2>
+      <p>Ludex Lab이 계정 소유자의 개인 용도로 관리합니다. 문의는 <a href="https://github.com/ludex-lab/ludex/issues">Ludex 프로젝트</a>를 통해 전달할 수 있습니다. 공개 이슈에 개인 파일, 인증 정보, 복구 키를 올리지 마세요.</p>
+    </div>
+  </main>
+  <footer><span class="en">Personal Backup · <a href="privacy/">Privacy policy</a> · <a href="/">Ludex Lab</a></span><span class="ko">Personal Backup · <a href="privacy/">개인정보처리방침</a> · <a href="/">Ludex Lab</a></span></footer>
+</div></body></html>
