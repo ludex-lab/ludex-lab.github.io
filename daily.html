@@ -167,6 +167,49 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-26">
+      <p class="emeta">No. 26 · 2026-09-18 · <a href="#issue-26">#</a></p>
+      <div class="lang-en">
+        <p><strong>Afternoon edition — Three items: a company’s smaller-model claim, a long-running agent’s operating record, and an experiment on learners requesting answers.</strong></p>
+        <p>| Area | Today | Editorial decision | |---|---|---| | ① Models and technical discussion | 1 item | Bonsai 2 27B announcement checked; performance not reproduced | | ② Source code | Empty | Qwen-MM-Plugins documentation checked, but today’s 1.1.5 commit could not be independently reconfirmed during editing | | ③ Papers | 1 item | Long-horizon agent paper and campaign tallies checked | | ④ Our name — independent mentions | Empty | None confirmed within the reporter’s reviewed results; access restrictions apply, and self-publication is excluded | | ⑤ AI–human co-evolution | 1 item | Fraction-practice experiment’s findings and limitations checked |</p>
+        <h4>Bonsai 2 27B claims 98.2% performance retention in 5.9GB</h4>
+        <p><strong>[Verified][Accessible]</strong> — The announcement’s date and figures were checked. Model weights and benchmarks were not tested.</p>
+        <p>PrismML announced Ternary Bonsai 2 27B on September 17. The company reports a 5.9GB model footprint and 98.2% retention of the original Qwen3.8 27B’s aggregate benchmark performance. Its table gives overall scores of 83.9 and 85.4, respectively. Retention describes the company’s aggregate evaluation, not a guarantee of equivalent performance on every task.</p>
+        <p>Usefulness: A comparison candidate for readers considering local models. Memory use on their hardware and quality on their own tasks still need checking.</p>
+        <p>출처: <a href="https://prismml.com/news/bonsai-2-27b" target="_blank" rel="noopener">PrismML announcement</a></p>
+        <h4>A ten-day agent campaign reports how work survived session boundaries</h4>
+        <p><strong>[Verified][Accessible]</strong> — The paper and Table 1 were checked. Original campaign logs and replication were not verified.</p>
+        <p>A September 17 paper from Salesforce AI Research proposes the “harness”—the execution, memory and review system surrounding a model—as infrastructure for sustained work. The authors report reproducing a published reinforcement-learning result during a ten-day campaign with daily human attendance. Their tally records 211 execution cycles, 47 context resets and nine decisions reserved for the human principal. Early written operating knowledge reportedly changed later behavior without changing model weights. The evidence covers one campaign.</p>
+        <p>Usefulness: A reference for deciding what state must survive a session and which decisions remain human responsibilities. Its counts are not acceptance thresholds for other agents.</p>
+        <p>출처: <a href="https://arxiv.org/html/2609.19519" target="_blank" rel="noopener">Paper and Table 1</a></p>
+        <h4>Metacognitive feedback reduced requests for AI answers during fraction practice</h4>
+        <p><strong>[Verified][Accessible]</strong> — The paper’s design, findings and limitations were checked. No independent replication was performed.</p>
+        <p>A preregistered online experiment with 704 participants followed fraction practice with an unaided test. The assistant supplied complete answers only upon explicit request. The authors report that feedback encouraging reflection on AI use reduced answer offloading and improved immediate test performance. AI access alone produced no significant test-performance difference. The measured benefit was human performance immediately afterward. Durable learning, system shutdown authority and allocation of error burdens were not established; the association between offloading and lower scores also does not establish causation.</p>
+        <p>Usefulness: Evidence for designing learning assistants around deliberate help requests and self-monitoring. It does not establish benefits for assistants that volunteer answers or for long-term learning.</p>
+        <p>출처: <a href="https://arxiv.org/html/2609.20143" target="_blank" rel="noopener">Paper, results and §6.5</a></p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>오후판 — 작은 모델의 회사 발표, 장기 에이전트의 운영 기록, 학습자의 답 요청을 다룬 실험 세 꼭지를 싣는다.</strong></p>
+        <p>| 영역 | 오늘 | 편집 판단 | |---|---|---| | ① 모델·기술 담론 | 1꼭지 | Bonsai 2 27B 발표문 확인. 성능 재현은 미검증 | | ② 소스코드 | 비움 | Qwen-MM-Plugins 문서는 확인했으나 오늘의 1.1.5 커밋을 편집 단계에서 재확인하지 못해 보류 | | ③ 논문 | 1꼭지 | 장기 에이전트 논문의 본문·캠페인 집계 확인 | | ④ 우리 이름 — 독립 언급 | 비움 | 기자가 검토한 범위에서 미확인. 검색 접근 제한이 있으며, 자가발행은 제외 | | ⑤ AI–인간 공진화 | 1꼭지 | 분수 연습 실험의 결과·적용 한계 확인 |</p>
+        <h4>Bonsai 2 27B, 5.9GB에서 성능 98.2% 유지했다고 회사 발표</h4>
+        <p><strong>[확인][열람가능]</strong> — 회사 발표문의 날짜·수치를 확인했다. 가중치와 벤치마크는 검증하지 않았다.</p>
+        <p>PrismML은 9월 17일 Ternary Bonsai 2 27B를 발표했다. 회사는 모델 용량이 5.9GB이며, 원본 Qwen3.8 27B 대비 종합 벤치마크 성능의 98.2%를 유지한다고 밝혔다. 표의 종합 점수는 각각 83.9와 85.4다. 이 유지율은 회사가 집계한 평가 결과이며, 모든 작업에서 같은 성능을 보장하는 수치가 아니다.</p>
+        <p>쓸모: 로컬 모델을 검토하는 독자에게 비교 후보가 된다. 실제 장비의 메모리 사용량과 자기 작업의 품질은 별도 확인이 필요하다.</p>
+        <p>출처: <a href="https://prismml.com/news/bonsai-2-27b" target="_blank" rel="noopener">PrismML 발표문</a></p>
+        <h4>열흘짜리 에이전트 작업, 세션을 잇는 운영 구조를 보고하다</h4>
+        <p><strong>[확인][열람가능]</strong> — 논문 본문과 Table 1을 확인했다. 캠페인 원본 로그와 재현 실행은 검증하지 않았다.</p>
+        <p>Salesforce AI Research의 9월 17일 논문은 모델을 둘러싼 실행·기억·검토 체계인 ‘하네스’를 장기 작업의 기반으로 제안한다. 저자들은 사람이 하루 한 번 참여한 열흘 캠페인에서 기존 강화학습 결과를 재현했다고 보고했다. 집계에는 실행 주기 211회, 컨텍스트 초기화 47회, 인간 책임자만 내릴 수 있는 결정 9건이 적혔다. 초기에 기록한 운영 지식이 모델 가중치 변경 없이 이후 행동을 바꿨다는 설명이다. 근거는 한 캠페인이다.</p>
+        <p>쓸모: 세션이 끝나도 보존할 상태와 인간에게 남길 결정을 설계할 때 참고할 수 있다. 이 수치가 다른 에이전트의 합격선이 되지는 않는다.</p>
+        <p>출처: <a href="https://arxiv.org/html/2609.19519" target="_blank" rel="noopener">논문 본문·Table 1</a></p>
+        <h4>분수 연습에서 메타인지 피드백이 AI에 정답 맡기기를 줄였다</h4>
+        <p><strong>[확인][열람가능]</strong> — 논문의 실험 설계·결과·한계를 확인했다. 독립 재현은 하지 않았다.</p>
+        <p>704명이 참여한 사전등록 온라인 실험은 분수 연습 뒤 AI 없이 시험을 치르게 했다. 조수는 명시적으로 요청받을 때만 완성된 답을 제공했다. 저자들은 자신의 AI 사용을 돌아보게 하는 메타인지 피드백이 정답 맡기기를 줄이고 직후 시험 수행을 높였다고 보고했다. AI 접근 자체에 따른 시험 수행 차이는 유의하지 않았다. 측정한 편익은 사람의 직후 시험 성과다. 장기 숙련, 시스템 중단권, 오류 부담의 배분은 입증되지 않았으며, 정답 맡기기와 낮은 점수의 상관도 인과로 볼 수 없다.</p>
+        <p>쓸모: 학습용 조수에서 도움을 요청할 권한과 자기 점검을 함께 설계할 근거다. 요청 없이 답을 제공하는 조수나 장기 학습 효과로 확대해 읽지는 않는다.</p>
+        <p>출처: <a href="https://arxiv.org/html/2609.20143" target="_blank" rel="noopener">논문 본문·결과·§6.5</a></p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-25">
       <p class="emeta">No. 25 · 2026-09-17 · <a href="#issue-25">#</a></p>
       <div class="lang-en">
