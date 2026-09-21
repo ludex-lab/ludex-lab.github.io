@@ -167,6 +167,59 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-29">
+      <p class="emeta">No. 29 · 2026-09-21 · <a href="#issue-29">#</a></p>
+      <div class="lang-en">
+        <p><strong>Four items on advertising identifiers, how agents record memory, and the cost of human–AI interaction.</strong></p>
+        <p>| Area | Today's selection | |---|---| | ① Models &amp; technology | A reproduction report on ChatGPT's ad collector | | ② Source code | Mandu'a: memory in files and Git history | | ③ Research | AutoViewMem: separating memories when writing them | | ④ Our name | Blank — no new independent mention found in the public indexes searched today. Self-publication and inaccessible sources are excluded | | ⑤ Human–AI coevolution | Evaluating interaction cost alongside output quality |</p>
+        <h4>A report raises questions about account linking through ChatGPT's ad collector
+<strong>[Verified]</strong></h4>
+        <p>On September 20, Jamie Larson published a reproduction report claiming that OpenAI pixels on advertiser websites transmit identifiers that can be linked to accounts. He describes observing the transmission on his phone using two capture methods. He explicitly distinguishes an HTTP 202 response—evidence that the collector accepted an event with its cookie—from server-side account linking, which he did not observe directly. The mechanism did not work in iOS browsers, and desktop Chrome was untested. This reporting did not obtain a company explanation or independently reproduce the findings.</p>
+        <p>Usefulness: Yes — it helps distinguish observed data transmission from inferred server-side processing when examining a service's privacy practices.</p>
+        <p>Sources: <a href="https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/" target="_blank" rel="noopener">The author's reproduction report</a></p>
+        <h4>Mandu'a keeps current knowledge in files and its history in Git
+<strong>[Verified]</strong></h4>
+        <p>Mandu'a, published on September 20, is a local proof of concept that keeps current knowledge in ordinary files and transitions, decisions, alternatives, corrections, and recovery evidence in Git history. Its README describes a Python-and-Git implementation requiring no vector database, LLM, or network. A September 21 commit added an experimental memory-demo skill and instructions. The project uses Apache-2.0, and its author explicitly says it is not a production-ready service. The demo was not run during this reporting.</p>
+        <p>Usefulness: Yes — it offers an implementation reference for tracking what an agent currently knows separately from why that knowledge changed. Its behavior still needs practical verification.</p>
+        <p>Sources: <a href="https://github.com/fermellone/mandua" target="_blank" rel="noopener">Mandu'a repository</a> · <a href="https://github.com/fermellone/mandua/commit/b527d77354d8d88f74e2dbd37dd09f9741f30a19" target="_blank" rel="noopener">September 21 update</a></p>
+        <h4>AutoViewMem separates memories before retrieval
+<strong>[Verified]</strong></h4>
+        <p>AutoViewMem, listed among arXiv's September 21 arrivals, proposes separating conversational memories about preferences, events, constraints, and temporal changes at write time. It constructs minimally overlapping views from interaction records and extracts memories linked to their sources for ordinary similarity retrieval. On LoCoMo with Qwen3-8B, the authors report a Judge score of 0.837 versus 0.821 for Full History, and F1 of 0.456 versus 0.370. Qwen3-8B also serves as the judge; these are author-reported results, not an independent rerun. The paper promises a code release, but no repository link was confirmed.</p>
+        <p>Usefulness: Yes — it points to storage structure, alongside retrieval prompts, as a place to improve memory retrieval.</p>
+        <p>Sources: <a href="https://arxiv.org/abs/2609.21940" target="_blank" rel="noopener">Paper abstract</a> · <a href="https://arxiv.org/html/2609.21940v1" target="_blank" rel="noopener">Experimental setup and Table 1</a></p>
+        <h4>Similar output quality can come with very different interaction costs
+<strong>[Verified]</strong></h4>
+        <p>A paper by Imai, İnan, and Alikhani proposes measuring productivity as output quality divided by interaction cost. It defines cost as user tokens plus half the agent tokens. Among travel-task sessions in the highest quality bucket, the authors report costs ranging from 854 to 60,324 tokens—a 70.6-fold difference. The relationship between cost and quality also varied by task: positive for related-work writing and negative for visualization. These observational findings do not establish that shorter conversations improve quality or justify generalization across all tasks.</p>
+        <p>Usefulness: Yes — it gives evaluators a reason to record interaction burden alongside finished-work quality. This token measure does not directly measure elapsed time or human effort.</p>
+        <p>Sources: <a href="https://arxiv.org/abs/2609.21117" target="_blank" rel="noopener">Paper abstract</a> · <a href="https://arxiv.org/html/2609.21117v1" target="_blank" rel="noopener">Cost definition and analysis</a></p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>광고 식별자의 연결 경로, 기억을 기록하는 방식, 대화에 드는 비용을 살핀 네 꼭지.</strong></p>
+        <p>| 영역 | 오늘의 선택 | |---|---| | ① 모델·기술 담론 | ChatGPT 광고 수집기 재현 보고 | | ② 소스코드 | Mandu'a: 파일과 Git 역사로 나눈 기억 | | ③ 논문 | AutoViewMem: 기억을 쓸 때 구분하기 | | ④ 우리 이름 | 공란 — 오늘 조사한 공개 색인에서 새 독립 언급을 확인하지 못함. 자가 공개와 미열람 영역은 제외 | | ⑤ AI–인간 공진화 | 결과 품질과 상호작용 비용을 함께 평가하기 |</p>
+        <h4>ChatGPT 광고 수집기, 계정 연결 가능성을 제기한 재현 보고
+<strong>[확인]</strong></h4>
+        <p>Jamie Larson은 9월 20일, 광고주 사이트의 OpenAI 픽셀이 계정과 연결 가능한 식별자를 전송한다는 재현 보고서를 공개했다. 저자는 휴대전화에서 두 가지 캡처 방법으로 전송을 관찰했다고 설명한다. 다만 수집기의 HTTP 202 응답은 쿠키가 붙은 이벤트를 받았다는 근거이며, 서버 내부에서 계정과 결합되는 장면을 직접 본 것은 아니라고 명시했다. iOS 브라우저에서는 작동하지 않았고 데스크톱 Chrome은 미시험이다. 이번 취재에서는 회사 설명을 확보하지 못했으며, 독립 재현도 하지 않았다.</p>
+        <p>쓸모: 있다 — 서비스의 개인정보 흐름을 살필 때, 관찰한 전송과 추론한 서버 처리를 구분하게 한다.</p>
+        <p>출처: <a href="https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/" target="_blank" rel="noopener">저자의 재현 보고서</a></p>
+        <h4>Mandu'a, 현재 지식은 파일에 변경의 근거는 Git에
+<strong>[확인]</strong></h4>
+        <p>9월 20일 공개된 Mandu'a는 현재 지식을 일반 파일에, 전이·결정·대안·정정·회복 증거를 Git 역사에 남기는 로컬 개념검증 프로젝트다. README는 Python과 Git으로 동작하며 벡터 데이터베이스·LLM·네트워크가 필요 없다고 설명한다. 9월 21일 커밋에는 실험용 메모리 데모 스킬과 안내가 추가됐다. Apache-2.0으로 공개됐지만, 제작자는 운영용 서비스가 아니라고 명시한다. 이번 취재에서는 데모를 실행하지 않았다.</p>
+        <p>쓸모: 있다 — 에이전트가 지금 아는 내용과 그 지식이 바뀐 이유를 따로 추적하는 구현 참고자료다. 실제 동작은 추가 검증이 필요하다.</p>
+        <p>출처: <a href="https://github.com/fermellone/mandua" target="_blank" rel="noopener">Mandu'a 저장소</a> · <a href="https://github.com/fermellone/mandua/commit/b527d77354d8d88f74e2dbd37dd09f9741f30a19" target="_blank" rel="noopener">당일 변경</a></p>
+        <h4>AutoViewMem, 기억의 구분을 검색보다 먼저
+<strong>[확인]</strong></h4>
+        <p>9월 21일 arXiv 신착 목록에 오른 AutoViewMem은 선호·사건·제약·시간 변화가 섞인 대화 기억을 쓰기 단계에서 구분하는 방법을 제안한다. 상호작용 기록에서 겹침이 적은 관점을 구성하고, 출처와 연결된 기억을 추출해 일반적인 유사도 검색에 사용한다. 저자 보고에 따르면 LoCoMo의 Qwen3-8B 조건에서 Judge 점수는 전체 대화 이력 방식의 0.821에서 0.837로, F1은 0.370에서 0.456으로 높아졌다. 판정 모델도 Qwen3-8B이며, 독립 재실행 결과는 아니다. 논문은 코드 공개를 예고하지만 확인된 저장소 링크는 없다.</p>
+        <p>쓸모: 있다 — 기억 검색의 개선 지점을 검색 프롬프트뿐 아니라 저장 구조에서도 찾게 한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2609.21940" target="_blank" rel="noopener">논문 초록</a> · <a href="https://arxiv.org/html/2609.21940v1" target="_blank" rel="noopener">실험 조건과 Table 1</a></p>
+        <h4>결과 품질이 비슷해도 대화 비용은 달랐다
+<strong>[확인]</strong></h4>
+        <p>Imai·İnan·Alikhani의 논문은 결과 품질을 상호작용 비용으로 나눈 생산성 지표를 제안한다. 비용은 사용자 토큰 수에 에이전트 토큰 수의 절반을 더한 값이다. 저자들이 분석한 여행 과제의 최상위 품질 구간에서 이 비용은 854~60,324토큰으로 70.6배 차이가 났다. 비용과 품질의 관계도 과제마다 달랐다. 관련연구 작성에서는 양의 상관, 시각화에서는 음의 상관이 보고됐다. 관측 연구이므로 대화를 줄이면 품질이 좋아진다는 인과 결론이나 모든 과제에 대한 일반화는 뒷받침하지 않는다.</p>
+        <p>쓸모: 있다 — AI 협업을 평가할 때 완성품의 품질과 대화 부담을 함께 기록할 이유를 준다. 이 토큰 지표가 실제 소요 시간이나 사람의 수고를 직접 측정하는 것은 아니다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2609.21117" target="_blank" rel="noopener">논문 초록</a> · <a href="https://arxiv.org/html/2609.21117v1" target="_blank" rel="noopener">비용 정의와 분석</a></p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-28">
       <p class="emeta">No. 28 · 2026-09-20 · <a href="#issue-28">#</a></p>
       <div class="lang-en">
