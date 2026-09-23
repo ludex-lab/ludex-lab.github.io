@@ -167,6 +167,59 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-31">
+      <p class="emeta">No. 31 · 2026-09-23 · <a href="#issue-31">#</a></p>
+      <div class="lang-en">
+        <p><strong>Four studies ask whether memory supports action, personalization respects instructions, and improvements survive subsequent tasks.</strong></p>
+        <p>| Domain | Today's coverage | |---|---| | 1 Models and technical discourse | Empty — no new official announcement selected | | 2 Source code | Empty — no code reviewed or executed | | 3 Papers | DolphinBench, RRSI, EvoPathBench | | 4 Outside mentions | Empty — insufficient evidence to select an independent third-party mention; this does not establish absence | | 5 Human–AI co-evolution | Personal context and recommended prices |</p>
+        <h4>Test actions that require memory, without prompting recall</h4>
+        <p><strong>Grade</strong>: [Verified]</p>
+        <p>Mem0's DolphinBench evaluates actions requiring past information. Pages 1–2 specify three synthetic personas with 200 tasks each: 600 total. Tasks are accepted after checking success with relevant history and failure without it. Evaluations must report accuracy, total cost, and median task latency. This does not establish performance in live services.</p>
+        <p><strong>Usefulness: Yes.</strong> It supports testing memory with a no-history control and examining the cost of accuracy.</p>
+        <p>Sources: <a href="https://arxiv.org/pdf/2609.24971" target="_blank" rel="noopener">DolphinBench v2, September 22, 2026, PDF pp. 1–2</a></p>
+        <h4>Personal context changes prices recommended for identical requests</h4>
+        <p><strong>Grade</strong>: [Verified]</p>
+        <p>A study of 13 models reports that eight recommended more expensive options to wealthier synthetic users in every domain with valid evaluation coverage. Table 1's tool-full condition gives Claude Opus 4.8 high-minus-low wealth gaps of $198 for flights, $284/month for insurance, and $3,467/year for graduate programs; mean effect size d is 0.85. These are recommendation differences, not measured spending increases. They are separate from results under cheapest-option instructions.</p>
+        <p><strong>Usefulness: Yes.</strong> This informs scrutiny of personalization, but does not directly answer whether human instruction, review, or correction burdens decrease.</p>
+        <p>Sources: <a href="https://arxiv.org/pdf/2609.24927" target="_blank" rel="noopener">Et Tu, Brute? v1, September 21, 2026, abstract, §5.1 and Table 1</a></p>
+        <h4>Improve an agent's workflow, then test it on other tasks</h4>
+        <p><strong>Grade</strong>: [Verified]</p>
+        <p>RRSI keeps the base model fixed while improving surrounding prompts, tools, and control flow. It limits candidate edits and filters changes tailored to particular tests. The authors report gains of up to 14.1 points on the evolution split and 4.7 points out of distribution; these results were not reproduced during editing. The abstract's five benchmarks and page 2's six held-out splits are not combined as one count.</p>
+        <p><strong>Usefulness: Yes.</strong> It asks whether workflow improvements survive tasks that were not used to develop them.</p>
+        <p>Sources: <a href="https://arxiv.org/pdf/2609.24972" target="_blank" rel="noopener">RRSI, PDF dated September 22, 2026, pp. 1–2</a></p>
+        <h4>A final score cannot establish that a capability persisted</h4>
+        <p><strong>Grade</strong>: [Verified]</p>
+        <p>EvoPathBench fixes the base model and tools, saves evolving memories, skills, and workflows at checkpoints, and retests them on held-out tasks. Using public trading data, it separates generalization, retention after unrelated learning, and adaptation to new evidence. The abstract reports that gains often weaken under distribution shift and that no evaluated method achieved reliable rule adaptation. The full results tables and code were not verified here.</p>
+        <p><strong>Usefulness: Yes.</strong> It distinguishes passing once from retaining a capability. It does not establish equivalent outcomes in other work.</p>
+        <p>Sources: <a href="https://arxiv.org/pdf/2609.24663" target="_blank" rel="noopener">EvoPathBench, PDF dated September 22, 2026, abstract and introduction</a></p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>기억이 행동에 쓰이는지, 개인화가 지시를 지키는지, 개선이 다음 과업에도 남는지 묻는 네 연구.</strong></p>
+        <p>| 영역 | 오늘의 게재 | |---|---| | 1 모델·기술 담론 | 비움 — 새 공식 발표를 채택하지 않음 | | 2 소스코드 | 비움 — 코드 검토·실행 없음 | | 3 논문 | DolphinBench·RRSI·EvoPathBench | | 4 바깥 언급 | 비움 — 독립적인 제3자 언급으로 채택할 근거 미확보. 부재 판정은 아님 | | 5 AI–인간 공진화 | 개인 문맥에 따른 추천 가격 변화 |</p>
+        <h4>기억을 묻지 않고, 기억이 필요한 행동을 시킨다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span></p>
+        <p>Mem0 연구진의 DolphinBench는 과거 기록을 활용해야 완수할 수 있는 행동으로 기억을 평가한다. 원문 1–2쪽에서 확인한 규모는 가상 인물 셋, 인물당 200개로 총 600개 과제다. 관련 기록을 주면 성공하고 빼면 실패하는지 검사해 과제를 채택한다. 평가에는 정확도와 총비용, 과제 지연의 중앙값을 함께 요구한다. 실제 서비스에서의 성능을 보증하는 시험은 아니다.</p>
+        <p><strong>쓸모: 있음.</strong> 기억 검사에 기록이 없는 대조 조건을 두고, 정확도의 비용까지 함께 따질 설계 근거다.</p>
+        <p>출처: <a href="https://arxiv.org/pdf/2609.24971" target="_blank" rel="noopener">DolphinBench v2, 2026-09-22, PDF 1–2쪽</a></p>
+        <h4>같은 요청에도 개인 문맥이 추천 가격을 바꾼다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span></p>
+        <p>개인 AI 대리인 연구는 13개 모델을 시험해, 유효한 평가가 가능한 모든 영역에서 8개가 부유한 가상 사용자에게 더 비싼 선택지를 추천했다고 보고한다. 표 1의 tool-full 조건에서 Claude Opus 4.8의 고소득·저소득 집단 간 추천 가격 차이는 항공 +198달러, 보험 +284달러/월, 대학원 +3,467달러/년이며 평균 효과크기 d는 0.85다. 이는 추천의 차이이며 실제 지출 증가를 측정한 값은 아니다. 이 표를 최저가 지시 조건의 결과와 합치지 않는다.</p>
+        <p><strong>쓸모: 있음.</strong> 개인화가 선택을 어떻게 바꾸는지 검토할 근거다. 사람의 지시·검토·수정 부담 감소에 대한 직접 답은 아니다.</p>
+        <p>출처: <a href="https://arxiv.org/pdf/2609.24927" target="_blank" rel="noopener">Et Tu, Brute? v1, 2026-09-21, 초록·5.1절·표 1</a></p>
+        <h4>에이전트의 작업 방식을 고친 뒤, 다른 과업에서도 재본다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span></p>
+        <p>RRSI는 기반 모델을 고정하고 프롬프트·도구·실행 흐름 등 주변 구성을 개선하는 방법이다. 후보 변경의 규모를 제한하고 특정 시험에만 유리한 변경을 걸러낸다. 연구진은 개선에 사용한 분할에서 최대 14.1점, 분포 밖 평가에서 최대 4.7점 향상을 보고한다. 이는 저자의 실험 결과이며 이번 데스킹에서 재현하지 않았다. 초록의 ‘다섯 벤치마크’와 2쪽의 ‘여섯 홀드아웃 분할’은 같은 단위로 합산하지 않는다.</p>
+        <p><strong>쓸모: 있음.</strong> 작업 방식을 바꾼 효과가 수정에 사용하지 않은 과업에서도 남는지 묻게 한다.</p>
+        <p>출처: <a href="https://arxiv.org/pdf/2609.24972" target="_blank" rel="noopener">RRSI, PDF 날짜 2026-09-22, 1–2쪽</a></p>
+        <h4>마지막 점수만으로는 능력이 유지됐는지 알 수 없다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span></p>
+        <p>EvoPathBench는 기반 모델과 도구를 고정한 채, 변화하는 기억·기술·작업흐름을 단계별로 저장하고 별도 평가 과제로 다시 검사한다. 공개 거래 데이터를 사용해 새로운 과업으로의 일반화, 다른 학습 뒤의 유지, 새 증거에 따른 규칙 수정을 구분한다. 초록은 분포가 바뀌면 이득이 약해지는 경우가 많고, 평가한 방법 중 안정적인 규칙 수정을 달성한 것은 없었다고 보고한다. 결과 표 전체와 코드는 이번에 검증하지 않았다.</p>
+        <p><strong>쓸모: 있음.</strong> 한 번의 통과와 이후에도 유지되는 능력을 구분할 평가 관점이다. 다른 업무에서도 같은 결과가 난다는 근거는 아니다.</p>
+        <p>출처: <a href="https://arxiv.org/pdf/2609.24663" target="_blank" rel="noopener">EvoPathBench, PDF 날짜 2026-09-22, 초록·서론</a></p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-30">
       <p class="emeta">No. 30 · 2026-09-22 · <a href="#issue-30">#</a></p>
       <div class="lang-en">
