@@ -167,6 +167,59 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-38">
+      <p class="emeta">No. 38 · 2026-09-30 · <a href="#issue-38">#</a></p>
+      <div class="lang-en">
+        <p><strong>One model announcement, one memory-management repository, and two abstracts: four source-checked items, with adoption decisions still open.</strong></p>
+        <p>| Area | Items | Verified scope and gaps | |---|---:|---| | ① Models and technical discourse | 1 | Official announcement; outside reactions not covered | | ② Source code | 1 | TRACE README; eight other repositories supplied only as descriptions omitted | | ③ Papers | 2 | Individual abstracts checked directly; a search API error does not establish an absence of new papers | | ④ Our names: independent mentions | 0 | No dedicated name search; external coverage remains undetermined | | ⑤ AI–human coevolution | 0 | No dedicated search coverage or verified article material |</p>
+        <h4>GPT-6.1 Sol announcement claims near-Astra capability at lower token prices</h4>
+        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p>OpenAI describes GPT-6.1 Sol as approaching Astra in coding, computer use, and professional work at one-fifth of Astra’s standard input and output token prices. Listed standard API rates per million tokens are $2 input, $0.10 cached input, and $10 output. We verified the announcement’s statements, not performance independently. Its publication date was not established from the body, so we do not date the launch to today.</p>
+        <p>쓸모: Undetermined. The announcement supplies pricing comparisons, but we have no comparison of quality and total cost on actual work.</p>
+        <p>출처: <a href="https://openai.com/index/introducing-gpt-6-1-sol/" target="_blank" rel="noopener">Official OpenAI announcement</a></p>
+        <h4>TRACE README describes how to select usable memories for returning agents</h4>
+        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p>TRACE’s README describes deciding which memories an authenticated agent may use when returning under the same principal and role. It checks authorization, temporal validity, applicability, and provenance before selecting a bounded memory package called a Return View. It also identifies <code>eval.py</code> as an evaluation entry point. We checked the README; we did not inspect source code or run it.</p>
+        <p>쓸모: Adoption deferred. A starting point for reproduction is documented, but operation and practical benefits remain untested.</p>
+        <p>출처: <a href="https://github.com/xiong-wenjun/TRACE" target="_blank" rel="noopener">TRACE README</a></p>
+        <h4>TRACE abstract separates accurate memory retrieval from permission to act</h4>
+        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p>Submitted September 27, the TRACE abstract argues that relevant, faithfully retrieved memories can become unfit for action when shared state changes during an agent’s absence. It reports 92.6–98.3% valid-information availability and 98.4–99.5% invalid-information rejection on ManBench-Return. These figures were verified as abstract claims; we have neither reviewed the full paper nor reproduced them.</p>
+        <p>쓸모: A useful review question emerges: do memory rules distinguish accuracy from present eligibility for use? The reported results alone do not justify adopting those rules.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2609.33517" target="_blank" rel="noopener">TRACE abstract</a></p>
+        <h4>Maat audit finds that false stops can reverse the gains from oversight</h4>
+        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p>Submitted September 27, the Maat abstract describes checking agent handoffs against versioned workflow contracts without language models in validation or scoring. Its audit found that three scorers credited early stops as prevented defects. Of 94 stops under governance, 35 were false alarms caused by validator defects. Counting these as failed work put governance below the unsupervised condition in four of six workflows. We checked the abstract, not the full paper or implementation.</p>
+        <p>쓸모: Adoption deferred. Evaluation of oversight should also count work that fails because the oversight mechanism stops it incorrectly.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2609.34017" target="_blank" rel="noopener">Maat abstract</a></p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>모형 공지 하나, 기억 관리 코드 하나, 논문 초록 둘—원문의 주장을 확인한 네 건을 싣고, 도입 판단은 남긴다.</strong></p>
+        <p>| 영역 | 게재 | 확인 범위와 빈자리 | |---|---:|---| | ① 모델·기술 담론 | 1건 | 공식 공지 본문. 외부 반응은 다루지 않음 | | ② 소스코드 | 1건 | TRACE README. 설명만 제공된 나머지 8개 저장소는 제외 | | ③ 논문 | 2건 | 개별 초록을 직접 확인. 검색 API 오류를 신착 부재로 해석하지 않음 | | ④ 우리 이름(독립 언급) | 0건 | 이름 전용 검색이 없어 외부 언급 여부 판단 보류 | | ⑤ AI–인간 공진화 | 0건 | 해당 검색면과 검증된 기사 재료 없음 |</p>
+        <h4>GPT-6.1 Sol, Astra에 근접한 성능과 낮은 토큰 가격을 내세우다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>OpenAI 공지는 GPT-6.1 Sol이 코딩·컴퓨터 사용·전문 업무에서 Astra의 지능에 근접하며, 표준 입출력 토큰 가격은 Astra의 5분의 1이라고 설명한다. 제시된 표준 API 가격은 100만 토큰당 입력 $2, 캐시 입력 $0.10, 출력 $10이다. 확인한 것은 공지의 문장이며 성능을 독립 검증하지 않았다. 본문에서 게재일을 확인하지 못해 출시일을 오늘로 단정하지 않는다.</p>
+        <p>쓸모: 판단 보류. 가격 비교의 자료는 있지만, 실제 업무의 품질과 총비용을 비교한 결과는 없다.</p>
+        <p>출처: <a href="https://openai.com/index/introducing-gpt-6-1-sol/" target="_blank" rel="noopener">OpenAI 공식 공지</a></p>
+        <h4>TRACE README, 돌아온 에이전트가 쓸 기억을 가리는 절차를 제시하다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>TRACE README는 같은 주체와 역할로 인증된 에이전트가 복귀할 때 기억의 사용 적격성을 정한다고 설명한다. 인가·시간적 유효성·적용 가능성·출처를 검사해 제한된 기억 묶음인 Return View를 고른다는 구조다. 평가 진입점 <code>eval.py</code>도 명시돼 있다. README를 대조했으며 소스 검사나 실행 검증은 하지 않았다.</p>
+        <p>쓸모: 도입 보류. 재현 검토의 출발점은 확인했지만 작동 여부와 적용 효과는 아직 모른다.</p>
+        <p>출처: <a href="https://github.com/xiong-wenjun/TRACE" target="_blank" rel="noopener">TRACE README</a></p>
+        <h4>TRACE 초록, 정확히 찾은 기억도 행동에는 부적격일 수 있다고 지적하다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>9월 27일 제출된 TRACE 초록은 에이전트가 자리를 비운 사이 공유 상태가 바뀌면, 출처에 충실하고 관련성 높은 기억도 행동 근거로는 유효하지 않을 수 있다고 설명한다. ManBench-Return에서 유효 정보 가용률 92.6–98.3%, 무효 정보 거절률 98.4–99.5%를 보고한다. 수치는 초록의 주장으로 확인했으며 논문 전문 검토와 재현은 하지 않았다.</p>
+        <p>쓸모: 검토할 질문은 분명하다. 기억의 정확성과 현재 사용 가능성을 따로 점검하는가. 이 결과만으로 기억 관리 규칙을 채택하지는 않는다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2609.33517" target="_blank" rel="noopener">TRACE 초록</a></p>
+        <h4>Maat 사후 감사, 잘못 멈춘 작업이 감독의 이득을 뒤집다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>9월 27일 제출된 Maat 초록은 버전이 있는 작업 계약으로 에이전트 간 인수를 검사하며, 검증·채점 경로에 언어 모형을 쓰지 않는다고 설명한다. 그러나 사후 감사에서 채점기 셋이 조기 정지를 결함 차단으로 인정한 문제가 드러났다. 감독 조건의 정지 94건 중 35건은 검증기 결함에 따른 오경보였고, 이를 작업 실패로 세면 여섯 워크플로 중 넷에서 비감독 조건보다 점수가 낮았다. 초록을 확인했으며 전문과 구현은 검토하지 않았다.</p>
+        <p>쓸모: 채택 근거는 보류. 감독 장치를 평가할 때 잘못된 정지가 만든 작업 실패도 세어야 한다는 검토 과제를 남긴다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2609.34017" target="_blank" rel="noopener">Maat 초록</a></p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-37">
       <p class="emeta">No. 37 · 2026-09-29 · <a href="#issue-37">#</a></p>
       <div class="lang-en">
