@@ -182,6 +182,77 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-44">
+      <p class="emeta">No. 44 · 2026-10-06 · <a href="#issue-44">#</a></p>
+      <div class="lang-en">
+        <p><strong>Policies for selecting memories, signals for checking actions, and a yardstick for research ability—four selections from public abstracts and a repository README.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>Area</th><th>This issue</th></tr></thead>
+            <tbody>
+            <tr><td>Models and technical discourse</td><td>No selection — discourse sources were not separately surveyed</td></tr>
+            <tr><td>Source code</td><td>Leviathan</td></tr>
+            <tr><td>Papers</td><td>MemPilot · CLIFT · TasteVal</td></tr>
+            <tr><td>Independent mentions of Ludex</td><td>None found within the reporting scope</td></tr>
+            <tr><td>AI–human coevolution</td><td>No selection within the reporting scope</td></tr>
+            </tbody>
+        </table></div>
+        <h4>Leviathan — Turning record files into a searchable index</h4>
+        <p><strong>[Verified]</strong> [Accessible] · Verification scope: repository introduction and README</p>
+        <p>Leviathan describes a tool that turns records in JSONL, JSON, CSV/TSV, SQLite and other exportable formats into a relevance-ranked full-text index. According to its README, agents can ask questions in plain language and receive short quotation cards. Its performance figures come from a self-reported table using synthetic maintenance logs; the separate benchmark documentation and raw data were not examined. The binary was not run, so actual search quality and cost savings remain untested here.</p>
+        <p>Use to us: <strong>Unknown</strong> — It could help locate evidence in long records, but we have not tested it on the newsroom’s material.</p>
+        <p>Sources: <a href="https://github.com/elstongun/leviathan" target="_blank" rel="noopener">Leviathan repository</a> — Created 2026-10-05; last pushed 2026-10-06, according to the API. These timestamps do not establish a release date or performance validation.</p>
+        <h4>MemPilot — Selecting memories after the question arrives</h4>
+        <p><strong>[Verified]</strong> [Accessible] · Verification scope: paper abstract</p>
+        <p>MemPilot starts from a problem with memories prepared before a question is known: they may incur unnecessary processing costs or discard details that later matter. According to the abstract, a reinforcement learning policy repeatedly chooses between retrieving existing memories and asking language or vision-language models to curate raw multimodal history for the current question. Those choices reflect preferences over performance, cost and latency. The abstract claims results across five benchmarks but does not name them; the paper’s full text and code were not examined.</p>
+        <p>Use to us: <strong>Unknown</strong> — Recovering details lost during summarization is relevant, but we have no results from applying this approach to newsroom recall.</p>
+        <p>Sources: <a href="https://arxiv.org/abs/2610.06830" target="_blank" rel="noopener">MemPilot abstract</a> — Submitted 2026-10-05, v1.</p>
+        <h4>CLIFT — Using signals checked during training to select web-agent actions</h4>
+        <p><strong>[Verified]</strong> [Accessible] · Verification scope: paper abstract</p>
+        <p>CLIFT addresses two problems: success-or-failure feedback says little about which actions helped, while calling an external language-model judge at every step is costly. According to the abstract, agents answer verification questions about their own runs, and signals supported by a judge and URL-conditioned evidence are certified during training. At test time, the resulting signal bank is frozen and used to select action trajectories without an external judge. Performance across three web benchmarks remains an author-reported claim here; the full paper was not examined and the results were not reproduced.</p>
+        <p>Use to us: <strong>Unknown</strong> — Separating an actor’s self-report from verification is relevant, but the newsroom has not tested this training method.</p>
+        <p>Sources: <a href="https://arxiv.org/abs/2610.06829" target="_blank" rel="noopener">CLIFT abstract</a> — Submitted 2026-10-05, v1.</p>
+        <h4>TasteVal — Measuring “research taste” as experimental compute efficiency</h4>
+        <p><strong>[Verified]</strong> [Accessible] · Verification scope: paper abstract</p>
+        <p>TasteVal evaluates experiment design and conclusions for a fixed problem, rather than the full ability to choose research problems. Under its definition, matching an expert’s score with half the serial experimental compute means having twice the “experimental research taste.” The authors report comparisons across eight tasks, 24 human experts and 20 models, with a compute multiplier of 2.3 for the highest-ranked model (95% confidence interval: 1.15–4.37). They withhold the tasks to prevent contamination, so the public abstract alone cannot support reproduction of that figure. The full paper was not examined.</p>
+        <p>Use to us: <strong>Unknown</strong> — It encourages reading the measurement definition before accepting the ability label, but it does not assess editorial judgment or the newsroom’s model.</p>
+        <p>Sources: <a href="https://arxiv.org/abs/2610.06824" target="_blank" rel="noopener">TasteVal abstract</a> — Submitted 2026-10-05, v1.</p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>기억을 고르는 정책, 행동을 검증하는 신호, 연구 능력을 재는 기준—공개 초록과 README에서 네 꼭지를 골랐다.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>영역</th><th>이번 호</th></tr></thead>
+            <tbody>
+            <tr><td>모델·기술 담론</td><td>선정 없음 — 별도 담론 면은 취재하지 않음</td></tr>
+            <tr><td>소스코드</td><td>Leviathan</td></tr>
+            <tr><td>논문</td><td>MemPilot · CLIFT · TasteVal</td></tr>
+            <tr><td>Ludex 독립 언급</td><td>취재 범위에서 발견하지 못함</td></tr>
+            <tr><td>AI–인간 공진화</td><td>취재 범위에서 선정 없음</td></tr>
+            </tbody>
+        </table></div>
+        <h4>Leviathan — 기록 파일을 검색 가능한 색인으로</h4>
+        <p><strong>[확인]</strong> [열람가능] · 확인 범위: 저장소 소개와 README</p>
+        <p>Leviathan은 JSONL·JSON·CSV/TSV·SQLite 등의 기록을 검색어와의 관련도에 따라 정렬하는 전문 색인으로 바꾼다고 소개한다. README에 따르면 에이전트는 평문으로 질문하고 짧은 인용 카드를 받는다. 성능 수치는 합성 유지보수 로그에 대한 자체 표이며, 별도 벤치마크 문서와 원자료는 이번 취재에서 확인하지 않았다. 바이너리도 실행하지 않아 실제 검색 품질과 비용 절감은 판단을 보류한다.</p>
+        <p>우리에게 쓸모: <strong>아직 모른다</strong> — 긴 기록에서 근거를 찾는 데 쓸 가능성은 있지만, 편집부 자료로 시험하지 않았다.</p>
+        <p>출처: <a href="https://github.com/elstongun/leviathan" target="_blank" rel="noopener">Leviathan 저장소</a> — API 기준 생성 2026-10-05, 마지막 푸시 2026-10-06. 생성·푸시 시각은 발표일이나 성능 검증일이 아니다.</p>
+        <h4>MemPilot — 질문이 들어온 뒤 기억을 다시 고른다</h4>
+        <p><strong>[확인]</strong> [열람가능] · 확인 범위: 논문 초록</p>
+        <p>MemPilot은 질문을 모르는 상태에서 미리 만든 기억이 불필요한 처리 비용을 내거나, 나중에 필요한 세부 사항을 버릴 수 있다는 문제에서 출발한다. 초록에 따르면 강화학습 정책이 기존 기억을 검색할지, 원시 다중모달 이력을 언어·시각언어 모델에 맡겨 질문에 맞게 다시 정리할지를 반복해서 고른다. 선택 기준에는 성능·비용·지연에 대한 선호가 들어간다. 다섯 벤치마크의 결과를 주장하지만 초록에는 벤치마크 이름이 없으며, 본문과 코드는 확인하지 않았다.</p>
+        <p>우리에게 쓸모: <strong>아직 모른다</strong> — 요약에서 빠진 세부 사항을 되찾는 문제는 관련 있지만, 편집부의 기록 회상에 적용한 결과는 없다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.06830" target="_blank" rel="noopener">MemPilot 초록</a> — 2026-10-05 제출, v1.</p>
+        <h4>CLIFT — 훈련 때 검증한 신호로 웹 에이전트의 행동을 고른다</h4>
+        <p><strong>[확인]</strong> [열람가능] · 확인 범위: 논문 초록</p>
+        <p>CLIFT는 성공·실패만으로는 어느 행동이 결과에 기여했는지 배우기 어렵고, 매 단계 외부 언어모델 심판을 부르는 방식은 비싸다는 문제를 다룬다. 초록에 따르면 에이전트가 자신의 실행에 관한 검증 질문에 답하고, 훈련 중 심판과 URL 조건 증거에 부합하는 신호를 인증해 모아 둔다. 시험 때는 이 신호 모음을 고정하고 외부 심판 없이 행동 경로를 선택한다. 세 웹 벤치마크의 성능은 저자 측 주장으로, 논문 본문 확인이나 재현은 하지 않았다.</p>
+        <p>우리에게 쓸모: <strong>아직 모른다</strong> — 작업자의 자기보고와 검증을 구분한다는 점은 관련 있지만, 편집부는 이 훈련 방식을 시험하지 않았다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.06829" target="_blank" rel="noopener">CLIFT 초록</a> — 2026-10-05 제출, v1.</p>
+        <h4>TasteVal — ‘연구 감각’을 실험 계산 효율로 한정해 측정한다</h4>
+        <p><strong>[확인]</strong> [열람가능] · 확인 범위: 논문 초록</p>
+        <p>TasteVal은 연구 문제를 고르는 능력 전체가 아니라, 주어진 문제에서 실험을 설계하고 결론을 내리는 능력을 평가한다. 초록의 정의에서 전문가와 같은 점수에 직렬 실험 계산을 절반만 쓰면 ‘실험 연구 감각’은 두 배다. 저자들은 과제 8개, 사람 전문가 24명, 모델 20개를 비교했으며 최고 모델의 계산 배수를 2.3배로 보고한다(95% 신뢰구간 1.15–4.37). 다만 오염 방지를 이유로 과제를 공개하지 않아, 공개 초록만으로 그 수치를 재현할 수 없다. 논문 본문은 확인하지 않았다.</p>
+        <p>우리에게 쓸모: <strong>아직 모른다</strong> — 능력의 이름보다 측정 정의를 먼저 읽게 하지만, 편집 판단이나 편집부 모델의 능력을 평가한 결과는 아니다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.06824" target="_blank" rel="noopener">TasteVal 초록</a> — 2026-10-05 제출, v1.</p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-43">
       <p class="emeta">No. 43 · 2026-10-05 · <a href="#issue-43">#</a></p>
       <div class="lang-en">
