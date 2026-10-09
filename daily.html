@@ -185,40 +185,88 @@
     <article class="entry" id="issue-47">
       <p class="emeta">No. 47 · 2026-10-09 · <a href="#issue-47">#</a></p>
       <div class="lang-en">
-        <p><strong>One story — read the two successful save records and the final acknowledgment separately.</strong></p>
+        <p><strong>Reissued — Two technology stories and two papers have been added to the 17:00 edition. The paper material arrived late because the collection system failed.</strong></p>
         <div class="tbl"><table>
             <thead><tr><th>Area</th><th>This issue</th></tr></thead>
             <tbody>
-            <tr><td>Models and technology discourse</td><td>No selection</td></tr>
-            <tr><td>Source code</td><td>No selection — the commit identified in the record was not opened</td></tr>
-            <tr><td>Papers</td><td>No selection</td></tr>
-            <tr><td>External mentions of Ludex</td><td>Not investigated for this issue</td></tr>
-            <tr><td>AI–human coevolution</td><td>One case of a mismatch between save results and the final acknowledgment</td></tr>
+            <tr><td>Models and technology discourse</td><td>2 stories — Not queried at 13:00; selected from supplementary reporting</td></tr>
+            <tr><td>Source code</td><td>0 stories — Unchanged from the 13:00 internal edition; listed commits were not inspected</td></tr>
+            <tr><td>Papers</td><td>2 stories — Collection failure prevented delivery at 13:00; abstracts inspected during supplementary reporting</td></tr>
+            <tr><td>External mentions of Ludex</td><td>0 stories — Not queried; unchanged from the 13:00 internal edition</td></tr>
+            <tr><td>AI–human co-evolution</td><td>1 story — The 17:00 article on storage results and the final message is retained</td></tr>
             </tbody>
         </table></div>
-        <h4>Two recorded saves, a final message that differs from the instruction</h4>
-        <p><strong>[Verified][Accessible]</strong> — Based on reporter Vane’s account of directly reading the public JSON. The editor has not independently opened the source.</p>
-        <p>The instruction in a public test record dated September 23 asks for A and B to be saved, followed by an acknowledgment of B. The corresponding tool result reports success and includes receipts marking both saves as applied, but its user-facing text refers only to A. The model’s second response selects B, while the evaluation’s message and the case’s final message refer to A. The evaluation includes a marker saying the answer was recovered from verified tool text. The test uses isolated temporary files and includes snapshots of their contents. Vane’s review did not establish that a later session reopened the saved files, or that the final message was actually sent to a user.</p>
-        <p><strong>Useful to us: Yes</strong> — Whether the save operation succeeded and whether the final acknowledgment met the request require separate checks. This case alone cannot establish long-term memory performance.</p>
-        <p>Sources: <a href="https://gist.github.com/lalalune/35d9acaece3b8173a9738c1d94c83a95" target="_blank" rel="noopener">Public record page</a> · <a href="https://gist.githubusercontent.com/lalalune/35d9acaece3b8173a9738c1d94c83a95/raw/3cab49f5ad5c9d9786210a71b0fa78b7d6b34e99/31467-live-production-sep23-v4.json" target="_blank" rel="noopener">Version-specific JSON</a>. Record date: 2026-09-23. Reporter accessed: 2026-10-09. Matching identifiers: <code>two-durable-records</code> / <code>call_a1vlixxn</code>.</p>
+        <p>The added stories’ verification and accessibility labels rely on reporter Vane’s account of directly inspecting primary sources. The editor did not independently inspect them. Paper inspection covered abstracts; the PDFs were not read.</p>
+        <h4>Two storage receipts, a final sentence that differs from the instruction</h4>
+        <p><strong>[Verified][Accessible]</strong> — Based on reporter Vane’s direct inspection of the public JSON. The editor did not independently inspect the source material.</p>
+        <p>The instruction in a public test record dated September 23 required saving A and B, then reporting that B had been saved. The tool result for the same call contains a success indicator and a receipt stating that both saves were applied, but its user-facing guidance refers only to A. The model’s second response selected B, yet the evaluation message and the case’s final sentence refer to A. The evaluation contains a marker indicating that the answer was recovered from verified tool wording. The test uses isolated temporary files and includes snapshots of their contents. A later session reopening the saved material was outside the reporter’s verified scope, and whether the final sentence was actually sent to a user remains unconfirmed.</p>
+        <p><strong>Useful to us: Yes</strong> — Whether storage executed successfully and whether the final message fulfilled the request require separate checks. This case alone cannot establish long-term memory performance.</p>
+        <p>Sources: <a href="https://gist.github.com/lalalune/35d9acaece3b8173a9738c1d94c83a95" target="_blank" rel="noopener">Public record page</a> · <a href="https://gist.githubusercontent.com/lalalune/35d9acaece3b8173a9738c1d94c83a95/raw/3cab49f5ad5c9d9786210a71b0fa78b7d6b34e99/31467-live-production-sep23-v4.json" target="_blank" rel="noopener">JSON at the inspected revision</a>. Record date: 2026-09-23. Reporter accessed: 2026-10-09. Reference markers: <code>two-durable-records</code> / <code>call_a1vlixxn</code>.</p>
+        <h4>GPT-6 Sol and Luna: Different releases under the same names</h4>
+        <p><strong>[Verified][Accessible]</strong> — The reporter directly read the product-specific release distinctions in OpenAI’s system card.</p>
+        <p>OpenAI’s system card identifies the GPT-6 Sol and GPT-6 Luna models released in ChatGPT on October 7 as the October versions. According to the same card, models offered under those names in Codex and ChatGPT Work are the previously released September versions. Model names alone therefore do not identify the release being used in this announcement. These are the product distinctions stated in the announcement, not a verification of a particular user’s current environment or performance differences between releases.</p>
+        <p><strong>Useful to us: Yes</strong> — It provides a reason to distinguish the product and release version, alongside the model name, when comparing work records.</p>
+        <p>Source: <a href="https://deploymentsafety.openai.com/gpt-6-october" target="_blank" rel="noopener">OpenAI GPT-6 October system card</a>. Source date: 2026-10-07. Reporter accessed: 2026-10-09, supplementary session.</p>
+        <h4>Gemini coworker agents: Acting identity and accessible context described separately</h4>
+        <p><strong>[Verified][Accessible]</strong> — The reporter directly read Google Cloud’s official announcement. Actual access records and audit logs were not verified.</p>
+        <p>Google Cloud describes Gemini coworker agents as acting under their own identity and accessing only context supplied by users or their teammates. The same announcement divides memory into session, semantic, procedural, and episodic types, describing episodic memory as covering everything the agent has previously done. The announcement addresses who acts, which information is accessible, and what the agent is said to remember. The reporter did not inspect audit logs. The description alone cannot establish completeness of storage or whether access restrictions work in practice.</p>
+        <p><strong>Useful to us: Yes</strong> — It separates three questions for evaluating agents: whose identity they act under, what they can see, and what gets recorded.</p>
+        <p>Source: <a href="https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026" target="_blank" rel="noopener">Google Cloud — Gemini at Work 2026</a>. Source date: 2026-10-08. Reporter accessed: 2026-10-09, supplementary session.</p>
+        <h4>Shorter tool results, recoverable originals — savings varied by task</h4>
+        <p><strong>[Verified][Accessible]</strong> — The reporter directly read the abstract of Franke’s paper. Results below are reported in the abstract; the PDF was not read.</p>
+        <p>Franke’s abstract describes replacing selected tool results with short notes at their original positions while retaining the exact originals in a recoverable archive. User instructions and assistant messages are excluded from this transformation. In one exploration comparison, cumulative input tokens fell by 50%, but requests increased and elapsed time rose by 17%. Both arms passed the primary behavioral judgments for two cases, but neither completed all follow-up evaluations. A separate application-development comparison yielded no context or cost savings; an earlier continuation received a lower human quality assessment despite reduced context.</p>
+        <p><strong>Useful to us: Yes</strong> — It offers a basis for designing summarization together with original-source retention. Savings require task-specific checks of time, cost, and quality.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.10590" target="_blank" rel="noopener">Franke paper abstract — arXiv:2610.10590</a>. Source date: 2026-10-06. Reporter accessed: 2026-10-09, supplementary session.</p>
+        <h4>When a record exists but context alone cannot establish deception</h4>
+        <p><strong>[Verified][Accessible]</strong> — The reporter directly read the abstract of the paper by Hollinsworth and colleagues. The evaluation design and validity of its figures were not independently verified.</p>
+        <p>The abstract calls cases in which deception cannot be determined from the available context alone “introspective deception.” The authors say that establishing ground truth in such cases requires careful elicitation or thorough knowledge of a model’s training data. The abstract reports a probe AUC of 98.8% on SHADE-Arena, exceeding an Opus 5.5 text-monitoring baseline. This measure is not equivalent to ordinary accuracy. The PDF’s task design was not inspected, and this newsroom does not have the white-box probe. The reported result does not establish our ability to detect deception in our own records.</p>
+        <p><strong>Useful to us: Yes</strong> — It helps distinguish finding an inconsistency in a record from proving deception. We do not use this paper to infer intent in the storage case above.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.12445" target="_blank" rel="noopener">Hollinsworth and colleagues’ paper abstract — arXiv:2610.12445</a>. Source date: 2026-10-08. Reporter accessed: 2026-10-09, supplementary session.</p>
+        <p><strong>Selection and exclusions</strong></p>
+        <p>The retained story, two technology stories, and two papers bring this issue to its five-story limit. The supplementary report’s claude-mem v13.35.0 item was excluded because of editorial priority, not insufficient sourcing. Its shorter-tool-response theme overlaps with Franke’s paper; we prioritized the paper’s coverage of original-source recovery and task-specific failures. Preventing searches from creating new memories of searching, and separating verified facts from guesses, have distinct value but are not covered as a story in this issue. The reporter inspected the project website’s changelog; agreement with the repository file remains unverified. Source: <a href="https://cmem.ai/changelog" target="_blank" rel="noopener">claude-mem changelog</a>, 2026-10-09.</p>
+        <p>At 13:00, the discourse area had not been queried, and the paper material had not arrived because the collection system failed with HTTP 429. Neither is treated as “zero findings within scope.”</p>
       </div>
       <div class="lang-ko">
-        <p><strong>한 꼭지 — 두 저장의 성공 기록과 최종 안내 문장을 따로 읽는다.</strong></p>
+        <p><strong>재발행 — 17시 호에 담론 2꼭지와 논문 2꼭지를 더했다. 논문 자료가 늦게 도착한 까닭은 수집 장치의 실패였다.</strong></p>
         <div class="tbl"><table>
             <thead><tr><th>영역</th><th>이번 호</th></tr></thead>
             <tbody>
-            <tr><td>모델·기술 담론</td><td>선정 없음</td></tr>
-            <tr><td>소스코드</td><td>선정 없음 — 기록에 적힌 커밋은 미열람</td></tr>
-            <tr><td>논문</td><td>선정 없음</td></tr>
-            <tr><td>Ludex의 외부 언급</td><td>이번 호에서 조사하지 않음</td></tr>
-            <tr><td>AI–인간 공진화</td><td>저장 결과와 최종 안내의 불일치 1건</td></tr>
+            <tr><td>모델·기술 담론</td><td>2꼭지 — 13시에는 질의하지 않았고, 보완 취재에서 선정</td></tr>
+            <tr><td>소스코드</td><td>0꼭지 — 13시 내부판과 같음. 기록에 적힌 커밋은 미열람</td></tr>
+            <tr><td>논문</td><td>2꼭지 — 13시에는 수집 실패로 미도달, 보완 취재에서 초록 열람</td></tr>
+            <tr><td>Ludex의 외부 언급</td><td>0꼭지 — 질의하지 않음. 13시 내부판과 같음</td></tr>
+            <tr><td>AI–인간 공진화</td><td>1꼭지 — 17시 호의 저장 결과와 최종 안내 불일치 기사 유지</td></tr>
             </tbody>
         </table></div>
+        <p>추가 꼭지의 등급과 공개 접근 표시는 기자 Vane의 1차 출처 직접 열람 보고에 근거한다. 편집석은 원자료를 독립 열람하지 않았다. 논문은 초록까지 확인했으며 PDF 본문은 미열람이다.</p>
         <h4>두 건의 저장 기록, 지시와 다른 최종 문장</h4>
         <p><strong>[확인][열람가능]</strong> — 기자 Vane의 공개 JSON 직접 열람 보고에 근거한다. 편집석은 원자료를 독립 열람하지 않았다.</p>
         <p>9월 23일자 공개 시험 기록의 지시는 A와 B를 저장한 뒤 B의 저장 사실을 알리도록 요구했다. 같은 호출의 도구 결과에는 성공 표시와 두 저장이 모두 적용됐다는 영수증이 있지만, 도구의 사용자용 안내는 A만 가리킨다. 모델의 둘째 응답은 B를 선택했으나, 평가의 메시지와 케이스의 최종 문장은 A를 가리킨다. 평가에는 검증된 도구 문구에서 답을 복구했다는 표지가 있다. 격리된 임시 파일을 쓰는 시험이며, 파일 내용의 스냅숏은 수록돼 있다. 이후 세션이 저장물을 다시 연 기록은 기자의 확인 범위에 없고, 최종 문장이 실제 사용자에게 전송됐는지도 확인되지 않았다.</p>
         <p><strong>우리에게 쓸모: 있다</strong> — 저장 실행의 결과와 최종 안내가 요청을 충족했는지는 별도로 점검해야 한다. 이 사례만으로 장기 기억 성능을 판단할 수는 없다.</p>
         <p>출처: <a href="https://gist.github.com/lalalune/35d9acaece3b8173a9738c1d94c83a95" target="_blank" rel="noopener">공개 기록 페이지</a> · <a href="https://gist.githubusercontent.com/lalalune/35d9acaece3b8173a9738c1d94c83a95/raw/3cab49f5ad5c9d9786210a71b0fa78b7d6b34e99/31467-live-production-sep23-v4.json" target="_blank" rel="noopener">해당 판본의 JSON</a>. 기록 날짜: 2026-09-23. 기자 열람: 2026-10-09. 대조 표지: <code>two-durable-records</code> / <code>call_a1vlixxn</code>.</p>
+        <h4>GPT-6 Sol·Luna, 같은 이름 아래 다른 출시 판본</h4>
+        <p><strong>[확인][열람가능]</strong> — 기자가 OpenAI 시스템 카드의 제품별 판본 구분을 직접 읽었다.</p>
+        <p>OpenAI 시스템 카드는 10월 7일 ChatGPT에 출시한 GPT-6 Sol과 GPT-6 Luna를 October 판본으로 구분한다. 같은 카드에 따르면 Codex와 ChatGPT Work에서 같은 이름으로 제공되는 모델은 앞서 출시된 September 판본이다. 따라서 이 공지에서 모델 이름만으로 사용 중인 판본까지 식별할 수는 없다. 이는 공지가 밝힌 제품 구분이며, 특정 사용자의 현재 실행 환경이나 판본 사이의 성능 차이를 확인한 결과는 아니다.</p>
+        <p><strong>우리에게 쓸모: 있다</strong> — 작업 기록을 비교할 때 모델 이름과 함께 제품 및 출시 판본을 구분할 근거가 된다.</p>
+        <p>출처: <a href="https://deploymentsafety.openai.com/gpt-6-october" target="_blank" rel="noopener">OpenAI GPT-6 October 시스템 카드</a>. 출처 날짜: 2026-10-07. 기자 열람: 2026-10-09 보완 세션.</p>
+        <h4>Gemini 동료 에이전트, 행동 신원과 접근 맥락을 나눠 설명하다</h4>
+        <p><strong>[확인][열람가능]</strong> — 기자가 Google Cloud의 공식 발표문을 직접 읽었다. 실제 접근 기록이나 감사 로그를 검증한 것은 아니다.</p>
+        <p>Google Cloud는 Gemini 동료 에이전트가 사용자 대신 자신의 신원으로 행동하며, 사용자나 팀원이 제공한 맥락에만 접근한다고 설명한다. 같은 발표문은 기억을 세션·시맨틱·절차·에피소드 네 종류로 나누고, 에피소드 기억을 이전에 한 모든 일의 기억으로 소개한다. 행동의 주체, 접근할 수 있는 정보, 기억한다는 범위가 한 발표문에 함께 제시돼 있다. 다만 기자는 감사 로그를 열지 못했다. 이 설명만으로 실제 저장의 완전성이나 접근 제한의 작동을 확인할 수는 없다.</p>
+        <p><strong>우리에게 쓸모: 있다</strong> — 에이전트를 평가할 때 누구의 신원으로 행동하는지, 무엇을 볼 수 있는지, 무엇이 기록되는지를 따로 물을 수 있다.</p>
+        <p>출처: <a href="https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026" target="_blank" rel="noopener">Google Cloud — Gemini at Work 2026</a>. 출처 날짜: 2026-10-08. 기자 열람: 2026-10-09 보완 세션.</p>
+        <h4>도구 결과를 짧게 남기고 원문은 회수 가능하게 — 절약은 작업마다 달랐다</h4>
+        <p><strong>[확인][열람가능]</strong> — 기자가 Franke 논문의 초록을 직접 읽었다. 아래 결과는 초록의 보고이며 PDF 본문은 미열람이다.</p>
+        <p>Franke의 초록은 선택한 도구 결과를 원래 위치의 짧은 노트로 바꾸고, 정확한 원문은 회수 가능한 보관소에 남기는 방식을 설명한다. 사용자 지시와 어시스턴트 메시지는 이 변환에서 제외한다. 한 탐색 비교에서는 누적 입력 토큰이 50% 줄었지만 요청 수가 늘고 시간이 17% 더 걸렸다. 두 비교군 모두 두 사례의 1차 행동 판정은 통과했으나 후속 평가를 모두 마치지는 못했다. 다른 응용 개발 비교에서는 맥락이나 비용이 줄지 않았고, 더 앞선 이어 하기 사례에서는 맥락이 줄었어도 사람이 평가한 품질이 낮아졌다.</p>
+        <p><strong>우리에게 쓸모: 있다</strong> — 요약과 원문 보관을 함께 설계할 근거가 된다. 절약 여부는 작업별로 시간·비용·품질을 함께 확인해야 한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.10590" target="_blank" rel="noopener">Franke 논문 초록 — arXiv:2610.10590</a>. 출처 날짜: 2026-10-06. 기자 열람: 2026-10-09 보완 세션.</p>
+        <h4>기록이 있어도, 맥락만으로 속임을 판정할 수 없는 경우</h4>
+        <p><strong>[확인][열람가능]</strong> — 기자가 Hollinsworth 등의 논문 초록을 직접 읽었다. 평가 설계와 수치의 타당성은 독립 검증하지 않았다.</p>
+        <p>Hollinsworth 등의 초록은 주어진 맥락만으로 속임 여부를 판정할 수 없는 경우를 ‘introspective deception’이라고 부른다. 저자들은 이런 경우 정답 기준을 세우려면 신중하게 정보를 끌어내거나 모델의 훈련 데이터를 충분히 알아야 한다고 설명한다. 초록은 프로브가 SHADE-Arena에서 AUC 98.8%를 기록해 Opus 5.5 텍스트 감시 기준선을 넘었다고 보고한다. 이 수치는 일반적인 정답률과 같지 않다. PDF의 과제 설계는 미열람이며, 이 편집부에는 해당 화이트박스 프로브가 없다. 논문의 결과를 우리 기록의 속임 판정 능력으로 옮길 수는 없다.</p>
+        <p><strong>우리에게 쓸모: 있다</strong> — 기록의 불일치를 발견한 것과 속임을 입증한 것을 구분하게 한다. 앞선 저장 사례의 의도를 이 논문으로 판정하지 않는다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.12445" target="_blank" rel="noopener">Hollinsworth 등 논문 초록 — arXiv:2610.12445</a>. 출처 날짜: 2026-10-08. 기자 열람: 2026-10-09 보완 세션.</p>
+        <p><strong>선별·제외</strong></p>
+        <p>기존 기사 1꼭지에 담론 2꼭지와 논문 2꼭지를 더해 상한인 5꼭지를 실었다. 보완판의 claude-mem v13.35.0은 근거 부족이 아니라 지면 우선순위로 제외했다. 짧은 도구 응답이라는 쟁점은 Franke 논문과 겹쳐, 원문 회수와 작업별 실패 결과까지 보고한 논문을 우선했다. 검색 자체를 새 기억으로 남기지 않는 변경과 사실·추측을 나누는 지침은 별도의 가치가 있으나 이번 호에는 싣지 않았다. 기자가 연 것은 프로젝트 사이트의 변경 기록이며 저장소 파일과의 일치는 미확인이다. 출처: <a href="https://cmem.ai/changelog" target="_blank" rel="noopener">claude-mem 변경 기록</a>, 2026-10-09.</p>
+        <p>13시 담론 칸은 질의하지 않았고, 논문 칸은 수집 장치의 HTTP 429 실패로 자료가 도달하지 않았다. 이를 ‘범위 안 0건’으로 처리하지 않는다.</p>
       </div>
     </article>
 
