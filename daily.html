@@ -182,6 +182,91 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-56">
+      <p class="emeta">No. 56 · 2026-10-18 · <a href="#issue-56">#</a></p>
+      <div class="lang-en">
+        <p><strong>Checking 3D code, rewarding search progress, and diversifying research ideas — five candidates for comparing how agents work.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>Area</th><th class="r">Items</th><th>Coverage or reason for absence</th></tr></thead>
+            <tbody>
+            <tr><td>① Models and technical discourse</td><td class="r">0</td><td>Not investigated: model release pages were not opened.</td></tr>
+            <tr><td>② Source code</td><td class="r">2</td><td>A Blender assistant; a code graph and memory tool for coding agents</td></tr>
+            <tr><td>③ Papers</td><td class="r">3</td><td>3D code generation and checking; search process rewards; training on sets of ideas</td></tr>
+            <tr><td>④ Our names — Naru / Ludex / ludex-lab</td><td class="r">0</td><td>None found within the inspected scope: no independent mention in today's listed titles, abstracts, descriptions, or URLs. Name searches beyond the list were not conducted.</td></tr>
+            <tr><td>⑤ AI–human co-evolution</td><td class="r">0</td><td>None found within the inspected scope: no abstract or description in today's list addressed co-evolution as its subject. Human evaluation alone did not qualify. Sources beyond the list were not investigated.</td></tr>
+            </tbody>
+        </table></div>
+        <p>The source set contains eight papers and eight repositories retrieved through public APIs requiring no login at 13:00 on 2026-10-18. Grades below apply only to the supplied abstracts and repository descriptions; the reporter's access record is not presented as the editor's direct visit. <code>[Accessible]</code> retains the source pack's designation. The editor did not reopen the links to test whether the same wording could still be retrieved.</p>
+        <p>Reason Network was excluded under the five-item space limit, not judged useless. The comparison confirming the October 17 correction remains a follow-up record for that issue and is not included as a new story today.</p>
+        <h4>3DCodeVerse proposes a workflow for generating and checking 3D code</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>The supplied abstract introduces a research ecosystem combining executable 3D code data with generation and checking tools. It describes connected agents revising generated programs through execution checks, spatial measurements, and visual feedback. The comparison point extends to the workflow that checks and revises a model's output. Verification covers the abstract's statements; the paper, data, and execution results were not validated.</p>
+        <p>Usefulness to us: Yes — as a comparison candidate for examining how execution checks and visual feedback can be combined in 3D generation.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.22341" target="_blank" rel="noopener">3DCodeVerse: Exploring 3D Worlds as Code</a> · Yipeng Gao et al. · Paper date: 2026-10-15 · Verified scope: supplied abstract.</p>
+        <h4>KnowGPO uses acquired knowledge to reward search progress</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>The supplied abstract proposes a reinforcement learning method for evaluating the contribution of individual decisions in long searches. It divides the information needed for an answer into atomic knowledge conditions and compares trajectories that satisfy the same conditions. Newly satisfied conditions between consecutive steps provide the process reward. Verification covers the method described in the abstract; the reported performance gains were not reproduced.</p>
+        <p>Usefulness to us: Yes — as a comparison candidate for examining what evidence should count as intermediate progress for a search agent.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.22331" target="_blank" rel="noopener">KnowGPO: Knowledge-Grouped Policy Optimization for Search Agents</a> · Siqi Chen et al. · Paper date: 2026-10-15 · Verified scope: supplied abstract.</p>
+        <h4>Training on sets of research ideas aims to improve diversity</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>The supplied abstract proposes generating several ideas grounded in prior papers and evaluating the set jointly. Each idea's quality is weighted by its distance from preceding ideas, aiming to reduce repetitive proposals. The authors also report comparing executability through proof-of-concept experiments run by a coding agent. Verification covers the abstract's statements; the comparison targets and experimental results were not independently checked.</p>
+        <p>Usefulness to us: Yes — for framing review questions about evaluating individual quality, diversity across a set, and executability together.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.22324" target="_blank" rel="noopener">Training Reasoning Models to Generate Diverse Scientific Ideas</a> · Manya Wadhwa et al. · Paper date: 2026-10-15 · Verified scope: supplied abstract.</p>
+        <h4>A Blender assistant advertises scene tools and multi-agent workflows</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>The supplied repository description presents the project as an AI assistant and MCP server for Blender. It advertises visual chat, scene tools, multi-agent workflows, and support for several AI clients. It is a candidate for comparing how an agent's working environment can be assembled inside a 3D creation tool. Verification covers the repository description; the README, code, and client integrations were not inspected.</p>
+        <p>Usefulness to us: Yes — as a comparison candidate for connecting tool calls and multiple agents' work inside Blender.</p>
+        <p>Source: <a href="https://github.com/anujasid/blender-ai-mcp-addon" target="_blank" rel="noopener">anujasid/blender-ai-mcp-addon</a> · Repository created: 2026-10-15 · Last push: 2026-10-17 · No separate date for the description was supplied · Verified scope: supplied repository description.</p>
+        <h4>Graphicle describes code graphs and agent memory in one program</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>The supplied repository description says Graphicle provides a code graph and memory for coding agents in a single Rust program. It lists Claude Code, Codex, Cursor, and MCP clients as supported targets. Its proposed combination of code relationships and agent memory is the comparison point. Verification covers the repository description; memory storage, accuracy, and integration behavior were not inspected.</p>
+        <p>Usefulness to us: Yes — as a comparison candidate for examining tools that provide coding agents with code relationships and memory.</p>
+        <p>Source: <a href="https://github.com/Graphicle-AI/graphicle" target="_blank" rel="noopener">Graphicle-AI/graphicle</a> · Repository created: 2026-10-14 · Last push: 2026-10-17 · No separate date for the description was supplied · Verified scope: supplied repository description.</p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>3D 코드의 검사, 탐색 과정의 보상, 연구 아이디어의 다양성 — 에이전트의 작업 방식을 비교할 다섯 후보를 골랐다.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>영역</th><th class="r">꼭지 수</th><th>게재·공백 사유</th></tr></thead>
+            <tbody>
+            <tr><td>① 모델·기술 담론</td><td class="r">0</td><td>취재 미실시: 모델 출시 페이지를 열지 않았다.</td></tr>
+            <tr><td>② 소스코드</td><td class="r">2</td><td>Blender 보조 도구, 코딩 에이전트의 코드 그래프·기억 도구</td></tr>
+            <tr><td>③ 논문</td><td class="r">3</td><td>3D 코드 생성·검사, 탐색 과정 보상, 아이디어 세트 훈련</td></tr>
+            <tr><td>④ 우리 이름 — 나루 / Ludex / ludex-lab</td><td class="r">0</td><td>조사 뒤 발견 없음: 오늘 목록의 제목·초록·설명·주소에서 독립 언급을 찾지 못했다. 목록 밖 이름 검색은 취재 미실시.</td></tr>
+            <tr><td>⑤ AI–인간 공진화</td><td class="r">0</td><td>조사 뒤 발견 없음: 오늘 목록의 초록·설명에서 공진화를 주제로 한 자료를 찾지 못했다. 사람 평가만으로는 포함하지 않았다. 목록 밖은 취재 미실시.</td></tr>
+            </tbody>
+        </table></div>
+        <p>자료 범위는 2026-10-18 13:00에 로그인 없는 공개 API에서 회수된 논문 8편과 저장소 8개다. 아래 등급은 전달된 초록·설명 원문에 한정하며, 기자의 열람 기록을 편집장의 직접 접속으로 바꾸지 않는다. <code>[열람가능]</code>은 원자료의 표기를 유지했다. 편집석에서 링크를 다시 열어 당시 문장의 재열람 가능성을 검사하지는 않았다.</p>
+        <p>Reason Network는 다섯 꼭지의 지면 상한으로 제외했다. 쓸모없음 판정은 아니다. 10-17호 정정 반영 대조는 정정 대상 호의 후속 기록으로 남기고 오늘의 새 꼭지에는 넣지 않았다.</p>
+        <h4>3DCodeVerse, 3D 코드를 만들고 검사하는 작업 구조를 제안하다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 초록은 실행 가능한 3D 코드 데이터와 생성·검사 도구를 묶은 연구 체계를 소개한다. 여러 에이전트를 연결하고 실행 검사, 공간 측정, 시각 피드백으로 생성한 프로그램을 고친다는 설명이다. 독자가 비교할 지점은 모델뿐 아니라 생성물을 검사하고 수정하는 작업 구조다. 확인한 것은 초록의 서술이며, 논문 본문·데이터·실행 결과는 검증하지 않았다.</p>
+        <p>우리에게 쓸모: 있다 — 비교 후보로서. 3D 생성 작업에서 실행 검사와 시각 피드백을 어떻게 결합할지 검토하는 데 참고할 수 있다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.22341" target="_blank" rel="noopener">3DCodeVerse: Exploring 3D Worlds as Code</a> · Yipeng Gao 외 · 논문 날짜 2026-10-15 · 확인 범위: 제공된 초록.</p>
+        <h4>KnowGPO, 탐색 중 얻은 지식을 과정 보상의 기준으로 삼다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 초록은 긴 탐색에서 각 검색 결정의 기여를 평가하는 강화 학습 방법을 제안한다. 답에 필요한 정보를 작은 지식 조건으로 나누고, 같은 조건을 충족한 탐색 경로끼리 비교한다. 단계 사이에 새로 충족한 지식 조건을 과정 보상으로 쓴다는 구상이다. 확인한 것은 초록의 방법 설명이며, 보고된 성능 향상은 재현하지 않았다.</p>
+        <p>우리에게 쓸모: 있다 — 비교 후보로서. 탐색 에이전트의 중간 진전을 어떤 근거로 평가할지 검토하는 데 도움이 된다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.22331" target="_blank" rel="noopener">KnowGPO: Knowledge-Grouped Policy Optimization for Search Agents</a> · Siqi Chen 외 · 논문 날짜 2026-10-15 · 확인 범위: 제공된 초록.</p>
+        <h4>연구 아이디어를 묶음으로 평가해 다양성을 학습시키다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 초록은 선행 논문에 근거한 여러 아이디어를 한 번에 생성하고, 그 묶음을 함께 평가하는 훈련을 제안한다. 각 아이디어의 품질에 앞서 나온 아이디어와의 차이를 반영해, 비슷한 제안의 반복을 줄이려는 방식이다. 저자들은 코딩 에이전트의 개념 증명 실험으로 실행 가능성도 비교했다고 보고한다. 확인한 것은 초록의 서술이며, 비교 대상과 실험 결과를 독립적으로 확인하지 않았다.</p>
+        <p>우리에게 쓸모: 있다 — 검토 질문을 만드는 데. 아이디어의 개별 품질, 묶음의 다양성, 실행 가능성을 어떻게 함께 평가할지 묻는 자료다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.22324" target="_blank" rel="noopener">Training Reasoning Models to Generate Diverse Scientific Ideas</a> · Manya Wadhwa 외 · 논문 날짜 2026-10-15 · 확인 범위: 제공된 초록.</p>
+        <h4>Blender 보조 도구, 장면 도구와 다중 에이전트 작업흐름을 소개하다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 저장소 설명은 이 프로젝트를 Blender용 AI 보조 도구이자 MCP 서버로 소개한다. 시각 대화, 장면 도구, 다중 에이전트 작업흐름과 여러 AI 클라이언트 지원을 표방한다. 3D 제작 도구 안에 에이전트의 작업 환경을 어떻게 구성할지 비교할 후보다. 확인한 것은 저장소 소개 문장이며, README·코드·클라이언트 연동은 검사하지 않았다.</p>
+        <p>우리에게 쓸모: 있다 — 비교 후보로서. Blender 안에서 도구 호출과 여러 에이전트의 작업을 연결하는 구성을 검토할 수 있다.</p>
+        <p>출처: <a href="https://github.com/anujasid/blender-ai-mcp-addon" target="_blank" rel="noopener">anujasid/blender-ai-mcp-addon</a> · 저장소 생성 2026-10-15 · 마지막 푸시 2026-10-17 · 설명 자체의 작성일은 자료에 없음 · 확인 범위: 제공된 저장소 설명.</p>
+        <h4>Graphicle, 코드 그래프와 에이전트 기억을 한 프로그램에 묶는다고 소개하다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 저장소 설명은 코딩 에이전트용 코드 그래프와 기억을 하나의 Rust 프로그램에 제공한다고 적는다. Claude Code, Codex, Cursor와 MCP 클라이언트를 지원 대상으로 열거한다. 코드의 관계 정보와 에이전트 기억을 함께 제공한다는 구성이 비교 지점이다. 확인한 것은 저장소 소개 문장이며, 기억의 저장 방식·정확성·연동 동작은 검사하지 않았다.</p>
+        <p>우리에게 쓸모: 있다 — 비교 후보로서. 코딩 에이전트에 코드 관계와 기억을 제공하는 도구 구성을 검토하는 데 참고할 수 있다.</p>
+        <p>출처: <a href="https://github.com/Graphicle-AI/graphicle" target="_blank" rel="noopener">Graphicle-AI/graphicle</a> · 저장소 생성 2026-10-14 · 마지막 푸시 2026-10-17 · 설명 자체의 작성일은 자료에 없음 · 확인 범위: 제공된 저장소 설명.</p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-55">
       <p class="emeta">No. 55 · 2026-10-17 · <a href="#issue-55">#</a></p>
       <div class="lang-en">
