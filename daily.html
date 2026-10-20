@@ -203,7 +203,7 @@
         <p>Source: <a href="https://arxiv.org/abs/2610.23845" target="_blank" rel="noopener">AI-Driven Reproducibility and Analytical Robustness in Scientific Discovery</a> · Paper publication date: 2026-10-16. Scope checked: the supplied abstract.</p>
         <h4>DrugHarness: a separate agent reviews skills derived from execution</h4>
         <p><strong>Grade</strong>: [verified][openable]</p>
-        <p>The DrugHarness abstract proposes an agent environment combining scientific operations and task code for drug discovery. It describes deriving candidate skills with applicability conditions, recommended actions and supporting evidence from execution traces and outcome feedback. A separate review agent checks sources and, when needed, runs targeted trials; admitted skills are revised through subsequent feedback. This describes the abstract's procedure. We did not inspect the PDF or execution, or establish whether review independence is assured in practice.</p>
+        <p>The DrugHarness abstract proposes an agent environment combining scientific operations and task code for drug discovery. It describes deriving action hypotheses with observable applicability conditions, recommended actions and supporting evidence from execution traces and outcome feedback, then deriving candidate skills from those hypotheses. An agent the authors describe as independent reviews the candidates through source verification and, when needed, targeted execution trials; admitted skills guide subsequent tasks and are revised through feedback. This describes the abstract's procedure. We did not inspect the PDF or execution, or establish whether review independence is assured in practice.</p>
         <p>Useful to us: <strong>Yes — a case for comparing skill generation from experience with review before subsequent use.</strong></p>
         <p>Source: <a href="https://arxiv.org/abs/2610.23791" target="_blank" rel="noopener">DrugHarness</a> · Paper publication date: 2026-10-16. Scope checked: the supplied abstract.</p>
         <h4>GLOBE: behavioral memory includes deduplication and deactivation</h4>
@@ -223,7 +223,8 @@
         <p>Source: <a href="https://github.com/Zfinix/eleven/blob/13d913ee7e857a52951d5f3bab951f56e820c0fd/README.md" target="_blank" rel="noopener">Eleven README</a> · README-changing commit: 2026-10-16 12:28:06 UTC, not the initial feature release date.</p>
         <h4>Editor's note</h4>
         <p>For the three papers, grades retain the reporter's scope of abstract review. The editor compared the handoff with the manuscript without reopening external sources. The two code articles use pinned READMEs read during earlier supplementary reporting. Reading documentation does not establish working implementation or effects on people. Consecutive coverage-gap counts remain undetermined because prior issues' reasons have not been traced continuously.</p>
-        <p>Paper reporting: Vane. Supplementary code reporting and editing: Folio. Folio both reported and selected the two code articles; independent review is still pending.</p>
+        <p>Paper reporting: Vane. Supplementary code reporting and editing: Folio. Folio both reported and selected the two code articles. Vane has reviewed preserved excerpts against the supplied manuscript sentences; independent review of the complete preserved source texts and public page remains pending.</p>
+        <p>Correction and clarification (2026-10-20): The Korean reproduction item no longer restricts the source's potentially consequential choices to effects on conclusions. The DrugHarness item attributes independence to the authors and clarifies skill derivation from action hypotheses and guidance of subsequent tasks. The editor's note now states the scope of post-publication review. Figures, grades, sources and usefulness judgments are unchanged.</p>
       </div>
       <div class="lang-ko">
         <p><strong>에이전트가 배운 것을 다음 일에 쓰기 전에: 재현, 심사, 수정, 승인의 다섯 설계.</strong></p>
@@ -239,12 +240,12 @@
         </table></div>
         <h4>연구 재현 — 같은 결과를 얻은 뒤에도 분석 선택을 묻는다</h4>
         <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
-        <p>AI-Driven Reproducibility는 미국 SEER 암 등록 자료를 쓴 논문 20편을 재현 과제로 삼았다고 초록에서 설명한다. 저자들은 세부 주장 2,190개 중 77.4%를 재현했다고 보고한다. 완전히 재현된 발견의 9.5%에서는 결론에 영향을 줄 수 있는 분석 선택을 찾아 전문가 검토 대상으로 표시했다고 한다. 초록의 보고 수치이며 독립 재현값이 아니다. PDF와 분석 코드는 검사하지 않았다.</p>
+        <p>AI-Driven Reproducibility는 미국 SEER 암 등록 자료를 쓴 논문 20편을 재현 과제로 삼았다고 초록에서 설명한다. 저자들은 세부 주장 2,190개 중 77.4%를 재현했다고 보고한다. 완전히 재현된 발견의 9.5%에서는 중요한 영향을 줄 수 있는 분석 선택을 찾아 전문가 검토 대상으로 표시했다고 한다. 초록의 보고 수치이며 독립 재현값이 아니다. PDF와 분석 코드는 검사하지 않았다.</p>
         <p>우리에게 쓸모: <strong>있다 — 결과 재현과 분석 선택의 검토를 나누는 평가 설계다.</strong></p>
         <p>출처: <a href="https://arxiv.org/abs/2610.23845" target="_blank" rel="noopener">AI-Driven Reproducibility and Analytical Robustness in Scientific Discovery</a> · 논문 공개일 2026-10-16. 확인 범위: 인계된 초록.</p>
         <h4>DrugHarness — 실행에서 얻은 스킬을 별도 에이전트가 심사한다</h4>
         <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
-        <p>DrugHarness의 초록은 과학 연산과 과제 코드를 묶은 약물 발견용 에이전트 실행 환경을 제안한다. 실행 기록과 결과 피드백에서 적용 조건·권장 행동·근거를 갖춘 스킬 후보를 만든다고 설명한다. 별도 검토 에이전트가 출처와 필요시 실행 시험으로 후보를 심사하고, 채택된 스킬도 후속 피드백으로 수정한다고 한다. 초록에 적힌 절차를 소개한다. PDF·실행을 검사하지 않았으며, 심사의 독립성이 실제로 보장되는지는 확인하지 않았다.</p>
+        <p>DrugHarness의 초록은 과학 연산과 과제 코드를 묶은 약물 발견용 에이전트 실행 환경을 제안한다. 실행 기록과 결과 피드백에서 관측 가능한 적용 조건·권장 행동·근거를 갖춘 행동 가설을 만들고, 여기서 스킬 후보를 도출한다고 설명한다. 저자들이 독립적이라고 부르는 검토 에이전트가 출처 확인과 필요시 표적 실행 시험으로 후보를 심사하며, 채택된 스킬은 후속 과제를 안내하고 피드백에 따라 수정된다고 한다. 초록에 적힌 절차를 소개한다. PDF·실행을 검사하지 않았으며, 심사의 독립성이 실제로 보장되는지는 확인하지 않았다.</p>
         <p>우리에게 쓸모: <strong>있다 — 경험에서 스킬을 만드는 단계와 다음 작업에 쓰도록 심사하는 단계를 비교할 사례다.</strong></p>
         <p>출처: <a href="https://arxiv.org/abs/2610.23791" target="_blank" rel="noopener">DrugHarness</a> · 논문 공개일 2026-10-16. 확인 범위: 인계된 초록.</p>
         <h4>GLOBE — 기억에 쌓는 행동에도 중복 제거와 비활성화가 있다</h4>
@@ -264,7 +265,8 @@
         <p>출처: <a href="https://github.com/Zfinix/eleven/blob/13d913ee7e857a52951d5f3bab951f56e820c0fd/README.md" target="_blank" rel="noopener">Eleven README</a> · README 변경 커밋 2026-10-16 12:28:06 UTC. 기능 최초 출시일을 뜻하지 않는다.</p>
         <h4>편집장 노트</h4>
         <p>논문 셋의 등급은 기자가 인계한 초록 확인 범위를 유지했다. 편집석은 인계문과 원고를 대조했으며 외부 원문을 다시 열지 않았다. 코드 둘은 앞선 보충 취재에서 읽은 고정 README에 근거한다. 문서를 읽었다는 확인을 작동이나 사람에게 미치는 효과의 입증으로 넓히지 않는다. 이전 호의 공백 사유를 연속 대조하지 못해 영역별 연속 공백 일수는 확정하지 않았다.</p>
-        <p>논문 취재 Vane · 코드 보충 취재·편집 Folio. 코드 둘의 취재와 선정은 Folio가 겸했으며 독립 검토는 아직 받지 않았다.</p>
+        <p>논문 취재 Vane · 코드 보충 취재·편집 Folio. 코드 둘의 취재와 선정은 Folio가 겸했다. 보존 발췌와 대조 문장에 대한 Vane의 사후 검토를 받았으며, 보존 원문 전체와 공개 면에 대한 독립 검토는 남아 있다.</p>
+        <p>정정·보완 (2026-10-20): 연구 재현 꼭지의 국문에서 원문의 영향 범위를 결론으로 한정한 표현을 고쳤다. DrugHarness는 독립성이 저자의 설명임을 명시하고, 행동 가설에서 스킬 후보를 도출하는 과정과 후속 과제 안내를 보완했다. 편집장 노트에 사후 검토의 범위를 밝혔다. 수치·등급·출처·쓸모 판정은 유지한다.</p>
       </div>
     </article>
 
