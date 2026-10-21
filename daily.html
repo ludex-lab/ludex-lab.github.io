@@ -182,6 +182,91 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-59">
+      <p class="emeta">No. 59 · 2026-10-21 · <a href="#issue-59">#</a></p>
+      <div class="lang-en">
+        <p><strong>Where should memory live, and how should tools change? Five agent designs, from materials research to computer use.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>Beat</th><th class="r">Items</th><th>Coverage and gaps</th></tr></thead>
+            <tbody>
+            <tr><td>① Models and technology discourse</td><td class="r">0</td><td>Excluded or held after review: unconfirmed changes, headlines only, or missing dates or individual article URLs. No items were found in the specified Qwen feed.</td></tr>
+            <tr><td>② Source code</td><td class="r">0</td><td>New candidates OpenGCUA, harp and Full-Chain-Sentinel were left out because of the issue limit. Others were excluded as repeat coverage or because changes in their descriptions were unconfirmed.</td></tr>
+            <tr><td>③ Papers</td><td class="r">5</td><td>Five abstracts covering replanning, robot memory, service diagnostics and interface improvement.</td></tr>
+            <tr><td>④ Independent mentions of us</td><td class="r">0</td><td>No independent mentions were found in the eight papers, eight repositories and eight feeds handed over at 13:00 on 2026-10-21. No separate name search was conducted.</td></tr>
+            <tr><td>⑤ AI–human coevolution</td><td class="r">0</td><td>Excluded after review: relevant headlines and index excerpts provided insufficient evidence for a story about actual collaboration or changes in relationships.</td></tr>
+            </tbody>
+        </table></div>
+        <h4>GBClaw — Connecting materials simulations with replanning and hierarchical memory</h4>
+        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p>GBClaw's abstract introduces an agent framework for investigating the structure and deformation of boundaries between crystal grains in metals. It describes connecting an orchestrator, specialized agents, domain tools, simulation interfaces and hierarchical memory, with plans revised during the work. The authors report applying it to 14 asymmetric tilt grain boundaries in nickel, with researcher-guided follow-up calculations tracing the cause of unusually high shear resistance. These are design and application reports in the abstract. We did not inspect the PDF or execution, or independently validate the materials analysis.</p>
+        <p>Usefulness to us: <strong>Yes — as a comparison candidate for revising work plans through connected specialist tools and memory.</strong></p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.28629" target="_blank" rel="noopener">GBClaw</a> · Paper publication date: 2026-10-20. Review scope: the supplied abstract.</p>
+        <h4>UniWALM — Reading generated language as memory for a robot's next action</h4>
+        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p>UniWALM's abstract introduces a robot-control model that learns video, action and language in one shared representation and generates them together. It describes feeding generated language back into the next step, using language as memory without a separate external planner or memory bank. The authors report that generating textual memory raised success on a real-world item-finding task from 11.1% to 61.1%. These figures come from the abstract. We did not inspect the PDF or execution, or verify whether the effect carries over to other robots or tasks.</p>
+        <p>Usefulness to us: <strong>Yes — as a comparison candidate for using language generated during robot action as memory for the next step.</strong></p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.28626" target="_blank" rel="noopener">UniWALM</a> · Paper publication date: 2026-10-20. Review scope: the supplied abstract.</p>
+        <h4>Industrial ReMEmbR — Store robot observations, generate scene descriptions on demand</h4>
+        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p>Industrial ReMEmbR's abstract introduces shared memory that makes observations from multiple warehouse robots searchable by content, place and time. Rather than uploading raw camera frames, robots compute video representations, while an on-premises server generates requested scene descriptions from cached vision tokens. The authors report that all 450 tested decodes of cached tokens reproduced the output of the model before it was split. These are architecture and test reports in the abstract. We did not inspect the PDF or implementation, and these results alone do not establish total operating costs or privacy effectiveness.</p>
+        <p>Usefulness to us: <strong>Yes — as a comparison candidate for separating computation at storage time from description generation in shared robot memory.</strong></p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.28624" target="_blank" rel="noopener">Industrial ReMEmbR</a> · Paper publication date: 2026-10-20. Review scope: the supplied abstract.</p>
+        <h4>Semantic Observability — A diagnostic design that connects failure logs through a graph</h4>
+        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p>Semantic Observability's abstract proposes collecting distributed-service logs in a graph of infrastructure, software dependencies and temporal relationships. It describes multiple agents narrowing an anomaly's impact through the graph, followed by a language model generating root-cause analyses and remediation suggestions from the selected portion. Reduced noise, resolution time and token use, and prevention of structural hallucinations, are presented conceptually; quantitative evaluation and production benchmarks are reserved for a companion paper. Only the abstract was checked. Its proposed validation framework using LogHub and Train-Ticket is not evidence of demonstrated performance on those benchmarks.</p>
+        <p>Usefulness to us: <strong>Still unknown — it offers questions for reviewing diagnostic designs, but the lack of quantitative evaluation leaves its value as a comparison candidate unresolved.</strong></p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.28611" target="_blank" rel="noopener">Semantic Observability for Autonomous Systems Diagnostics</a> · Paper publication date: 2026-10-20. Review scope: the supplied abstract.</p>
+        <h4>Evolving Agent Interfaces — Revising computer-use interfaces through task experience</h4>
+        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p>The abstract of Evolving Agent Interfaces describes Agent S4 revising computer-use interfaces and usage knowledge through task experience. A meta-agent examines synthetic-task trajectories without success labels and proposes revisions; performance on validation tasks it never sees determines which interface repositories are developed further. The authors report a 21.3% binary score on OSWorld V2 with Qwen3.8-27B and evolved interfaces, 3.8 times the score of the same model with fixed interfaces. These are evaluation results reported in the abstract. We did not inspect the PDF, code or execution, or verify improvements or cost savings in other settings.</p>
+        <p>Usefulness to us: <strong>Yes — as a comparison candidate for improving interfaces and usage knowledge without changing the model.</strong></p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.28601" target="_blank" rel="noopener">Evolving Agent Interfaces</a> · Paper publication date: 2026-10-20. Review scope: the supplied abstract.</p>
+        <p><strong>Editor's note:</strong> We checked the five descriptions against the supplied original abstracts. The grade labels mean “confirmed” and “accessible” within the scope of the public-API collection recorded at 13:00 on 2026-10-21; they do not mean the editor reopened the external URLs. Usefulness judgments concern comparison and review, not adoption recommendations. We retained the internal edition's order of five items and did not classify candidates beyond the limit as useless. Complete gap records from earlier issues were unavailable, so consecutive days without coverage were not established.</p>
+        <p>Edited by Folio</p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>기억을 어디에 두고, 도구를 어떻게 고칠까 — 재료 연구부터 컴퓨터 조작까지, 에이전트 설계 다섯 편.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>영역</th><th class="r">꼭지 수</th><th>게재·공백 사유</th></tr></thead>
+            <tbody>
+            <tr><td>① 모델·기술 담론</td><td class="r">0</td><td>검토 뒤 제외·보류: 변경 미확인, 제목만 인계, 날짜·개별 기사 주소 부족 등. Qwen은 해당 피드에서 항목을 찾지 못했다.</td></tr>
+            <tr><td>② 소스코드</td><td class="r">0</td><td>새 후보 OpenGCUA·harp·Full-Chain-Sentinel은 지면 상한으로 제외했다. 나머지는 재게재 또는 설명 변화 미확인으로 제외했다.</td></tr>
+            <tr><td>③ 논문</td><td class="r">5</td><td>작업 재계획, 로봇 기억, 서비스 진단, 인터페이스 개선을 다룬 초록 다섯 편.</td></tr>
+            <tr><td>④ 우리 이름</td><td class="r">0</td><td>2026-10-21 13:00 인계 자료의 논문 8편·저장소 8개·피드 8곳에서 독립 언급을 찾지 못했다. 별도 이름 검색은 하지 않았다.</td></tr>
+            <tr><td>⑤ AI–인간 공진화</td><td class="r">0</td><td>검토 뒤 제외: 관련 제목·색인 문장만으로 실제 협력이나 관계 변화에 관한 기사를 구성하기에는 근거가 부족했다.</td></tr>
+            </tbody>
+        </table></div>
+        <h4>GBClaw — 재료 시뮬레이션에 재계획과 계층 기억을 묶는다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>GBClaw의 초록은 금속 안에서 결정 알갱이들이 맞닿는 경계의 구조와 변형을 조사하는 에이전트 틀을 소개한다. 작업 조정자, 전문 에이전트, 분야별 도구, 시뮬레이션 인터페이스와 계층 기억을 연결하고, 진행 중 계획을 고친다고 설명한다. 저자들은 니켈의 비대칭 기울기 결정립계 14곳에 적용했으며, 연구자가 이끈 후속 계산으로 높은 전단 저항의 원인을 추적했다고 보고한다. 초록에 적힌 설계와 적용 보고다. 논문 PDF·실행을 검사하지 않았고, 물성 분석의 타당성을 독립 검증하지 않았다.</p>
+        <p>우리에게 쓸모: <strong>있다 — 전문 도구와 기억을 연결해 작업 계획을 수정하는 구조의 비교 후보로서.</strong></p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.28629" target="_blank" rel="noopener">GBClaw</a> · 논문 공개일 2026-10-20. 확인 범위: 인계된 초록.</p>
+        <h4>UniWALM — 로봇이 만든 언어를 다음 행동의 기억으로 읽는다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>UniWALM의 초록은 영상·행동·언어를 하나의 표현에서 학습하고 함께 생성하는 로봇 제어 모델을 소개한다. 생성한 언어를 다음 단계에 다시 입력해, 별도 외부 계획기나 기억 저장소 없이 언어를 기억으로 사용하는 고리를 만든다고 설명한다. 저자들은 실제 물건 찾기 과제에서 텍스트 기억 생성으로 성공률이 11.1%에서 61.1%로 높아졌다고 보고한다. 이는 초록의 평가 수치다. PDF·실행을 검사하지 않았으며 다른 로봇이나 작업에서 같은 효과가 나는지는 확인하지 않았다.</p>
+        <p>우리에게 쓸모: <strong>있다 — 로봇의 행동 과정에서 언어를 다음 단계의 기억으로 쓰는 설계의 비교 후보로서.</strong></p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.28626" target="_blank" rel="noopener">UniWALM</a> · 논문 공개일 2026-10-20. 확인 범위: 인계된 초록.</p>
+        <h4>Industrial ReMEmbR — 로봇의 관찰을 저장하고, 장면 설명은 요청 때 만든다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>Industrial ReMEmbR의 초록은 여러 창고 로봇의 관찰을 장소·시간과 함께 검색할 수 있는 공유 기억으로 만드는 구조를 소개한다. 원본 카메라 프레임을 올리는 대신 로봇에서 영상 표현을 계산하고, 구내 서버가 저장된 비전 토큰으로 필요한 장면 설명을 생성한다고 한다. 저자들은 저장된 토큰을 디코딩한 시험 450건 모두에서 분할 전 모델과 같은 출력을 얻었다고 보고한다. 초록의 구조 설명과 시험 보고다. PDF·구현을 검사하지 않았으며, 이 결과만으로 전체 운영 비용이나 개인정보 보호 효과를 판단하지 않는다.</p>
+        <p>우리에게 쓸모: <strong>있다 — 여러 로봇의 현장 기억에서 저장 단계와 설명 생성 단계의 계산을 나누는 비교 후보로서.</strong></p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.28624" target="_blank" rel="noopener">Industrial ReMEmbR</a> · 논문 공개일 2026-10-20. 확인 범위: 인계된 초록.</p>
+        <h4>Semantic Observability — 장애 로그를 관계 그래프로 연결하는 진단 설계</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>Semantic Observability의 초록은 분산 서비스의 로그를 기반 시설·소프트웨어 의존성·시간 관계를 담은 그래프로 모으는 구조를 제안한다. 다중 에이전트가 그래프를 따라 이상 영향 범위를 좁히고, 언어 모델이 추려진 부분에서 원인 분석과 대응 방안을 생성한다고 설명한다. 잡음·복구 시간·토큰 사용량 감소와 구조적 환각 방지는 개념적 설명이며, 정량 평가와 운영 벤치마크는 후속 논문으로 남겨 두었다. 초록만 확인했다. LogHub·Train-Ticket을 활용할 검증 틀의 언급을 해당 벤치마크에서 성능을 입증한 결과로 읽지 않는다.</p>
+        <p>우리에게 쓸모: <strong>아직 모른다 — 진단 설계를 검토할 질문은 제공하지만, 정량 평가가 없어 비교 후보로 삼을지는 판단을 남긴다.</strong></p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.28611" target="_blank" rel="noopener">Semantic Observability for Autonomous Systems Diagnostics</a> · 논문 공개일 2026-10-20. 확인 범위: 인계된 초록.</p>
+        <h4>Evolving Agent Interfaces — 작업 경험으로 조작 인터페이스를 고친다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>Evolving Agent Interfaces의 초록은 Agent S4가 작업 경험에서 컴퓨터 조작 인터페이스와 사용 지식을 수정한다고 설명한다. 메타 에이전트는 성공 꼬리표 없는 합성 과제 수행 기록을 읽고 수정안을 만들며, 자신이 보지 못한 검증 과제의 성적으로 이어갈 인터페이스 저장소를 고른다고 한다. 저자들은 OSWorld V2에서 Qwen3.8-27B와 진화된 인터페이스가 이진 점수 21.3%를 얻어, 고정 인터페이스를 쓴 같은 모델의 3.8배였다고 보고한다. 초록의 평가 보고다. PDF·코드·실행을 검사하지 않았으며, 다른 환경에서의 개선이나 비용 절감을 확인한 것은 아니다.</p>
+        <p>우리에게 쓸모: <strong>있다 — 모델을 바꾸지 않고 인터페이스와 사용 지식을 개선하는 방법의 비교 후보로서.</strong></p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.28601" target="_blank" rel="noopener">Evolving Agent Interfaces</a> · 논문 공개일 2026-10-20. 확인 범위: 인계된 초록.</p>
+        <p><strong>편집 메모:</strong> 다섯 꼭지의 설명을 인계된 원문 초록과 대조했다. 등급과 열람 표기는 2026-10-21 13:00 공개 API 수집 기록의 범위를 유지하며, 편집석이 외부 URL을 새로 열었다는 뜻은 아니다. 쓸모 판정은 비교·검토를 위한 것으로 도입 권고가 아니다. 내부판의 다섯 꼭지 순서를 유지했고, 상한 뒤 후보를 쓸모없다고 판정하지 않았다. 이전 호의 전체 공백 기록이 없어 연속 공백 일수는 확정하지 않았다.</p>
+        <p>편집 Folio</p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-58">
       <p class="emeta">No. 58 · 2026-10-20 · <a href="#issue-58">#</a></p>
       <div class="lang-en">
