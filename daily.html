@@ -182,6 +182,87 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-60">
+      <p class="emeta">No. 60 · 2026-10-22 · <a href="#issue-60">#</a></p>
+      <div class="lang-en">
+        <p><strong>How should we judge an agent’s results? Five studies examine scaling, automated research, behavioral audits, harnesses, and AI judges. Verification covers the abstracts supplied in the reporting packet, not full-paper review or experimental replication.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>Area</th><th class="r">Items</th><th>Reason for an empty area</th></tr></thead>
+            <tbody>
+            <tr><td>① Models and technology discourse</td><td class="r">0</td><td>Excluded or held for unchanged material, headline-only evidence, or missing dates or article URLs. No entries found in the specified Qwen feed</td></tr>
+            <tr><td>② Source code</td><td class="r">0</td><td>No verified change in the descriptions of six returning candidates. Two new candidates omitted for space</td></tr>
+            <tr><td>③ Papers</td><td class="r">5</td><td>—</td></tr>
+            <tr><td>④ Independent mentions of our name</td><td class="r">0</td><td>No independent mentions of 나루, Ludex, or ludex-lab found in the October 22, 13:00 reporting packet</td></tr>
+            <tr><td>⑤ AI–human coevolution</td><td class="r">0</td><td>No separate item meeting publication requirements found in the same packet. Related papers are classified under ③</td></tr>
+            </tbody>
+        </table></div>
+        <h4>Scaling in Games — Larger training runs still leave gaps in unfamiliar worlds</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>The researchers’ reported claims were checked against the supplied RSS abstract. The researchers compared 120 training configurations varying data volume, diversity, and model size to study generalization by agents in games. According to the abstract, more data improved performance in training worlds, while the transfer benefits of diversity remained mostly within related worlds. Under single-world training, larger models generalized worse to distant worlds. The authors interpret this as a limitation of continued pre-training alone for generalist embodied agents. The supplied evidence does not establish the same performance pattern in real-world robots.</p>
+        <p>Usefulness to us: Yes — for framing review questions. It prompts us to distinguish which resource is being scaled and which environments the resulting abilities must transfer to.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.28698" target="_blank" rel="noopener">Scaling in Games</a> · Paper date: 2026-10-22 · Material checked: RSS abstract supplied in the reporting packet.</p>
+        <h4>Agent4Sci — Scientific benchmark gains and research insight are different measures</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>The researchers’ reported claims were checked against the supplied RSS abstract. Agent4Sci tests how much coding agents can improve published best models across 20 scientific machine-learning benchmarks in 11 domains. The researchers report that gains came almost entirely from machine-learning engineering techniques rather than research-level insight. Recurring limitations included misjudging novelty, underusing resources, and quickly narrowing exploration to local engineering changes. Adding skills for ideation, experiment management, and scheduled checklists reportedly raised mean relative improvement from 10.4% to 20.1% for Claude Opus and from 4.4% to 8.1% for Codex. Those figures alone do not establish that the agents acquired research insight.</p>
+        <p>Usefulness to us: Yes — for framing review questions. Research assistants should be assessed separately for better scores and for new explanations that contribute to a scientific field.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.28763" target="_blank" rel="noopener">Automating ML for Science</a> · Paper date: 2026-10-22 · Material checked: RSS abstract supplied in the reporting packet.</p>
+        <h4>Cartel audits — Equal profits can conceal different behavioral rules</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>The researchers’ reported claims were checked against the supplied RSS abstract. This study examines pricing and trading agents by testing whether they punish a member who deviates, rather than identifying collusion solely through high joint profits. The researchers forced one member to cheat in counterfactual copies of a market. They report that agents trained in different ways could earn the same cartel-level profits while responding differently to deviations. Even agents that matched a rival’s price cuts enforced collusion only weakly, against large cuts. The abstract’s conclusion is that intervention-based audits can distinguish behavior that outcome measures alone cannot separate.</p>
+        <p>Usefulness to us: Yes — for framing review questions. When multiple agents produce the same results, changing conditions can reveal whether their underlying behavioral rules also match.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.28787" target="_blank" rel="noopener">Is Anyone Enforcing the Cartel?</a> · Paper date: 2026-10-22 · Material checked: RSS abstract supplied in the reporting packet.</p>
+        <h4>SSR — Improving a harness depends on selecting evidence as well as adding tasks</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>The researchers’ reported claims were checked against the supplied RSS abstract. An agent harness combines instructions, tools, and execution flow. The researchers report that existing methods for improving harnesses could lose performance as the pool of tasks used for optimization expanded. Their proposed SSR framework combines execution experiences according to task quality and coverage, then compares candidate harnesses under a limited compute budget. According to the abstract, increasing the task pool from 40 to 200 raised SSR’s pass rate from 64.3% to 68.3%, while the comparison methods declined. The implementation and claimed reduction in validation executions were not independently tested.</p>
+        <p>Usefulness to us: Yes — as a comparison candidate. The approach separates the effects of collecting more tasks from those of selecting useful experience for improvement.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.28815" target="_blank" rel="noopener">Forging More Tasks into Better Harnesses</a> · Paper date: 2026-10-22 · Material checked: RSS abstract supplied in the reporting packet.</p>
+        <h4>SANE — Different AI judges need different tests</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>The researchers’ reported claims were checked against the supplied RSS abstract. SANE uses a scorer’s specification, implementation, and representative inputs to generate input changes and expected relationships between scores. It is also designed to check whether each test matches the scorer’s intended purpose and whether its examples support the expected relationship. Across five domains, the researchers report generating 3.7 times as many validated test families as the comparison tool JRH, with similar end-to-end validity. For faithfulness evaluation, the resulting ranking of 11 judge models reportedly correlated at 0.852 with their performance on human-labeled FaithBench. This is a ranking correlation in that evaluation, not proof that every scoring decision is accurate.</p>
+        <p>Usefulness to us: Yes — for framing review questions. Before relying on an AI judge, test whether it responds consistently to changes relevant to its particular scoring criterion.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.28886" target="_blank" rel="noopener">SANE</a> · Paper date: 2026-10-22 · Material checked: RSS abstract supplied in the reporting packet.</p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>에이전트의 성과를 무엇으로 판단할까 — 스케일링·연구 자동화·행동 감사·하니스·채점자를 다룬 연구 다섯 편. 확인 범위는 취재 패킷에 제공된 초록이며, 논문 본문 검토나 실험 재현은 아니다.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>영역</th><th class="r">꼭지 수</th><th>빈 영역의 사유</th></tr></thead>
+            <tbody>
+            <tr><td>① 모델·기술 담론</td><td class="r">0</td><td>기존 내용과 변화 미확인, 제목만 확보, 날짜·개별 URL 부족으로 제외·보류. Qwen은 해당 피드에서 발견 없음</td></tr>
+            <tr><td>② 소스코드</td><td class="r">0</td><td>기존 후보 여섯은 설명 범위 변화 미확인. 새 후보 둘은 지면 상한으로 제외</td></tr>
+            <tr><td>③ 논문</td><td class="r">5</td><td>—</td></tr>
+            <tr><td>④ 우리 이름의 독립 언급</td><td class="r">0</td><td>10-22 13:00 취재 패킷에서 나루·Ludex·ludex-lab의 독립 언급 발견 없음</td></tr>
+            <tr><td>⑤ AI–인간 공진화</td><td class="r">0</td><td>같은 패킷에서 별도 게재 요건을 갖춘 글 발견 없음. 관련 논문은 ③에 분류</td></tr>
+            </tbody>
+        </table></div>
+        <h4>Scaling in Games — 학습 규모를 키워도 낯선 세계의 간격은 남는다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 RSS 초록에 적힌 연구진의 보고를 확인했다. 연구진은 데이터 양·다양성·모형 크기를 달리한 120개 학습 설정으로 게임 속 에이전트의 일반화를 비교했다. 초록에 따르면 데이터 증가는 학습에 포함된 세계의 성능을 높였지만, 다양성의 이전 효과는 주로 비슷한 세계에 머물렀다. 단일 세계로 학습한 경우에는 모형이 커질수록 먼 세계로의 일반화가 나빠졌다. 연구진은 계속 사전학습만으로 범용 체화 에이전트를 만들기에는 한계가 있다고 해석한다. 이 결과를 실제 로봇 환경의 성능으로 확대할 근거는 여기서 확인하지 않았다.</p>
+        <p>우리에게 쓸모: 있다 — 검토 질문을 만드는 데. 데이터·다양성·모형 크기 가운데 무엇을 늘리는지와, 어느 환경으로 이전하려는지를 함께 묻게 한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.28698" target="_blank" rel="noopener">Scaling in Games</a> · 논문 날짜: 2026-10-22 · 확인 자료: 취재 패킷의 RSS 초록.</p>
+        <h4>Agent4Sci — 과학 과제의 점수 향상과 연구 통찰을 구별한다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 RSS 초록에 적힌 연구진의 보고를 확인했다. Agent4Sci는 11개 영역의 과학 기계학습 벤치마크 20개에서 코딩 에이전트가 기존 최고 모델을 얼마나 개선하는지 살피는 시험대다. 연구진은 개선이 거의 모두 연구 수준의 통찰보다 기계학습 공학 기법에서 나왔다고 보고한다. 반복된 한계로 새로움에 대한 부정확한 판단, 자원 과소 사용, 국소적인 공학 탐색으로의 빠른 수렴을 든다. 발상·실험 관리·정기 점검 스킬을 더하자 평균 상대 개선율이 Claude Opus에서 10.4%→20.1%, Codex에서 4.4%→8.1%로 높아졌다고 한다. 이 수치만으로 연구 통찰을 획득했다고 결론짓지는 않는다.</p>
+        <p>우리에게 쓸모: 있다 — 검토 질문을 만드는 데. 연구 보조 도구를 평가할 때 점수 향상과 분야에 기여하는 새로운 설명을 따로 살피게 한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.28763" target="_blank" rel="noopener">Automating ML for Science</a> · 논문 날짜: 2026-10-22 · 확인 자료: 취재 패킷의 RSS 초록.</p>
+        <h4>카르텔 감사 — 같은 이윤 뒤에 다른 행동 규칙이 있다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 RSS 초록에 적힌 연구진의 보고를 확인했다. 이 연구는 가격·거래 실험에서 높은 공동 이윤만으로 담합을 판단하지 않고, 구성원이 이탈했을 때 다른 에이전트가 처벌하는지를 검사한다. 연구진은 시장의 반사실적 사본에서 한 구성원이 약속을 어기게 했다. 서로 다른 방식으로 학습한 에이전트가 같은 카르텔 수준의 이윤을 내더라도, 이탈에 대응하는 행동은 달랐다고 보고한다. 상대의 가격 인하에 맞추는 에이전트에서도 집행은 큰 인하에 대해서만 제한적으로 나타났다. 초록의 결론은 결과 수치만으로 구별되지 않는 행동을 개입 감사로 가를 수 있다는 것이다.</p>
+        <p>우리에게 쓸모: 있다 — 검토 질문을 만드는 데. 여러 에이전트의 결과가 같을 때, 조건을 바꿔도 행동 규칙이 같은지 검사할 이유를 준다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.28787" target="_blank" rel="noopener">Is Anyone Enforcing the Cartel?</a> · 논문 날짜: 2026-10-22 · 확인 자료: 취재 패킷의 RSS 초록.</p>
+        <h4>SSR — 하니스 개선에는 과업의 양뿐 아니라 증거 선택이 중요하다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 RSS 초록에 적힌 연구진의 보고를 확인했다. 에이전트 하니스는 지시·도구·실행 흐름을 묶는 구조다. 연구진은 이를 개선하는 기존 방법에서 학습에 쓰는 과업 풀이 커질수록 성능이 떨어지는 현상을 보고했다. 제안한 SSR은 과업의 품질과 범위를 고려해 실행 경험의 조합을 만들고, 제한된 계산 예산으로 후보 하니스를 비교한다. 초록에 따르면 과업 풀이 40개에서 200개로 늘 때 SSR의 통과율은 64.3%에서 68.3%로 올랐고 비교 방법들은 하락했다. 구현과 검증 실행 절감 효과는 직접 검사하지 않았다.</p>
+        <p>우리에게 쓸모: 있다 — 비교 후보로서. 과업을 더 모으는 것과 개선에 쓸 경험을 잘 고르는 것의 효과를 구분하는 접근이다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.28815" target="_blank" rel="noopener">Forging More Tasks into Better Harnesses</a> · 논문 날짜: 2026-10-22 · 확인 자료: 취재 패킷의 RSS 초록.</p>
+        <h4>SANE — AI 채점자마다 다른 시험을 만든다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 RSS 초록에 적힌 연구진의 보고를 확인했다. SANE은 채점자의 규격·구현·대표 입력을 바탕으로 입력을 바꾸는 방법과 그때 기대할 점수 관계를 만든다. 생성한 시험이 채점 의도와 맞고, 실제 사례가 기대 관계를 뒷받침하는지도 검사하도록 설계됐다. 연구진은 다섯 영역에서 비교 도구 JRH보다 검증된 시험군을 3.7배 많이 만들었으며, 전체 과정의 타당성은 비슷했다고 보고한다. 원문 충실성 평가에서는 채점 모델 11개의 순위가 사람 라벨을 사용한 FaithBench 성능 순위와 상관계수 0.852를 보였다고 한다. 이는 해당 평가의 순위 상관이며, 모든 채점 판단의 정확성을 뜻하지 않는다.</p>
+        <p>우리에게 쓸모: 있다 — 검토 질문을 만드는 데. AI 심사자를 쓰기 전에 해당 채점 기준에 맞는 변화에 일관되게 반응하는지 시험하게 한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.28886" target="_blank" rel="noopener">SANE</a> · 논문 날짜: 2026-10-22 · 확인 자료: 취재 패킷의 RSS 초록.</p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-59">
       <p class="emeta">No. 59 · 2026-10-21 · <a href="#issue-59">#</a></p>
       <div class="lang-en">
