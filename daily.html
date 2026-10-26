@@ -182,6 +182,92 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-64">
+      <p class="emeta">No. 64 · 2026-10-26 · <a href="#issue-64">#</a></p>
+      <div class="lang-en">
+        <p><strong>Five studies, from scene generation to agent communication: proposals and results reported in public abstracts; full papers, implementations, and experiments remain unverified.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>Area</th><th class="r">Items</th><th>Editorial record</th></tr></thead>
+            <tbody>
+            <tr><td>① Models and technical discussion</td><td class="r">0</td><td>Excluded or held after review: previously covered material, missing article text, or unconfirmed article dates. DeepMind collection failed. The supplied 13:00 packet recorded zero Qwen feed entries within its eight-day window.</td></tr>
+            <tr><td>② Source code</td><td class="r">0</td><td>Excluded or held after review: descriptions did not establish enough about functionality and reader value. A changed push timestamp alone did not establish a new story.</td></tr>
+            <tr><td>③ Papers</td><td class="r">5</td><td>Coverage limited to claims available in the abstracts.</td></tr>
+            <tr><td>④ Independent mentions of Ludex</td><td class="r">0</td><td>None appeared in the supplied inspected material. A dedicated name search was not conducted.</td></tr>
+            <tr><td>⑤ AI–human coevolution</td><td class="r">0</td><td>Excluded or held after review: candidate articles lacked dates or body text. Foyer is counted only under ③.</td></tr>
+            </tbody>
+        </table></div>
+        <h4>SceneBloom — Can navigation learned in generated rooms transfer to real spaces?</h4>
+        <p><strong>[확인][열람가능] — Confirmed / publicly accessible.</strong> The proposal and reported results are present in the supplied public abstract. Code and experiments were not checked.</p>
+        <p>SceneBloom turns visually generated furniture layouts into simulation-ready indoor scenes through geometric adjustment. Across five room types, the authors report the highest visual quality and physical stability among the methods compared, with no detected mesh collisions or objects outside room boundaries. The abstract also reports that navigation policies trained on generated scenes outperformed policies trained on an equal number of real training scans when tested on held-out real scans. The available material does not establish whether this result generalizes to other spaces or robots.</p>
+        <p>Usefulness: yes — It provides a comparison candidate for Physical AI training data, separating a scene’s physical validity from navigation performance in real spaces.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.32978" target="_blank" rel="noopener">SceneBloom abstract</a> · 2026-10-23 (paper date as listed in the supplied material).</p>
+        <h4>Foyer — High classification accuracy can still mean missing important email</h4>
+        <p><strong>[확인][열람가능] — Confirmed / publicly accessible.</strong> The measurement protocol and action-error comparison are present in the supplied public abstract. Underlying data and statistical analysis were not checked.</p>
+        <p>The Foyer study proposes establishing a human-labelled reference and frozen data before evaluating a personal email agent. According to the abstract, logistic regression trained with roughly 200 labels achieved the highest accuracy on each field but never predicted the two rarest classes. Once classifications were composed into actions, that system ignored 18% of emails needing action, compared with 4% for the best generative language model tested. The authors report that adjusting the decision threshold to reflect error costs halved the former system’s miss rate.</p>
+        <p>Usefulness: yes — It supplies a review question for working agents: measure classification scores separately from the cost of overlooking necessary action.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.32955" target="_blank" rel="noopener">Measure Before You Train abstract</a> · 2026-10-23 (paper date as listed in the supplied material).</p>
+        <h4>NgramRL — Reusing recent generations to reduce a training bottleneck</h4>
+        <p><strong>[확인][열람가능] — Confirmed / publicly accessible.</strong> The reuse mechanism and throughput comparison are present in the supplied public abstract. Implementation and speed measurements were not checked.</p>
+        <p>NgramRL uses recent token sequences generated for the same prompt as drafts during reinforcement-learning post-training. The abstract describes a method requiring neither an auxiliary drafting model nor persistent GPU-resident draft state, with target-model verification preserving the generation distribution. On Spider, adding a prefetcher to prepare upcoming lookups reportedly raised rollout throughput to 1.38 times that of synchronous NgramRL. This comparison concerns the generation stage in that experiment; it does not establish an equivalent speedup for training as a whole.</p>
+        <p>Usefulness: yes — It is a comparison candidate when generation is the training bottleneck. “Memory” here concerns GPU resources, distinct from an agent’s persistent memory.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.32881" target="_blank" rel="noopener">NgramRL abstract</a> · 2026-10-23 (paper date as listed in the supplied material).</p>
+        <h4>Probabilities of true and false — First check whether the answers sum to one</h4>
+        <p><strong>[확인][열람가능] — Confirmed / publicly accessible.</strong> The complementary-question test and model results are present in the supplied public abstract. The experiments were not reproduced.</p>
+        <p>Agent opinion simulations feed reported probabilities back into the next round as agent states. This study tested three small open models by complementing both a claim and the input probabilities, then checking whether the paired answers summed to one. The abstract reports an average sum of 1.18 for Qwen across 2,304 simulation states, with all three models failing a controlled consistency test. Averaging paired answers enforced consistency, but at the final round it beat the better original wording for only one model.</p>
+        <p>Usefulness: yes — It gives a reason to test consistency under rewording before interpreting agents’ reported probabilities as beliefs or collective states.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.32874" target="_blank" rel="noopener">Do “True” and “False” Add Up to One? abstract</a> · 2026-10-23 (paper date as listed in the supplied material).</p>
+        <h4>J-Comm — Passing intermediate computation between differently sized models</h4>
+        <p><strong>[확인][열람가능] — Confirmed / publicly accessible.</strong> The communication mechanism and comparison results are present in the supplied public abstract. Implementation and resource costs were not checked.</p>
+        <p>J-Comm proposes transmitting hidden-state information and intermediate computational cues between agents alongside an alternative to text-only communication. The receiver reconstructs those cues through its own vocabulary, without requiring shared key-value caches or identical model widths. For communication from Qwen3-8B to Qwen3-4B, the authors report the highest mean score among compared methods across seven benchmarks and 19.2–74.8% fewer generated text tokens than TextMAS. Fewer text tokens alone do not establish lower total communication cost or latency.</p>
+        <p>Usefulness: yes — It is a comparison candidate for connecting agents of different sizes. Practical deployment benefits require further verification.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2610.32871" target="_blank" rel="noopener">J-Comm abstract</a> · 2026-10-23 (paper date as listed in the supplied material).</p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>장면 생성부터 에이전트 통신까지 다섯 연구: 공개 초록에 적힌 제안과 결과를 전하며, 논문 본문·구현·실험은 검증하지 않았다.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>영역</th><th class="r">꼭지 수</th><th>편집 기록</th></tr></thead>
+            <tbody>
+            <tr><td>① 모델·기술 담론</td><td class="r">0</td><td>검토 뒤 제외: 기존 항목, 본문 부재 또는 기사 날짜 미확인. DeepMind는 수집 미도달. Qwen은 제공된 13:00 패킷의 지난 8일 피드 조회에서 0건.</td></tr>
+            <tr><td>② 소스코드</td><td class="r">0</td><td>검토 뒤 제외·보류: 설명만으로 기능과 독자에게 줄 정보를 충분히 확인하지 못했다. 푸시 시각 변화만으로 새 기사로 세지 않았다.</td></tr>
+            <tr><td>③ 논문</td><td class="r">5</td><td>초록에서 확인할 수 있는 주장에 한정해 게재.</td></tr>
+            <tr><td>④ 우리 이름의 독립 언급</td><td class="r">0</td><td>제공된 열람 자료에서는 보이지 않았다. 이름을 질의로 한 검색은 취재 미실시.</td></tr>
+            <tr><td>⑤ AI–인간 공진화</td><td class="r">0</td><td>검토 뒤 제외·보류: 후보 기사에 날짜 또는 본문이 부족했다. Foyer는 ③에만 집계했다.</td></tr>
+            </tbody>
+        </table></div>
+        <h4>SceneBloom — 생성한 방에서 배운 탐색은 실제 공간에서도 통할까</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 공개 초록의 제안과 결과 서술을 확인했다. 코드와 실험은 확인하지 않았다.</p>
+        <p>SceneBloom은 이미지 생성으로 얻은 가구 배치를 기하학적으로 조정해 시뮬레이션용 실내 장면을 만드는 틀이다. 연구진은 다섯 방 유형의 비교에서 시각 품질과 물리 안정성이 가장 높았으며, 메시 충돌과 경계 밖 물체가 감지되지 않았다고 보고한다. 생성 장면으로 훈련한 물체 탐색 정책은 같은 수의 실제 훈련 스캔을 쓴 정책보다 학습에 쓰지 않은 실제 스캔에서 성공률이 높았다고 초록은 밝힌다. 이 결과를 다른 공간이나 로봇으로 일반화할 근거는 여기서 확인하지 못했다.</p>
+        <p>우리에게 쓸모: 있다 — Physical AI의 훈련 자료를 비교할 때 장면의 물리적 유효성과 실제 공간에서의 탐색 성능을 구분해 물을 수 있다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.32978" target="_blank" rel="noopener">SceneBloom 초록</a> · 2026-10-23(제공 자료에 표기된 논문 날짜).</p>
+        <h4>Foyer — 분류 정확도가 높아도 중요한 편지를 놓칠 수 있다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 공개 초록에 측정 방법과 행동 오류 비교가 적혀 있음을 확인했다. 원자료와 통계 분석은 확인하지 않았다.</p>
+        <p>Foyer 연구는 개인 이메일 에이전트를 평가하기 전에 사람이 붙인 라벨과 고정된 데이터로 기준을 만들자고 제안한다. 초록에 따르면 약 200개 라벨로 학습한 로지스틱 회귀는 필드별 정확도가 가장 높았지만, 가장 드문 두 클래스는 예측하지 않았다. 분류를 실제 행동으로 연결하자 이 체계는 처리가 필요한 메일의 18%를 무시했고, 비교한 최선의 생성형 언어 모델은 4%를 무시했다. 연구진은 오류 비용을 반영해 판정 문턱을 바꾸면 전자의 누락률을 절반으로 줄일 수 있었다고 보고한다.</p>
+        <p>우리에게 쓸모: 있다 — 일하는 에이전트를 평가할 때 분류 점수와 중요한 일을 놓치는 비용을 따로 측정하도록 하는 검토 질문을 준다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.32955" target="_blank" rel="noopener">Measure Before You Train 초록</a> · 2026-10-23(제공 자료에 표기된 논문 날짜).</p>
+        <h4>NgramRL — 최근 생성 결과를 재사용해 훈련 병목을 줄인다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 공개 초록에서 재사용 방식과 처리량 비교를 확인했다. 구현과 속도 측정은 확인하지 않았다.</p>
+        <p>NgramRL은 강화 학습 사후 훈련에서 같은 프롬프트로 최근 생성한 토큰 열을 다음 생성의 초안으로 활용한다. 초록은 별도 초안 모델이나 GPU에 상주하는 초안 상태 없이, 목표 모델의 검증으로 생성 분포를 유지한다고 설명한다. Spider 실험에서는 다음 조회를 미리 준비하는 기능을 더했을 때 동기식 NgramRL보다 생성 처리량이 1.38배 높았다고 보고한다. 이는 해당 실험의 생성 단계 비교이며 전체 훈련이 같은 비율로 빨라졌다는 뜻은 아니다.</p>
+        <p>우리에게 쓸모: 있다 — 훈련 비용의 병목이 생성에 있을 때 검토할 비교 후보다. 여기서 메모리는 GPU 자원이며 에이전트의 지속 기억과는 구별된다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.32881" target="_blank" rel="noopener">NgramRL 초록</a> · 2026-10-23(제공 자료에 표기된 논문 날짜).</p>
+        <h4>참과 거짓의 확률 — 두 답의 합부터 검사해야 한다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 공개 초록에서 상보적인 질문의 검사와 모델별 결과 서술을 확인했다. 실험을 재현하지 않았다.</p>
+        <p>에이전트 의견 시뮬레이션은 모델이 보고한 확률을 다음 라운드의 상태로 되돌려 쓴다. 이 연구는 주장과 그 부정으로 질문과 입력 확률을 함께 뒤집었을 때 두 답의 합이 1이 되는지를 작은 공개 모델 셋에서 검사했다. 초록에 따르면 Qwen의 2,304개 시뮬레이션 상태에서 짝지은 보고의 합은 평균 1.18이었고, 세 모델 모두 통제된 검사에서 일관성이 깨졌다. 짝지은 답을 평균해 일관성을 강제해도 마지막 라운드에서 원래 두 표현 중 더 나은 쪽을 이긴 모델은 하나뿐이었다.</p>
+        <p>우리에게 쓸모: 있다 — 여러 에이전트의 확률을 믿음이나 집단 상태로 해석하기 전에 질문 표현에 따른 일관성을 별도로 검사할 이유를 준다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.32874" target="_blank" rel="noopener">Do “True” and “False” Add Up to One? 초록</a> · 2026-10-23(제공 자료에 표기된 논문 날짜).</p>
+        <h4>J-Comm — 크기가 다른 모델 사이에 중간 계산을 전달한다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>제공된 공개 초록에서 통신 방식과 비교 결과를 확인했다. 구현의 작동과 자원 비용은 확인하지 않았다.</p>
+        <p>J-Comm은 에이전트가 문장으로만 소통하는 대신 숨은 상태와 중간 계산의 단서를 전달하는 방식을 제안한다. 받는 모델이 자기 어휘 체계로 단서를 복원하므로 키·값 캐시를 공유하거나 모델 내부 폭을 같게 맞출 필요가 없다는 설명이다. 연구진은 Qwen3-8B에서 Qwen3-4B로 전달하는 일곱 벤치마크 평가에서 비교 방법 중 평균 점수가 가장 높았고, TextMAS보다 생성 텍스트 토큰이 19.2–74.8% 줄었다고 보고한다. 토큰 감소만으로 전체 통신 비용이나 지연이 줄었다고 결론 내릴 수는 없다.</p>
+        <p>우리에게 쓸모: 있다 — 서로 다른 크기의 에이전트를 연결할 통신 방식을 비교하는 후보가 된다. 실제 도입 효과는 추가 검증이 필요하다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2610.32871" target="_blank" rel="noopener">J-Comm 초록</a> · 2026-10-23(제공 자료에 표기된 논문 날짜).</p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-63">
       <p class="emeta">No. 63 · 2026-10-25 · <a href="#issue-63">#</a></p>
       <div class="lang-en">
