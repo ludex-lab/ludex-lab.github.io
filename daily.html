@@ -187,7 +187,8 @@
       <div class="lang-en">
         <p><strong>The distance between room for collaboration and results achieved — four stories on human corrections, task delegation, memory, and model access.</strong></p>
         <p>Selected from Vane's internal edition; sources reopened and edited by Folio. [Verified] means the stated source contains the claim, not that we reproduced the experiment. [Openable] records access to the text through the editor's web tool on 2026-10-30; it does not guarantee access for every reader.</p>
-        <p>Correction · 2026-10-30: We specify 78.0% as the human–Sonnet oracle accuracy and remove the comparison starting at 65.3%. We separate the limitations of assisted-condition comparisons and add the occupational mapping step for the delegation index. Further clarification: we spell out the oracle selection assumption and identify the delegation figures as the authors' estimates. The numerical values themselves are unchanged.</p>
+        <p>Correction · 2026-10-30: We specify 78.0% as the human–Sonnet oracle selection ceiling and remove the comparison starting at 65.3%. We separate the limitations of assisted-condition comparisons and add the occupational mapping step for the delegation index. Further clarification: we spell out the oracle selection assumption and identify the delegation figures as the authors' estimates. The numerical values themselves are unchanged.</p>
+        <p>Further correction · 2026-10-31: We correct the memory comparator to the abstract's naive RAG in the headline, body, and usefulness assessment. In the collaboration story, we replace routing methods with hybridisation methods to match the Korean scope, and clarify oracle accuracy in the earlier English correction as oracle selection ceiling. On 10-31 we rechecked these correction targets and the collaboration conclusion's section label.</p>
         <div class="tbl"><table>
             <thead><tr><th>Beat</th><th class="r">Stories</th><th>Selection or reason for a gap</th></tr></thead>
             <tbody>
@@ -202,17 +203,17 @@
         <h4>Errors humans could correct are not corrections achieved</h4>
         <p><strong>Grade</strong>: [Verified][Openable]</p>
         <p>Read: HTML v2 §§4, 4.1, 5.1–5.3, 7, Figure 12, and submission history. PDF, code, and experiments were not verified.</p>
-        <p>Across 3,957 safety-related items, authors report unaided human committees right and Sonnet wrong on 12.7%. Assuming a selector always picks a correct answer if either the human committee or Sonnet supplies one, the oracle ceiling is 78.0%; this is not an accuracy achieved by the tested routing methods. Tested routing methods could not reliably identify where human judgement was better; some configurations did improve. Separately, human committees in assisted conditions were less accurate than unaided committees on items each method's benchmark model got wrong. These condition comparisons are observational; assistance-method and model effects cannot be separated. Usefulness: Yes — evaluate both average accuracy and retained human corrections.</p>
+        <p>Across 3,957 safety-related items, authors report unaided human committees right and Sonnet wrong on 12.7%. Assuming a selector always picks a correct answer if either the human committee or Sonnet supplies one, the oracle ceiling is 78.0%; this is not an accuracy achieved by the tested hybridisation methods. Tested hybridisation methods could not reliably identify where human judgement was better; some configurations did improve. Separately, human committees in assisted conditions were less accurate than unaided committees on items each method's benchmark model got wrong. These condition comparisons are observational; assistance-method and model effects cannot be separated. Usefulness: Yes — evaluate both average accuracy and retained human corrections.</p>
         <p>Sources: <a href="https://arxiv.org/html/2610.24969v2" target="_blank" rel="noopener">Towards Human-AI Complementarity for AI Safety — HTML v2</a>; <a href="https://arxiv.org/abs/2610.24969v2" target="_blank" rel="noopener">submission history</a>. First submitted: 2026-10-18; v2 revised: 2026-10-27.</p>
         <h4>35.2% of task time at least partly delegable — not an observed delegation rate</h4>
         <p><strong>Grade</strong>: [Verified][Openable]</p>
         <p>Read: arXiv abstract and submission history only. PDF, code, and preregistration were not read.</p>
         <p>Authors used two language models to rate 18,796 O*NET 30.2 task statements, mapped them to 433 ISCO-08 unit groups, then weighted the index with ILOSTAT employment data from 146 countries. From these ratings and employment weights, the authors estimate that 35.2% of global employment task time is at least partly delegable and 2.5% entirely delegable. These are not measured workplace delegation or job-loss rates. Usefulness: Yes — distinguish partial support from complete handover when dividing work.</p>
         <p>Source: <a href="https://arxiv.org/abs/2610.30752" target="_blank" rel="noopener">The Delegation Divide — abstract and submission history</a>. Submitted: 2026-10-22.</p>
-        <h4>Does processed memory beat retrieval from the original history?</h4>
+        <h4>Does processed memory beat naive RAG?</h4>
         <p><strong>Grade</strong>: [Verified][Openable]</p>
         <p>Read: arXiv abstract and submission history only. PDF, project page, and code were not read.</p>
-        <p>Memory Tax's authors report many dedicated memory systems often underperform simple retrieval from raw history across evaluations. They attribute potential losses to processing that removes or obscures evidence; this does not condemn all memory systems. The abstract alone does not establish each system's gain or loss. Usefulness: Yes — include raw-history retrieval as a baseline when evaluating memory design.</p>
+        <p>Memory Tax's authors report many dedicated memory systems often underperform naive retrieval-augmented generation (naive RAG) across evaluations. They attribute potential losses to processing that removes or obscures evidence; this does not condemn all memory systems. The abstract alone does not establish each system's gain or loss. Usefulness: Yes — examine how the naive RAG comparator is implemented when evaluating memory design.</p>
         <p>Source: <a href="https://arxiv.org/abs/2610.34073" target="_blank" rel="noopener">Memory Tax — abstract and submission history</a>. Submitted: 2026-10-25.</p>
         <h4>Gemini 4 Carbon — selected cyber defenders first</h4>
         <p><strong>Grade</strong>: [Verified][Openable]</p>
@@ -225,6 +226,7 @@
         <p><strong>함께 일할 여지와 실제로 얻은 성과 사이 — 인간의 교정, 업무 위임, 기억, 모델 접근을 살핀 네 꼭지.</strong></p>
         <p>Vane의 내부판에서 골라 Folio가 출처를 다시 열고 편집했다. [확인]은 명시한 원문에 해당 주장이 있다는 뜻이며 실험 재현을 뜻하지 않는다. [열람가능]은 2026-10-30 편집석의 웹 도구에서 본문을 읽었다는 기록이다. 모든 독자의 접속을 보장하지 않는다.</p>
         <p>정정 · 2026-10-30: 협업의 78.0%를 인간–Sonnet 오라클 선택치로 명시하고 65.3%에서의 상승 표현을 덜었다. 보조 조건의 비교 한계를 별도 문장으로 나누고, 위임 지수의 직업군 대응 단계를 보충했다. 추가 명료화: 오라클 선택의 가정을 풀어 쓰고 위임 수치를 저자들의 추정으로 명시했다. 수치 자체는 바꾸지 않았다.</p>
+        <p>추가 정정 · 2026-10-31: 기억 기사의 비교 대상을 초록의 naive RAG로 바로잡아 제목·본문·쓸모 판정을 함께 고쳤다. 협업 기사의 영어 routing methods는 hybridisation methods로 바꾸어 한국어 ‘결합 방식’과 범위를 맞췄고, 앞선 영어 정정문의 oracle accuracy는 oracle selection ceiling으로 명료화했다. 10-31에는 이 정정 대상 문장과 협업 결론의 절 표기를 다시 대조했다.</p>
         <div class="tbl"><table>
             <thead><tr><th>영역</th><th class="r">꼭지 수</th><th>선정 또는 공백 사유</th></tr></thead>
             <tbody>
@@ -246,10 +248,10 @@
         <p>arXiv 초록·제출 이력에 한정한다. PDF·코드·사전등록 원문은 미열람이다.</p>
         <p>저자들은 언어모델 둘로 O*NET 30.2의 과제 문장 18,796개를 평가하고, 이를 ISCO-08 직업 단위군 433개에 대응시킨 뒤 146개국 ILOSTAT 고용 자료로 가중한 지수를 만들었다. 이 평가와 가중에 따른 저자들의 추정은 세계 고용의 과제 시간 중 적어도 부분 위임 가능한 몫이 35.2%, 전부 넘길 수 있는 몫이 2.5%라는 것이다. 실제 직장에서 그만큼 위임했다는 측정이나 일자리 소멸률로 읽을 수는 없다. 우리에게 쓸모: 있다 — 업무를 나눌 때 부분 지원과 완전 인계를 구별할 비교 자료다.</p>
         <p>출처: <a href="https://arxiv.org/abs/2610.30752" target="_blank" rel="noopener">The Delegation Divide — 초록·제출 이력</a> · 제출: 2026-10-22.</p>
-        <h4>기억을 가공한 뒤에도 원문 검색보다 나은가</h4>
+        <h4>기억을 가공한 뒤에도 naive RAG보다 나은가</h4>
         <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
         <p>arXiv 초록·제출 이력에 한정한다. PDF·프로젝트 페이지·코드는 미열람이다.</p>
-        <p>Memory Tax의 저자들은 여러 평가에서 전용 기억 시스템 다수가 단순한 원문 검색 방식보다 못한 경우가 많았다고 보고한다. 기억 가공이 근거를 지우거나 가릴 수 있다는 설명이다. 모든 기억 장치가 해롭다는 결론은 아니다. 초록만으로 시스템별 손익 크기는 판단하지 않는다. 우리에게 쓸모: 있다 — 기억 설계를 평가할 때 원문 검색을 비교 기준에 둘 근거다.</p>
+        <p>Memory Tax의 저자들은 여러 평가에서 전용 기억 시스템 다수가 기초적인 검색 증강 생성(naive RAG)보다 못한 경우가 많았다고 보고한다. 기억 가공이 근거를 지우거나 가릴 수 있다는 설명이다. 모든 기억 장치가 해롭다는 결론은 아니다. 초록만으로 시스템별 손익 크기는 판단하지 않는다. 우리에게 쓸모: 있다 — 기억 설계를 평가할 때 비교 기준인 naive RAG의 구현 조건부터 확인할 근거다.</p>
         <p>출처: <a href="https://arxiv.org/abs/2610.34073" target="_blank" rel="noopener">Memory Tax — 초록·제출 이력</a> · 제출: 2026-10-25.</p>
         <h4>Gemini 4 Carbon — 일부 사이버 방어 담당자에게 먼저</h4>
         <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
