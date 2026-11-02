@@ -198,31 +198,31 @@
         </table></div>
         <p>Repository coverage draws on descriptions in the public API pack collected at 13:00 on 2026-11-02. Paper coverage draws on separately supplied reports of the reporter’s HTML reading and follow-up comparisons; their reading times were not supplied. Grades apply only to those descriptions and reported reading scopes. The editor did not reopen external pages, check current accessibility, inspect working code, or reproduce experiments.</p>
         <h4>uncut — a harness promising simple input and output</h4>
-        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p><strong>Grade</strong>: [Verified][Openable]</p>
         <p>— Verified scope: the repository description supplied through the public API.</p>
         <p>uncut describes itself as a headless harness for running coding agents. Its creator lists one 7 MB static binary, four tools, plain standard input/output, and no silent truncation. “Lossless” is the creator’s claim. Without reading the README or code, we cannot establish what is preserved or under which conditions truncation is avoided.</p>
         <p>Usefulness: Yes — for framing review questions. It is a candidate for examining how missing agent inputs or outputs become visible.</p>
         <p>Source: <a href="https://github.com/Balanov/uncut" target="_blank" rel="noopener">Balanov/uncut</a> — Repository created 2026-11-01; last push listed as 2026-11-02. Description collected 2026-11-02 at 13:00. Push contents were not inspected.</p>
         <h4>Pi-Remote — watching and responding to agent runs from a phone</h4>
-        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p><strong>Grade</strong>: [Verified][Openable]</p>
         <p>— Verified scope: the repository description supplied through the public API.</p>
         <p>Pi-Remote describes itself as a remote-control tool that mirrors pi coding-agent terminal sessions to a browser. Its creator says users can watch runs, answer prompts, and send commands from a phone. The description also claims end-to-end encryption over a self-hosted relay. Neither the intervention mechanisms nor encryption were tested.</p>
         <p>Usefulness: Yes — for framing review questions. Remote observation and responses provide concrete functions to examine when assessing human control.</p>
         <p>Source: <a href="https://github.com/Xpropel/Pi-Remote" target="_blank" rel="noopener">Xpropel/Pi-Remote</a> — Repository created 2026-10-28; last push listed as 2026-10-31. Description collected 2026-11-02 at 13:00. README and commits were not read.</p>
         <h4>AgentFlux — an agent platform described as running on your own computer</h4>
-        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p><strong>Grade</strong>: [Verified][Openable]</p>
         <p>— Verified scope: the repository description supplied through the public API.</p>
         <p>AgentFlux introduces itself as a platform for visual workflows and autonomous agents. Its description says it runs with Docker on a user’s own computer or server. That sentence does not establish successful autonomous work or permission, approval, and stopping mechanisms. The README and implementation were not reviewed.</p>
         <p>Usefulness: Yes — as a comparison candidate. It offers a starting point for examining the operating requirements and controls of a self-hosted agent platform.</p>
         <p>Source: <a href="https://github.com/davemessew/AgentFlux" target="_blank" rel="noopener">davemessew/AgentFlux</a> — Repository created 2026-10-27; last push listed as 2026-10-30. Description collected 2026-11-02 at 13:00. Push contents were not inspected.</p>
         <h4>Unchanged memory content can still produce different records for the model</h4>
-        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p><strong>Grade</strong>: [Verified][Openable]</p>
         <p>— Limited to the reporter’s HTML reading report and follow-up comparison of §5.7.</p>
         <p>This study examines a failure in which stored content and tasks stay fixed while the records entering the model’s context change. The authors report that the “operational projection”—the state of records made visible to the model—changed in 96.25% of 2,080 pairs in an offline control-plane experiment. Under an oracle-forcing condition, they report 100% restoration of that projection. These figures concern projection changes and restoration in that experiment. They are not answer-restoration rates or guarantees of memory recovery in deployed services.</p>
         <p>Usefulness: Yes — for separating the correctness of stored content from the state of records actually supplied to a model.</p>
         <p>Source: <a href="https://arxiv.org/html/2610.30698v1" target="_blank" rel="noopener">arXiv:2610.30698 v1</a> — 2026-10-22. Selected by the editor from a separate reporting record. Based on the reporter’s HTML reading and §5.7 comparison; no independent replication.</p>
         <h4>A twelve-question diagnostic separates stored-ledger and retrieval effects</h4>
-        <p><strong>Grade</strong>: [확인][열람가능]</p>
+        <p><strong>Grade</strong>: [Verified][Openable]</p>
         <p>— Limited to the reporter’s HTML reading report and follow-up comparison of §6.4, Table 4.</p>
         <p>The diagnostic used four conversations and twelve questions, with deepseek-v4-flash-0731 as both writer and reader at temperature 0.2. The stored-ledger condition scored F1 0.016 with 11/12 abstentions; no history scored F1 0.000 with 12/12 abstentions. Because loss is defined as 1−F1, the stored ledger’s mean avoided loss relative to no history was also 0.016. With the same BM25 retrieval material, the ledger condition scored F1 0.329 with 3/12 abstentions, versus F1 0.280 and 6/12 abstentions for an empty ledger. The ledger improved F1 on five questions and left seven unchanged. This is a conditional result from a small diagnostic, not a general rate of memory improvement.</p>
         <p>Usefulness: Yes — for evaluating memory in long-term collaboration by holding retrieval material constant and comparing the ledger’s added effect alongside abstentions.</p>
