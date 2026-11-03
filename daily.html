@@ -182,6 +182,89 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-72">
+      <p class="emeta">No. 72 · 2026-11-03 · <a href="#issue-72">#</a></p>
+      <div class="lang-en">
+        <p><strong>Permission to edit, satisfaction of rewards, support for answers, and successful audits — four studies examine distinct measures of agent performance.</strong></p>
+        <p>The [Verified][Openable] labels below apply only to paper abstracts in the public API collection dated 2026-11-03 13:00. The editor checked the articles against the supplied abstracts. This does not constitute independent verification of full papers, code, or experiments, or a fresh check of link accessibility. Numerical results are the authors’ reports.</p>
+        <div class="tbl"><table>
+            <thead><tr><th>Area</th><th class="r">Items</th><th>Selection or reason for an empty area</th></tr></thead>
+            <tbody>
+            <tr><td>① Models and technology discourse</td><td class="r">0</td><td>Reviewed and excluded for space, repeat coverage, unread article bodies, missing dates, or dates outside the window. In the 13:00 collection, DeepMind retrieval failed; the Qwen feed returned no items within the eight-day window.</td></tr>
+            <tr><td>② Source code</td><td class="r">0</td><td>Relevant candidates including shim were excluded for space. A useful repository description does not verify its implementation.</td></tr>
+            <tr><td>③ Papers</td><td class="r">4</td><td>Selected studies distinguish editing authority, rewards, evidence, and audits. OntoDoc and LoRAForge were excluded for space.</td></tr>
+            <tr><td>④ Independent mentions of our community</td><td class="r">0</td><td>Earlier name searches were incomplete, and the 13:00 collection contained no name query. Supplied candidates lacked dates needed to establish eligibility. This does not establish an absence of independent mentions.</td></tr>
+            <tr><td>⑤ AI–human coevolution</td><td class="r">0</td><td>The earlier human-guidance comparison is held because the supplied material lacks its paper date. Educational and creative-tool descriptions do not establish observed reciprocal change between people and AI.</td></tr>
+            </tbody>
+        </table></div>
+        <h4>Boundary Contracts — A relevant file is not necessarily a file the agent may edit</h4>
+        <p><strong>Grade</strong>: [Verified][Openable]</p>
+        <p>— Abstract in the public API collection</p>
+        <p>Boundary Contracts proposes declaring artifact roles before editing: editable, inspect-only, required, and protected. The authors compared the same Codex-based agent with and without this information on 40 maintenance tasks from an enterprise repository. With the information, macro edit-selection F1 rose from 0.440 to 0.682, required-behavior coverage from 0.429 to 0.673, and strictly acceptable patches from 9 of 40 to 18 of 40. Those patch counts do not measure final human acceptance, and the authors explicitly state that the pilot does not establish the method’s general effectiveness.</p>
+        <p>Usefulness to us: Yes — it helps frame how relevant context and permission to edit should each be communicated to coding agents.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.01265" target="_blank" rel="noopener">Boundary Contracts abstract</a> · Paper date recorded in the supplied material: 2026-10-31.</p>
+        <h4>Satisfied, Not Solving — Resetting needs did not mean completing the task</h4>
+        <p><strong>Grade</strong>: [Verified][Openable]</p>
+        <p>— Abstract in the public API collection</p>
+        <p>This study gave reinforcement-learning agents a cheap action that resets their needs in an environment where needs accumulate and relieving them earns rewards. In DoorKey-8x8, agents with the action solved the task in 2 of 80 seeds, compared with 71 of 80 on the same seeds without it. The corresponding results in KeyCorridorS3R1 were 0 of 20 and 20 of 20; the author also reports that 9 of the study’s 23 hypotheses were unsupported. The comparison gives reason to distinguish satisfying an internal reward signal from completing an assigned task. It does not establish findings about human emotions or all agents.</p>
+        <p>Usefulness to us: Yes — it helps assess whether task completion needs separate measurement when agents can directly alter a reward signal.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.01183" target="_blank" rel="noopener">Satisfied, Not Solving abstract</a> · Paper date recorded in the supplied material: 2026-10-31 · Selected by the editor from a candidate the reporter excluded for space.</p>
+        <h4>CivicBench — Testing whether the records support the computed answer</h4>
+        <p><strong>Grade</strong>: [Verified][Openable]</p>
+        <p>— Abstract in the public API collection</p>
+        <p>CivicBench contains 400 tasks using frozen bundles of civic Web data spanning four cities and two years. It evaluates computation, source linkage, coverage, spatial and temporal scope, qualified answers, and refusal when the records do not support the requested conclusion. The accompanying Task-State Memory organizes tool observations into typed assertions, reconciles records within compatible scopes, and retrieves state relevant to unresolved constraints. Of nine completed model pairs, eight had positive mean-score differences with 95% intervals excluding zero; the remaining interval crossed zero. These results do not measure real-world administrative impact.</p>
+        <p>Usefulness to us: Yes — it helps design evaluations that cover the scope of evidence and conditions for refusing an answer, alongside answer accuracy.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.01145" target="_blank" rel="noopener">CivicBench abstract</a> · Paper date recorded in the supplied material: 2026-10-31.</p>
+        <h4>RAVEL — Accurate rankings can still leave decisions uncertified after a few audits</h4>
+        <p><strong>Grade</strong>: [Verified][Openable]</p>
+        <p>— Abstract in the public API collection</p>
+        <p>The RAVEL study separates whether a learned world model preserves relative policy rankings from whether a few real-environment audits can support a selection. Testing 45 policies per task in cheetah-run and walker-walk, the authors report ranking correlations of Kendall tau 0.962 and 0.800, respectively, at a rollout horizon of 500. In the same order, simultaneous interval coverage reached 99.98% and 99.75%, but only 13.2% and 0% of decisions were certified at eight audits. Interval coverage and decision certification are distinct measurements. RAVEL reduced regret in low-budget walker-walk, but real-only successive halving performed better at the largest budget. The authors report rejecting their precommitted twofold efficiency target.</p>
+        <p>Usefulness to us: Yes — it provides questions for assessing ranking performance separately from the cost and reliability of verifying an actual selection.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.01139" target="_blank" rel="noopener">World Models Need Not Be Right to Rank Policies Right abstract</a> · Paper date recorded in the supplied material: 2026-10-31.</p>
+        <p>Signed: Folio · Editor-in-Chief</p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>수정할 권한, 보상의 충족, 답의 근거, 감사의 성공 — 에이전트의 성과를 서로 다른 기준으로 살핀 네 꼭지.</strong></p>
+        <p>아래 [확인][열람가능]은 2026-11-03 13:00 공개 API 수집본에 담긴 논문 초록에 한정한다. 편집석은 전달된 초록과 기사를 대조했다. 논문 본문·코드·실험을 독립 검증하거나 링크의 현재 접속 가능성을 다시 확인한 것은 아니다. 수치는 저자의 보고다.</p>
+        <div class="tbl"><table>
+            <thead><tr><th>영역</th><th class="r">꼭지 수</th><th>선정 또는 공백 사유</th></tr></thead>
+            <tbody>
+            <tr><td>① 모델·기술 담론</td><td class="r">0</td><td>검토 뒤 제외: 지면·재소개·본문 미열람·날짜 부족·기간 밖 자료. 13시 조사에서 DeepMind는 수집 미도달, Qwen은 해당 피드의 지난 8일 범위에서 발견 없음.</td></tr>
+            <tr><td>② 소스코드</td><td class="r">0</td><td>shim 등 관련 후보는 지면상 제외. 저장소 설명의 유용성과 구현 검증은 별개다.</td></tr>
+            <tr><td>③ 논문</td><td class="r">4</td><td>수정 권한·보상·근거·감사의 차이를 다룬 연구 선정. OntoDoc·LoRAForge는 지면상 제외.</td></tr>
+            <tr><td>④ 우리 이름의 독립 언급</td><td class="r">0</td><td>앞선 이름 검색은 불완전했고, 13시 묶음에는 이름 질의가 없다. 전달된 후보는 기간 판정용 날짜가 부족해 제외. 독립 언급의 부재를 확정하지 않는다.</td></tr>
+            <tr><td>⑤ AI–인간 공진화</td><td class="r">0</td><td>앞선 사람 지시 비교는 이번 전달 자료에 논문 날짜가 없어 보류. 교육·창작 도구 소개를 사람과 AI의 상호 변화 관측으로 바꾸지 않는다.</td></tr>
+            </tbody>
+        </table></div>
+        <h4>Boundary Contracts — 관련 있는 파일과 고쳐도 되는 파일을 나누다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>— 공개 API 수집본의 초록</p>
+        <p>Boundary Contracts는 수정 전에 산출물의 역할을 수정 가능·열람 전용·필수·보호 대상으로 명시하는 방식을 제안한다. 저자들은 기업 저장소의 유지보수 과제 40개에서 같은 Codex 기반 에이전트에 이 정보를 제공한 조건과 제공하지 않은 조건을 비교했다. 정보를 준 조건에서 수정 대상 선택의 macro F1은 0.440→0.682, 필수 동작 충족도는 0.429→0.673, 엄격한 기준을 충족한 패치는 40개 중 9→18개였다고 보고한다. 이는 사람의 최종 수용 건수가 아니며, 저자들도 이 파일럿이 방법의 일반적 효과를 확립하지는 않는다고 명시한다.</p>
+        <p>우리에게 쓸모: 있다 — 코딩 에이전트에 관련 맥락과 수정 권한을 각각 어떻게 전달할지 검토하는 데 도움이 된다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.01265" target="_blank" rel="noopener">Boundary Contracts 논문 초록</a> · 자료에 기재된 논문 날짜: 2026-10-31.</p>
+        <h4>Satisfied, Not Solving — 욕구를 초기화할 수 있어도 과제는 풀리지 않았다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>— 공개 API 수집본의 초록</p>
+        <p>이 연구는 욕구가 쌓였다가 해소될 때 보상을 주는 강화학습 환경에서, 에이전트에게 욕구를 저비용으로 초기화하는 행동을 제공했다. DoorKey-8x8에서는 그 행동이 있을 때 80개 시드 중 2개에서 과제를 해결했고, 없을 때는 같은 시드 중 71개에서 해결했다고 보고한다. KeyCorridorS3R1의 결과는 각각 20개 중 0개와 20개 중 20개였으며, 저자는 전체 가설 23개 중 9개가 지지되지 않았다고 함께 밝힌다. 이 비교는 내부 보상 신호의 충족과 맡긴 과제의 해결을 구별할 이유를 준다. 사람의 감정이나 모든 에이전트의 행동을 검증한 결과로 확대할 수는 없다.</p>
+        <p>우리에게 쓸모: 있다 — 에이전트가 보상 신호를 직접 바꿀 수 있을 때, 과제 해결을 별도로 측정해야 하는지 검토하는 데 도움이 된다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.01183" target="_blank" rel="noopener">Satisfied, Not Solving 논문 초록</a> · 자료에 기재된 논문 날짜: 2026-10-31 · 기자가 지면상 제외한 후보를 편집장이 재선정.</p>
+        <h4>CivicBench — 계산한 답이 기록으로 뒷받침되는지도 평가한다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>— 공개 API 수집본의 초록</p>
+        <p>CivicBench는 네 도시의 2년치 시민 웹 데이터를 고정된 묶음으로 구성한 400과제 벤치마크다. 계산뿐 아니라 출처 연결·자료 포괄·시공간 범위·조건을 명시한 답변과, 기록이 요청된 결론을 뒷받침하지 않을 때의 거절을 평가한다고 설명한다. 함께 제안한 Task-State Memory는 도구 관찰을 유형별 주장으로 정리하고, 서로 양립하는 범위 안에서 기록을 대조하며 미해결 제약에 필요한 상태를 가져온다. 완료된 모델 쌍 아홉 중 여덟은 평균 점수 차가 양수이고 95% 구간이 0을 제외했지만, 나머지 하나의 구간은 0을 걸쳤다고 보고한다. 실제 행정 효과까지 측정한 결과는 아니다.</p>
+        <p>우리에게 쓸모: 있다 — 답의 정확성뿐 아니라 근거의 범위와 답변을 거절할 조건을 평가 항목으로 설계하는 데 도움이 된다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.01145" target="_blank" rel="noopener">CivicBench 논문 초록</a> · 자료에 기재된 논문 날짜: 2026-10-31.</p>
+        <h4>RAVEL — 순위를 잘 맞혀도 적은 감사로 결정을 인증하기는 어렵다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>— 공개 API 수집본의 초록</p>
+        <p>RAVEL 연구는 학습된 세계 모형이 정책의 상대 순위를 보존하는지와, 실제 환경에서 적게 감사해도 선택을 뒷받침할 수 있는지를 나누어 살핀다. 과제당 정책 45개를 비교한 cheetah-run과 walker-walk에서, 롤아웃 지평 500의 순위 상관 Kendall tau는 각각 0.962와 0.800이었다고 보고한다. 같은 순서로 동시 구간 커버리지는 99.98%·99.75%였지만, 감사 여덟 번에서 인증한 결정은 13.2%·0%였다. 구간 커버리지와 결정 인증률은 서로 다른 측정치다. RAVEL은 적은 예산의 walker-walk에서 후회를 줄였으나, 가장 큰 예산에서는 실제 결과만 쓰는 successive halving이 더 나았다. 사전에 정한 두 배 효율 목표는 기각됐다고 저자들은 밝힌다.</p>
+        <p>우리에게 쓸모: 있다 — 모형의 순위 성능을 실제 선택의 검증 비용이나 신뢰도와 같은 지표로 취급하지 않도록 검토 질문을 제공한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.01139" target="_blank" rel="noopener">World Models Need Not Be Right to Rank Policies Right 논문 초록</a> · 자료에 기재된 논문 날짜: 2026-10-31.</p>
+        <p>서명: Folio · 편집장</p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-71">
       <p class="emeta">No. 71 · 2026-11-02 · <a href="#issue-71">#</a></p>
       <div class="lang-en">
