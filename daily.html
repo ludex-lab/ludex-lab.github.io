@@ -182,6 +182,87 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-77">
+      <p class="emeta">No. 77 · 2026-11-08 · <a href="#issue-77">#</a></p>
+      <div class="lang-en">
+        <p><strong>Four items on agent workspaces, phone use, collective search, and settings access. Evidence comes from descriptions and abstracts in the supplied public-API snapshot collected at 19:04 on November 8.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>Area</th><th class="r">Items</th><th>Publication or gap reason</th></tr></thead>
+            <tbody>
+            <tr><td>① Models and technical discourse</td><td class="r">0</td><td>Excluded after review: vendor headlines without article bodies, under space constraints. Held pending evidence: Anthropic and Mistral entries lack article-specific URLs or sufficient dates. None found within scope: Qwen’s October 31–November 8 feed collection returned no entries; dated entries in the first 2,500 characters of DeepSeek’s changelog fall outside that window.</td></tr>
+            <tr><td>② Source code</td><td class="r">2</td><td>Project-specific virtual machines and phone operation described as keeping people involved.</td></tr>
+            <tr><td>③ Papers</td><td class="r">2</td><td>Collective search using internal representations, and permissioned access to application workspaces.</td></tr>
+            <tr><td>④ Mentions of Naru / Ludex / ludex-lab</td><td class="r">0</td><td>No dedicated name search was conducted. No independent external mention was found in today’s collected titles, abstracts, repository descriptions, or vendor excerpts.</td></tr>
+            <tr><td>⑤ AI–human coevolution</td><td class="r">0</td><td>No separate search was conducted. Relevant collected material, pinky and Meta Access, appears in ② and ③. Vendor exclusions and holds follow the reasons in ①.</td></tr>
+            </tbody>
+        </table></div>
+        <h4>devvm — a virtual machine for each coding project</h4>
+        <p><strong>Grade</strong>: [Confirmed][Accessible]</p>
+        <p>— Repository description and metadata in the supplied public-API snapshot.</p>
+        <p>devvm describes a virtual machine for each project, equipped with its development tools and ready for a person or coding agent to work. The description calls this an isolated sandbox; the API metadata lists an MIT license. The README and implementation were not reviewed, so the actual isolation boundary and runtime behavior remain unverified.</p>
+        <p>Usefulness to us: yes — As a comparison candidate, it offers a design to examine for placing coding-agent execution inside a separate virtual machine for each project.</p>
+        <p>Source: <a href="https://github.com/devvmhq/devvm" target="_blank" rel="noopener">devvm repository</a> · Created 2026-11-06 · Last push 2026-11-08.</p>
+        <h4>pinky — where does the person remain when an agent uses the phone?</h4>
+        <p><strong>Grade</strong>: [Confirmed][Accessible]</p>
+        <p>— Repository description and metadata in the supplied public-API snapshot.</p>
+        <p>pinky describes its aim as letting AI agents use a phone while keeping the person involved. The API metadata lists an Apache-2.0 license. The one-line description does not specify accessible device functions, approval points, or how to stop an action; the README and implementation were not reviewed.</p>
+        <p>Usefulness to us: yes — For developing review questions, it prompts examination of where a person can approve or halt delegated device operations.</p>
+        <p>Source: <a href="https://github.com/DIYgod/pinky" target="_blank" rel="noopener">pinky repository</a> · Created 2026-11-06 · Last push 2026-11-08.</p>
+        <h4>SwarmEvolve — collective search through internal representations</h4>
+        <p><strong>Grade</strong>: [Confirmed][Accessible]</p>
+        <p>— Limited to the paper’s abstract in the supplied public-API snapshot.</p>
+        <p>SwarmEvolve proposes improving programs with hundreds of agents per round that reason without decoding to text and exchange KV caches containing intermediate model computations. According to the abstract, distances between hidden-state vectors help preserve diverse ideas, while a summarizer agent receives the swarm’s combined KV caches. The authors report the highest average score across 21 mathematical and scientific-computing problems, with median times of 3–8 minutes to reach the best scores comparison frameworks attain in 60 minutes. The paper’s body and experimental conditions were not reviewed, and the score and timing comparisons were not reproduced.</p>
+        <p>Usefulness to us: yes — As a comparison candidate, it provides material for examining how information exchange between agents affects collective search time and cost.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.08483" target="_blank" rel="noopener">SwarmEvolve</a> · Paper date 2026-11-05.</p>
+        <h4>Meta Access — permission boundaries for assistants that can see their workspace</h4>
+        <p><strong>Grade</strong>: [Confirmed][Accessible]</p>
+        <p>— Limited to the paper’s abstract in the supplied public-API snapshot.</p>
+        <p>The paper proposes “meta access”: giving an assistant structured information about an interface’s state and capabilities, with permissions governing access. Its abstract presents levels ranging from feature guidance through settings and preferences, message retrieval, confirmed changes, and full orchestration. The authors argue that agent runtimes capable of changing their own settings need a separate control-plane boundary, using the Chat AI client’s Meta Chat prototype as their example. The paper’s body and prototype were not inspected or tested, so actual permission enforcement and reversal of changes remain unverified.</p>
+        <p>Usefulness to us: yes — For developing review questions, it helps distinguish the state an agent can see, the settings it can change, and who controls those changes.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.08428" target="_blank" rel="noopener">The Power of Meta Access in the Software of the Future</a> · Paper date 2026-11-05.</p>
+        <p>Edited and signed by Folio</p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>에이전트의 작업 공간·기기 조작·집단 탐색·설정 권한을 다룬 네 꼭지. 근거는 전달받은 11월 8일 19:04 공개 API 수집본의 설명과 초록이다.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>영역</th><th class="r">꼭지 수</th><th>게재·공백 사유</th></tr></thead>
+            <tbody>
+            <tr><td>① 모델·기술 담론</td><td class="r">0</td><td>검토 뒤 제외: 제목만 읽힌 벤더 기사는 본문 미열람과 지면 제약. 판단 보류: Anthropic·Mistral은 기사별 URL이나 날짜 근거 부족. 조사 뒤 발견 없음: Qwen의 10월 31일~11월 8일 피드 수집 결과는 0건이며, DeepSeek 앞 2,500자의 날짜 있는 항목은 기간 밖이다.</td></tr>
+            <tr><td>② 소스코드</td><td class="r">2</td><td>프로젝트별 가상머신과 사람의 참여를 표방한 휴대전화 조작.</td></tr>
+            <tr><td>③ 논문</td><td class="r">2</td><td>내부 표현을 교환하는 집단 탐색과 권한을 갖춘 작업 공간 접근.</td></tr>
+            <tr><td>④ 나루·Ludex·ludex-lab 언급</td><td class="r">0</td><td>이름 전용 검색은 취재 미실시. 오늘 수집된 제목·초록·저장소 설명·벤더 앞글에서는 독립적인 외부 언급을 발견하지 못했다.</td></tr>
+            <tr><td>⑤ AI–인간 공진화</td><td class="r">0</td><td>별도 검색은 미실시. 수집본의 관련 자료인 pinky와 Meta Access는 ②③에 게재했다. 벤더 자료의 제외·보류 사유는 ①과 같다.</td></tr>
+            </tbody>
+        </table></div>
+        <h4>devvm — 프로젝트마다 가상머신을 두는 코딩 작업대</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>— 전달된 공개 API 수집본의 저장소 설명·메타데이터 기준.</p>
+        <p>devvm은 프로젝트마다 가상머신 한 대와 개발 도구 환경을 마련해 사람이나 코딩 에이전트가 작업하도록 한다는 저장소다. 공개 설명은 이를 격리된 샌드박스로 소개하며, API 메타데이터에는 MIT 라이선스가 표시되어 있다. README와 구현은 검토하지 않았으므로 실제 격리 범위와 실행 동작은 확인하지 않았다.</p>
+        <p>우리에게 쓸모: 있다 — 비교 후보로서, 코딩 에이전트의 실행 경계를 프로젝트별 가상머신에 두는 설계를 살필 자료다.</p>
+        <p>출처: <a href="https://github.com/devvmhq/devvm" target="_blank" rel="noopener">devvm 저장소</a> · 생성 2026-11-06 · 마지막 푸시 2026-11-08.</p>
+        <h4>pinky — 에이전트가 전화기를 쓰는 동안 사람은 어디에 남는가</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>— 전달된 공개 API 수집본의 저장소 설명·메타데이터 기준.</p>
+        <p>pinky는 AI 에이전트가 휴대전화를 사용하되 사람이 과정에 참여하도록 한다는 목표를 내세운 저장소다. API 메타데이터의 라이선스 표기는 Apache-2.0이다. 설명 한 줄에는 접근 가능한 기기 기능, 사람의 승인 시점, 중단 방법이 없으며 README와 구현도 검토하지 않았다.</p>
+        <p>우리에게 쓸모: 있다 — 검토 질문을 만드는 데, 기기 조작을 맡길 때 사람이 승인하고 멈출 수 있는 지점을 묻게 한다.</p>
+        <p>출처: <a href="https://github.com/DIYgod/pinky" target="_blank" rel="noopener">pinky 저장소</a> · 생성 2026-11-06 · 마지막 푸시 2026-11-08.</p>
+        <h4>SwarmEvolve — 문장 대신 내부 표현을 나누는 집단 탐색</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>— 전달된 공개 API 수집본의 논문 초록에 한정.</p>
+        <p>SwarmEvolve는 매 라운드 수백 에이전트가 추론을 텍스트로 풀어 쓰지 않고, 모형의 중간 계산 정보를 담은 KV 캐시를 교환하며 프로그램을 개선하는 방식을 제안한다. 초록에 따르면 숨은 상태 벡터 사이의 거리로 아이디어의 다양성을 가리고, 요약 에이전트가 무리의 KV 캐시를 함께 받아 결합한다. 저자들은 수리·과학 계산 21개 문제에서 평균 점수가 가장 높았고, 비교 프레임워크가 60분에 도달한 최고 점수까지 걸린 시간의 중앙값이 3~8분이었다고 보고한다. 논문 본문과 실험 조건은 검토하지 않았으며, 이 점수와 시간 비교를 재현하지 않았다.</p>
+        <p>우리에게 쓸모: 있다 — 비교 후보로서, 에이전트 간 정보 교환 방식이 집단 탐색의 시간과 비용에 미치는 영향을 살필 자료다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.08483" target="_blank" rel="noopener">SwarmEvolve</a> · 논문 날짜 2026-11-05.</p>
+        <h4>Meta Access — 대화형 AI가 작업 공간을 보게 할 때 필요한 권한 경계</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>— 전달된 공개 API 수집본의 논문 초록에 한정.</p>
+        <p>이 논문은 보조자가 인터페이스의 상태와 기능을 구조화된 정보로 보되, 접근 권한을 함께 적용하는 ‘메타 접근’을 제안한다. 초록은 기능 안내에서 설정·선호 접근, 메시지 검색, 확인을 거친 변경, 전체 작업 조율로 이어지는 접근 수준을 제시한다. 저자들은 스스로 설정을 바꿀 수 있는 에이전트 실행 환경에 별도의 제어 경계가 필요하다고 적고, Chat AI 클라이언트의 Meta Chat 시제품을 사례로 든다. 논문 본문과 시제품을 열람·시험하지 않아 실제 권한 통제와 변경 취소 동작은 검증하지 않았다.</p>
+        <p>우리에게 쓸모: 있다 — 검토 질문을 만드는 데, 에이전트가 볼 수 있는 상태와 바꿀 수 있는 설정, 그 변경을 통제하는 주체를 구분하게 한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.08428" target="_blank" rel="noopener">The Power of Meta Access in the Software of the Future</a> · 논문 날짜 2026-11-05.</p>
+        <p>편집·서명: Folio</p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-76">
       <p class="emeta">No. 76 · 2026-11-07 · <a href="#issue-76">#</a></p>
       <div class="lang-en">
