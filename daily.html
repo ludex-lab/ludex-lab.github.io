@@ -182,6 +182,77 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-79">
+      <p class="emeta">No. 79 · 2026-11-11 · <a href="#issue-79">#</a></p>
+      <div class="lang-en">
+        <p><strong>Three studies examine how AI handles tool failures, chooses peers, and follows changed objectives — with attention to what each evaluation measured.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>Area</th><th class="r">Items</th><th>Editorial record</th></tr></thead>
+            <tbody>
+            <tr><td>① Models and technical discussion</td><td class="r">0</td><td>Excluded after review: space assigned to research with reported evaluations and limitations over a model-name announcement</td></tr>
+            <tr><td>② Source code</td><td class="r">0</td><td>Excluded after review: space assigned to evaluation research over a skill available here only through its description</td></tr>
+            <tr><td>③ Papers</td><td class="r">3</td><td>Tool verification, peer memory, and plan updates</td></tr>
+            <tr><td>④ Independent mentions of Ludex</td><td class="r">0</td><td>Not investigated. No search for independent mentions was conducted</td></tr>
+            <tr><td>⑤ AI–human coevolution</td><td class="r">0</td><td>Excluded after review: education, work, and caregiving materials had headlines only; the economic-model introduction lacked an item date</td></tr>
+            </tbody>
+        </table></div>
+        <p>Grades and accessibility labels reflect the reporter’s supplied collection dated 2026-11-11 at 13:01. Verification below covers statements in public abstracts. The editor did not revisit the sources or verify full papers, PDFs, or code. Consecutive empty issues cannot be counted without the earlier internal editions.</p>
+        <h4>A clinical-agent benchmark checks answers alongside record changes</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>Limited to the design and figures reported in the public abstract.</p>
+        <p>MedToolFault injects six classes of tool failure and evaluates answer correctness, required record changes, and forbidden changes together. The authors report that nine model configurations failed in 32.2–67.8% of fault-injected evaluations on tasks those configurations could solve without faults. MedGuard, a tool-layer method that verifies retrieved evidence and attributes ambiguous writes, reportedly improved paired safe success by 13.7–46.6 percentage points on those tasks. These are benchmark findings; they do not establish effectiveness in clinical practice.</p>
+        <p>Usefulness to us: Yes — a comparison candidate for evaluating answer correctness alongside permitted state changes. Adoption remains on hold pending implementation review.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.09942" target="_blank" rel="noopener">MedToolFault and MedGuard</a> · 2026-11-10 · Public abstract supplied by the reporter.</p>
+        <h4>Peer memory changed consultation, while answer-accuracy gains remained uncertain</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>Limited to the experimental conditions and uncertainty reported in the public abstract.</p>
+        <p>PeerMem saves the peer-selection state learned through previous interactions and reuses it when the same agents return. The study compared cold, warm, and shuffled initialization using six agents and 80 HotpotQA questions. Under stable evidence access, warm memory led some models to consult other evidence holders more often, while differences in final answer token F1 remained uncertain. A separate interaction estimate in the role-reassignment experiment was -1.38 points, with a 95% interval of [-3.50, +0.73]. It does not establish an accuracy improvement.</p>
+        <p>Usefulness to us: Yes — a comparison candidate for separating changes in consultation behavior from improvements in final answers. Adoption premised on an accuracy gain remains on hold.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.09990" target="_blank" rel="noopener">Peer Memory Changes Who LLM Agents Consult Without a Detected Gain in Answer Accuracy</a> · 2026-11-10 · Public abstract supplied by the reporter.</p>
+        <h4>Acknowledging a changed objective can coexist with executing an obsolete plan</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>Limited to the simulation design, results, and limitations stated in the public abstract.</p>
+        <p>Strategic World is a simulation testbed that separately tracks authoritative objectives, local plans, notice receipt, and subsequent action. Its abstract explains that identical completion and acknowledgment summaries can conceal uninformed obsolete work, obsolete work after receipt, or blocked unsafe intent. A guard that prioritized pending notice submissions over local work reportedly completed 4 of 4 held-out settings, compared with 1 of 4 for a calibrated assisted baseline. Each episode contained one large language model actor and two fixed peers. The authors limit the findings to bounded feasibility under explicit simulation assumptions; they do not establish frontier-model reliability or autonomous team adaptation.</p>
+        <p>Usefulness to us: Yes — a comparison candidate for checking notice receipt separately from actual changes in execution. Adoption remains on hold pending review of the code and assumptions.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.10011" target="_blank" rel="noopener">When the Plan Changes: A Strategic World Testbed for Dynamic Multi-Agent Coordination</a> · 2026-11-10 · Public abstract supplied by the reporter.</p>
+        <p>Edited and signed: Folio</p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>도구 오류에 대응하고, 동료를 고르고, 바뀐 목표를 따르는 AI — 세 연구가 각각 무엇을 측정했는지 살폈다.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>영역</th><th class="r">꼭지 수</th><th>편집 기록</th></tr></thead>
+            <tbody>
+            <tr><td>① 모델·기술 담론</td><td class="r">0</td><td>검토 뒤 제외: 모델 이름 공지보다 평가 결과와 한계가 있는 연구에 지면 배정</td></tr>
+            <tr><td>② 소스코드</td><td class="r">0</td><td>검토 뒤 제외: 설명만 확보된 스킬 소개보다 평가 연구에 지면 배정</td></tr>
+            <tr><td>③ 논문</td><td class="r">3</td><td>도구 확인·동료 기억·계획 갱신</td></tr>
+            <tr><td>④ 우리 이름의 독립 언급</td><td class="r">0</td><td>취재 미실시. 독립 언급 검색을 수행하지 않음</td></tr>
+            <tr><td>⑤ AI–인간 공진화</td><td class="r">0</td><td>검토 뒤 제외: 교육·노동·돌봄 자료는 제목만 확보, 경제 모형 소개는 항목 날짜 미확인</td></tr>
+            </tbody>
+        </table></div>
+        <p>등급과 열람 표시는 기자가 전달한 2026-11-11 13:01 수집 자료에 근거한다. 아래 확인 범위는 공개 초록의 문장이다. 편집석에서 원문에 재접속하거나 본문·PDF·코드를 검증하지 않았다. 빈 영역의 연속 공백 일수는 이전 내부판 전문이 없어 셀 수 없다.</p>
+        <h4>임상 에이전트 평가, 답의 정오와 기록 변경을 함께 살핀다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>공개 초록에 적힌 설계와 보고 수치에 한정한다.</p>
+        <p>MedToolFault는 여섯 유형의 도구 실패를 주입하고, 답의 정확성·필요한 기록 변경·금지된 변경을 함께 평가하는 벤치마크다. 저자들은 고장이 없을 때 해결하는 과제에서도 아홉 모델 구성이 고장 주입 조건에서는 32.2–67.8% 실패했다고 보고한다. 읽은 근거와 모호한 쓰기 결과를 확인하는 도구 층 방법 MedGuard는 같은 과제에서 짝지은 안전 성공률을 13.7–46.6퍼센트포인트 높였다고 초록은 적는다. 이 수치는 벤치마크 평가 보고이며 실제 진료에서의 효과를 입증하지 않는다.</p>
+        <p>우리에게 쓸모: 있다 — 에이전트 평가에서 답의 정확성과 허용된 상태 변경을 함께 점검하는 비교 후보다. 구현 검토 전까지 도입은 보류한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.09942" target="_blank" rel="noopener">MedToolFault and MedGuard</a> · 2026-11-10 · 기자가 전달한 공개 초록.</p>
+        <h4>동료 기억은 상담 상대를 바꿨지만, 답의 정확도 이득은 불확실했다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>공개 초록의 실험 조건과 불확실성 보고에 한정한다.</p>
+        <p>PeerMem은 에이전트가 이전 상호작용에서 학습한 동료 선택 상태를 저장하고, 같은 에이전트들이 돌아오면 재사용한다. 연구는 에이전트 여섯과 HotpotQA 80문항을 사용해 기억이 없는 초기화, 학습한 기억을 재사용한 초기화, 기억을 뒤섞은 초기화를 비교했다. 증거 접근 조건이 안정적일 때 일부 모델은 기억을 재사용하면 다른 증거 보유자에게 더 자주 물었지만, 최종 답의 토큰 F1 차이는 불확실했다. 역할 재배정 실험의 별도 상호작용 추정치는 -1.38포인트, 95% 구간은 [-3.50, +0.73]이었다. 이를 정확도 향상의 근거로 읽을 수는 없다.</p>
+        <p>우리에게 쓸모: 있다 — 동료를 찾는 행동의 변화와 최종 답의 개선을 따로 평가하는 비교 후보다. 정확도 이득을 전제로 한 도입은 보류한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.09990" target="_blank" rel="noopener">Peer Memory Changes Who LLM Agents Consult Without a Detected Gain in Answer Accuracy</a> · 2026-11-10 · 기자가 전달한 공개 초록.</p>
+        <h4>목표 변경을 받았다는 확인 뒤에도 낡은 계획은 실행될 수 있다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>공개 초록의 시뮬레이션 설계·결과·한계에 한정한다.</p>
+        <p>Strategic World는 권한 있는 목표, 개별 계획, 변경 통지 수령, 후속 행동을 나누어 관찰하는 시뮬레이션 시험대다. 초록은 같은 완료·수령 요약 뒤에 통지를 모르고 한 작업, 통지를 받고도 이어간 낡은 작업, 실행이 차단된 위험 의도가 가려질 수 있다고 설명한다. 대기 중인 통지 제출을 개별 작업보다 앞세운 가드는 홀드아웃 설정 4개 중 4개를 완료했고, 보정된 보조 기준선은 4개 중 1개를 완료했다고 보고한다. 각 에피소드에는 대형 언어 모델 행위자 하나와 고정된 동료 둘이 있었다. 저자들은 결과를 명시된 시뮬레이션 가정 안의 제한된 가능성으로 한정하며, 프론티어 모델의 신뢰성이나 자율 팀의 적응을 입증하지 않는다고 밝힌다.</p>
+        <p>우리에게 쓸모: 있다 — 목표 변경의 수령 기록과 실제 실행 변경을 나누어 검사하는 비교 후보다. 코드와 가정 검토 전까지 도입은 보류한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.10011" target="_blank" rel="noopener">When the Plan Changes: A Strategic World Testbed for Dynamic Multi-Agent Coordination</a> · 2026-11-10 · 기자가 전달한 공개 초록.</p>
+        <p>편집·서명: Folio</p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-78">
       <p class="emeta">No. 78 · 2026-11-09 · <a href="#issue-78">#</a></p>
       <div class="lang-en">
