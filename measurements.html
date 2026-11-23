@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title data-i18n="title">Measurement records — Ludex</title>
-<meta name="description" data-i18n="desc" content="Pre-registered measurements of Ludex creature organs: the specification, its amendments, the corrections, the data as run, and the verdict.">
+<title data-i18n="title">Measurement records &amp; research — Ludex</title>
+<meta name="description" data-i18n="desc" content="Pre-registered measurements of Ludex individual and collective organs: specification, amendments, corrections, data as run, verdicts, and executable research papers.">
 <style>
   :root{
     --bg:#0e1116; --panel:#161b22; --ink:#e6edf3; --muted:#9aa7b4;
@@ -28,12 +28,13 @@
   .badge{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
     color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin-bottom:20px}
   h1{font-size:clamp(32px,6vw,52px);margin:0 0 14px;letter-spacing:-.02em;line-height:1.06}
-  .tag{font-size:clamp(17px,2.6vw,21px);max-width:640px;margin:0 0 10px;font-weight:600}
-  .sub{color:var(--muted);max-width:660px;margin:0 0 8px}
+  .tag{font-size:clamp(17px,2.6vw,21px);max-width:660px;margin:0 0 10px;font-weight:600}
+  .sub{color:var(--muted);max-width:680px;margin:0 0 8px}
   section{padding:44px 0;border-bottom:1px solid var(--line)}
-  h2{font-size:24px;margin:0 0 14px;letter-spacing:-.01em}
+  h2{font-size:22px;margin:0 0 14px;letter-spacing:-.01em}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:14px 0}
-  .card h3{margin:0 0 6px;font-size:18px}
+  .card.accent{border-color:rgba(126,224,194,.4)}
+  .card h3{margin:0 0 6px;font-size:18px;color:var(--accent)}
   .meta{color:var(--muted);font-size:13.5px;margin:0 0 12px}
   ul{margin:10px 0 0;padding-left:20px} li{margin:5px 0}
   .caveat{border-left:3px solid var(--accent);padding-left:16px;color:var(--muted)}
@@ -51,21 +52,21 @@
 
 <header>
   <div class="wrap">
-    <span class="badge" data-i18n="badge">Measurement records</span>
+    <span class="badge" data-i18n="badge">Measurement records &amp; research</span>
     <h1 data-i18n="h1">What we measured, and what we got wrong first</h1>
-    <p class="tag" data-i18n="tag">Every organ we ship by default has to earn it — in public, against a specification frozen before the run.</p>
-    <p class="sub" data-i18n="sub">Each record below contains the pre-registration and its amendments, the corrections we had to make, the data exactly as it came out, the instrument that produced it, and the verdict. The mistakes are in there on purpose. A record that hides them is not a record.</p>
+    <p class="tag" data-i18n="tag">Every organ — individual or collective — earns its place in public, against a specification frozen before the run.</p>
+    <p class="sub" data-i18n="sub">Each record below contains the pre-registration and its amendments, the corrections we had to make, the data and instruments, and the verdict. The mistakes stay in on purpose. A record that hides them is not a record.</p>
   </div>
 </header>
 
 <section>
   <div class="wrap">
-    <h2 data-i18n="h_walks">Records</h2>
+    <h2 data-i18n="h_walks">1st-Gen individual-organ records (led to the collective-organ pivot)</h2>
 
     <div class="card">
       <h3 data-i18n="w1_t">Physics E1 — does recall earn its keep?</h3>
       <p class="meta" data-i18n="w1_m">Pre-registered 2026-08-01 · battery run 2026-08-02 · verdict 2026-08-03</p>
-      <p data-i18n="w1_b">A creature is given a handful of experiments in a physics environment and must state the law. Four conditions differ only in how the observations reach it: not at all, carried in the prompt, carried and also recalled, or recalled alone across a session boundary. The question is whether the memory organ adds anything.</p>
+      <p data-i18n="w1_b">A creature is given a handful of experiments in a physics environment and must state the law. Four conditions differ only in how the observations reach it: not at all, carried in the prompt, carried and also recalled, or recalled alone across a session boundary. The question is whether the individual memory organ adds anything.</p>
       <ul>
         <li data-i18n="w1_l1">Specification, amendments, and three corrections — unedited</li>
         <li data-i18n="w1_l2">Screening census over the whole identifiable environment population</li>
@@ -75,12 +76,24 @@
       <p style="margin-top:14px"><a href="https://github.com/ludex-lab/ludex/tree/main/research/physics-e1" data-i18n="w1_link">Open the record →</a></p>
     </div>
 
-      <a class="card linkcard" href="https://github.com/ludex-lab/ludex/tree/main/research/uptake-e2">
-        <h3><span data-i18n="w2_t">Uptake E2 — is it the surface?</span><span class="lc-arrow">→</span></h3>
-        <p class="meta" data-i18n="w2_m">Specification published before firing 2026-08-03 · battery 2026-08-03 · verdict 2026-08-04</p>
-        <p data-i18n="w2_b">E1 found a memory organ delivering its payload in full while the creature recovered nothing from it. E2 holds the content fixed to the byte and moves only where it sits: the same text is unusable in the system prompt and fully usable in the user message.</p>
-        <div class="lc-host" data-i18n="w2_host">First record specified in public before the run</div>
-      </a>
+    <a class="card linkcard" href="https://github.com/ludex-lab/ludex/tree/main/research/uptake-e2">
+      <h3><span data-i18n="w2_t">Uptake E2 — is it the surface?</span><span class="lc-arrow">→</span></h3>
+      <p class="meta" data-i18n="w2_m">Specification published before firing 2026-08-03 · battery 2026-08-03 · verdict 2026-08-04</p>
+      <p data-i18n="w2_b">E1 found an individual memory organ delivering its payload in full while the creature recovered nothing from it. E2 holds the content fixed to the byte and moves only where it sits: the same text is unusable in the system prompt and fully usable in the user message.</p>
+      <div class="lc-host" data-i18n="w2_host">First record specified in public before the run</div>
+    </a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 data-i18n="h_collective">Village-level collective-organ &amp; empirical research track</h2>
+    <a class="card accent linkcard" href="https://www.alphaxiv.org/@jihoon-jeong" target="_blank" rel="noopener">
+      <h3><span data-i18n="c1_t">Executable papers &amp; preprints on alphaXiv</span><span class="lc-arrow">↗</span></h3>
+      <p class="meta" data-i18n="c1_m">Ongoing · SHA-256 frozen tables · standard-library reproduction scripts · manifest-presence verified</p>
+      <p data-i18n="c1_b">As Ludex shifted from individual organs to multi-tribe village organs, our empirical measurements moved into longitudinal village audits, cross-model reviewer calibration, temperament measurement (MTI), and collective memory hygiene. Public preprints and reproducible bundles are indexed on alphaXiv as each passes independent verification.</p>
+      <div class="lc-host">alphaxiv.org/@jihoon-jeong</div>
+    </a>
   </div>
 </section>
 
@@ -88,29 +101,29 @@
   <div class="wrap">
     <h2 data-i18n="h_read">How to read these</h2>
     <p class="caveat" data-i18n="read1">Where a record names a specific model or command-line tool, it is reporting one surface, one injection shape, and a small number of runs. It is not a ranking of models, and it will not support being read as one.</p>
-    <p class="caveat" style="margin-top:16px" data-i18n="read2">Pre-registration means the specification was frozen before the measurement ran, and every later change was argued in writing against people obliged to push back. For this first record the ordering rests on our working repository's history, so it is pre-registered but not independently verifiable. From the next record onward the specification is published before the run, which fixes that at no cost.</p>
+    <p class="caveat" style="margin-top:16px" data-i18n="read2">Pre-registration means the specification was frozen before the measurement ran, and every later change was argued in writing against people obliged to push back. From E3 and our alphaXiv research bundles onward, every release also passes an automated cover-versus-folder manifest check so ignore rules cannot silently omit promised raw data files.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p><a href="./">← Ludex</a> · <a href="https://github.com/ludex-lab/ludex">GitHub</a></p>
+    <p><a href="./">← Ludex</a> · <a href="https://github.com/ludex-lab/ludex">GitHub</a> · <a href="https://ludex-lab.github.io/organum/">Organum</a></p>
   </div>
 </footer>
 
 <script>
 const I18N = {
   en: {
-    title: "Measurement records — Ludex",
-    desc: "Pre-registered measurements of Ludex creature organs: the specification, its amendments, the corrections, the data as run, and the verdict.",
-    badge: "Measurement records",
+    title: "Measurement records & research — Ludex",
+    desc: "Pre-registered measurements of Ludex individual and collective organs: specification, amendments, corrections, data as run, verdicts, and executable research papers.",
+    badge: "Measurement records & research",
     h1: "What we measured, and what we got wrong first",
-    tag: "Every organ we ship by default has to earn it — in public, against a specification frozen before the run.",
-    sub: "Each record below contains the pre-registration and its amendments, the corrections we had to make, the data exactly as it came out, the instrument that produced it, and the verdict. The mistakes are in there on purpose. A record that hides them is not a record.",
-    h_walks: "Records",
+    tag: "Every organ — individual or collective — earns its place in public, against a specification frozen before the run.",
+    sub: "Each record below contains the pre-registration and its amendments, the corrections we had to make, the data and instruments, and the verdict. The mistakes stay in on purpose. A record that hides them is not a record.",
+    h_walks: "1st-Gen individual-organ records (led to the collective-organ pivot)",
     w1_t: "Physics E1 — does recall earn its keep?",
     w1_m: "Pre-registered 2026-08-01 · battery run 2026-08-02 · verdict 2026-08-03",
-    w1_b: "A creature is given a handful of experiments in a physics environment and must state the law. Four conditions differ only in how the observations reach it: not at all, carried in the prompt, carried and also recalled, or recalled alone across a session boundary. The question is whether the memory organ adds anything.",
+    w1_b: "A creature is given a handful of experiments in a physics environment and must state the law. Four conditions differ only in how the observations reach it: not at all, carried in the prompt, carried and also recalled, or recalled alone across a session boundary. The question is whether the individual memory organ adds anything.",
     w1_l1: "Specification, amendments, and three corrections — unedited",
     w1_l2: "Screening census over the whole identifiable environment population",
     w1_l3: "Battery data, instrument telemetry, gate and drift stamps",
@@ -118,24 +131,27 @@ const I18N = {
     w1_link: "Open the record →",
     w2_t: "Uptake E2 — is it the surface?",
     w2_m: "Specification published before firing 2026-08-03 · battery 2026-08-03 · verdict 2026-08-04",
-    w2_b: "E1 found a memory organ delivering its payload in full while the creature recovered nothing from it. E2 holds the content fixed to the byte and moves only where it sits: the same text is unusable in the system prompt and fully usable in the user message.",
+    w2_b: "E1 found an individual memory organ delivering its payload in full while the creature recovered nothing from it. E2 holds the content fixed to the byte and moves only where it sits: the same text is unusable in the system prompt and fully usable in the user message.",
     w2_host: "First record specified in public before the run",
-
+    h_collective: "Village-level collective-organ & empirical research track",
+    c1_t: "Executable papers & preprints on alphaXiv",
+    c1_m: "Ongoing · SHA-256 frozen tables · standard-library reproduction scripts · manifest-presence verified",
+    c1_b: "As Ludex shifted from individual organs to multi-tribe village organs, our empirical measurements moved into longitudinal village audits, cross-model reviewer calibration, temperament measurement (MTI), and collective memory hygiene. Public preprints and reproducible bundles are indexed on alphaXiv as each passes independent verification.",
     h_read: "How to read these",
     read1: "Where a record names a specific model or command-line tool, it is reporting one surface, one injection shape, and a small number of runs. It is not a ranking of models, and it will not support being read as one.",
-    read2: "Pre-registration means the specification was frozen before the measurement ran, and every later change was argued in writing against people obliged to push back. The two records differ in what evidences that. E1's ordering rests on our working repository's history, which a reader here cannot check, so its cover says pre-registered but not independently verifiable. E2's specification was committed to the public repository before its battery ran, and the evidence is the server-side push timestamp rather than the commit's own dates — those are set locally and prove nothing. That receipt is archived, and its own expiry is stated on the record."
+    read2: "Pre-registration means the specification was frozen before the measurement ran, and every later change was argued in writing against people obliged to push back. From E3 and our alphaXiv research bundles onward, every release also passes an automated cover-versus-folder manifest check so ignore rules cannot silently omit promised raw data files."
   },
   ko: {
-    title: "측정 기록 — Ludex",
-    desc: "Ludex 크리처 기관에 대한 사전등록 측정 기록: 명세와 개정, 정정, 실행된 그대로의 데이터, 그리고 판정.",
-    badge: "측정 기록",
+    title: "측정 기록 & 연구 — Ludex",
+    desc: "Ludex 개체·집단 기관에 대한 사전등록 측정 기록과 실행 가능 연구 논문: 명세, 개정, 정정, 데이터, 판정.",
+    badge: "측정 기록 & 연구",
     h1: "무엇을 쟀고, 그 전에 무엇을 틀렸는가",
-    tag: "기본으로 켜지는 기관은 제 값을 증명해야 합니다 — 실행 전에 동결된 명세에 대고, 공개적으로.",
-    sub: "아래 각 기록에는 사전등록 명세와 개정, 우리가 내야 했던 정정, 나온 그대로의 데이터, 그 데이터를 만든 계측기, 그리고 판정이 들어 있습니다. 실수도 일부러 함께 넣었습니다. 실수를 감추는 기록은 기록이 아닙니다.",
-    h_walks: "기록",
+    tag: "개체 기관이든 마을의 집단 기관이든, 실행 전에 동결된 명세로 제 값을 공개 증명합니다.",
+    sub: "아래 기록에는 사전등록 명세와 개정, 우리가 내야 했던 정정, 데이터와 계측기, 그리고 판정이 들어 있습니다. 실수도 일부러 함께 남깁니다. 실수를 감추는 기록은 기록이 아닙니다.",
+    h_walks: "1세대 개체 기관 측정 기록 (집단 기관 전환의 근거)",
     w1_t: "Physics E1 — 인출은 제 값을 하는가",
     w1_m: "사전등록 2026-08-01 · 배터리 실행 2026-08-02 · 판정 2026-08-03",
-    w1_b: "크리처가 물리 환경에서 관측 몇 개를 받고 법칙을 진술합니다. 네 조건은 관측이 도달하는 경로만 다릅니다 — 아예 없거나, 프롬프트에 실리거나, 실리면서 인출도 되거나, 세션 경계 너머 인출로만 오거나. 질문은 기억 기관이 무언가를 더하는가입니다.",
+    w1_b: "크리처가 물리 환경에서 관측 몇 개를 받고 법칙을 진술합니다. 네 조건은 관측이 도달하는 경로만 다릅니다. 질문은 개체 기억 기관이 실제로 무언가를 더하는가입니다.",
     w1_l1: "명세·개정·정정 3건 — 편집 없이",
     w1_l2: "식별 가능한 환경 모집단 전수 스크리닝",
     w1_l3: "배터리 데이터, 계측기 텔레메트리, 게이트·드리프트 스탬프",
@@ -143,17 +159,22 @@ const I18N = {
     w1_link: "기록 열기 →",
     w2_t: "Uptake E2 — 원인은 표면인가",
     w2_m: "명세 선-공개 2026-08-03 · 배터리 2026-08-03 · 판정 2026-08-04",
-    w2_b: "E1에서 기억 기관은 화물을 온전히 배달했는데 크리처는 그것으로부터 아무것도 회수하지 못했습니다. E2는 내용을 바이트 단위로 고정하고 위치만 옮깁니다 — 같은 텍스트가 시스템 프롬프트에서는 쓰이지 않고 유저 메시지에서는 온전히 쓰입니다.",
+    w2_b: "E1에서 개체 기억 기관은 화물을 온전히 배달했는데 크리처는 아무것도 회수하지 못했습니다. E2는 내용을 바이트 단위로 고정하고 위치만 옮겼습니다 — 같은 텍스트가 시스템 프롬프트에서는 쓰이지 않고 유저 메시지에서는 온전히 쓰입니다.",
     w2_host: "실행 전에 공개된 첫 기록",
-
+    h_collective: "마을 단위 집단 기관 & 실증 연구 트랙",
+    c1_t: "alphaXiv 실행 가능 연구 논문 & 프리프린트",
+    c1_m: "진행 중 · SHA-256 동결 표 · 표준 라이브러리 재현 스크립트 · 표지 매니페스트 검증",
+    c1_b: "Ludex가 개체 기관에서 다부족 마을의 집단 기관으로 확장되면서, 실증 측정도 종단 마을 감사, 교차 모델 검토자 편향 보정, 기질 측정(MTI), 집단 기억 위생 연구로 확장되었습니다. 독립 검증을 통과한 공개 논문과 재현 묶음은 alphaXiv에 순차 공개됩니다.",
     h_read: "읽는 법",
     read1: "기록에 특정 모델이나 명령줄 도구의 이름이 나올 때, 그것은 하나의 표면·하나의 주입 형태·적은 실행 횟수에 대한 보고입니다. 모델 순위표가 아니며, 그렇게 읽히는 것을 지지하지 않습니다.",
-    read2: "사전등록이란 측정 실행 전에 명세를 동결했고, 이후의 모든 변경을 반론 의무를 진 사람들에게 문서로 논증했다는 뜻입니다. 두 기록은 그것을 무엇이 증거하느냐가 다릅니다. E1은 순서 증명이 작업 저장소의 내부 이력에 의존하므로 독자가 여기서 확인할 수 없고, 표지가 그렇게 적고 있습니다. E2는 배터리 실행 전에 명세를 공개 저장소에 커밋했고, 증거는 커밋 자체의 날짜가 아니라 서버측 push 시각입니다 — 커밋 날짜는 로컬에서 설정되므로 증거가 되지 못합니다. 그 영수증은 보관돼 있고, 만료 시점까지 기록에 적혀 있습니다."
+    read2: "사전등록이란 측정 실행 전에 명세를 동결했고, 이후의 모든 변경을 반론 의무를 진 사람들에게 문서로 논증했다는 뜻입니다. E3와 alphaXiv 연구 묶음부터는 모든 공개본이 표지-폴더 매니페스트 자동 대조를 통과해 ignore 규칙으로 원천 파일이 조용히 빠지는 일을 막습니다."
   }
 };
-let LANG = (navigator.language || "en").toLowerCase().startsWith("ko") ? "ko" : "en";
+let LANG = null;
+try{ LANG = localStorage.getItem("ludex_lang"); }catch(e){}
+if(!LANG) LANG = (navigator.language || "en").toLowerCase().startsWith("ko") ? "ko" : "en";
 function apply(){
-  const d = I18N[LANG];
+  const d = I18N[LANG] || I18N.en;
   document.documentElement.lang = LANG;
   document.title = d.title;
   document.querySelectorAll("[data-i18n]").forEach(el=>{
@@ -164,6 +185,7 @@ function apply(){
     else el.innerHTML = d[k];
   });
   document.getElementById("langbtn").textContent = LANG === "ko" ? "English" : "한국어";
+  try{ localStorage.setItem("ludex_lang", LANG); }catch(e){}
 }
 function toggleLang(){ LANG = LANG === "ko" ? "en" : "ko"; apply(); }
 apply();
