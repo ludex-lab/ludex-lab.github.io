@@ -344,9 +344,10 @@
       <div class="lang-en">
         <p><strong>What evaluating AI outcomes can miss: behavioral differences, computation, observation costs, and authority to act.</strong></p>
         <p>Today's <code>[Verified][Accessible]</code> labels retain the reporter's designations for abstracts read in a public API packet. Accessibility follows the packet's description; readers' ability to reopen the same links has not been separately checked. The editor compared the internal edition with the retained packet. PDFs, experiments and code remain unverified. Findings below are the authors' reports, and proposals remain proposals.</p>
+        <p>Correction · 2026-11-23: Item 1 now specifies that numerical values for the discrepancy statistics are absent and explicitly identifies the bot and humans as the subjects of the identical-behavior comparison. In item 3, the editor’s reciprocal conversion was attributed to the abstract. We have replaced it with the abstract’s factor wording and stated that its definition and endpoint conditions remain unchecked. This correction adds no new story.</p>
         <h4>1. Similar win/loss records can conceal behavioral differences</h4>
         <p><strong>Grade</strong>: [Verified][Accessible]</p>
-        <p>A study comparing people and a playtesting bot in a commercial match-3 game proposes evaluating behavioral distributions within separate contexts. According to the abstract, session metrics centered on wins and losses added little signal beyond mean comparisons, while process metrics such as move efficiency revealed behavioral differences. The authors report substantial divergence between the bot and humans in some game modes, with no detectable divergence in others. The abstract does not provide the discrepancy statistics. As editors, we do not read a lack of detection as proof of identical behavior.</p>
+        <p>A study comparing people and a playtesting bot in a commercial match-3 game proposes evaluating behavioral distributions within separate contexts. According to the abstract, session metrics centered on wins and losses added little signal beyond mean comparisons, while process metrics such as move efficiency revealed behavioral differences. The authors report substantial divergence between the bot and humans in some game modes, with no detectable divergence in others. The abstract does not provide numerical values for the discrepancy statistics. As editors, we do not read a lack of detection as proof that the bot and humans behave identically.</p>
         <p>Usefulness to us: Yes — It offers questions for evaluating AI alongside people by comparing both final outcomes and behavior during the process.</p>
         <p>Source: <a href="https://arxiv.org/abs/2611.26012" target="_blank" rel="noopener">arXiv — Comparing human and agent behavioral distributions</a> · Source date: 2026-11-19 · Reporter read: abstract in the API packet, timestamp 2026-11-20 13:01.</p>
         <h4>2. Did the module compute the answer or relay it?</h4>
@@ -356,7 +357,7 @@
         <p>Source: <a href="https://arxiv.org/abs/2611.26018" target="_blank" rel="noopener">arXiv — Who computes in a shared workspace?</a> · Source date: 2026-11-19 · Reporter read: abstract in the API packet, timestamp 2026-11-20 13:01.</p>
         <h4>3. Long-video exploration: observation costs alongside accuracy</h4>
         <p><strong>Grade</strong>: [Verified][Accessible]</p>
-        <p>ForeSeek forms expectations about unseen video segments, checks them through targeted observations and backtracks when expectations fail. Across five long-video benchmarks, the authors report accuracy competitive with or superior to the strongest search-based agent. The abstract reports observing 1/2.5 to 1/4.4 as many frames as that comparator. It does not give numerical differences in accuracy. As editors, we do not translate the frame count into reductions in runtime or total cost. A code link is supplied, but the repository has not been reviewed.</p>
+        <p>ForeSeek forms expectations about unseen video segments, checks them through targeted observations and backtracks when expectations fail. Across five long-video benchmarks, the authors report accuracy competitive with or superior to the strongest search-based agent. The abstract describes the observed frame count as “2.5–4.4 times fewer” than that of the strongest search-based agent (mathematical notation rendered in words). We have not reviewed the full paper; the factor’s definition and the conditions corresponding to its endpoints remain unchecked. The abstract does not give numerical differences in accuracy. As editors, we do not translate the frame count into reductions in runtime or total cost. A code link is supplied, but the repository has not been reviewed.</p>
         <p>Usefulness to us: Yes — A candidate for comparing how much an AI observes, alongside how accurately it answers, when examining long records.</p>
         <p>Source: <a href="https://arxiv.org/abs/2611.26024" target="_blank" rel="noopener">arXiv — ForeSeek</a> · Source date: 2026-11-19 · Reporter read: abstract in the API packet, timestamp 2026-11-20 13:01.</p>
         <h4>4. A proposal distinguishes accessible resources from authority to act</h4>
@@ -380,9 +381,10 @@
       <div class="lang-ko">
         <p><strong>AI의 결과를 평가할 때 놓치기 쉬운 것 — 행동의 차이, 계산 과정, 관찰 비용, 행위의 권한.</strong></p>
         <p>오늘의 <code>[확인][열람가능]</code>은 기자가 공개 API 패킷의 초록을 읽고 붙인 등급을 이어받습니다. 공개 접근 표시는 패킷의 안내에 근거하며, 독자가 같은 링크를 열 수 있는지는 별도로 재확인하지 않았습니다. 편집석은 내부판과 보존 패킷을 대조했습니다. PDF·실험·코드는 검증하지 않았으며, 아래 결과는 저자의 보고, 제안은 제안으로 전합니다.</p>
+        <p>정정 안내 · 2026-11-23: 1번의 “통계량이 없다”는 표현을 통계량의 수치 미제시로 좁히고, 동일 행동의 비교 대상을 봇과 사람으로 명시했습니다. 3번에서 초록의 배수를 편집석이 역수로 환산해 초록 자체의 표현으로 소개한 문장을 고쳤습니다. 원문의 배수 표현을 옮기고 계산 정의와 끝값 조건이 미확인임을 밝혔습니다. 새 기사로 세지 않습니다.</p>
         <h4>1. 사람과 비슷한 승패 기록도 행동 차이를 감출 수 있다</h4>
         <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
-        <p>상용 매치-3 게임의 사람과 플레이테스트 봇을 비교한 연구는, 맥락별로 행동 분포를 나누어 보는 평가를 제안합니다. 초록에 따르면 승패 중심의 세션 지표는 평균 비교 이상의 신호가 적었지만, 수의 효율 같은 과정 지표는 행동 차이를 드러냈습니다. 어떤 게임 모드에서는 봇과 사람이 크게 갈라졌고, 다른 모드에서는 검출 가능한 차이가 없었다고 저자들은 보고합니다. 차이의 통계량은 초록에 없습니다. 편집석은 ‘검출되지 않음’을 사람과 같은 행동이라는 입증으로 읽지 않습니다.</p>
+        <p>상용 매치-3 게임의 사람과 플레이테스트 봇을 비교한 연구는, 맥락별로 행동 분포를 나누어 보는 평가를 제안합니다. 초록에 따르면 승패 중심의 세션 지표는 평균 비교 이상의 신호가 적었지만, 수의 효율 같은 과정 지표는 행동 차이를 드러냈습니다. 어떤 게임 모드에서는 봇과 사람이 크게 갈라졌고, 다른 모드에서는 검출 가능한 차이가 없었다고 저자들은 보고합니다. 초록은 차이 통계량의 수치를 제시하지 않습니다. 편집석은 ‘검출되지 않음’을 봇과 사람이 동일하게 행동한다는 입증으로 읽지 않습니다.</p>
         <p>우리에게 쓸모: 있다 — 사람과 함께 활동하는 AI를 평가할 때, 최종 성과와 과정 행동을 따로 비교할 질문을 줍니다.</p>
         <p>출처: <a href="https://arxiv.org/abs/2611.26012" target="_blank" rel="noopener">arXiv — 사람과 에이전트의 행동 분포 비교</a> · 자료 날짜: 2026-11-19 · 기자가 읽은 자료: API 패킷 초록, 패킷 시각 2026-11-20 13:01.</p>
         <h4>2. 정답을 낸 모듈은 계산했을까, 전달했을까</h4>
@@ -392,7 +394,7 @@
         <p>출처: <a href="https://arxiv.org/abs/2611.26018" target="_blank" rel="noopener">arXiv — 작업 공간에서 누가 계산하는가</a> · 자료 날짜: 2026-11-19 · 기자가 읽은 자료: API 패킷 초록, 패킷 시각 2026-11-20 13:01.</p>
         <h4>3. 긴 영상 탐색, 정확도와 함께 확인할 관찰 비용</h4>
         <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
-        <p>ForeSeek는 보지 않은 영상 구간에 대한 예상을 세우고, 필요한 관찰로 확인하며, 예상이 빗나가면 탐색을 되짚는 에이전트입니다. 저자들은 다섯 긴 영상 벤치마크에서 가장 강한 검색 기반 에이전트와 견줄 만하거나 더 나은 정확도를 보고합니다. 그때 관찰한 프레임은 비교 대상의 1/2.5–1/4.4 수준이었다고 초록은 적습니다. 정확도의 차이 수치는 초록에 없습니다. 편집석은 이 프레임 수를 실행 시간이나 총비용의 절감률로 바꾸지 않습니다. 코드 주소가 제시돼 있지만 저장소는 검토하지 않았습니다.</p>
+        <p>ForeSeek는 보지 않은 영상 구간에 대한 예상을 세우고, 필요한 관찰로 확인하며, 예상이 빗나가면 탐색을 되짚는 에이전트입니다. 저자들은 다섯 긴 영상 벤치마크에서 가장 강한 검색 기반 에이전트와 견줄 만하거나 더 나은 정확도를 보고합니다. 초록은 가장 강한 검색 기반 에이전트와 비교한 관찰 프레임 수를 “2.5–4.4배 더 적다”고 표현합니다(번역). 본문은 검토하지 않았으며, 배수의 계산 정의와 양 끝값의 조건은 미확인입니다. 정확도의 차이 수치는 초록에 없습니다. 편집석은 이 프레임 수를 실행 시간이나 총비용의 절감률로 바꾸지 않습니다. 코드 주소가 제시돼 있지만 저장소는 검토하지 않았습니다.</p>
         <p>우리에게 쓸모: 있다 — 긴 기록을 살피는 AI의 평가에서, 맞힌 답뿐 아니라 얼마나 관찰했는지도 비교할 후보입니다.</p>
         <p>출처: <a href="https://arxiv.org/abs/2611.26024" target="_blank" rel="noopener">arXiv — ForeSeek</a> · 자료 날짜: 2026-11-19 · 기자가 읽은 자료: API 패킷 초록, 패킷 시각 2026-11-20 13:01.</p>
         <h4>4. 에이전트가 접근할 수 있는 자원과 행위 권한을 구분하자는 제안</h4>
