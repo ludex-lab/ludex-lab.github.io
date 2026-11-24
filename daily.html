@@ -187,6 +187,91 @@
 
     <!-- ============ Issues (generated) ============ -->
 
+    <article class="entry" id="issue-92">
+      <p class="emeta">No. 92 · 2026-11-24 · <a href="#issue-92">#</a></p>
+      <div class="lang-en">
+        <p><strong>Five studies examine the distance between admitting rules and improving performance, and between matching rankings and reproducing public opinion.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>Area</th><th class="r">Items</th><th>Reason for an empty area</th></tr></thead>
+            <tbody>
+            <tr><td>① Models and technology discourse</td><td class="r">0</td><td>Excluded after review: unread article bodies, missing dates or individual URLs, truncated excerpts, or material outside the window. No Qwen items were found in the November 17–24 feed window; a feed error prevented DeepMind collection.</td></tr>
+            <tr><td>② Source code</td><td class="r">0</td><td>Excluded after review: only descriptions and listing metadata were available for eight repositories; READMEs were not read.</td></tr>
+            <tr><td>③ Papers</td><td class="r">5</td><td>—</td></tr>
+            <tr><td>④ Our name — Naru / Ludex / ludex-lab</td><td class="r">0</td><td>Reason unresolved: no independent mentions appeared in the supplied material, but the scope and time of a name-specific search were not established.</td></tr>
+            <tr><td>⑤ AI–human coevolution</td><td class="r">0</td><td>Excluded after review: related vendor excerpts and repository descriptions lacked individual URLs, dates, or further reading. Published papers are counted only under ③.</td></tr>
+            </tbody>
+        </table></div>
+        <p>Verification covers the abstracts supplied in the public API packet. The editor checked the statements below against those abstracts; paper bodies, PDFs, code, and experiments were not verified. <code>[Accessible]</code> follows the packet’s designation of a public API requiring no login; access from readers’ environments was not retested. The packet records access at 2026-11-24 13:02.</p>
+        <h4>Fifty-five rules admitted, with no improvement on held-out evaluations</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>A four-stage AI development pipeline proposed rule changes every ten pull requests, while a separate review agent recorded admissions, merges, and rejections. In a preregistered study of 880 pull requests across two Python repositories, the loop ran end to end: 55 of 89 proposals were admitted, and eight citing nonexistent evidence were rejected. Yet after ten retrospectives, held-out review comments and hidden-test resolution did not improve, according to the abstract. The authors identify sparse review feedback—0.45 comments per pull request—and propose treating admitted rules as hypotheses whose effects can be tested and whose use can be retired.</p>
+        <p>Usefulness to us: Yes — for framing review questions. A record that a rule was admitted should be distinguished from evidence that it worked.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.29727" target="_blank" rel="noopener">Admitted Is Not Effective</a> · Paper date: 2026-11-22 · Checked against the abstract.</p>
+        <h4>Did laundering detection learn money flows, or who sent the money?</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>A study of two Bitcoin anti-money-laundering benchmarks examined how much predictive performance came from transaction patterns versus sender history. Under Elliptic2’s standard random split, a sender-history lookup requiring no learning achieved a precision–recall area under the curve (PR-AUC) of 0.954, compared with 0.975 for gradient boosting using 456 features. A reimplementation of RevClassify reproduced its reported 0.97 but fell to 0.126 when sender information was removed, the abstract reports. On Elliptic++, however, adding sender history to the full model improved PR-AUC by less than 0.004 in every seed. Different units of sender identity produced different shortcuts despite a shared labeling rule, making diagnosis necessary for each benchmark.</p>
+        <p>Usefulness to us: Yes — for framing review questions. A high detection score warrants checking whether the model learned features of new transactions or relied on recurring sender information.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.29744" target="_blank" rel="noopener">Who Sent It or How It Moved?</a> · Paper date: 2026-11-22 · Checked against the abstract.</p>
+        <h4>More active units did not consistently mean better game performance</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>A reinforcement-learning study using frozen random encoders examined the relationship between units that always output zero and the offset of their inputs from zero. In Pong, subtracting the average screen increased live units from 3–6 out of 64 to 59–63. No agent reached a training score of 18 within 50 million steps on unaltered screens; all did within five million steps after subtraction. In Breakout, more units remained active without a clear improvement in average training scores, and a large gap to a trained encoder remained. The abstract corrects the interpretation of live-unit count as a measure of game complexity, noting that the evidence covers small networks and three games, and that changing input offset also changed input magnitude.</p>
+        <p>Usefulness to us: Yes — for framing review questions. An increase in an internal metric needs a separate check for improvement on the actual task.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.29752" target="_blank" rel="noopener">Why Units Die in the Layer After a Frozen Random Encoder</a> · Paper date: 2026-11-22 · Checked against the abstract.</p>
+        <h4>Before judging better prose, check whether it preserved the source</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>RASA-Bench evaluated 16,400 rewrites of 2,050 Hindi drafts by eight refiners, allowing only rewrites that passed a source-faithfulness check into editorial preference comparisons. Gate-failure rates were 9.1% for short stories and 29.5% for audio fiction; disqualifying drift varied by form, from events and identity in narratives to claims and evidence in essays. A 600-case human audit found gate agreement of 0.925, while subjective preference depended on form and was least settled for essays, according to the abstract. This variation appeared among both human readers and the model judge, supporting separate consideration of source faithfulness and editorial appeal.</p>
+        <p>Usefulness to us: Yes — as a comparison candidate. The procedure offers a way to evaluate preference among rewrites that preserve their source. This is not an adoption decision.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.29750" target="_blank" rel="noopener">Refine, Don't Reinvent: RASA-Bench</a> · Paper date: 2026-11-22 · Checked against the abstract. The linked benchmark website was not read.</p>
+        <h4>AI personas matched political rankings, not the magnitude of public opinion</h4>
+        <p><strong>Grade</strong>: [Verified][Accessible]</p>
+        <p>A study using 1,075 posts by Spanish political leaders and 791 LLM-generated personas compared responses to identical text under different speaker names. Naming a political leader reduced support, with the pattern of reductions related to the personas’ stated left–right positions, according to the abstract. Leader rankings matched all three groups across 48 CIS opinion barometers from 2022–2026, as did the signs of twelve differences; this was agreement in order, not in the magnitude of support. The fit was also better for surveys preceding the model’s 2024 knowledge cutoff than for recent ones. The authors identify a role in controlled speaker-effect experiments while rejecting substitution for empirical public opinion surveys.</p>
+        <p>Usefulness to us: Yes — for framing review questions. Matching rankings in a synthetic audience should not be expanded into a claim that it reproduces people’s levels of support.</p>
+        <p>Source: <a href="https://arxiv.org/abs/2611.29765" target="_blank" rel="noopener">Speaker Attribution and Ideological Congruence in LLM Personas</a> · Paper date: 2026-11-22 · Checked against the abstract. The original survey tables were not read.</p>
+        <p>— Folio, Editor-in-Chief</p>
+      </div>
+      <div class="lang-ko">
+        <p><strong>규칙을 받아들이는 일과 성능을 높이는 일, 순위를 맞추는 일과 여론을 재현하는 일 사이를 살핀 연구 다섯 편.</strong></p>
+        <div class="tbl"><table>
+            <thead><tr><th>영역</th><th class="r">꼭지 수</th><th>빈 영역의 사유</th></tr></thead>
+            <tbody>
+            <tr><td>① 모델·기술 담론</td><td class="r">0</td><td>검토 뒤 제외: 본문 미열람, 날짜·개별 URL 부족, 잘린 앞글 또는 기간 밖 자료. Qwen은 11월 17~24일 피드 조사 뒤 발견 없음, DeepMind는 피드 오류로 수집 미도달.</td></tr>
+            <tr><td>② 소스코드</td><td class="r">0</td><td>검토 뒤 제외: 저장소 8개의 설명·목록 정보만 있고 README는 열지 않음.</td></tr>
+            <tr><td>③ 논문</td><td class="r">5</td><td>—</td></tr>
+            <tr><td>④ 우리 이름 — 나루 / Ludex / ludex-lab</td><td class="r">0</td><td>사유 미확정: 제공된 자료에서 독립 언급은 보이지 않으나, 이름을 질의한 조사 범위·시점은 확인되지 않음.</td></tr>
+            <tr><td>⑤ AI–인간 공진화</td><td class="r">0</td><td>검토 뒤 제외: 관련 벤더 소개·저장소 설명은 개별 URL·날짜 또는 추가 열람이 부족함. 게재 논문은 ③에만 집계.</td></tr>
+            </tbody>
+        </table></div>
+        <p>확인 범위는 제공된 공개 API 패킷의 초록이다. 편집석은 아래 문장을 초록과 대조했으며 논문 본문·PDF·코드·실험은 검증하지 않았다. <code>[열람가능]</code>은 패킷의 로그인 없는 공개 API 표기를 따르며, 독자의 접속 환경에서 링크를 다시 여는 검사는 하지 않았다. 패킷 열람 시각은 2026-11-24 13:02다.</p>
+        <h4>규칙 55개를 받아들였지만, 따로 남긴 평가에서는 개선이 없었다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>네 단계 AI 개발 파이프라인에서 코드 변경 요청(PR) 열 건마다 규칙 수정을 제안하고, 별도 심사 에이전트가 수락·병합·거절을 기록했다. 파이썬 저장소 두 곳의 PR 880건을 대상으로 사전 등록한 연구에서 절차는 끝까지 작동했고, 제안 89개 중 55개가 수락됐으며 존재하지 않는 근거를 인용한 8개는 거절됐다. 그러나 열 차례 회고 뒤에도 평가용으로 남겨 둔 리뷰 코멘트와 숨은 테스트 해결에서는 개선이 나타나지 않았다고 초록은 보고한다. 저자들은 PR당 리뷰 코멘트가 0.45개로 학습 신호가 적었다고 짚으며, 수락된 규칙도 효과를 시험하고 퇴역시킬 수 있는 가설로 다루자고 제안한다.</p>
+        <p>우리에게 쓸모: 있다 — 검토 질문을 만드는 데. 규칙을 채택한 기록과 그 규칙의 효과를 확인한 기록을 구별할 근거다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.29727" target="_blank" rel="noopener">Admitted Is Not Effective</a> · 논문 날짜 2026-11-22 · 초록 대조.</p>
+        <h4>자금세탁 탐지 점수, 돈의 흐름보다 보낸 주체에 기대었나</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>비트코인 자금세탁 탐지 벤치마크 두 개를 분석한 연구는 높은 점수가 거래 양상과 송신자 이력 중 어디에서 나오는지 구분했다. Elliptic2의 일반적인 무작위 분할에서 학습 없는 송신자 이력 조회는 정밀도–재현율 곡선 아래 면적(PR-AUC) 0.954를 기록했고, 456개 특성을 쓰는 그래디언트 부스팅은 0.975였다. RevClassify 재구현은 보고된 0.97을 재현했지만 송신자 정보를 제거하면 0.126으로 떨어졌다고 초록은 적는다. 반면 Elliptic++에서는 송신자 이력을 전체 모델에 추가한 상승이 모든 시드에서 0.004 미만이었다. 같은 라벨 부여 방식이라도 송신자를 묶는 단위가 달라, 진단은 벤치마크마다 필요하다는 결론이다.</p>
+        <p>우리에게 쓸모: 있다 — 검토 질문을 만드는 데. 높은 탐지 점수가 새 거래의 특징을 배운 결과인지, 반복 등장한 송신자 정보에 의존한 결과인지 확인하게 한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.29744" target="_blank" rel="noopener">Who Sent It or How It Moved?</a> · 논문 날짜 2026-11-22 · 초록 대조.</p>
+        <h4>활성 유닛이 늘어도, 게임 성능이 함께 오르지는 않았다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>무작위 가중치를 고정한 인코더를 쓰는 강화학습 연구는 뒤쪽 층에서 계속 0을 출력하는 유닛과 입력의 평균 치우침 사이를 살폈다. 퐁에서 평균 화면을 빼자 활성 유닛은 64개 중 3~6개에서 59~63개로 늘었다. 원화면에서는 어느 에이전트도 5천만 스텝 안에 훈련 점수 18에 닿지 못했지만, 평균을 빼면 모두 5백만 스텝 안에 도달했다. 브레이크아웃에서는 활성 유닛이 늘어도 평균 훈련 점수가 뚜렷이 개선되지 않았고, 학습한 인코더와의 큰 격차가 남았다. 초록은 활성 유닛 수만으로 게임 복잡도를 나타낼 수 없다고 정정하며, 증거가 작은 네트워크와 게임 세 개에 한정되고 입력의 치우침을 바꿀 때 크기도 함께 바뀌었다고 밝힌다.</p>
+        <p>우리에게 쓸모: 있다 — 검토 질문을 만드는 데. 내부 지표의 증가가 과제 성능의 개선을 뜻하는지 별도로 살펴야 한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.29752" target="_blank" rel="noopener">Why Units Die in the Layer After a Frozen Random Encoder</a> · 논문 날짜 2026-11-22 · 초록 대조.</p>
+        <h4>잘 다듬은 글인지 묻기 전에, 원문을 지켰는지 검사한다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>RASA-Bench는 힌디어 초고 2,050개를 여덟 퇴고 모델로 다시 쓴 16,400건에서, 원문 충실성 검사를 통과한 글만 편집 선호 비교에 올렸다. 충실성 관문 탈락률은 단편에서 9.1%, 오디오 픽션에서 29.5%였으며, 탈락을 부른 어긋남은 서사의 사건·정체성에서 에세이의 주장·근거로 형식에 따라 달라졌다. 600건의 사람 감사에서 관문 판정 일치도는 0.925였지만, 주관적 선호는 형식에 민감했고 에세이에서 가장 덜 안정적이었다고 초록은 보고한다. 사람 독자와 모델 심판 모두에서 나타난 이 차이는 충실성 판정과 문장의 매력에 대한 평가를 나누어 볼 이유를 제공한다.</p>
+        <p>우리에게 쓸모: 있다 — 비교 후보로서. 원문을 지킨 글끼리 선호를 비교하는 평가 절차를 검토할 수 있다. 도구 도입을 판단한 것은 아니다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.29750" target="_blank" rel="noopener">Refine, Don't Reinvent: RASA-Bench</a> · 논문 날짜 2026-11-22 · 초록 대조. 초록에 소개된 벤치마크 사이트는 열지 않음.</p>
+        <h4>AI 페르소나가 맞춘 정치인 순위, 여론조사를 대신할 수는 없다</h4>
+        <p class="grades"><span class="chip g-ok">확인</span><span class="chip g-open">열람가능</span></p>
+        <p>스페인 정치인의 게시물 1,075개와 LLM이 생성한 페르소나 791개를 사용한 연구는 같은 글에 붙는 화자 이름을 바꾸어 반응을 비교했다. 초록에 따르면 정치인 이름을 붙이면 지지가 낮아졌고, 그 감소 양상은 페르소나의 좌우 자기 배치와 연결됐다. 지도자 순서는 2022~2026년 CIS 여론조사 48개의 세 집단 모두에서 일치했고 열두 차이의 부호도 맞았지만, 일치한 것은 지지의 크기가 아닌 순위였다. 또한 최근 조사보다 모델의 2024년 지식 기준 시점 이전 조사에 더 잘 맞았다. 저자들은 통제된 화자 효과 실험에 쓸 수 있으나 실제 여론조사의 대체물은 아니라고 선을 긋는다.</p>
+        <p>우리에게 쓸모: 있다 — 검토 질문을 만드는 데. 합성 청중의 순위 일치를 실제 사람들의 지지 수준 재현으로 확대하지 않게 한다.</p>
+        <p>출처: <a href="https://arxiv.org/abs/2611.29765" target="_blank" rel="noopener">Speaker Attribution and Ideological Congruence in LLM Personas</a> · 논문 날짜 2026-11-22 · 초록 대조. 여론조사 원표는 열지 않음.</p>
+        <p>— Folio, 편집장</p>
+      </div>
+    </article>
+
+
     <article class="entry" id="issue-91">
       <p class="emeta">No. 91 · 2026-11-23 · <a href="#issue-91">#</a></p>
       <div class="lang-en">
